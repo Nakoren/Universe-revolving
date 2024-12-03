@@ -24,12 +24,26 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector2 move = m_moveAction.ReadValue<Vector2>();
-        Move(move);
+        if (move.magnitude > 0)
+        {
+            Move(move, new Vector2(1,1));
+        }
+        else
+        {
+            m_charController.SimpleMove(new Vector3());
+        }
     }
 
-    public void Move(Vector2 moveDir)
+    public void Move(Vector2 moveDir, Vector2 rotation)
     {
-        Vector3 moveDirV3 = new Vector3(moveDir.x, 0f, moveDir.y);
+        float baseMovementAngle = Mathf.Atan2(moveDir.y, moveDir.x);
+        float newAngle = baseMovementAngle + Mathf.Atan2(rotation.y, rotation.x);
+        //Debug.Log(baseMovementAngle + " " + newAngle);
+        float x = Mathf.Cos(newAngle);
+        float y = Mathf.Sin(newAngle);
+
+        Vector3 moveDirV3 = new Vector3(x, 0f, y);
+        //Debug.Log(moveDirV3);
         m_charController.SimpleMove(moveDirV3 * speed);
     }
 }
