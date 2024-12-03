@@ -62,7 +62,9 @@ public class Player : MonoBehaviour
         if (terrainCollider.Raycast(ray, out rayHit, 1000))
         {
             position = rayHit.point;
-            m_transform.Rotate(position);
+            transform.LookAt(position);
+            Quaternion newRotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
+            transform.rotation = newRotation;
         }
     }
 }
