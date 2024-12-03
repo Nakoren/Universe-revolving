@@ -1282,8 +1282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03c59f7f499ba54789674115bae7a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   inputActions: {fileID: -944628639613478452, guid: 65279da63b21575478db74a93a7db5b9, type: 3}
+  terrainCollider: {fileID: 797165004}
 --- !u!143 &1807503289
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1355,7 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1568151808}
   target: {fileID: 1807503286}
-  offset: {x: 5, y: 7, z: -5}
+  offset: {x: 8, y: 12, z: -8}
 --- !u!1 &2130556443
 GameObject:
   m_ObjectHideFlags: 0
