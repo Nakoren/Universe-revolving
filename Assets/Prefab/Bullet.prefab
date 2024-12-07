@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7915034318196654851}
   - component: {fileID: 3193790599384389638}
   - component: {fileID: 2306747084327043608}
-  - component: {fileID: -4009143801759314212}
   - component: {fileID: 3801793767621444816}
+  - component: {fileID: -7599856397798264514}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -112,23 +112,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-4009143801759314212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3604523944108459832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662c81b0e51f80a4797c39bbd7116f9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorDefault: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  colorSelected: {r: 0.25, g: 0.65, b: 0.8, a: 1}
-  nameLabel: {fileID: 0}
-  valueToggle: {fileID: 0}
-  toggles: []
 --- !u!54 &3801793767621444816
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,3 +139,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7599856397798264514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604523944108459832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10076fccabc4ad047a82e6ff7e7e4959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

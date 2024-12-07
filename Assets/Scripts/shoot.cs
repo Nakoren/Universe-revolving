@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,7 +18,7 @@ public class shoot : MonoBehaviour
 
     private void Shoot()
     {
-        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         Vector3 targetPoint;
@@ -26,12 +27,16 @@ public class shoot : MonoBehaviour
         else
             targetPoint = ray.GetPoint(75);
 
+        targetPoint.y = spawnBullet.position.y;
+
         Vector3 dirWithoutSpread = targetPoint - spawnBullet.position;
 
         float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
+        float z = Random.Range(-spread, spread);
 
-        Vector3 dirWithSpread = dirWithoutSpread + new Vector3(x, y, 0);
+        Vector3 dirWithSpread = dirWithoutSpread + new Vector3(x, 0, z);
+
+        Debug.Log(spawnBullet.position - targetPoint + " " + dirWithSpread);
 
         GameObject currentBullet = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
 
