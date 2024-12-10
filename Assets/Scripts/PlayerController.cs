@@ -64,29 +64,22 @@ public class PlayerController : MonoBehaviour
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         player.Move(move, cameraRotationV3);
     }
-
-    private void OnDash(InputAction.CallbackContext context)
+    private void OnSkill1(InputAction.CallbackContext context)
     {
-        Debug.Log("Dash");
-        return;
+        player.Skill1();
+    }
+    private void OnSkill2(InputAction.CallbackContext context)
+    {
+        player.Skill2();
     }
 
     private void OnExtraAction(InputAction.CallbackContext context)
     {
-        Debug.Log("ExtraAction");
-        return;
+        player.ExtraAction();
     }
 
-    private void OnSkill2(InputAction.CallbackContext context)
+    private void OnDash(InputAction.CallbackContext context)
     {
-        Debug.Log("Skill2");
-        return;
+        player.Dash();
     }
-
-    private void OnSkill1(InputAction.CallbackContext context)
-    {
-        Debug.Log("Skill1");
-        return;
-    }
-
 }

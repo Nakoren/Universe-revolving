@@ -15,16 +15,6 @@ public class Player : MonoBehaviour
         m_charController = GetComponent<CharacterController>();
     }
 
-    private void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-        
-    }
 
     public void Move(Vector2 moveDir, Vector3 baseDirection)
     {
@@ -56,5 +46,25 @@ public class Player : MonoBehaviour
         transform.LookAt(position);
         Quaternion newRotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
         transform.rotation = newRotation;
+    }
+
+    public void Skill1()
+    {
+        Debug.Log("Used skill 1");
+    }
+
+    public void Skill2()
+    {
+        Debug.Log("Used skill 2");
+    }
+
+    public void ExtraAction()
+    {
+        Debug.Log("Used extra action");
+    }
+
+    public void Dash()
+    {
+        Debug.Log("Used dash");
     }
 }
