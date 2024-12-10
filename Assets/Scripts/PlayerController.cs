@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private InputAction m_useSkill2Action;
     private InputAction m_extraAction;
     private InputAction m_dashAction;
+    private InputAction m_fireAction;
+    private InputAction m_extraFireAction;
 
 
     private void Awake()
@@ -23,6 +25,9 @@ public class PlayerController : MonoBehaviour
         m_useSkill2Action = inputActions.FindAction("Player/Skill2");
         m_extraAction = inputActions.FindAction("Player/ExtraAction");
         m_dashAction = inputActions.FindAction("Player/Dash");
+
+        m_fireAction = inputActions.FindAction("Player/Fire");
+        m_extraFireAction = inputActions.FindAction("Player/Fire");
     }
 
     void Start()
@@ -36,6 +41,14 @@ public class PlayerController : MonoBehaviour
         m_extraAction.started += OnExtraAction;
         m_dashAction.Enable();
         m_dashAction.started += OnDash;
+
+        m_fireAction.Enable();
+        m_fireAction.started += onFireStarted;
+        m_fireAction.canceled += onFireEnded;
+
+        m_extraFireAction.Enable();
+        m_extraFireAction.started += onExtraFireStarted;
+        m_extraFireAction.canceled += onExtraFireEnded;
     }
 
     void Update()
@@ -82,4 +95,25 @@ public class PlayerController : MonoBehaviour
     {
         player.Dash();
     }
+
+    private void onFireStarted(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void onFireEnded(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void onExtraFireStarted(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void onExtraFireEnded(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
 }
