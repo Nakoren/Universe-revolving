@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,15 +10,32 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTransform;
 
     private InputAction m_moveAction;
+    private InputAction m_useSkill1Action;
+    private InputAction m_useSkill2Action;
+    private InputAction m_extraAction;
+    private InputAction m_dashAction;
+
 
     private void Awake()
     {
         m_moveAction = inputActions.FindAction("Player/Move");
+        m_useSkill1Action = inputActions.FindAction("Player/Skill1");
+        m_useSkill2Action = inputActions.FindAction("Player/Skill2");
+        m_extraAction = inputActions.FindAction("Player/ExtraAction");
+        m_dashAction = inputActions.FindAction("Player/Dash");
     }
 
     void Start()
     {
         m_moveAction.Enable();
+        m_useSkill1Action.Enable();
+        m_useSkill1Action.started += OnSkill1;
+        m_useSkill2Action.Enable();
+        m_useSkill2Action.started += OnSkill2;
+        m_extraAction.Enable();
+        m_extraAction.started += OnExtraAction;
+        m_dashAction.Enable();
+        m_dashAction.started += OnDash;
     }
 
     void Update()
@@ -46,4 +64,29 @@ public class PlayerController : MonoBehaviour
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         player.Move(move, cameraRotationV3);
     }
+
+    private void OnDash(InputAction.CallbackContext context)
+    {
+        Debug.Log("Dash");
+        return;
+    }
+
+    private void OnExtraAction(InputAction.CallbackContext context)
+    {
+        Debug.Log("ExtraAction");
+        return;
+    }
+
+    private void OnSkill2(InputAction.CallbackContext context)
+    {
+        Debug.Log("Skill2");
+        return;
+    }
+
+    private void OnSkill1(InputAction.CallbackContext context)
+    {
+        Debug.Log("Skill1");
+        return;
+    }
+
 }

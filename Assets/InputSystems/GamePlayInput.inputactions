@@ -2,7 +2,7 @@
     "name": "GamePlayInput",
     "maps": [
         {
-            "name": "PlayerControl",
+            "name": "Player",
             "id": "997a874d-0cb6-4fab-bc86-b0914035feb4",
             "actions": [
                 {
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "UseSkill1",
+                    "name": "Skill1",
                     "type": "Button",
                     "id": "f2a8fea2-4329-4748-b8ec-e9894ff9bd8e",
                     "expectedControlType": "",
@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UseSkill2",
+                    "name": "Skill2",
                     "type": "Button",
                     "id": "748277fb-5051-4721-8c04-fac899a0f3cf",
                     "expectedControlType": "",
@@ -111,10 +111,10 @@
                     "name": "",
                     "id": "a7d243a5-00ad-4256-b2b5-fe6e30d5817e",
                     "path": "<Keyboard>/q",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "UseSkill1",
+                    "action": "Skill1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -125,7 +125,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseSkill2",
+                    "action": "Skill2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -154,7 +154,7 @@
             ]
         },
         {
-            "name": "UIControl",
+            "name": "UI",
             "id": "b72aa55a-f697-46c7-9260-f4b424390a14",
             "actions": [
                 {
@@ -177,7 +177,7 @@
                 },
                 {
                     "name": "MapOpen",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "504f2f3a-154d-45ef-9bc3-324960062c9d",
                     "expectedControlType": "",
                     "processors": "",
@@ -190,7 +190,7 @@
                     "name": "",
                     "id": "4385956e-0e09-422e-86da-8707bda90d94",
                     "path": "<Keyboard>/escape",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "MenuSwitch",
@@ -201,7 +201,7 @@
                     "name": "",
                     "id": "da47baf1-0166-40ff-b650-b403b7230177",
                     "path": "<Keyboard>/i",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
@@ -212,7 +212,7 @@
                     "name": "",
                     "id": "288a8007-4349-4f36-aadf-39bd0122a4e4",
                     "path": "<Keyboard>/tab",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "MapOpen",
