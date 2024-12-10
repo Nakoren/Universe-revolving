@@ -23,20 +23,27 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         RotateToCursor();
-        Vector2 move = m_moveAction.ReadValue<Vector2>();
-        player.Move(move, new Vector2(1, 1));
+        MovePlayer();   
     }
 
-    public void RotateToCursor()
+    private void RotateToCursor()
     {
         Vector3 position;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
 
+       
         if (terrainCollider.Raycast(ray, out rayHit, 1000))
         {
             position = rayHit.point;
             player.RotateToPosition(position);
         }
+    }
+
+    private void MovePlayer()
+    {
+        Vector3 cameraRotationV3 = cameraTransform.forward;
+        Vector2 move = m_moveAction.ReadValue<Vector2>();
+        player.Move(move, cameraRotationV3);
     }
 }
