@@ -98,22 +98,22 @@ public class PlayerController : MonoBehaviour
 
     private void onFireStarted(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        
     }
 
     private void onFireEnded(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        
     }
 
     private void onExtraFireStarted(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        
     }
 
     private void onExtraFireEnded(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        
     }
 
 }
