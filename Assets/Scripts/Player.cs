@@ -59,14 +59,6 @@ public class Player : MonoBehaviour
 
     public void Dash()
     {
-        if (m_collider.enabled)
-        {
-            m_collider.enabled = false;
-        }
-        else
-        {
-            m_collider.enabled = true;
-        }
-        Debug.Log(m_collider.enabled);
+        
     }
 }
