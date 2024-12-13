@@ -36,8 +36,6 @@ public class shoot : MonoBehaviour
 
         Vector3 dirWithSpread = dirWithoutSpread + new Vector3(x, 0, z);
 
-        Debug.Log(spawnBullet.position - targetPoint + " " + dirWithSpread);
-
         GameObject currentBullet = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
 
         currentBullet.transform.forward = dirWithSpread.normalized;

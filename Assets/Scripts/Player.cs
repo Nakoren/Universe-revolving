@@ -8,11 +8,12 @@ public class Player : MonoBehaviour
     public int speed;
     
     private CharacterController m_charController;
-
+    private Collider m_collider;
 
     private void Awake()
     {
         m_charController = GetComponent<CharacterController>();
+        m_collider = transform.GetChild(0).GetComponent<Collider>();
     }
 
 
@@ -23,10 +24,6 @@ public class Player : MonoBehaviour
             m_charController.SimpleMove(new Vector3());
             return;
         }
-        Debug.Log(baseDirection);
-        
-        
-
         float baseMovementAngle = Mathf.Atan2(moveDir.y, moveDir.x);
         float newAngle = baseMovementAngle - Mathf.Atan2(baseDirection.x, baseDirection.z);
         //Debug.Log(baseMovementAngle + " " + newAngle);
@@ -34,9 +31,6 @@ public class Player : MonoBehaviour
         float y = Mathf.Sin(newAngle);
         
         Vector3 moveDirV3 = new Vector3(x, 0f, y);
-
-        //Debug.Log(moveDirV3);
-
         
         m_charController.SimpleMove(moveDirV3 * speed);
     }
@@ -65,6 +59,14 @@ public class Player : MonoBehaviour
 
     public void Dash()
     {
-        
+        if (m_collider.enabled)
+        {
+            m_collider.enabled = false;
+        }
+        else
+        {
+            m_collider.enabled = true;
+        }
+        Debug.Log(m_collider.enabled);
     }
 }
