@@ -65,6 +65,6 @@ public class Player : MonoBehaviour
 
     public void Dash()
     {
-        Debug.Log("Used dash");
+        
     }
 }
