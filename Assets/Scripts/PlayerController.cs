@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         if (terrainCollider.Raycast(ray, out rayHit, 1000))
         {
             position = rayHit.point;
-            player.RotateToPosition(position);
+            player.RotateTo(position);
         }
     }
 
