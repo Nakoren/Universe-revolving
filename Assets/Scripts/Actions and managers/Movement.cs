@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
             m_charController.SimpleMove(new Vector3());
             return;
         }
-        Debug.Log(baseDirection);
 
         float baseMovementAngle = Mathf.Atan2(moveDir.y, moveDir.x);
         float newAngle = baseMovementAngle - Mathf.Atan2(baseDirection.x, baseDirection.z);
