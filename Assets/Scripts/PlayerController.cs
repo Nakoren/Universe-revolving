@@ -46,9 +46,6 @@ public class PlayerController : MonoBehaviour
         m_fireAction.started += onFireStarted;
         m_fireAction.canceled += onFireEnded;
 
-        m_extraFireAction.Enable();
-        m_extraFireAction.started += onExtraFireStarted;
-        m_extraFireAction.canceled += onExtraFireEnded;
     }
 
     void Update()
@@ -67,7 +64,7 @@ public class PlayerController : MonoBehaviour
         if (terrainCollider.Raycast(ray, out rayHit, 1000))
         {
             position = rayHit.point;
-            player.RotateToPosition(position);
+            player.RotateTo(position);
         }
     }
 
@@ -77,6 +74,7 @@ public class PlayerController : MonoBehaviour
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         player.Move(move, cameraRotationV3);
     }
+
     private void OnSkill1(InputAction.CallbackContext context)
     {
         player.Skill1();
@@ -98,20 +96,19 @@ public class PlayerController : MonoBehaviour
 
     private void onFireStarted(InputAction.CallbackContext context)
     {
-        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        Vector3 targetPoint;
+        if (Physics.Raycast(ray, out hit))
+            targetPoint = hit.point;
+        else
+            targetPoint = ray.GetPoint(75);
+
+        player.Shoot(targetPoint);
     }
 
     private void onFireEnded(InputAction.CallbackContext context)
-    {
-        
-    }
-
-    private void onExtraFireStarted(InputAction.CallbackContext context)
-    {
-        
-    }
-
-    private void onExtraFireEnded(InputAction.CallbackContext context)
     {
         
     }

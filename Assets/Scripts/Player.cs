@@ -2,46 +2,36 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Movement))]
 
 public class Player : MonoBehaviour
 {
-    public int speed;
-    
-    private CharacterController m_charController;
-    private Collider m_collider;
+    Movement m_movement;
+    Shoot m_shoot;
 
-    private void Awake()
+    public void Awake()
     {
-        m_charController = GetComponent<CharacterController>();
-        m_collider = transform.GetChild(0).GetComponent<Collider>();
+        m_movement = GetComponent<Movement>();
+        m_shoot = GetComponent<Shoot>();
     }
 
-
-    public void Move(Vector2 moveDir, Vector3 baseDirection)
+    public void Move(Vector3 direction, Vector3 basicAngle)
     {
-        if(!(moveDir.magnitude > 0))
+        m_movement.Move(direction, basicAngle);
+    }
+
+    public void RotateTo(Vector3 target)
+    {
+        m_movement.RotateToPosition(target);
+    }
+
+    public void Shoot(Vector3 target) {
+        if(m_shoot != null)
         {
-            m_charController.SimpleMove(new Vector3());
-            return;
+            m_shoot.ShootToTarget(target);
         }
-        float baseMovementAngle = Mathf.Atan2(moveDir.y, moveDir.x);
-        float newAngle = baseMovementAngle - Mathf.Atan2(baseDirection.x, baseDirection.z);
-        //Debug.Log(baseMovementAngle + " " + newAngle);
-        float x = Mathf.Cos(newAngle);
-        float y = Mathf.Sin(newAngle);
-        
-        Vector3 moveDirV3 = new Vector3(x, 0f, y);
-        
-        m_charController.SimpleMove(moveDirV3 * speed);
     }
-
-    public void RotateToPosition(Vector3 position)
-    {
-        transform.LookAt(position);
-        Quaternion newRotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
-        transform.rotation = newRotation;
-    }
-
+        
     public void Skill1()
     {
         Debug.Log("Used skill 1");
