@@ -96,6 +96,22 @@ public class PlayerController : MonoBehaviour
 
     private void onFireStarted(InputAction.CallbackContext context)
     {
+        Vector3 targetPoint = RaycastToCursor();
+
+        player.Shoot(targetPoint);
+
+    }
+
+    
+    private void onFireEnded(InputAction.CallbackContext context)
+    {
+        Debug.Log("FireEnded");
+    }
+
+    private static Vector3 RaycastToCursor()
+    {
+        Debug.Log("FireStarted");
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -104,13 +120,7 @@ public class PlayerController : MonoBehaviour
             targetPoint = hit.point;
         else
             targetPoint = ray.GetPoint(75);
-
-        player.Shoot(targetPoint);
-    }
-
-    private void onFireEnded(InputAction.CallbackContext context)
-    {
-        
+        return targetPoint;
     }
 
 }
