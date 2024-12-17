@@ -10,15 +10,21 @@ public class Shoot2 : MonoBehaviour
     public ReceiverDataSO receiverData;
     public MagazineDataSO magazineData;
     private Coroutine m_fireCoroutine;
+    private int ammo = 0;
 
-
-    public void StartFire()
+    public void Reload()
     {
-        m_fireCoroutine = StartCoroutine(FireDelay());
+        ammo = magazineData.cage;
+    }
+    public void StartReload()
+    {
+        m_fireCoroutine = StartCoroutine(ReloadDelay());
+        Reload();
     }
 
-    private IEnumerator FireDelay()
+    private IEnumerator ReloadDelay()
     {
+        Debug.Log($"Reload start");
         do
         {
             yield return new WaitForSeconds(receiverData.shootDelay);
@@ -26,7 +32,7 @@ public class Shoot2 : MonoBehaviour
         while(true);
     }
 
-    public void StopFire()
+    public void StopReload()
     {
         if (m_fireCoroutine != null)
         {
@@ -37,7 +43,8 @@ public class Shoot2 : MonoBehaviour
 
     public void ShootToTarget(Vector3 target)
     {
-        FireDelay();
+        if (ammo > 0)
+        {
         target.y = spawnBullet.position.y;
 
         Vector3 dirWithoutSpread = target - spawnBullet.position;
@@ -52,5 +59,13 @@ public class Shoot2 : MonoBehaviour
         currentBullet.transform.forward = dirWithSpread.normalized;
 
         currentBullet.GetComponent<Rigidbody>().AddForce(dirWithSpread.normalized * shootForce, ForceMode.Impulse);
+
+        ammo = ammo - 1;
+        Debug.Log($"ammo - {ammo}");
+        }
+        else
+        {
+            Debug.Log($"ammo - pusto {ammo}");
+        }
     }
 }

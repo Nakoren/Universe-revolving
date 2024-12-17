@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Movement m_movement;
-    Shoot m_shoot;
+    Shoot2 m_shoot;
 
     public void Awake()
     {
         m_movement = GetComponent<Movement>();
-        m_shoot = GetComponent<Shoot>();
+        m_shoot = GetComponent<Shoot2>();
     }
 
     public void Move(Vector3 direction, Vector3 basicAngle)
@@ -25,7 +25,8 @@ public class Player : MonoBehaviour
         m_movement.RotateToPosition(target);
     }
 
-    public void Shoot(Vector3 target) {
+    public void Shoot(Vector3 target) 
+    {
         if(m_shoot != null)
         {
             m_shoot.ShootToTarget(target);
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour
 
     public void ExtraAction()
     {
-        Debug.Log("Used extra action");
+        m_shoot.StartReload();
     }
 
     public void Dash()

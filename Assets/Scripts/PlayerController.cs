@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         m_dashAction = inputActions.FindAction("Player/Dash");
 
         m_fireAction = inputActions.FindAction("Player/Fire");
-        m_extraFireAction = inputActions.FindAction("Player/Fire");
+        m_extraFireAction = inputActions.FindAction("Player/ExtraFire");
     }
 
     void Start()
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
             targetPoint = ray.GetPoint(75);
 
         player.Shoot(targetPoint);
+        Debug.Log($"{targetPoint}");
     }
 
     private void onFireEnded(InputAction.CallbackContext context)
