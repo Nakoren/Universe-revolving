@@ -24,6 +24,8 @@ public class EnemyControllerByCamera : MonoBehaviour
         cam = Camera.main;
         enemyCollider =  GetComponent<Collider>();
     }
+
+
     /* private void FixedUpdate()
     {
         if(m_target)
