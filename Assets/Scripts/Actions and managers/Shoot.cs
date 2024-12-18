@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class Shoot : MonoBehaviour
 {
@@ -35,8 +36,19 @@ public class Shoot : MonoBehaviour
         currentBullet.GetComponent<Rigidbody>().AddForce(dirWithSpread.normalized * shootForce, ForceMode.Impulse);
     }
 
-    public void shootForward()
+    public void ShootForward()
     {
+        Vector3 dirWithoutSpread = spawnBullet.forward;
 
+        float x = Random.Range(-spread, spread);
+        float z = Random.Range(-spread, spread);
+
+        Vector3 dirWithSpread = dirWithoutSpread; //+ new Vector3(x, 0, z);
+
+        GameObject currentBullet = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
+
+        currentBullet.transform.forward = dirWithSpread.normalized;
+
+        currentBullet.GetComponent<Rigidbody>().AddForce(dirWithSpread.normalized * shootForce, ForceMode.Impulse);
     }
 }

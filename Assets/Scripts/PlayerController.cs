@@ -96,10 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void onFireStarted(InputAction.CallbackContext context)
     {
-        Vector3 targetPoint = RaycastToCursor();
-
-        player.Shoot(targetPoint);
-
+        player.Shoot();
     }
 
     

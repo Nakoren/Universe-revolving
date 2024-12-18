@@ -25,10 +25,10 @@ public class Player : MonoBehaviour
         m_movement.RotateToPosition(target);
     }
 
-    public void Shoot(Vector3 target) {
+    public void Shoot() {
         if(m_shoot != null)
         {
-            m_shoot.ShootToTarget(target);
+            m_shoot.ShootForward();
         }
     }
         
