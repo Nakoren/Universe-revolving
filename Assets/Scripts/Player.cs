@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     public void ExtraAction()
     {
-        m_shoot.StartReload();
+        m_shoot.Reload();
     }
 
     public void Dash()

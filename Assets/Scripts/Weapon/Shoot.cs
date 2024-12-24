@@ -9,8 +9,8 @@ public class Shoot : MonoBehaviour
     public ScopeDataSO scopeData;
     public ReceiverDataSO receiverData;
     public MagazineDataSO magazineData;
-    private Coroutine m_fireCoroutine;
-    private int ammo = 0;
+    // private Coroutine m_fireCoroutine;
+    private int ammo = 6;
 
     public void Reload()
     {
@@ -18,28 +18,28 @@ public class Shoot : MonoBehaviour
     }
     public void StartReload()
     {
-        m_fireCoroutine = StartCoroutine(ReloadDelay());
+        // m_fireCoroutine = StartCoroutine(ReloadDelay());
         Reload();
     }
 
-    private IEnumerator ReloadDelay()
-    {
-        Debug.Log($"Reload start");
-        do
-        {
-            yield return new WaitForSeconds(receiverData.shootDelay);
-        }
-        while(true);
-    }
+    // private IEnumerator ReloadDelay()
+    // {
+    //     Debug.Log($"Reload start");
+    //     do
+    //     {
+    //         yield return new WaitForSeconds(receiverData.shootDelay);
+    //     }
+    //     while(true);
+    // }
 
-    public void StopReload()
-    {
-        if (m_fireCoroutine != null)
-        {
-            StopCoroutine(m_fireCoroutine);
-            m_fireCoroutine = null;
-        }
-    }
+    // public void StopReload()
+    // {
+    //     if (m_fireCoroutine != null)
+    //     {
+    //         StopCoroutine(m_fireCoroutine);
+    //         m_fireCoroutine = null;
+    //     }
+    // }
 
     public void ShootToTarget(Vector3 target)
     {
