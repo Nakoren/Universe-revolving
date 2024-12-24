@@ -25,10 +25,11 @@ public class Player : MonoBehaviour
         m_movement.RotateToPosition(target);
     }
 
-    public void Shoot() {
+    public void Shoot(Vector3 target) 
+    {
         if(m_shoot != null)
         {
-            m_shoot.ShootForward();
+            m_shoot.ShootToTarget(target);
         }
     }
         
@@ -44,11 +45,11 @@ public class Player : MonoBehaviour
 
     public void ExtraAction()
     {
-        Debug.Log("Used extra action");
+        m_shoot.StartReload();
     }
 
     public void Dash()
     {
-        Debug.Log("Used dash");
+        
     }
 }

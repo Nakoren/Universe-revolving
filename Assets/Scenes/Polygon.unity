@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ed814869d6ea640ad83bb4a129f328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1807503294
+--- !u!114 &1807503298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1086,13 +1086,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1807503286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26e3e944bd30874b91d2ce23c7d5f03, type: 3}
+  m_Script: {fileID: 11500000, guid: 789974642589645459fcd39f84cfee05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3604523944108459832, guid: 454d2a23f782445488117b485daeb9c2, type: 3}
   spawnBullet: {fileID: 1338399049}
   shootForce: 30
-  spread: 1
+  scopeData: {fileID: 11400000, guid: bd0cc89104a25a94c9cd2b2c3ad20a67, type: 2}
+  receiverData: {fileID: 11400000, guid: 0557fbc5e771dba40a3170ba6160a7d7, type: 2}
+  magazineData: {fileID: 11400000, guid: a24d14d18c9acbb42b0934a6819b2c75, type: 2}
 --- !u!1 &1887003569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1343,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8728314009421163411, guid: 4bfa450c1ceb99a4f87abc2420bd84da, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1807503294}
+      addedObject: {fileID: 1807503298}
   m_SourcePrefab: {fileID: 100100000, guid: 4bfa450c1ceb99a4f87abc2420bd84da, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
