@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Movement m_movement;
-    Shoot2 m_shoot;
+    Shoot m_shoot;
 
     public void Awake()
     {
         m_movement = GetComponent<Movement>();
-        m_shoot = GetComponent<Shoot2>();
+        m_shoot = GetComponent<Shoot>();
     }
 
     public void Move(Vector3 direction, Vector3 basicAngle)
