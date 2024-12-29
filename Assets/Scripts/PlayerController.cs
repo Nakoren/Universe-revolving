@@ -104,9 +104,8 @@ public class PlayerController : MonoBehaviour
             targetPoint = hit.point;
         else
             targetPoint = ray.GetPoint(75);
-
-        player.Shoot(targetPoint);
-        Debug.Log($"{targetPoint}");
+        player.Shoot();
+        //Debug.Log($"{targetPoint}");
     }
 
     private void onFireEnded(InputAction.CallbackContext context)

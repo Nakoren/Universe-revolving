@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject bulletPrefab;
     public Transform spawnBullet;
     public float shootForce;
     public ScopeDataSO scopeData;
@@ -22,50 +22,37 @@ public class Shoot : MonoBehaviour
         Reload();
     }
 
-    // private IEnumerator ReloadDelay()
-    // {
-    //     Debug.Log($"Reload start");
-    //     do
-    //     {
-    //         yield return new WaitForSeconds(receiverData.shootDelay);
-    //     }
-    //     while(true);
-    // }
+    public void ShootAction()
+    {
+        BulletCounter();
+        if (ammo > 0)
+        {
+        ShootToTarget();
+        }
+    }
 
-    // public void StopReload()
-    // {
-    //     if (m_fireCoroutine != null)
-    //     {
-    //         StopCoroutine(m_fireCoroutine);
-    //         m_fireCoroutine = null;
-    //     }
-    // }
-
-    public void ShootToTarget(Vector3 target)
+    public void BulletCounter()
     {
         if (ammo > 0)
         {
-        target.y = spawnBullet.position.y;
-
-        Vector3 dirWithoutSpread = target - spawnBullet.position;
-
-        float x = Random.Range(-scopeData.spread, scopeData.spread);
-        float z = Random.Range(-scopeData.spread, scopeData.spread);
-
-        Vector3 dirWithSpread = dirWithoutSpread + new Vector3(x, 0, z);
-
-        GameObject currentBullet = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
-
-        currentBullet.transform.forward = dirWithSpread.normalized;
-
-        currentBullet.GetComponent<Rigidbody>().AddForce(dirWithSpread.normalized * shootForce, ForceMode.Impulse);
-
         ammo = ammo - 1;
         Debug.Log($"ammo - {ammo}");
         }
         else
         {
             Debug.Log($"ammo - pusto {ammo}");
+        }
+    }
+
+    public void ShootToTarget()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            float randomSpreadY = Random.Range(-scopeData.spread, scopeData.spread);
+            Vector3 spreadDirection = Quaternion.Euler(0, randomSpreadY, 0) * spawnBullet.forward;
+            rb.AddForce(spreadDirection.normalized * shootForce, ForceMode.Impulse);
         }
     }
 }

@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
+        //Debug.Log("Collided");
         if(onDestroy != null)
         {
             onDestroy.Invoke();

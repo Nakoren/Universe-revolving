@@ -54,12 +54,12 @@ public class EnemyControllerByCamera : MonoBehaviour
         if (GeometryUtility.TestPlanesAABB(planes, enemyCollider.bounds))
         {
             m_meshAgent.destination = player.position;
-            Debug.Log("Enemy has been detected");
+            //Debug.Log("Enemy has been detected");
         }
         else
         {
             m_meshAgent.ResetPath();
-            Debug.Log("Nothing has been detected");
+            //Debug.Log("Nothing has been detected");
         }
     }
 }
