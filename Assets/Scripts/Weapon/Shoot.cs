@@ -9,8 +9,11 @@ public class Shoot : MonoBehaviour
     public ScopeDataSO scopeData;
     public ReceiverDataSO receiverData;
     public MagazineDataSO magazineData;
-    // private Coroutine m_fireCoroutine;
-    private int ammo = 6;
+    private int ammo = 0;
+    public void Awake()
+    {
+        ammo = magazineData.cage;
+    }
 
     public void Reload()
     {
@@ -18,16 +21,16 @@ public class Shoot : MonoBehaviour
     }
     public void StartReload()
     {
-        // m_fireCoroutine = StartCoroutine(ReloadDelay());
         Reload();
     }
 
     public void ShootAction()
     {
+        
         BulletCounter();
         if (ammo > 0)
         {
-        ShootToTarget();
+            ShootToTarget();;
         }
     }
 
