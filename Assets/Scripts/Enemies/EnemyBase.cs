@@ -4,11 +4,24 @@ using UnityEngine.AI;
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    [SerializeField] protected float health;
-    [SerializeField] protected float damage;
 
     protected float lastAttackTime;
     protected NavMeshAgent m_meshAgent;
+
+
+    [Header("Enemy Settings")]
+    [SerializeField] protected float health;
+
+
+    [Header("Move Settings")]
+    [SerializeField] protected float moveSpeed = 2f;
+    [SerializeField] protected float stopDistance = 2f;
+
+
+    [Header("Attack Settings")]
+    [SerializeField] protected float damage;
+    [SerializeField]protected float attackCooldown = 2f;
+
 
 
     public virtual void TakeDamage(float damageAmount)
@@ -28,4 +41,6 @@ public abstract class EnemyBase : MonoBehaviour
 
     public abstract void MoveTo(Vector3 targetPosition);
     public abstract void Attack(Vector3 targetPosition);
+
 }
+

@@ -3,10 +3,6 @@ using UnityEngine.AI;
 
 public class MeleeEnemy : EnemyBase
 {
-    [SerializeField] private float stopDistance = 2f;
-    [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float attackCooldown = 2f;
-
     private void Awake()
     {
         m_meshAgent = GetComponent<NavMeshAgent>();
