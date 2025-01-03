@@ -425,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 5913517205366029449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.315, y: 0.024, z: 0.659}
+  m_LocalPosition: {x: 0, y: 0, z: 0.659}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -533,6 +533,8 @@ GameObject:
   - component: {fileID: 1987497454667195189}
   - component: {fileID: 2995631428687398803}
   - component: {fileID: 1421429849439351748}
+  - component: {fileID: 3321538450309063830}
+  - component: {fileID: 856224086660723147}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -595,6 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ed814869d6ea640ad83bb4a129f328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_meleePunch: {fileID: 0}
 --- !u!114 &1421429849439351748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +611,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+--- !u!114 &3321538450309063830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728314009421163411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa39e90329807dc4f8f444082cd8f8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox: {fileID: 0}
+--- !u!114 &856224086660723147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728314009421163411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789974642589645459fcd39f84cfee05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  spawnBullet: {fileID: 0}
+  shootForce: 0
+  scopeData: {fileID: 0}
+  receiverData: {fileID: 0}
+  magazineData: {fileID: 0}
 --- !u!1001 &7441883217122282944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -622,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4452894302920014437, guid: 66828f2100d3d7d4c949e20cc16d41c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.225
       objectReference: {fileID: 0}
     - target: {fileID: 4452894302920014437, guid: 66828f2100d3d7d4c949e20cc16d41c4, type: 3}
       propertyPath: m_LocalPosition.z
