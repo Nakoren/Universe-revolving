@@ -3,20 +3,25 @@ using UnityEngine;
 
 public class MeleePunch : MonoBehaviour
 {
-    public int existenceTime = 3;
-    public System.Action onDestroy;
-    public void Awake()
+    public GameObject hitBox; // Ссылка на объект HitBox
+
+    private void Awake()
     {
-        StartCoroutine(destroyCoroutine(existenceTime));
+        hitBox.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Attack()
     {
+        hitBox.SetActive(true);
+        StartCoroutine(DisableHitBoxAfterDelay(0.1f));
     }
 
-    private IEnumerator destroyCoroutine(int destroyTime)
+    private IEnumerator DisableHitBoxAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(destroyTime);
-        Destroy(gameObject);
+        // Ждем указанное время
+        yield return new WaitForSeconds(delay);
+        
+        // Выключаем HitBox
+        hitBox.SetActive(false);
     }
 }

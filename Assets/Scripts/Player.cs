@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     Movement m_movement;
     Shoot m_shoot;
+    [SerializeField] private MeleePunch m_meleePunch;
 
     public void Awake()
     {
@@ -35,7 +36,10 @@ public class Player : MonoBehaviour
         
     public void Skill1()
     {
-        Debug.Log("Used skill 1");
+        if(m_meleePunch != null)
+        {
+        m_meleePunch.Attack();
+        }
     }
 
     public void Skill2()
