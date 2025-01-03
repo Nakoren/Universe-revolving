@@ -8,7 +8,7 @@ public class RangedEnemy : EnemyBase
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform spawnBullet;
 
-     [Header("Shoot Settings")]
+    [Header("Shoot Settings")]
     [SerializeField] private float shootForce = 1f;
     [SerializeField] private float shootAngle;
 
@@ -16,21 +16,22 @@ public class RangedEnemy : EnemyBase
     private void Awake()
     {
         m_meshAgent = GetComponent<NavMeshAgent>();
-        m_meshAgent.speed = moveSpeed;
-        m_meshAgent.stoppingDistance = stopDistance;
     }
 
     public override void MoveTo(Vector3 targetPosition)
     {
-        if (Vector3.Distance(transform.position, targetPosition) > stopDistance)
+        m_meshAgent.destination = targetPosition;
+        m_meshAgent.updateRotation = true;
+
+        Vector3 directionToTarget = (targetPosition - transform.position).normalized;
+
+        if (m_meshAgent.remainingDistance <= m_meshAgent.stoppingDistance && directionToTarget != Vector3.zero)
         {
-            m_meshAgent.destination = targetPosition;
-        }
-        else
-        {
-            m_meshAgent.ResetPath();
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
 
     public override void Attack(Vector3 targetPosition)
     {

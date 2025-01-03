@@ -14,8 +14,7 @@ public abstract class EnemyBase : MonoBehaviour
 
 
     [Header("Move Settings")]
-    [SerializeField] protected float moveSpeed = 2f;
-    [SerializeField] protected float stopDistance = 2f;
+    [SerializeField] protected float rotationSpeed = 5f;
 
 
     [Header("Attack Settings")]
