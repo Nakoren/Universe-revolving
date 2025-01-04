@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         RotateToCursor();
-        MovePlayer();   
+        MovePlayer();
     }
 
     private void RotateToCursor()
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 cameraRotationV3 = cameraTransform.forward;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
+        //Debug.Log(move);
         player.Move(move, cameraRotationV3);
     }
 
