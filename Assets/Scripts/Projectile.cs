@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
-    public int existenceTime = 3;
-    public System.Action onDestroy;
+    [SerializeField] public int existenceTime = 3;
+    [SerializeField] public System.Action onDestroy;
+    [SerializeField] public int Damage = 0;
 
     public void Awake()
     {

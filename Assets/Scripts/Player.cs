@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,9 @@ public class Player : MonoBehaviour
     Movement m_movement;
     Shoot m_shoot;
     Dash m_dash;
+    Health m_health;
     private PlayerState m_state = PlayerState.Base;
+    public Action onPlayerDeath;
 
     private Vector3 m_position = new Vector3();
     private Vector3 m_prevFramePosition = new Vector3();
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
         m_movement = GetComponent<Movement>();
         m_shoot = GetComponent<Shoot>();
         m_dash = GetComponent<Dash>();
+        m_health = GetComponent<Health>();
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
@@ -89,6 +93,14 @@ public class Player : MonoBehaviour
                 dashDir.y = 0;
                 m_dash.StartDash(dashDir.normalized);
             }
+        }
+    }
+
+    public void Die()
+    {
+        if(onPlayerDeath != null)
+        {
+            onPlayerDeath.Invoke();
         }
     }
 
