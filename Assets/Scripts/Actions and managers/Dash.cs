@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(CharacterController))]
 public class Dash : MonoBehaviour
@@ -36,7 +37,7 @@ public class Dash : MonoBehaviour
             Debug.Log("Dash on cooldown");
             return;
         }
-        Debug.Log("Dash started");
+        m_charController.excludeLayers = LayerMask.GetMask("Projectile");
         m_dashDirection = direction;
         if (onDashStart != null)
         {
@@ -53,6 +54,7 @@ public class Dash : MonoBehaviour
             onDashEnd.Invoke();
         }
         m_dashDirection = new Vector3();
+        m_charController.excludeLayers = new LayerMask();
         m_dashDelay = StartCoroutine(CooldownCoroutine());
         Debug.Log("Dash ended");
     }
