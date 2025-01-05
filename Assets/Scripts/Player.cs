@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        Debug.Log(m_state);
+        //Debug.Log(m_state);
         m_prevFramePosition = m_position;
         m_position = transform.position;
     }
