@@ -1438,6 +1438,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8767314525901190293, guid: 4bfa450c1ceb99a4f87abc2420bd84da, type: 3}
+      propertyPath: dashTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8767314525901190293, guid: 4bfa450c1ceb99a4f87abc2420bd84da, type: 3}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1421429849439351748, guid: 4bfa450c1ceb99a4f87abc2420bd84da, type: 3}
       propertyPath: speed
       value: 6

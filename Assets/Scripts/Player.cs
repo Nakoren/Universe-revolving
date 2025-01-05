@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,19 +7,48 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    enum PlayerState { Frozen, Base, Dash }
+
     Movement m_movement;
     Shoot m_shoot;
-    [SerializeField] private MeleePunch m_meleePunch;
+    Dash m_dash;
+    Health m_health;
+    private PlayerState m_state = PlayerState.Base;
+    public Action onPlayerDeath;
+
+    private Vector3 m_position = new Vector3();
+    private Vector3 m_prevFramePosition = new Vector3();
+    
 
     public void Awake()
     {
         m_movement = GetComponent<Movement>();
         m_shoot = GetComponent<Shoot>();
+        m_dash = GetComponent<Dash>();
+        m_health = GetComponent<Health>();
+
+        m_dash.onDashStart += setStateToDash;
+        m_dash.onDashEnd += setStateToBase;
+
+        m_prevFramePosition = transform.position;
+    }
+
+    private void LateUpdate()
+    {
+        Debug.Log(m_state);
+        m_prevFramePosition = m_position;
+        m_position = transform.position;
     }
 
     public void Move(Vector3 direction, Vector3 basicAngle)
     {
-        m_movement.Move(direction, basicAngle);
+        if(m_state == PlayerState.Base) {
+            m_movement.Move(direction, basicAngle);
+        }
+        if(m_state == PlayerState.Dash)
+        {
+            m_dash.DashMove();
+        }
     }
 
     public void RotateTo(Vector3 target)
@@ -26,20 +56,17 @@ public class Player : MonoBehaviour
         m_movement.RotateToPosition(target);
     }
 
-    public void Shoot() 
+    public void Shoot(Vector3 target) 
     {
         if(m_shoot != null)
         {
-            m_shoot.ShootAction();
+            m_shoot.ShootToTarget(target);
         }
     }
         
     public void Skill1()
     {
-        if(m_meleePunch != null)
-        {
-        m_meleePunch.Attack();
-        }
+        Debug.Log("Used skill 1");
     }
 
     public void Skill2()
@@ -54,6 +81,39 @@ public class Player : MonoBehaviour
 
     public void Dash()
     {
-        
+        if (m_state == PlayerState.Base)
+        {
+            if (m_dash != null)
+            {
+                Vector3 dashDir = m_position - m_prevFramePosition;
+                if(dashDir == Vector3.zero)
+                {
+                    return;
+                }
+                dashDir.y = 0;
+                m_dash.StartDash(dashDir.normalized);
+            }
+        }
+    }
+
+    public void Die()
+    {
+        if(onPlayerDeath != null)
+        {
+            onPlayerDeath.Invoke();
+        }
+    }
+
+    private void setStateToFrozen()
+    {
+        m_state = PlayerState.Frozen;
+    }
+    private void setStateToDash()
+    {
+        m_state = PlayerState.Dash;
+    }
+    private void setStateToBase()
+    {
+        m_state = PlayerState.Base;
     }
 }

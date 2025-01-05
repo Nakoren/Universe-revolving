@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         RotateToCursor();
-        MovePlayer();   
+        MovePlayer();
     }
 
     private void RotateToCursor()
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 cameraRotationV3 = cameraTransform.forward;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
+        //Debug.Log(move);
         player.Move(move, cameraRotationV3);
     }
 
@@ -96,6 +97,22 @@ public class PlayerController : MonoBehaviour
 
     private void onFireStarted(InputAction.CallbackContext context)
     {
+        Vector3 targetPoint = RaycastToCursor();
+
+        player.Shoot(targetPoint);
+
+    }
+
+    
+    private void onFireEnded(InputAction.CallbackContext context)
+    {
+        Debug.Log("FireEnded");
+    }
+
+    private static Vector3 RaycastToCursor()
+    {
+        Debug.Log("FireStarted");
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -104,13 +121,7 @@ public class PlayerController : MonoBehaviour
             targetPoint = hit.point;
         else
             targetPoint = ray.GetPoint(75);
-        player.Shoot();
-        //Debug.Log($"{targetPoint}");
-    }
-
-    private void onFireEnded(InputAction.CallbackContext context)
-    {
-        
+        return targetPoint;
     }
 
 }

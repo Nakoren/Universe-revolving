@@ -8,6 +8,8 @@ public class EnemyControllerByCamera : MonoBehaviour
     private NavMeshAgent m_meshAgent;
     private Transform m_target;
 
+    private Health m_health;
+
     [SerializeField] private float speed = 2f;
     [SerializeField] private Transform player;
     [SerializeField] private Camera cam;
@@ -17,6 +19,7 @@ public class EnemyControllerByCamera : MonoBehaviour
      private void Awake()
     {
         m_meshAgent = GetComponent<NavMeshAgent>();
+        m_health = GetComponent<Health>();
         m_meshAgent.speed=speed;
     }
     void Start()
@@ -61,5 +64,9 @@ public class EnemyControllerByCamera : MonoBehaviour
             m_meshAgent.ResetPath();
             //Debug.Log("Nothing has been detected");
         }
+    }
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
