@@ -30,7 +30,7 @@ public class Shoot : MonoBehaviour
         BulletCounter();
         if (ammo > 0)
         {
-            ShootToTarget();;
+            ShootForward();;
         }
     }
 
@@ -47,7 +47,7 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    public void ShootToTarget()
+    public void ShootForward()
     {
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
