@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     enum PlayerState { Frozen, Base, Dash }
 
+    [SerializeField] MeleePunch m_meleePunch;
     Movement m_movement;
     Shoot m_shoot;
     Dash m_dash;
@@ -56,17 +57,17 @@ public class Player : MonoBehaviour
         m_movement.RotateToPosition(target);
     }
 
-    public void Shoot(Vector3 target) 
+    public void Shoot() 
     {
         if(m_shoot != null)
         {
-            m_shoot.ShootToTarget(target);
+            m_shoot.ShootAction();
         }
     }
         
     public void Skill1()
     {
-        Debug.Log("Used skill 1");
+        m_meleePunch.Attack();
     }
 
     public void Skill2()

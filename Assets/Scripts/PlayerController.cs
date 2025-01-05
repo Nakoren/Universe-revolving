@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 targetPoint = RaycastToCursor();
 
-        player.Shoot(targetPoint);
+        player.Shoot();
 
     }
 
