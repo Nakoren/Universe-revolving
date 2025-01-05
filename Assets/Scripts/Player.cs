@@ -9,11 +9,11 @@ public class Player : MonoBehaviour
 {
     enum PlayerState { Frozen, Base, Dash }
 
-    [SerializeField] MeleePunch m_meleePunch;
     Movement m_movement;
     Shoot m_shoot;
     Dash m_dash;
     Health m_health;
+    MeleePunch m_meleePunch;
     private PlayerState m_state = PlayerState.Base;
     public Action onPlayerDeath;
 
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
         m_shoot = GetComponent<Shoot>();
         m_dash = GetComponent<Dash>();
         m_health = GetComponent<Health>();
+        m_meleePunch = GetComponent<MeleePunch>();
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
