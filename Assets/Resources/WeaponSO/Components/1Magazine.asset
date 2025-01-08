@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e9e6b2ece7141428591733e85563d5, type: 3}
-  m_Name: Scope1
+  m_Script: {fileID: 11500000, guid: dccd10f6a3b443a4b9e4cd68e2387057, type: 3}
+  m_Name: 1Magazine
   m_EditorClassIdentifier: 
-  spread: 3
-  Range: 15
-  DamadeFactor2: 1
+  cage: 6
+  recharge: 3
