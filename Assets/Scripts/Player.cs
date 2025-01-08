@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     Dash m_dash;
     Health m_health;
     MeleePunch m_meleePunch;
+    WeaponManager m_weaponManager;
     private PlayerState m_state = PlayerState.Base;
     public Action onPlayerDeath;
 
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         m_dash = GetComponent<Dash>();
         m_health = GetComponent<Health>();
         m_meleePunch = GetComponent<MeleePunch>();
+        m_weaponManager = GetComponent<WeaponManager>();
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
@@ -44,7 +46,8 @@ public class Player : MonoBehaviour
 
     public void Move(Vector3 direction, Vector3 basicAngle)
     {
-        if(m_state == PlayerState.Base) {
+        if(m_state == PlayerState.Base) 
+        {
             m_movement.Move(direction, basicAngle);
         }
         if(m_state == PlayerState.Dash)
@@ -58,12 +61,13 @@ public class Player : MonoBehaviour
         m_movement.RotateToPosition(target);
     }
 
-    public void Shoot() 
+    public void StartFire() 
     {
-        if(m_shoot != null)
-        {
-            m_shoot.ShootAction();
-        }
+        m_weaponManager.StartFire();
+    }
+    public void StopFire()
+    {
+        m_weaponManager.StopFire();
     }
         
     public void Skill1()
@@ -73,7 +77,7 @@ public class Player : MonoBehaviour
 
     public void Skill2()
     {
-        Debug.Log("Used skill 2");
+        m_weaponManager.NextWeapon();
     }
 
     public void ExtraAction()

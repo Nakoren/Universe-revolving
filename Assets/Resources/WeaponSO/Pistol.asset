@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1cd72f73d9fd54fbe535c9f60f5836, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 3604523944108459832, guid: 454d2a23f782445488117b485daeb9c2, type: 3}
+  scopeData: {fileID: 11400000, guid: cf6d95fa2e25f0941bbd8d19d28329a9, type: 2}
+  receiverData: {fileID: 11400000, guid: 0557fbc5e771dba40a3170ba6160a7d7, type: 2}
+  magazineData: {fileID: 11400000, guid: a24d14d18c9acbb42b0934a6819b2c75, type: 2}

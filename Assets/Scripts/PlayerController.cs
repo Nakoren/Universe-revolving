@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
         m_dashAction.started += OnDash;
 
         m_fireAction.Enable();
-        m_fireAction.started += onFireStarted;
-        m_fireAction.canceled += onFireEnded;
+        m_fireAction.started += OnFireStarted;
+        m_fireAction.canceled += OnFireEnded;
 
     }
 
@@ -95,33 +95,29 @@ public class PlayerController : MonoBehaviour
         player.Dash();
     }
 
-    private void onFireStarted(InputAction.CallbackContext context)
+    private void OnFireStarted(InputAction.CallbackContext context)
     {
-        Vector3 targetPoint = RaycastToCursor();
-
-        player.Shoot();
-
+        player.StartFire();
     }
 
-    
-    private void onFireEnded(InputAction.CallbackContext context)
+    private void OnFireEnded(InputAction.CallbackContext context)
     {
-        Debug.Log("FireEnded");
+        player.StopFire();
     }
 
-    private static Vector3 RaycastToCursor()
-    {
-        Debug.Log("FireStarted");
+    // private static Vector3 RaycastToCursor()
+    // {
+    //     Debug.Log("FireStarted");
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+    //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //     RaycastHit hit;
 
-        Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit))
-            targetPoint = hit.point;
-        else
-            targetPoint = ray.GetPoint(75);
-        return targetPoint;
-    }
-
+    //     Vector3 targetPoint;
+    //     if (Physics.Raycast(ray, out hit))
+    //         targetPoint = hit.point;
+    //     else
+    //         targetPoint = ray.GetPoint(75);
+    //     return targetPoint;
+    // }
+    //Vector3 targetPoint = RaycastToCursor();
 }
