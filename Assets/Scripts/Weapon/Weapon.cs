@@ -31,6 +31,8 @@ public class Weapon : MonoBehaviour
     }
     public void Shoot()
     {
+        for (int i = 1; i <= weaponDataSO.receiverData.volume; i++)
+        {
         GameObject bullet = Instantiate(weaponDataSO.bulletPrefab, m_muzzle.position, m_muzzle.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
@@ -38,6 +40,7 @@ public class Weapon : MonoBehaviour
             float randomSpreadY = Random.Range(-weaponDataSO.scopeData.spread, weaponDataSO.scopeData.spread);
             Vector3 spreadDirection = Quaternion.Euler(0, randomSpreadY, 0) * m_muzzle.forward;
             rb.AddForce(spreadDirection.normalized * weaponDataSO.receiverData.force, ForceMode.Impulse);
+        }
         }
     }
 }

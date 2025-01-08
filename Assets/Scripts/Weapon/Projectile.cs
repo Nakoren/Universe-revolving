@@ -7,6 +7,11 @@ public class Projectile : MonoBehaviour
     [SerializeField] public System.Action onDestroy;
     [SerializeField] public int Damage = 0;
 
+    private void Start()
+    {
+        int projectileLayer = LayerMask.NameToLayer("Projectile");
+        Physics.IgnoreLayerCollision(projectileLayer, projectileLayer);
+    }
     public void Awake()
     {
         StartCoroutine(destroyCoroutine(existenceTime));
