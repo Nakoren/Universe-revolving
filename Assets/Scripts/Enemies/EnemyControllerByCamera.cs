@@ -27,6 +27,7 @@ public class EnemyControllerByCamera : MonoBehaviour
         {
             enemyObject.Move(player.position);
             enemyObject.Attack(player.position);
+            enemyObject.Dash(player.position);
         }
     }
    

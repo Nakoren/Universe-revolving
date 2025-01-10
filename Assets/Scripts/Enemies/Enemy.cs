@@ -3,13 +3,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-
     private EnemyMove m_movement;
-    private IAttack m_attack; 
-
-
-    
+    private IAttack m_attack;
+    private EnemyDash m_enemydash;
 
     public void Awake()
     {
@@ -23,7 +19,6 @@ public class Enemy : MonoBehaviour
         {
             m_attack = meleeAttack;
         }
- 
     }
 
 
@@ -37,6 +32,16 @@ public class Enemy : MonoBehaviour
         m_attack.Attack(target);
     }
 
- 
+    public void Dash(Vector3 target)
+    {
+        if (m_enemydash != null)
+        {
+            m_enemydash.StartDash(target);
+
+        }
+
+    }
+
+
 
 }
