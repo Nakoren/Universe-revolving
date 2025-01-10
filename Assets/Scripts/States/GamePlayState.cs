@@ -5,6 +5,7 @@ public class GamePlayState : MonoBehaviour
     [SerializeField] PauseState pauseState;
     [SerializeField] OpenMenuState openMenuState;
     [SerializeField] LevelEndState levelEndState;
+    [SerializeField] DeathState deathState;
     [SerializeField] GameInstance gameInstance;
 
     [SerializeField] GameObject rootUI;
@@ -37,6 +38,11 @@ public class GamePlayState : MonoBehaviour
     public void EndLevel()
     {
         levelEndState.gameObject.SetActive(true); 
+        this.gameObject.SetActive(false);
+    }
+    public void OnDeath()
+    {
+        deathState.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
 }
