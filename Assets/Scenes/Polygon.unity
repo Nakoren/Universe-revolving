@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e3434bc7dadce40866bfdd8a1dd7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameInstance: {fileID: 0}
-  rootUI: {fileID: 0}
+  gameInstance: {fileID: 1967080328}
+  rootUI: {fileID: 1457232569}
 --- !u!1001 &82074122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   player: {fileID: 1232505007}
   inputActions: {fileID: -944628639613478452, guid: 3f87c757bb72f2747999e6033be77070, type: 3}
   terrainCollider: {fileID: 797165004}
-  cameraTransform: {fileID: 650496107}
+  cameraTransform: {fileID: 1568151811}
 --- !u!1 &170143373
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4678d690b0106b4fa088734b6b9508f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameInstance: {fileID: 0}
-  rootUI: {fileID: 0}
+  gameInstance: {fileID: 1967080328}
+  rootUI: {fileID: 2101345545}
 --- !u!1 &361948794
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,8 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1905c72f770a1ac4989fcb987f988036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameplayState: {fileID: 0}
-  gameInstance: {fileID: 0}
+  gameplayState: {fileID: 1367365344}
+  gameInstance: {fileID: 1967080328}
   rootUI: {fileID: 0}
 --- !u!1001 &1120128830
 PrefabInstance:
@@ -1172,6 +1172,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2276406632678258705, guid: 1a878031ee39c6042ba02324845eac5b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995631428687398803, guid: 1a878031ee39c6042ba02324845eac5b, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1425,6 +1429,11 @@ MonoBehaviour:
   deathState: {fileID: 170143375}
   gameInstance: {fileID: 1967080328}
   rootUI: {fileID: 1259436709}
+--- !u!1 &1457232569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4826568744044678024, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+  m_PrefabInstance: {fileID: 1259436708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1568151808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,6 +1681,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712822218}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1736984345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5842177735972148408, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+  m_PrefabInstance: {fileID: 1259436708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1771536577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,8 +1796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b87681c9c33b7641b9778b3101d4add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamePlayState: {fileID: 0}
-  rootUI: {fileID: 0}
+  gamePlayState: {fileID: 1367365344}
+  rootUI: {fileID: 1736984345}
 --- !u!1 &1887003569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bed79e7d579942c6a1ce3c532245540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 0}
 --- !u!4 &1967080329
 Transform:
   m_ObjectHideFlags: 0
@@ -1912,6 +1925,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2101345545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7881909521661484863, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+  m_PrefabInstance: {fileID: 1259436708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2130556443
 GameObject:
   m_ObjectHideFlags: 0
