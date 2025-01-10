@@ -32,11 +32,6 @@ public class Health : MonoBehaviour
             {
                 onZeroHealth.Invoke();
             }
-            Die();
         }
-    }
-    public void Die()
-    {
-        Destroy(gameObject);
     }
 }

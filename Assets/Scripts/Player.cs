@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
 
+        m_health.onZeroHealth +=Die;
+
         m_prevFramePosition = transform.position;
     }
 
