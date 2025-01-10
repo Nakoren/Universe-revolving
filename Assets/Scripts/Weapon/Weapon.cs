@@ -18,12 +18,13 @@ public class Weapon : MonoBehaviour
     {
         if (ammo != weaponDataSO.magazineData.cage && (m_state == State.Fire || m_state == State.Idle))
         {
-            if (m_state != State.Reload)
-            {
             Debug.Log($"перезарядка");
-            StopFire();
-            StartCoroutine(ReloadDelay());
             m_state = State.Reload;
+            StartCoroutine(ReloadDelay());
+            if (m_fireCoroutine != null)
+            {
+                StopCoroutine(m_fireCoroutine);
+                m_fireCoroutine = null;
             }
         }
     }
@@ -60,6 +61,7 @@ public class Weapon : MonoBehaviour
     private IEnumerator PostFireDelay()
     {
         yield return new WaitForSeconds(weaponDataSO.receiverData.delay);
+        m_state = State.Idle;
     }
 
     public void StopFire()
@@ -73,7 +75,6 @@ public class Weapon : MonoBehaviour
         if (m_state == State.Fire)
         {
             StartCoroutine(PostFireDelay());
-            m_state = State.Idle;
         }
     }
 
