@@ -34,6 +34,13 @@ public class Weapon : MonoBehaviour
         for (int i = 1; i <= weaponDataSO.receiverData.volume; i++)
         {
         GameObject bullet = Instantiate(weaponDataSO.bulletPrefab, m_muzzle.position, m_muzzle.rotation);
+
+        Projectile projectileScript = bullet.GetComponent<Projectile>();
+        if (projectileScript != null)
+        {
+            projectileScript.maxDistance = weaponDataSO.scopeData.range;
+        }
+        
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {

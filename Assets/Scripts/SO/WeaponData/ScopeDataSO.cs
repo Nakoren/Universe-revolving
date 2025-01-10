@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Scope", menuName = "Scope")]
 public class ScopeDataSO : ScriptableObject
 {
-    public float spread = 1f;
-    public float range = 15;
-    public float DamadeFactor2 = 1;
+    [field: SerializeField] public float spread { private set; get; } = 1f;
+    [field: SerializeField] public float range { private set; get; } = 15;
+    [field: SerializeField] public float DamadeFactor2 { private set; get; } = 1;
 }

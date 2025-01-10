@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] public int existenceTime = 3;
     [SerializeField] public System.Action onDestroy;
-    [SerializeField] public int Damage = 0;
+    [SerializeField] public int damage = 10;
+    private Vector3 startPosition;
+    private float traveledDistance;
+    public float maxDistance = 1f;
 
     private void Start()
     {
@@ -14,21 +16,30 @@ public class Projectile : MonoBehaviour
     }
     public void Awake()
     {
-        StartCoroutine(destroyCoroutine(existenceTime));
+        startPosition = transform.position;
+    }
+    private void Update()
+    {
+        traveledDistance = Vector3.Distance(startPosition, transform.position);
+
+        if (traveledDistance >= maxDistance)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            health.ReduceHealth(damage);
+        }
+
         if(onDestroy != null)
         {
             onDestroy.Invoke();
         }
-        Destroy(gameObject);
-    }
-
-    private IEnumerator destroyCoroutine(int destroyTime)
-    {
-        yield return new WaitForSeconds(destroyTime);
         Destroy(gameObject);
     }
 }

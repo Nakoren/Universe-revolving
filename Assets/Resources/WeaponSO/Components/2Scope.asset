@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e9e6b2ece7141428591733e85563d5, type: 3}
   m_Name: 2Scope
   m_EditorClassIdentifier: 
-  spread: 6
-  Range: 15
-  DamadeFactor2: 1
+  <spread>k__BackingField: 3
+  <range>k__BackingField: 10
+  <DamadeFactor2>k__BackingField: 1

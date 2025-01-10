@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4974f22d2270e0442b0fac70eff69ad3, type: 3}
   m_Name: 2Receiver
   m_EditorClassIdentifier: 
-  delay: 0.1
-  force: 20
+  <delay>k__BackingField: 0.1
+  <force>k__BackingField: 20
+  <volume>k__BackingField: 1

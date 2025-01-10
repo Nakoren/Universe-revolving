@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccd10f6a3b443a4b9e4cd68e2387057, type: 3}
   m_Name: 3Magazine
   m_EditorClassIdentifier: 
-  cage: 8
-  recharge: 3
+  <cage>k__BackingField: 8
+  <recharge>k__BackingField: 4

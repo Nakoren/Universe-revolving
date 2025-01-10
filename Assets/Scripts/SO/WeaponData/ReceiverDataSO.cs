@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Receiver", menuName = "Receiver")]
 public class ReceiverDataSO : ScriptableObject
 {
-    public float delay = 0.5f;
-    public float force = 20f;
-    public int volume = 1;
+    [field: SerializeField] public float delay { private set; get; } = 0.5f;
+    [field: SerializeField] public float force { private set; get; } = 20f;
+    [field: SerializeField] public int volume { private set; get; } = 1;
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Health settings")]
-    [SerializeField] public int maxHealth = 10;
+    [SerializeField] public int maxHealth = 100;
 
     private int m_currentHealth;
     public Action onZeroHealth;
@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
     public void ReduceHealth(int damage)
     {
         m_currentHealth -= damage;
+        Debug.Log($"Health reduced by {damage}. Current health: {m_currentHealth}");
         if(m_currentHealth <= 0)
         {
             if(onZeroHealth != null)
