@@ -59,7 +59,7 @@ public class RangedEnemy : EnemyBase
                     Debug.LogError("Projectile prefab is missing a Rigidbody component!");
                 }
 
-                Debug.Log($"Враг стреляет в направлении {targetPosition}");
+                //Debug.Log($"Враг стреляет в направлении {targetPosition}");
                 lastAttackTime = Time.time;
             }
 
