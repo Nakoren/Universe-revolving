@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    enum State { Idle, Fire, Reload }
     public Transform m_muzzle;
     public WeaponDataSO weaponDataSO;
     private Coroutine m_fireCoroutine;
-    private Coroutine m_reloadCoroutine;
+    private State m_state = State.Idle;
     private int ammo;
     public void Awake()
     {
@@ -15,16 +16,36 @@ public class Weapon : MonoBehaviour
 
     public void Reload()
     {
-        m_reloadCoroutine = StartCoroutine(ReloadDelay());
+        if (ammo != weaponDataSO.magazineData.cage && (m_state == State.Fire || m_state == State.Idle))
+        {
+            if (m_state != State.Reload)
+            {
+            Debug.Log($"перезарядка");
+            StopFire();
+            StartCoroutine(ReloadDelay());
+            m_state = State.Reload;
+            }
+        }
     }
     private IEnumerator ReloadDelay()
     {
         yield return new WaitForSeconds(weaponDataSO.magazineData.recharge);
         ammo = weaponDataSO.magazineData.cage;
+        m_state = State.Idle;
     }
     public void StartFire()
     {
-        m_fireCoroutine = StartCoroutine(FireDelay());
+        if (ammo <= 0 && m_state == State.Idle)
+        {
+            Reload();
+            return;
+        }
+        
+        if (m_state == State.Idle)
+        {
+            m_state = State.Fire;
+            m_fireCoroutine = StartCoroutine(FireDelay());
+        }
     }
 
     private IEnumerator FireDelay()
@@ -36,6 +57,10 @@ public class Weapon : MonoBehaviour
         }
         while(true);
     }
+    private IEnumerator PostFireDelay()
+    {
+        yield return new WaitForSeconds(weaponDataSO.receiverData.delay);
+    }
 
     public void StopFire()
     {
@@ -44,11 +69,16 @@ public class Weapon : MonoBehaviour
             StopCoroutine(m_fireCoroutine);
             m_fireCoroutine = null;
         }
+
+        if (m_state == State.Fire)
+        {
+            StartCoroutine(PostFireDelay());
+            m_state = State.Idle;
+        }
     }
 
     public void Shoot()
     {
-        
         BulletCounter();
         if (ammo > 0)
         {
