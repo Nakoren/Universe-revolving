@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class DeathState : MonoBehaviour
 {
-
-
-
+    [SerializeField] GameInstance gameInstance;
 
     [SerializeField] GameObject rootUI;
     private void OnEnable()
