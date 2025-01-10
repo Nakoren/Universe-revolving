@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
 
     public void ExtraAction()
     {
-        m_shoot.Reload();
+        m_weaponManager.Reload();
     }
 
     public void Dash()

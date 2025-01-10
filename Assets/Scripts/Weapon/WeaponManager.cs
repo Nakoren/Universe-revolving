@@ -31,6 +31,10 @@ public class WeaponManager : MonoBehaviour
             m_currentWeapon.StopFire();
         }
     }
+    public void Reload()
+    {
+        m_currentWeapon.Reload();
+    }
 
     public void NextWeapon()
     {
