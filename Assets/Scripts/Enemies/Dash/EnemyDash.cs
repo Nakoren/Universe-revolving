@@ -14,7 +14,6 @@ public class EnemyDash : MonoBehaviour
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashDuration = 0.5f;
     [SerializeField] private float dashInterval = 5f;
-    [SerializeField] private float stopThreshold = 0.1f;
     [SerializeField] private float dashDistance = 3f;
 
     [SerializeField] private Transform target;

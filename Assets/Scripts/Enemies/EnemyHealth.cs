@@ -13,8 +13,8 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         HPconst=HP;
-        hpStat = transform.Find("Canvas/Slider").gameObject.GetComponent<Slider>();
-        canvas = transform.Find("Canvas").gameObject;
+        hpStat = transform.Find("EnemyCanvas/Slider").gameObject.GetComponent<Slider>();
+        canvas = transform.Find("EnemyCanvas").gameObject;
     }
 
     void Update()
