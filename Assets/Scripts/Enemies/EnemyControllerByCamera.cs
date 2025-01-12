@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EnemyControllerByCamera : MonoBehaviour
 {
     private Collider enemyCollider;
-    private EnemyBase enemyObject;
+    private Enemy enemyObject;
 
     [SerializeField] private Transform player;
     [SerializeField] private Camera cam;
@@ -16,7 +16,7 @@ public class EnemyControllerByCamera : MonoBehaviour
     {
         cam = Camera.main;
         enemyCollider = GetComponent<Collider>();
-        enemyObject = GetComponent<EnemyBase>();
+        enemyObject = GetComponent<Enemy>();
     }
 
     private void Update()
@@ -25,8 +25,9 @@ public class EnemyControllerByCamera : MonoBehaviour
 
         if (GeometryUtility.TestPlanesAABB(planes, enemyCollider.bounds))
         {
-            enemyObject.MoveTo(player.position);
+            enemyObject.Move(player.position);
             enemyObject.Attack(player.position);
+            enemyObject.Dash(player.position);
         }
     }
    
