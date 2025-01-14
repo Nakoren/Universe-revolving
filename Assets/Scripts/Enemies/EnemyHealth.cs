@@ -42,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
             Projectile bullet = collision.gameObject.GetComponent<Projectile>();
             if (bullet != null)
             {
-                GetDamage(bullet.Damage);
+                GetDamage(bullet.damage);
             }
 
             Destroy(collision.gameObject);
