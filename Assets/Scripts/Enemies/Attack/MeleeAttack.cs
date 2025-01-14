@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class MeleeAttack : MonoBehaviour, IAttack
 {
     private float lastAttackTime;
     private NavMeshAgent m_meshAgent;
+    public GameObject hitBox;
 
     [Header("Attack Settings")]
     [SerializeField] protected float damage;
@@ -13,6 +15,7 @@ public class MeleeAttack : MonoBehaviour, IAttack
     private void Awake()
     {
         m_meshAgent = GetComponent<NavMeshAgent>();
+        hitBox.SetActive(false);
     }
     public void Attack(Vector3 targetPosition)
     {
@@ -20,9 +23,18 @@ public class MeleeAttack : MonoBehaviour, IAttack
         {
             if (Time.time - lastAttackTime >= attackCooldown)
             {
-                Debug.Log("Enemy Attack");
+                hitBox.SetActive(true);
+                StartCoroutine(DisableHitBoxAfterDelay(0.1f));
                 lastAttackTime = Time.time;
             }
         }
+    }
+    private IEnumerator DisableHitBoxAfterDelay(float delay)
+    {
+        // Ждем указанное время
+        yield return new WaitForSeconds(delay);
+        
+        // Выключаем HitBox
+        hitBox.SetActive(false);
     }
 }
