@@ -9,6 +9,7 @@ public class GamePlayState : MonoBehaviour
     [SerializeField] DeathState deathState;
     [SerializeField] GameInstance gameInstance;
     [SerializeField] InputActionAsset inputActions;
+    [SerializeField] PlayerController playerController;
 
     [SerializeField] GameObject rootUI;
     private void OnEnable()
@@ -21,6 +22,8 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(true);
         }
+        playerController.onMenuSwitch += SwitchMenu;
+        playerController.onPauseSwitch += SwitchPause;
     }
 
     private void OnDisable()
@@ -33,14 +36,16 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(false);
         }
+        playerController.onMenuSwitch -= SwitchMenu;
+        playerController.onPauseSwitch -= SwitchPause; 
     }
 
-    public void TooglePause()
+    public void SwitchPause()
     {
         pauseState.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
-    public void ToogleMenu()
+    public void SwitchMenu()
     {
         openMenuState.gameObject.SetActive(true);
         this.gameObject.SetActive(false);

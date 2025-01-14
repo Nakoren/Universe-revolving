@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     private InputActionMap playerActionMap;
     private InputActionMap UIActionMap;
 
-    [NonSerialized] public Action onPauseToogle;
-    [NonSerialized] public Action onMenuToogle;
-    [NonSerialized] public Action onInventoryToogle;
+    [NonSerialized] public Action onPauseSwitch;
+    [NonSerialized] public Action onMenuSwitch;
+    [NonSerialized] public Action onInventorySwitch;
 
     private InputAction m_moveAction;
     private InputAction m_useSkill1Action;
@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     private InputAction m_dashAction;
     private InputAction m_fireAction;
     private InputAction m_extraFireAction;
+
+    private InputAction m_switchPause;
+    private InputAction m_switchMap;
+    private InputAction m_switchInventory;
 
 
     private void Awake()
@@ -38,6 +42,10 @@ public class PlayerController : MonoBehaviour
 
         m_fireAction = inputActions.FindAction("Player/Fire");
         m_extraFireAction = inputActions.FindAction("Player/ExtraFire");
+
+        m_switchPause = inputActions.FindAction("UI/Pause");
+        m_switchMap = inputActions.FindAction("UI/Map");
+        m_switchInventory = inputActions.FindAction("UI/Inventory");
     }
 
     void Start()
@@ -55,6 +63,13 @@ public class PlayerController : MonoBehaviour
         m_fireAction.Enable();
         m_fireAction.started += onFireStarted;
         m_fireAction.canceled += onFireEnded;
+
+        m_switchInventory.Enable();
+        m_switchInventory.started += OnInventorySwitch;
+        m_switchPause.Enable();
+        m_switchPause.started += OnPauseSwitch;
+        m_switchMap.Enable();
+        m_switchMap.started += OnMapSwitch;
     }
 
     void Update()
@@ -133,27 +148,27 @@ public class PlayerController : MonoBehaviour
         return targetPoint;
     }
 
-    private void OnPauseToogle()
+    private void OnPauseSwitch(InputAction.CallbackContext context)
     {
-        if (onPauseToogle != null)
+        if (onPauseSwitch != null)
         {
-            onPauseToogle.Invoke();
+            onPauseSwitch.Invoke();
         }
     }
 
-    private void OnMapToogle()
+    private void OnMapSwitch(InputAction.CallbackContext context)
     {
-        if (onMenuToogle != null)
+        if (onMenuSwitch != null)
         {
-            onMenuToogle.Invoke();
+            onMenuSwitch.Invoke();
         }
     }
 
-    private void OnInventoryToogle()
+    private void OnInventorySwitch(InputAction.CallbackContext context)
     {
-        if(onInventoryToogle!= null)
+        if(onInventorySwitch!= null)
         {
-            onInventoryToogle.Invoke();
+            onInventorySwitch.Invoke();
         }
     }
 

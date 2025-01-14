@@ -1261,6 +1261,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4425659924054577142, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425659924054577142, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425659924054577142, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1875701437}
+    - target: {fileID: 4425659924054577142, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425659924054577142, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425659924054577142, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseState, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425659924054577142, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4826568744044678024, guid: 8490c91fc0dbb4b6aa64458d7fe97ee6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1428,6 +1456,8 @@ MonoBehaviour:
   levelEndState: {fileID: 76358690}
   deathState: {fileID: 170143375}
   gameInstance: {fileID: 1967080328}
+  inputActions: {fileID: -944628639613478452, guid: 3f87c757bb72f2747999e6033be77070, type: 3}
+  playerController: {fileID: 93323759}
   rootUI: {fileID: 1259436709}
 --- !u!1 &1457232569 stripped
 GameObject:
@@ -1797,6 +1827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePlayState: {fileID: 1367365344}
+  playerController: {fileID: 93323759}
   rootUI: {fileID: 1736984345}
 --- !u!1 &1887003569
 GameObject:
