@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour
     public TerrainCollider terrainCollider;
     public Transform cameraTransform;
 
+    private InputActionMap playerActionMap;
+    private InputActionMap UIActionMap;
+
+    [NonSerialized] public Action onPauseToogle;
+    [NonSerialized] public Action onMenuToogle;
+    [NonSerialized] public Action onInventoryToogle;
+
     private InputAction m_moveAction;
     private InputAction m_useSkill1Action;
     private InputAction m_useSkill2Action;
@@ -20,6 +27,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        playerActionMap = inputActions.FindActionMap("Player");
+        UIActionMap = inputActions.FindActionMap("UI");
+
         m_moveAction = inputActions.FindAction("Player/Move");
         m_useSkill1Action = inputActions.FindAction("Player/Skill1");
         m_useSkill2Action = inputActions.FindAction("Player/Skill2");
@@ -45,7 +55,6 @@ public class PlayerController : MonoBehaviour
         m_fireAction.Enable();
         m_fireAction.started += onFireStarted;
         m_fireAction.canceled += onFireEnded;
-
     }
 
     void Update()
@@ -56,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void RotateToCursor()
     {
+        if (!(playerActionMap.enabled)) { return; }
         Vector3 position;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
@@ -70,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (!(playerActionMap.enabled)) { return; }
         Vector3 cameraRotationV3 = cameraTransform.forward;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         //Debug.Log(move);
@@ -103,7 +114,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
     private void onFireEnded(InputAction.CallbackContext context)
     {
         Debug.Log("FireEnded");
@@ -111,7 +121,6 @@ public class PlayerController : MonoBehaviour
 
     private static Vector3 RaycastToCursor()
     {
-        Debug.Log("FireStarted");
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -122,6 +131,54 @@ public class PlayerController : MonoBehaviour
         else
             targetPoint = ray.GetPoint(75);
         return targetPoint;
+    }
+
+    private void OnPauseToogle()
+    {
+        if (onPauseToogle != null)
+        {
+            onPauseToogle.Invoke();
+        }
+    }
+
+    private void OnMapToogle()
+    {
+        if (onMenuToogle != null)
+        {
+            onMenuToogle.Invoke();
+        }
+    }
+
+    private void OnInventoryToogle()
+    {
+        if(onInventoryToogle!= null)
+        {
+            onInventoryToogle.Invoke();
+        }
+    }
+
+    public void TooglePlayerInput(bool value)
+    {
+        if (value) 
+        {
+            playerActionMap.Enable();
+        }
+        else
+        {
+            playerActionMap.Disable();
+        }
+    }
+
+    public void ToogleUIInput(bool value)
+    {
+        if (value)
+        {
+            UIActionMap.Enable();
+        }
+        else
+        {
+            UIActionMap.Disable();
+        }
     }
 
 }

@@ -4,8 +4,14 @@ using UnityEngine;
 public class PauseState : MonoBehaviour
 {
     [SerializeField] GamePlayState gamePlayState;
+    [SerializeField] PlayerController playerController;
     
     [SerializeField] GameObject rootUI;
+
+    private void Awake()
+    {
+        
+    }
     private void OnEnable()
     {
         if (rootUI != null)

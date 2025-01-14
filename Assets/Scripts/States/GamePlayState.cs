@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GamePlayState : MonoBehaviour
 {
@@ -7,10 +8,15 @@ public class GamePlayState : MonoBehaviour
     [SerializeField] LevelEndState levelEndState;
     [SerializeField] DeathState deathState;
     [SerializeField] GameInstance gameInstance;
+    [SerializeField] InputActionAsset inputActions;
 
     [SerializeField] GameObject rootUI;
     private void OnEnable()
     {
+        if (inputActions != null)
+        {
+            inputActions.FindActionMap("Player").Enable();
+        }
         if (rootUI != null)
         {
             rootUI.SetActive(true);
@@ -19,6 +25,10 @@ public class GamePlayState : MonoBehaviour
 
     private void OnDisable()
     {
+        if (inputActions != null)
+        {
+            inputActions.FindActionMap("Player").Disable();
+        }
         if (rootUI != null)
         {
             rootUI.SetActive(false);
