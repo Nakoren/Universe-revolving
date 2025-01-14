@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     private InputActionMap playerActionMap;
     private InputActionMap UIActionMap;
 
-    [NonSerialized] public Action onPauseSwitch;
-    [NonSerialized] public Action onMenuSwitch;
-    [NonSerialized] public Action onInventorySwitch;
+    [NonSerialized] public Action onPauseToogle;
+    [NonSerialized] public Action onMenuToogle;
+    [NonSerialized] public Action onInventoryToogle;
 
     private InputAction m_moveAction;
     private InputAction m_useSkill1Action;
@@ -65,11 +65,11 @@ public class PlayerController : MonoBehaviour
         m_fireAction.canceled += onFireEnded;
 
         m_switchInventory.Enable();
-        m_switchInventory.started += OnInventorySwitch;
+        m_switchInventory.started += OnInventoryToogle;
         m_switchPause.Enable();
-        m_switchPause.started += OnPauseSwitch;
+        m_switchPause.started += OnPauseToogle;
         m_switchMap.Enable();
-        m_switchMap.started += OnMapSwitch;
+        m_switchMap.started += OnMapToogle;
     }
 
     void Update()
@@ -148,27 +148,27 @@ public class PlayerController : MonoBehaviour
         return targetPoint;
     }
 
-    private void OnPauseSwitch(InputAction.CallbackContext context)
+    private void OnPauseToogle(InputAction.CallbackContext context)
     {
-        if (onPauseSwitch != null)
+        if (onPauseToogle != null)
         {
-            onPauseSwitch.Invoke();
+            onPauseToogle.Invoke();
         }
     }
 
-    private void OnMapSwitch(InputAction.CallbackContext context)
+    private void OnMapToogle(InputAction.CallbackContext context)
     {
-        if (onMenuSwitch != null)
+        if (onMenuToogle != null)
         {
-            onMenuSwitch.Invoke();
+            onMenuToogle.Invoke();
         }
     }
 
-    private void OnInventorySwitch(InputAction.CallbackContext context)
+    private void OnInventoryToogle(InputAction.CallbackContext context)
     {
-        if(onInventorySwitch!= null)
+        if(onInventoryToogle!= null)
         {
-            onInventorySwitch.Invoke();
+            onInventoryToogle.Invoke();
         }
     }
 

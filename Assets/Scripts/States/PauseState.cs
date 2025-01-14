@@ -18,7 +18,7 @@ public class PauseState : MonoBehaviour
         {
             rootUI.SetActive(true);
         }
-        playerController.onPauseSwitch += SwitchPause;
+        playerController.onPauseToogle += TooglePause;
     }
 
     private void OnDisable()
@@ -27,10 +27,10 @@ public class PauseState : MonoBehaviour
         {
             rootUI.SetActive(false);
         }
-        playerController.onPauseSwitch -= SwitchPause;
+        playerController.onPauseToogle -= TooglePause;
     }
 
-    public void SwitchPause()
+    public void TooglePause()
     {
         Debug.Log("Pause disabled");
         gamePlayState.gameObject.SetActive(true);

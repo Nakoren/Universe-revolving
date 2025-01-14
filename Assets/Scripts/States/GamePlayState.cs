@@ -22,8 +22,8 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(true);
         }
-        playerController.onMenuSwitch += SwitchMenu;
-        playerController.onPauseSwitch += SwitchPause;
+        playerController.onMenuToogle += ToogleMenu;
+        playerController.onPauseToogle += TooglePause;
     }
 
     private void OnDisable()
@@ -36,16 +36,16 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(false);
         }
-        playerController.onMenuSwitch -= SwitchMenu;
-        playerController.onPauseSwitch -= SwitchPause; 
+        playerController.onMenuToogle -= ToogleMenu;
+        playerController.onPauseToogle -= TooglePause; 
     }
 
-    public void SwitchPause()
+    public void TooglePause()
     {
         pauseState.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
-    public void SwitchMenu()
+    public void ToogleMenu()
     {
         openMenuState.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
