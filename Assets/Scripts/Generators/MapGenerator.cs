@@ -16,8 +16,8 @@ public class RoomGenerator : MonoBehaviour
     [SerializeField] public bool shopSoloLayer = false;
     [Header("This paramaters will force specific rooms to spawn in specific count\nOtherwise their spawn will be totally random")]
     [Header("Warning: if there is not enough space to spawn specified amount of rooms,\nthey will have priority in relative order")]
-    [OptionalField] public int rewardRoomsPerLevel = 1;
-    [OptionalField] public int shopRoomsPerLevel = 1;
+    [SerializeField] public int rewardRoomsPerLevel = 1;
+    [SerializeField] public int shopRoomsPerLevel = 1;
     [SerializeField] public int restRoomsPerLevel = 1;
     [Header("Warning:\nIf there is not enough rooms to build a level\nduplicates still will be created")]
     [SerializeField] public bool UniqueRooms = false;
@@ -204,11 +204,6 @@ public class RoomGenerator : MonoBehaviour
             }
         }
         return randomRooms[finalInd];
-    }
-
-    public void ProjectMap()
-    {
-
     }
 
     public void ClearMap()
