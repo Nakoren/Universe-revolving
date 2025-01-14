@@ -9,6 +9,16 @@ public class Health : MonoBehaviour
     private int m_currentHealth;
     public Action onZeroHealth;
 
+    public int GetCurrentHealth()
+    {
+        return m_currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     private void Start()
     {
         m_currentHealth = maxHealth;

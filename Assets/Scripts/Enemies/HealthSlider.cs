@@ -3,16 +3,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class EnemyHealth : MonoBehaviour
+public class HealthSlider : MonoBehaviour
 {
-    public int HP;
-    private  int HPconst;
     private Slider hpStat;
+    private Health health;
     private GameObject canvas;
 
     void Start()
     {
-        HPconst=HP;
+        health = GetComponent<Health>();
         hpStat = transform.Find("EnemyCanvas/Slider").gameObject.GetComponent<Slider>();
         canvas = transform.Find("EnemyCanvas").gameObject;
     }
@@ -25,15 +24,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void GetDamage(int damage)
-    {
-        HP -= damage;
-        hpStat.value = HP*100/HPconst;
-        if (HP <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -42,7 +32,8 @@ public class EnemyHealth : MonoBehaviour
             Projectile bullet = collision.gameObject.GetComponent<Projectile>();
             if (bullet != null)
             {
-                GetDamage(bullet.damage);
+                health.ReduceHealth(bullet.damage);
+                hpStat.value = health.GetCurrentHealth()*100/health.GetMaxHealth();
             }
 
             Destroy(collision.gameObject);
