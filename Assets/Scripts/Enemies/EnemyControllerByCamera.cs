@@ -25,9 +25,9 @@ public class EnemyControllerByCamera : MonoBehaviour
 
         if (GeometryUtility.TestPlanesAABB(planes, enemyCollider.bounds))
         {
-            enemyObject.Move(player.position);
-            enemyObject.Attack(player.position);
-            enemyObject.Dash(player.position);
+            //enemyObject.Move(player.position);
+           // enemyObject.Attack(player.position);
+            //enemyObject.Dash(player.position);
         }
     }
    

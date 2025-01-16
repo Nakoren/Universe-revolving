@@ -3,7 +3,6 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "MoveAction", story: "[Agent] move to [Target]", category: "Action", id: "920d252755cbb65702bb4a27d026e67e")]
@@ -12,18 +11,18 @@ public partial class MoveAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<Transform> Target;
 
-    private NavMeshAgent m_meshAgent;
-    private bool targetReached = false;
+    private AgentMovement m_Movement;
 
     protected override Status OnStart()
     {
         if (Agent?.Value != null)
         {
-            m_meshAgent = Agent.Value.GetComponent<NavMeshAgent>();
+            m_Movement = Agent.Value.GetComponent<AgentMovement>();
         }
 
-        if (m_meshAgent == null)
+        if (m_Movement == null)
         {
+            Debug.LogWarning("Enemy component not found on Agent.");
             return Status.Failure;
         }
 
@@ -36,27 +35,16 @@ public partial class MoveAction : Action
         {
             return Status.Failure;
         }
-        return MoveTo(Target.Value.position);
-    }
 
-    private Status MoveTo(Vector3 targetPosition)
-    {
-        m_meshAgent.destination = targetPosition;
+        m_Movement.SetDestination(Target.Value.position);
 
-
-        if (m_meshAgent.remainingDistance <= m_meshAgent.stoppingDistance)
+        if (m_Movement.HasReachedDestination())
         {
-            if (!targetReached)
-            {
-                targetReached = true;
-                Debug.Log("Agent reached the target.");
-            }
             return Status.Success;
         }
 
-        targetReached = false;
-        Debug.Log("Agent is moving.");
         return Status.Running;
     }
+
 
 }
