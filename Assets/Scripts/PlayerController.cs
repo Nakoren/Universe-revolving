@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset inputActions;
     public TerrainCollider terrainCollider;
     public Transform cameraTransform;
+    public PlayerAnimationManager playerAnimationManager;
 
     private InputAction m_moveAction;
     private InputAction m_useSkill1Action;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private InputAction m_dashAction;
     private InputAction m_fireAction;
     private InputAction m_extraFireAction;
+
 
 
     private void Awake()
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
 
-       
+
         if (terrainCollider.Raycast(ray, out rayHit, 1000))
         {
             position = rayHit.point;
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour
         Vector3 cameraRotationV3 = cameraTransform.forward;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         //Debug.Log(move);
+        playerAnimationManager.UpdateMovementAnimation(move); //animation
+
         player.Move(move, cameraRotationV3);
     }
 
@@ -92,7 +96,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnDash(InputAction.CallbackContext context)
     {
-        player.Dash();
+        Vector2 moveInput = m_moveAction.ReadValue<Vector2>();
+
+        if (moveInput != Vector2.zero)
+        {
+            player.Dash(); // Логика движения рывка
+            playerAnimationManager.OnDash(); // Вызов анимации рывка
+        }
     }
 
     private void OnFireStarted(InputAction.CallbackContext context)

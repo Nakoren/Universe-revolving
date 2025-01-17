@@ -80,7 +80,7 @@ MonoBehaviour:
   - rid: 4520951401758326948
   - rid: 4520951404657377348
   - rid: 4520951404657377357
-  m_VersionTimestamp: 638726778047869260
+  m_VersionTimestamp: 638726827213449420
   m_DebugInfo: {fileID: -8041688794339515116}
   m_RuntimeGraph: {fileID: 4994078078342752394}
   AssetID:
@@ -1137,7 +1137,7 @@ MonoBehaviour:
         AuthoringAssetID:
           m_Value0: 17565244517590738658
           m_Value1: 8465560702348055674
-        m_DebugInfo: {fileID: 0}
+        m_DebugInfo: {fileID: -8041688794339515116}
         Root:
           rid: 4520951404657377383
         BlackboardReference:
