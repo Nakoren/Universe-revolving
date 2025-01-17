@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour
     public TerrainCollider terrainCollider;
     public Transform cameraTransform;
 
+    private InputActionMap playerActionMap;
+    private InputActionMap UIActionMap;
+
+    [NonSerialized] public Action onPauseToogle;
+    [NonSerialized] public Action onMenuToogle;
+    [NonSerialized] public Action onInventoryToogle;
+
     private InputAction m_moveAction;
     private InputAction m_useSkill1Action;
     private InputAction m_useSkill2Action;
@@ -17,9 +24,16 @@ public class PlayerController : MonoBehaviour
     private InputAction m_fireAction;
     private InputAction m_extraFireAction;
 
+    private InputAction m_switchPause;
+    private InputAction m_switchMap;
+    private InputAction m_switchInventory;
+
 
     private void Awake()
     {
+        playerActionMap = inputActions.FindActionMap("Player");
+        UIActionMap = inputActions.FindActionMap("UI");
+
         m_moveAction = inputActions.FindAction("Player/Move");
         m_useSkill1Action = inputActions.FindAction("Player/Skill1");
         m_useSkill2Action = inputActions.FindAction("Player/Skill2");
@@ -28,6 +42,10 @@ public class PlayerController : MonoBehaviour
 
         m_fireAction = inputActions.FindAction("Player/Fire");
         m_extraFireAction = inputActions.FindAction("Player/ExtraFire");
+
+        m_switchPause = inputActions.FindAction("UI/Pause");
+        m_switchMap = inputActions.FindAction("UI/Map");
+        m_switchInventory = inputActions.FindAction("UI/Inventory");
     }
 
     void Start()
@@ -46,6 +64,12 @@ public class PlayerController : MonoBehaviour
         m_fireAction.started += OnFireStarted;
         m_fireAction.canceled += OnFireEnded;
 
+        m_switchInventory.Enable();
+        m_switchInventory.started += OnInventoryToogle;
+        m_switchPause.Enable();
+        m_switchPause.started += OnPauseToogle;
+        m_switchMap.Enable();
+        m_switchMap.started += OnMapToogle;
     }
 
     void Update()
@@ -56,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void RotateToCursor()
     {
+        if (!(playerActionMap.enabled)) { return; }
         Vector3 position;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
@@ -70,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (!(playerActionMap.enabled)) { return; }
         Vector3 cameraRotationV3 = cameraTransform.forward;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         //Debug.Log(move);
@@ -100,24 +126,63 @@ public class PlayerController : MonoBehaviour
         player.StartFire();
     }
 
-    private void OnFireEnded(InputAction.CallbackContext context)
+    private void onFireEnded(InputAction.CallbackContext context)
     {
         player.StopFire();
     }
 
-    // private static Vector3 RaycastToCursor()
-    // {
-    //     Debug.Log("FireStarted");
+    private static Vector3 RaycastToCursor()
+    {
 
     //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     //     RaycastHit hit;
 
-    //     Vector3 targetPoint;
-    //     if (Physics.Raycast(ray, out hit))
-    //         targetPoint = hit.point;
-    //     else
-    //         targetPoint = ray.GetPoint(75);
-    //     return targetPoint;
-    // }
-    //Vector3 targetPoint = RaycastToCursor();
+    private void OnPauseToogle(InputAction.CallbackContext context)
+    {
+        if (onPauseToogle != null)
+        {
+            onPauseToogle.Invoke();
+        }
+    }
+
+    private void OnMapToogle(InputAction.CallbackContext context)
+    {
+        if (onMenuToogle != null)
+        {
+            onMenuToogle.Invoke();
+        }
+    }
+
+    private void OnInventoryToogle(InputAction.CallbackContext context)
+    {
+        if(onInventoryToogle!= null)
+        {
+            onInventoryToogle.Invoke();
+        }
+    }
+
+    public void TooglePlayerInput(bool value)
+    {
+        if (value) 
+        {
+            playerActionMap.Enable();
+        }
+        else
+        {
+            playerActionMap.Disable();
+        }
+    }
+
+    public void ToogleUIInput(bool value)
+    {
+        if (value)
+        {
+            UIActionMap.Enable();
+        }
+        else
+        {
+            UIActionMap.Disable();
+        }
+    }
+
 }

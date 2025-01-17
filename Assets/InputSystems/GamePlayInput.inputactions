@@ -198,7 +198,7 @@
             "id": "b72aa55a-f697-46c7-9260-f4b424390a14",
             "actions": [
                 {
-                    "name": "MenuSwitch",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "ffeda12c-9504-4c7e-8bb1-c7b837d06ef2",
                     "expectedControlType": "",
@@ -216,7 +216,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MapOpen",
+                    "name": "Map",
                     "type": "Button",
                     "id": "504f2f3a-154d-45ef-9bc3-324960062c9d",
                     "expectedControlType": "",
@@ -233,7 +233,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "MenuSwitch",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,7 +255,7 @@
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "MapOpen",
+                    "action": "Map",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
