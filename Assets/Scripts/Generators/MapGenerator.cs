@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.Jobs;
 
-public class RoomGenerator : MonoBehaviour
+public class MapGenerator : MonoBehaviour
 {
     [Header("Generation settings")]
     [SerializeField] public int levelSize;
@@ -43,7 +43,7 @@ public class RoomGenerator : MonoBehaviour
         GenerateRandomRoomsList();
     }
 
-    public void GenerateMapWithGlobalPool()
+    public List<List<Room>> GenerateMapWithGlobalPool()
     {
         if (map != null)
         {
@@ -62,7 +62,7 @@ public class RoomGenerator : MonoBehaviour
         //Filling level with rooms from list
         for(int layerNum = 1; layerNum<map.Count-1;layerNum++)
         {
-            Debug.Log("Generating level " + layerNum);
+            //Debug.Log("Generating level " + layerNum);
             if ((fixedShopLevel != 0) && (layerNum == fixedShopLevel))
             {
                 ShopRoom shopRoom = shopRoomList[Random.Range(0, shopRoomList.Length)];
@@ -94,8 +94,8 @@ public class RoomGenerator : MonoBehaviour
         map[map.Count - 1].Add(bossRoomList[Random.Range(0,bossRoomList.Length)]);
 
         //Replacing rooms
-        DebugLogMap();
-        DebugBattleRooms();
+        //DebugLogMap();
+        //DebugBattleRooms();
         if (rewardRoomsPerLevel != -1)
         {
             replaceBattleRooms((int)rewardRoomsPerLevel, rewardRoomList);
@@ -109,6 +109,8 @@ public class RoomGenerator : MonoBehaviour
             replaceBattleRooms((int)restRoomsPerLevel, restRoomList);
         }
         DebugLogMap();
+
+        return map;
     }
 
     private void AddRoomToEnd(Room room, int layerNum)
@@ -128,7 +130,7 @@ public class RoomGenerator : MonoBehaviour
                 GenerateRandomRoomsList();
             }
         }
-        DebugArray<Room>(randomRooms);
+        //DebugArray<Room>(randomRooms);
     }
 
     private void AddRoomToIndex(Room room, int layerNum, int indexOnLayer)

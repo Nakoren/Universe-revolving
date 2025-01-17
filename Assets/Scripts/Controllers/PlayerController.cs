@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Player player;
     public InputActionAsset inputActions;
-    public TerrainCollider terrainCollider;
+    public Collider terrainCollider;
     public Transform cameraTransform;
 
     private InputActionMap playerActionMap;
@@ -126,13 +126,13 @@ public class PlayerController : MonoBehaviour
         player.StartFire();
     }
 
-    private void onFireEnded(InputAction.CallbackContext context)
+    private void OnFireEnded(InputAction.CallbackContext context)
     {
         player.StopFire();
     }
 
     private static Vector3 RaycastToCursor()
-    {
+    { return new Vector3(); }
 
     //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     //     RaycastHit hit;

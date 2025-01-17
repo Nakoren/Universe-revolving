@@ -58,6 +58,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Warp(Vector3 position)
+    {
+        m_movement.WarpTo(position);
+    }
+
     public void RotateTo(Vector3 target)
     {
         m_movement.RotateToPosition(target);

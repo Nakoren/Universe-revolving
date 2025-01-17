@@ -38,4 +38,10 @@ public class Movement : MonoBehaviour
         Quaternion newRotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
         transform.rotation = newRotation;
     }
+
+    public void WarpTo(Vector3 position)
+    {
+        m_charController.transform.position = position;
+    }
+
 }

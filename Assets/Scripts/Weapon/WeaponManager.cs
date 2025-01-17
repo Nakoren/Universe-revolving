@@ -16,7 +16,7 @@ public class WeaponManager : MonoBehaviour
 
     public void StartFire()
     {
-        Debug.Log($"[WeaponManager]: StartFire");
+        //Debug.Log($"[WeaponManager]: StartFire");
         if (m_currentWeapon)
         {
             m_currentWeapon.StartFire();
@@ -25,7 +25,7 @@ public class WeaponManager : MonoBehaviour
 
     public void StopFire()
     {
-        Debug.Log($"[WeaponManager]: StopFire");
+        //Debug.Log($"[WeaponManager]: StopFire");
         if (m_currentWeapon)
         {
             m_currentWeapon.StopFire();
@@ -38,7 +38,7 @@ public class WeaponManager : MonoBehaviour
 
     public void NextWeapon()
     {
-        Debug.Log($"[WeaponManager]: NextWeapon");
+        //Debug.Log($"[WeaponManager]: NextWeapon");
         int index = m_weapons.IndexOf(m_currentWeapon);
         if (index >= 0)
         {
@@ -48,7 +48,7 @@ public class WeaponManager : MonoBehaviour
 
     public void SetActiveWeapon(int index)
     {
-        Debug.Log($"[WeaponManager]: SetActiveWeapon({index})");
+        //Debug.Log($"[WeaponManager]: SetActiveWeapon({index})");
         if (m_currentWeapon)
         {
             m_currentWeapon.gameObject.SetActive(false);
