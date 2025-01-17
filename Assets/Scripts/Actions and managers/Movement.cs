@@ -41,7 +41,8 @@ public class Movement : MonoBehaviour
 
     public void WarpTo(Vector3 position)
     {
-        m_charController.transform.position = position;
+        transform.position = position;
+        Debug.Log($"{gameObject.name}'s new position {gameObject.transform.position}");
     }
 
 }

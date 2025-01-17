@@ -30,6 +30,7 @@ public class RoomController : MonoBehaviour
         {
             closeTransitions[i].SetActive(true);
         }
+        //Debug.Log(startPosition);
     }
 
     public void OnRoomChange(int ind)

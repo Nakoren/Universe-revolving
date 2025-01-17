@@ -35,15 +35,20 @@ public class LevelController : MonoBehaviour
     private void LoadRoom(int layer, int ind)
     {
         if (activeRoom != null) {
+            activeRoomController.onRoomChange -= OnLoadRequest;
             Destroy(activeRoom);
         }
         Room newRoom = levelMap[layer][ind];
-        activeRoom = Instantiate(newRoom.prefab);
-        activeRoomController = activeRoom.GetComponent<RoomController>();
-        player.Warp(activeRoomController.startPosition.position);
-        Debug.Log(player.gameObject.transform.position);
+        if (newRoom.prefab != null)
+        {
+            activeRoom = Instantiate(newRoom.prefab);
+            activeRoomController = activeRoom.GetComponent<RoomController>();
+        }
+        Vector3 startLocation = activeRoomController.startPosition.position;
+        Debug.Log($"Warping player to {startLocation}");
+        player.Warp(startLocation);
 
-        activeRoomController.Initialize(GetNextLayerRooms());
+        activeRoomController.Initialize(GetNextLayerRooms()); 
         activeRoomController.onRoomChange += OnLoadRequest;
     }
 
