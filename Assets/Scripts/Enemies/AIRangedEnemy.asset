@@ -28,13 +28,13 @@ MonoBehaviour:
         AuthoringAssetID:
           m_Value0: 438187136308859326
           m_Value1: 7937656237809581882
-        m_DebugInfo: {fileID: 0}
+        m_DebugInfo: {fileID: -1602998125671639567}
         Root:
           rid: 4520951401758327047
         BlackboardReference:
           rid: 4520951401758327048
         BlackboardGroupReferences: []
-        m_VersionTimestamp: 638726695882952800
+        m_VersionTimestamp: 638727179160870090
     - rid: 4520951401758327047
       type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -241,7 +241,7 @@ MonoBehaviour:
   - rid: 4520951401758326996
   - rid: 4520951401758326997
   - rid: 4520951401758326999
-  m_VersionTimestamp: 638726695882952800
+  m_VersionTimestamp: 638727179160870090
   m_DebugInfo: {fileID: -1602998125671639567}
   m_RuntimeGraph: {fileID: -4563216970355629295}
   AssetID:
@@ -781,8 +781,8 @@ MonoBehaviour:
   m_Name: AIRangedEnemy Blackboard
   m_EditorClassIdentifier: 
   AssetID:
-    m_Value0: 0
-    m_Value1: 0
+    m_Value0: 438187136308859326
+    m_Value1: 7937656237809581882
   m_Variables:
   - rid: 4520951401758326989
   - rid: 4520951401758327044

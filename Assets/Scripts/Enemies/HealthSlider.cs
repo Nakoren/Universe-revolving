@@ -12,7 +12,7 @@ public class HealthSlider : MonoBehaviour
     void Start()
     {
         health = GetComponent<Health>();
-        hpStat = transform.Find("EnemyCanvas/Slider").gameObject.GetComponent<Slider>();
+        hpStat = transform.Find("EnemyCanvas/Slider").gameObject.GetComponent<Slider>(); //ПЛОХО переделать на прямое прокидывапние ссылок
         canvas = transform.Find("EnemyCanvas").gameObject;
     }
 
@@ -23,13 +23,14 @@ public class HealthSlider : MonoBehaviour
             canvas.transform.rotation = Camera.main.transform.rotation;
         }
     }
+    //public IsVariableDefinedOption 
 
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            Projectile bullet = collision.gameObject.GetComponent<Projectile>();
+            Projectile bullet = collision.gameObject.GetComponent<Projectile>(); //убрать в health
             if (bullet != null)
             {
                 health.ReduceHealth(bullet.damage);
@@ -38,6 +39,6 @@ public class HealthSlider : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
-    }
+    }*/
 
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RangeAttack : MonoBehaviour, IAttack
+/*public class RangeAttack : MonoBehaviour, IAttack
 {
      protected float lastAttackTime;
     protected NavMeshAgent m_meshAgent;
@@ -56,3 +56,4 @@ public class RangeAttack : MonoBehaviour, IAttack
         }
     }
 }
+*/

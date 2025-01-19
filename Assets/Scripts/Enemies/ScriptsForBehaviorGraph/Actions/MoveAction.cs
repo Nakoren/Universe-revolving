@@ -36,14 +36,8 @@ public partial class MoveAction : Action
             return Status.Failure;
         }
 
-        m_Movement.SetDestination(Target.Value.position);
-
-        if (m_Movement.HasReachedDestination())
-        {
-            return Status.Success;
-        }
-
-        return Status.Running;
+        m_Movement.Move(Target.Value.position);
+        return Status.Success;
     }
 
 
