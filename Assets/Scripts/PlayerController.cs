@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset inputActions;
     public TerrainCollider terrainCollider;
     public Transform cameraTransform;
-    public PlayerAnimationManager playerAnimationManager;
-
+    
     private InputAction m_moveAction;
     private InputAction m_useSkill1Action;
     private InputAction m_useSkill2Action;
@@ -17,6 +16,11 @@ public class PlayerController : MonoBehaviour
     private InputAction m_dashAction;
     private InputAction m_fireAction;
     private InputAction m_extraFireAction;
+
+    public event Action<Vector2> ActoinMovePlayer;
+    public event Action ActoinDashPlayer;
+
+
 
 
 
@@ -75,9 +79,9 @@ public class PlayerController : MonoBehaviour
         Vector3 cameraRotationV3 = cameraTransform.forward;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         //Debug.Log(move);
-        playerAnimationManager.UpdateMovementAnimation(move); //animation
 
         player.Move(move, cameraRotationV3);
+        ActoinMovePlayer?.Invoke(move); 
     }
 
     private void OnSkill1(InputAction.CallbackContext context)
@@ -101,7 +105,7 @@ public class PlayerController : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
             player.Dash(); // Логика движения рывка
-            playerAnimationManager.OnDash(); // Вызов анимации рывка
+            ActoinDashPlayer?.Invoke(); 
         }
     }
 
