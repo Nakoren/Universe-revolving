@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset inputActions;
     public TerrainCollider terrainCollider;
     public Transform cameraTransform;
-    
+
     private InputAction m_moveAction;
     private InputAction m_useSkill1Action;
     private InputAction m_useSkill2Action;
@@ -19,9 +19,8 @@ public class PlayerController : MonoBehaviour
 
     public event Action<Vector2> ActoinMovePlayer;
     public event Action ActoinDashPlayer;
-
-
-
+    public event Action ActoinOnSkill1Player;
+    public event Action ActoinOnSkill2Player;
 
 
     private void Awake()
@@ -81,17 +80,20 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(move);
 
         player.Move(move, cameraRotationV3);
-        ActoinMovePlayer?.Invoke(move); 
+        ActoinMovePlayer?.Invoke(move);
     }
 
     private void OnSkill1(InputAction.CallbackContext context)
     {
         player.Skill1();
+        ActoinOnSkill1Player?.Invoke();
     }
     private void OnSkill2(InputAction.CallbackContext context)
     {
         player.Skill2();
+        ActoinOnSkill2Player?.Invoke();
     }
+
 
     private void OnExtraAction(InputAction.CallbackContext context)
     {
@@ -105,7 +107,7 @@ public class PlayerController : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
             player.Dash(); // Логика движения рывка
-            ActoinDashPlayer?.Invoke(); 
+            ActoinDashPlayer?.Invoke();
         }
     }
 
