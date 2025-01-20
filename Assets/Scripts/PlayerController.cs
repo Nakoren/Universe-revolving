@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public event Action ActoinOnSkill2Player;
 
 
+
     private void Awake()
     {
         m_moveAction = inputActions.FindAction("Player/Move");
@@ -50,8 +51,9 @@ public class PlayerController : MonoBehaviour
         m_fireAction.Enable();
         m_fireAction.started += OnFireStarted;
         m_fireAction.canceled += OnFireEnded;
-
     }
+
+
 
     void Update()
     {
@@ -88,14 +90,14 @@ public class PlayerController : MonoBehaviour
         player.Skill1();
         ActoinOnSkill1Player?.Invoke();
     }
-    private void OnSkill2(InputAction.CallbackContext context)
+    private void OnSkill2(InputAction.CallbackContext context) //nextweapon
     {
         player.Skill2();
         ActoinOnSkill2Player?.Invoke();
     }
 
 
-    private void OnExtraAction(InputAction.CallbackContext context)
+    private void OnExtraAction(InputAction.CallbackContext context) //reload
     {
         player.ExtraAction();
     }

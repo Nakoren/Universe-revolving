@@ -1,15 +1,32 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WeaponManager : MonoBehaviour
 {
     private readonly List<Weapon> m_weapons = new List<Weapon>();
     private Weapon m_currentWeapon;
 
+    public event Action<Weapon> OnWeaponChanged;
+   
+
+
+
+    public Weapon CurrentWeapon
+    {
+        get => m_currentWeapon;
+        set
+        {
+            m_currentWeapon = value;
+            OnWeaponChanged?.Invoke(m_currentWeapon);
+        }
+    }
+
+
     private void Awake()
     {
         GetComponentsInChildren(true, m_weapons);
-        m_weapons.ForEach(x=> x.gameObject.SetActive(false));
+        m_weapons.ForEach(x => x.gameObject.SetActive(false));
 
         SetActiveWeapon(0);
     }
@@ -59,6 +76,8 @@ public class WeaponManager : MonoBehaviour
         {
             m_currentWeapon = m_weapons[index];
             m_currentWeapon.gameObject.SetActive(true);
+            Debug.Log($"[WeaponManager]: SetActiveWeapon({m_currentWeapon.name})");
+            OnWeaponChanged?.Invoke(m_currentWeapon);
         }
     }
 }
