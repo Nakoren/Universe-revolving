@@ -8,7 +8,7 @@ public class WeaponManager : MonoBehaviour
     private Weapon m_currentWeapon;
 
     public event Action<Weapon> OnWeaponChanged;
-   
+
 
 
 
@@ -77,7 +77,11 @@ public class WeaponManager : MonoBehaviour
             m_currentWeapon = m_weapons[index];
             m_currentWeapon.gameObject.SetActive(true);
             Debug.Log($"[WeaponManager]: SetActiveWeapon({m_currentWeapon.name})");
-            OnWeaponChanged?.Invoke(m_currentWeapon);
+            if (OnWeaponChanged != null)
+            {
+                Debug.Log($"[WeaponManager]: Invoking OnWeaponChanged with {m_currentWeapon.name}");
+                OnWeaponChanged.Invoke(m_currentWeapon);
+            }
         }
     }
 }
