@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class WeaponCageManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI ammoText; // Текст для отображения патронов
+    [SerializeField] private TextMeshProUGUI ammoText; 
     [SerializeField] private WeaponManager weaponManager;
 
     private Weapon currentWeapon;
@@ -15,11 +15,9 @@ public class WeaponCageManager : MonoBehaviour
     {
         if (weaponManager != null)
         {
-            // Подписка на событие смены оружия
             Debug.Log("[WeaponUI]: Subscribing to OnWeaponChanged");
             weaponManager.OnWeaponChanged += UpdateWeaponUI;
 
-            // Инициализация текущего оружия
             if (weaponManager.CurrentWeapon != null)
             {
                 SetCurrentWeapon(weaponManager.CurrentWeapon);
@@ -37,7 +35,7 @@ public class WeaponCageManager : MonoBehaviour
         {
             weaponManager.OnWeaponChanged -= UpdateWeaponUI;
 
-            // Отписываемся от текущего оружия
+
             if (currentWeapon != null)
             {
                 currentWeapon.OnAmmoChanged -= UpdateAmmoUI;
@@ -54,16 +52,14 @@ public class WeaponCageManager : MonoBehaviour
 
     private void SetCurrentWeapon(Weapon newWeapon)
     {
-        // Отписываемся от события предыдущего оружия
+
         if (currentWeapon != null)
         {
             currentWeapon.OnAmmoChanged -= UpdateAmmoUI;
         }
 
-        // Обновляем ссылку на новое оружие
         currentWeapon = newWeapon;
 
-        // Подписываемся на новое оружие
         if (currentWeapon != null)
         {
             currentWeapon.OnAmmoChanged += UpdateAmmoUI;

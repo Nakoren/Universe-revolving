@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 981653523359467990}
   - component: {fileID: 4014098423595537878}
   m_Layer: 0
-  m_Name: EnemyCanvas
+  m_Name: HP_Slider_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
