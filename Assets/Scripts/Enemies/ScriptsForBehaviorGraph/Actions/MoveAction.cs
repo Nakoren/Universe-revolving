@@ -39,6 +39,4 @@ public partial class MoveAction : Action
         m_Movement.Move(Target.Value.position);
         return Status.Success;
     }
-
-
 }

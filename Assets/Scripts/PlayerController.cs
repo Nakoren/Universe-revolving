@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     private InputAction m_fireAction;
     private InputAction m_extraFireAction;
 
-    public event Action<Vector2> ActoinMovePlayer;
-    public event Action ActoinDashPlayer;
+    public event Action<Vector2> PlayerMove;
+    public event Action PlayerDash;
     public event Action ActoinOnSkill1Player;
     public event Action ActoinOnSkill2Player;
 
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(move);
 
         player.Move(move, cameraRotationV3);
-        ActoinMovePlayer?.Invoke(move);
+        PlayerMove?.Invoke(move);
     }
 
     private void OnSkill1(InputAction.CallbackContext context)
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
             player.Dash(); // Логика движения рывка
-            ActoinDashPlayer?.Invoke();
+            PlayerDash?.Invoke();
         }
     }
 

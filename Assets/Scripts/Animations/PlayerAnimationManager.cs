@@ -4,7 +4,7 @@ public class PlayerAnimationManager : MonoBehaviour
 {
     private Animator animator;
     private Vector2 moveInput;
-   [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerController playerController;
 
     private void OnEnable()
     {
@@ -14,14 +14,14 @@ public class PlayerAnimationManager : MonoBehaviour
             return;
         }
 
-        playerController.ActoinMovePlayer += UpdateMovementAnimation;
-        playerController.ActoinDashPlayer += OnDashAnimation;
+        playerController.PlayerMove += UpdateMovementAnimation;
+        playerController.PlayerDash += OnDashAnimation;
     }
 
     private void OnDisable()
     {
-        playerController.ActoinMovePlayer -= UpdateMovementAnimation;
-        playerController.ActoinDashPlayer -= OnDashAnimation;
+        playerController.PlayerMove -= UpdateMovementAnimation;
+        playerController.PlayerDash -= OnDashAnimation;
     }
 
     private void Awake()
@@ -33,6 +33,7 @@ public class PlayerAnimationManager : MonoBehaviour
     public void UpdateMovementAnimation(Vector2 input)
     {
         moveInput = input;
+        animator.SetBool("isMoving", true);
         animator.SetFloat("moveX", moveInput.x);
         animator.SetFloat("moveY", moveInput.y);
     }
