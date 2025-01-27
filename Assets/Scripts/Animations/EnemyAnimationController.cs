@@ -1,4 +1,5 @@
 //using System.Numerics;
+using System;
 using UnityEngine;
 
 public class EnemyAnimationController : MonoBehaviour
@@ -7,6 +8,7 @@ public class EnemyAnimationController : MonoBehaviour
     [SerializeField] private Animator animator; 
     [SerializeField] private AgentMovement agentMovement; 
     [SerializeField] private AgentMeleeAttack agentMeleeAttack; 
+    [SerializeField] private AgentDeath agentDeath; 
 
 
     private void OnEnable()
@@ -17,6 +19,8 @@ public class EnemyAnimationController : MonoBehaviour
         {
             agentMeleeAttack.AgentMeleeAttacking+=OnMeeleAttackAnimation;
         }
+        agentDeath.AgentDie += StartDieAnimation;
+
     }
 
     private void OnDisable()
@@ -27,13 +31,13 @@ public class EnemyAnimationController : MonoBehaviour
         {
             agentMeleeAttack.AgentMeleeAttacking-=OnMeeleAttackAnimation;
         }
+        agentDeath.AgentDie -= StartDieAnimation;
     }
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
-
 
     private void UpdateMovementAnimation(Vector3 input)
     {
@@ -50,4 +54,10 @@ public class EnemyAnimationController : MonoBehaviour
     {
         animator.SetTrigger("Attack");
     }
+
+    private void StartDieAnimation()
+    {
+         animator.SetTrigger("Die");
+    }
+
 }

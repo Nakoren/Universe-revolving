@@ -8,12 +8,6 @@ public class PlayerAnimationManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if (playerController == null)
-        {
-            Debug.LogError("PlayerController component not found on PlayerAnimationManager!");
-            return;
-        }
-
         playerController.PlayerMove += UpdateMovementAnimation;
         playerController.PlayerDash += OnDashAnimation;
     }

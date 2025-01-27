@@ -38,7 +38,7 @@ public partial class AttackAction : Action
         }
 
         m_Attack.Attack(targetPosition);
-        return Status.Success;
+        return Status.Running; 
     }
 }
 

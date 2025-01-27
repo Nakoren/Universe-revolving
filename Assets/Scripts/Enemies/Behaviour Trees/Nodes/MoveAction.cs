@@ -31,12 +31,17 @@ public partial class MoveAction : Action
 
     protected override Status OnUpdate()
     {
+        if (m_Movement == null)
+        {
+            return Status.Failure;
+        }
+
         if (Agent?.Value == null || Target?.Value == null)
         {
             return Status.Failure;
         }
 
         m_Movement.Move(Target.Value.position);
-        return Status.Success;
+        return Status.Running; 
     }
 }

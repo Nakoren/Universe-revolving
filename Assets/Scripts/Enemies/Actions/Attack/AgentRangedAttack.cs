@@ -45,14 +45,14 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
                     Debug.LogError("Projectile prefab is missing a Rigidbody component!");
                 }
 
-                Debug.Log($"Враг стреляет в направлении {targetPosition}");
+                //Debug.Log($"Враг стреляет в направлении {targetPosition}");
                 lastAttackTime = Time.time;
             }
 
         }
         else
         {
-            Debug.Log($"Цель вне допустимого угла: {angle}° (максимально допустимый: {shootAngle}°)");
+           //Debug.Log($"Цель вне допустимого угла: {angle}° (максимально допустимый: {shootAngle}°)");
         }
     }
 }

@@ -1,16 +1,15 @@
+using System;
 using UnityEngine;
 
-public class AgentDie : MonoBehaviour
+public class AgentDeath : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public event Action AgentDie;
+    [SerializeField] private float destroyDelay = 2f;
 
-    // Update is called once per frame
-    void Update()
+    public void Die()
     {
-        
+        AgentDie?.Invoke();
+        Debug.Log($"[AgentDeath]: Враг умер. Объект будет уничтожен через {destroyDelay} секунд.");
+        Destroy(gameObject, destroyDelay);
     }
 }
