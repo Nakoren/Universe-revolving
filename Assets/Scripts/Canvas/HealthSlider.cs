@@ -55,6 +55,6 @@ public class HealthSlider : MonoBehaviour
 
     private void OnZeroHealth()
     {
-        Debug.Log("Enemy has died.");
+       // Debug.Log("Enemy has died.");
     }
 }

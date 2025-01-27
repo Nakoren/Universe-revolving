@@ -16,10 +16,16 @@ public class Weapon : MonoBehaviour
 
     public int Ammo => ammo;
     public int MaxAmmo => maxAmmo;
-     public event Action<int, int> OnAmmoChanged;
+
+    public event System.Action onShoot;
+    public event System.Action onReload;
 
     public void Awake()
     {
+        if (weaponDataSO == null)
+    {
+        return;
+    }
         maxAmmo = weaponDataSO.magazineData.cage;
         ammo = maxAmmo;
     }
@@ -42,7 +48,7 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitForSeconds(weaponDataSO.magazineData.recharge);
         ammo = weaponDataSO.magazineData.cage;
-        OnAmmoChanged?.Invoke(ammo, maxAmmo);
+        onReload?.Invoke();
         m_state = State.Idle;
     }
     public void StartFire()
@@ -94,7 +100,7 @@ public class Weapon : MonoBehaviour
         BulletCounter();
         if (ammo > 0)
         {
-            ShootAction(); ;
+            ShootAction();
         }
     }
 
@@ -103,8 +109,8 @@ public class Weapon : MonoBehaviour
         if (ammo > 0)
         {
             ammo = ammo - 1;
+            onShoot?.Invoke();
             Debug.Log($"ammo - {ammo}");
-            OnAmmoChanged?.Invoke(ammo, maxAmmo);
         }
         else
         {

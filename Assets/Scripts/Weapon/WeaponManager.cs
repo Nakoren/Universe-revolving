@@ -6,28 +6,24 @@ public class WeaponManager : MonoBehaviour
 {
     private readonly List<Weapon> m_weapons = new List<Weapon>();
     private Weapon m_currentWeapon;
+    public Weapon CurrentWeapon=> m_currentWeapon;
 
-    public event Action<Weapon> OnWeaponChanged;
-
-
-
-
-    public Weapon CurrentWeapon
-    {
-        get => m_currentWeapon;
-        set
-        {
-            m_currentWeapon = value;
-            OnWeaponChanged?.Invoke(m_currentWeapon);
-        }
-    }
-
+    public event System.Action OnWeaponChanged;
+    public event System.Action onShoot;
+	public event System.Action onReload;
+   
 
     private void Awake()
     {
         GetComponentsInChildren(true, m_weapons);
         m_weapons.ForEach(x => x.gameObject.SetActive(false));
 
+        SetActiveWeapon(0);
+    }
+
+   private void Start()
+    {
+       
         SetActiveWeapon(0);
     }
 
@@ -68,6 +64,8 @@ public class WeaponManager : MonoBehaviour
         Debug.Log($"[WeaponManager]: SetActiveWeapon({index})");
         if (m_currentWeapon)
         {
+            m_currentWeapon.onShoot -= OnCurWeaponShoot;
+			m_currentWeapon.onReload -= OnCurWeaponReload;
             m_currentWeapon.gameObject.SetActive(false);
             m_currentWeapon = null;
         }
@@ -76,12 +74,21 @@ public class WeaponManager : MonoBehaviour
         {
             m_currentWeapon = m_weapons[index];
             m_currentWeapon.gameObject.SetActive(true);
+            m_currentWeapon.onShoot += OnCurWeaponShoot;
+			m_currentWeapon.onReload += OnCurWeaponReload;
             Debug.Log($"[WeaponManager]: SetActiveWeapon({m_currentWeapon.name})");
-            if (OnWeaponChanged != null)
-            {
-                Debug.Log($"[WeaponManager]: Invoking OnWeaponChanged with {m_currentWeapon.name}");
-                OnWeaponChanged.Invoke(m_currentWeapon);
-            }
+            
         }
+         OnWeaponChanged?.Invoke();
     }
+
+    private void OnCurWeaponReload()
+	{
+		onReload?.Invoke();
+	}
+
+	private void OnCurWeaponShoot()
+	{
+		onShoot?.Invoke();
+	}
 }

@@ -6,74 +6,65 @@ using System.Collections.Generic;
 
 public class WeaponCageManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI ammoText; 
-    [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] private WeaponManager m_weaponManager;
 
-    private Weapon currentWeapon;
+    private Weapon m_currentWeapon;
+
+    public void Init(WeaponManager weaponManager)
+    {
+        m_weaponManager = weaponManager;
+    }
 
     private void OnEnable()
     {
-        if (weaponManager != null)
-        {
-            Debug.Log("[WeaponUI]: Subscribing to OnWeaponChanged");
-            weaponManager.OnWeaponChanged += UpdateWeaponUI;
 
-            if (weaponManager.CurrentWeapon != null)
-            {
-                SetCurrentWeapon(weaponManager.CurrentWeapon);
-            }
-            else
-            {
-                ammoText.text = "No Weapon";
-            }
+        if (m_weaponManager)
+        {
+            m_weaponManager.OnWeaponChanged += OnWeaponChanged;
+            m_weaponManager.onShoot += OnShoot;
+            m_weaponManager.onReload += OnShoot;
+            OnWeaponChanged();
         }
+
     }
 
     private void OnDisable()
     {
-        if (weaponManager != null)
+        if (m_weaponManager)
         {
-            weaponManager.OnWeaponChanged -= UpdateWeaponUI;
-
-
-            if (currentWeapon != null)
-            {
-                currentWeapon.OnAmmoChanged -= UpdateAmmoUI;
-            }
+            m_weaponManager.OnWeaponChanged -= OnWeaponChanged;
+            m_weaponManager.onShoot -= OnShoot;
+            m_weaponManager.onReload -= OnShoot;
         }
     }
 
-    private void UpdateWeaponUI(Weapon newWeapon)
+
+    private void OnShoot()
     {
-        Debug.Log($"[WeaponUI]: Weapon changed to {newWeapon?.name ?? "None"}");
-        SetCurrentWeapon(newWeapon);
-
+        RefreshBulletInfo(m_weaponManager.CurrentWeapon);
     }
-
-    private void SetCurrentWeapon(Weapon newWeapon)
+    private void OnWeaponChanged()
     {
+        var curWeapon = m_weaponManager.CurrentWeapon;
 
-        if (currentWeapon != null)
+        if (curWeapon)
         {
-            currentWeapon.OnAmmoChanged -= UpdateAmmoUI;
+
+            RefreshBulletInfo(curWeapon);
         }
 
-        currentWeapon = newWeapon;
-
-        if (currentWeapon != null)
-        {
-            currentWeapon.OnAmmoChanged += UpdateAmmoUI;
-            UpdateAmmoUI(currentWeapon.Ammo, currentWeapon.MaxAmmo);
-        }
-        else
-        {
-            ammoText.text = "No Weapon";
-        }
+        
     }
 
-    private void UpdateAmmoUI(int newAmmo, int newMaxAmmo)
+    private void RefreshBulletInfo(Weapon weapon)
     {
-        Debug.Log($"WeaponUI: Updating ammo to {newAmmo}/{newMaxAmmo}");
-        ammoText.text = $"{newAmmo}/{newMaxAmmo}";
+        if (weapon)
+        {
+            ammoText.text = $"{weapon.Ammo}/{weapon.MaxAmmo}";
+        }
+
+        
     }
+
 }
