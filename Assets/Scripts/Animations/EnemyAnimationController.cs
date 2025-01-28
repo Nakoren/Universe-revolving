@@ -8,6 +8,7 @@ public class EnemyAnimationController : MonoBehaviour
     [SerializeField] private Animator animator; 
     [SerializeField] private AgentMovement agentMovement; 
     [SerializeField] private AgentMeleeAttack agentMeleeAttack; 
+    [SerializeField] private AgentRangedAttack agentRangedAttack; 
     [SerializeField] private AgentDeath agentDeath; 
 
 
@@ -17,7 +18,11 @@ public class EnemyAnimationController : MonoBehaviour
         agentMovement.AgentStop += StopMoveAnimation;
         if(agentMeleeAttack)
         {
-            agentMeleeAttack.AgentMeleeAttacking+=OnMeeleAttackAnimation;
+            agentMeleeAttack.AgentMeleeAttacking+=OnAttackAnimation;
+        }
+        if(agentRangedAttack)
+        {
+            agentRangedAttack.AgentRangedAttacking+=OnAttackAnimation;
         }
         agentDeath.AgentDie += StartDieAnimation;
 
@@ -29,7 +34,11 @@ public class EnemyAnimationController : MonoBehaviour
         agentMovement.AgentStop -= StopMoveAnimation;
         if(agentMeleeAttack)
         {
-            agentMeleeAttack.AgentMeleeAttacking-=OnMeeleAttackAnimation;
+            agentMeleeAttack.AgentMeleeAttacking-=OnAttackAnimation;
+        }
+        if(agentRangedAttack)
+        {
+            agentRangedAttack.AgentRangedAttacking-=OnAttackAnimation;
         }
         agentDeath.AgentDie -= StartDieAnimation;
     }
@@ -39,18 +48,18 @@ public class EnemyAnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void UpdateMovementAnimation(Vector3 input)
+    private void UpdateMovementAnimation(Vector3 moveInput)
     {
         animator.SetBool("isMoving", true);
-        animator.SetFloat("moveX", input.x);
-        animator.SetFloat("moveY", input.z);
+        animator.SetFloat("moveX", moveInput.x);
+        animator.SetFloat("moveY", moveInput.y);
     }
     private void StopMoveAnimation()
     {
         animator.SetBool("isMoving", false);
     }
 
-    public void OnMeeleAttackAnimation()
+    public void OnAttackAnimation()
     {
         animator.SetTrigger("Attack");
     }

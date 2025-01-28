@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class AgentRangedAttack : MonoBehaviour, IAttack
 {
@@ -7,7 +8,6 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
     protected NavMeshAgent m_meshAgent;
 
     [Header("Attack Settings")]
-    [SerializeField] private float damage;
     [SerializeField] private float attackCooldown = 2f;
 
 
@@ -18,6 +18,7 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
     [Header("Shoot Settings")]
     [SerializeField] private float shootForce = 1f;
     [SerializeField] private float shootAngle;
+     public event Action AgentRangedAttacking;
 
      public  void Attack(Vector3 targetPosition)
     {
@@ -32,6 +33,7 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
             if (Time.time - lastAttackTime >= attackCooldown)
             {
                 GameObject currentBullet = Instantiate(projectilePrefab, spawnBullet.position, Quaternion.identity);
+                AgentRangedAttacking?.Invoke();
 
                 currentBullet.transform.forward = directionToTarget;
 

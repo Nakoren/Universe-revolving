@@ -12,7 +12,6 @@ public class AgentMeleeAttack : MonoBehaviour, IAttack
 
     [Header("Attack Settings")]
     [SerializeField] private GameObject hitBox;
-    [SerializeField] private float damage;
     [SerializeField] private float attackCooldown = 2f;
     public event Action AgentMeleeAttacking;
 
@@ -26,9 +25,10 @@ public class AgentMeleeAttack : MonoBehaviour, IAttack
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             hitBox.SetActive(true);
+            AgentMeleeAttacking?.Invoke();
             StartCoroutine(DisableHitBoxAfterDelay(0.1f));
             lastAttackTime = Time.time;
-            AgentMeleeAttacking?.Invoke();
+            
         }
     }
     private IEnumerator DisableHitBoxAfterDelay(float delay)

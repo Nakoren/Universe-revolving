@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using System.Runtime.CompilerServices;
 
 public class AgentMovement : MonoBehaviour
 {
@@ -18,11 +19,11 @@ public class AgentMovement : MonoBehaviour
         m_meshAgent.destination = targetPosition;
         Vector3 direction = (targetPosition - transform.position).normalized;
 
-        if (m_meshAgent.remainingDistance > m_meshAgent.stoppingDistance + 0.1f && !m_meshAgent.pathPending)
+        if (m_meshAgent.remainingDistance > m_meshAgent.stoppingDistance + 0.1f /*&& !m_meshAgent.pathPending*/)
         {
             AgentMove?.Invoke(direction);
         }
-        else
+        else 
         {
             AgentStop?.Invoke();
         }
