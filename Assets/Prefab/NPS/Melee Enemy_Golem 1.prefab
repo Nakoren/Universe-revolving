@@ -575,8 +575,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda334a135a9745248b743b6f688be6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 6250872637732948433}
+  health: {fileID: 3513228255664024775}
   agentMovement: {fileID: 5081820394891693917}
   agentMeleeAttack: {fileID: 8952796475568557653}
   agentRangedAttack: {fileID: 0}
   agentDeath: {fileID: 6987080524635870163}
+--- !u!95 &6250872637732948433 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2550935751187727211, guid: 4534b9cc6330aed499be54b02abf5283, type: 3}
+  m_PrefabInstance: {fileID: 8491872480567986874}
+  m_PrefabAsset: {fileID: 0}

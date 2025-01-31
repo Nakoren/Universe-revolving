@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
 {
     [Header("Health settings")]
     [SerializeField] public int maxHealth = 100;
+    public event Action AgentDamage;
 
     private int m_currentHealth;
     public Action onZeroHealth;
@@ -35,6 +36,10 @@ public class Health : MonoBehaviour
     public void ReduceHealth(int damage)
     {
         m_currentHealth -= damage;
+        if (m_currentHealth>0)
+        {
+            AgentDamage?.Invoke();
+        }
         Debug.Log($"Health reduced by {damage}. Current health: {m_currentHealth}");
         if(m_currentHealth <= 0)
         {

@@ -6,6 +6,7 @@ public class EnemyAnimationController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Animator animator; 
+    [SerializeField] private Health health; 
     [SerializeField] private AgentMovement agentMovement; 
     [SerializeField] private AgentMeleeAttack agentMeleeAttack; 
     [SerializeField] private AgentRangedAttack agentRangedAttack; 
@@ -25,6 +26,8 @@ public class EnemyAnimationController : MonoBehaviour
             agentRangedAttack.AgentRangedAttacking+=OnAttackAnimation;
         }
         agentDeath.AgentDie += StartDieAnimation;
+        health.AgentDamage+=OnDamageAnimation;
+
 
     }
 
@@ -41,11 +44,13 @@ public class EnemyAnimationController : MonoBehaviour
             agentRangedAttack.AgentRangedAttacking-=OnAttackAnimation;
         }
         agentDeath.AgentDie -= StartDieAnimation;
+         health.AgentDamage-=OnDamageAnimation;
     }
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        //animator =GetComponent<Health>();
     }
 
     private void UpdateMovementAnimation(Vector3 moveInput)
@@ -57,6 +62,11 @@ public class EnemyAnimationController : MonoBehaviour
     private void StopMoveAnimation()
     {
         animator.SetBool("isMoving", false);
+    }
+
+    private void OnDamageAnimation()
+    {
+        animator.SetTrigger("Hit");
     }
 
     public void OnAttackAnimation()
