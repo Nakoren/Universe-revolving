@@ -22,7 +22,7 @@ public partial class HasReachedZeroHealthCondition : Condition
             Debug.Log($"[HasReachedHealthZeroCondition]: Agent's health has reached zero {Health.Value.GetCurrentHealth()}.");
             return true;
         }
-        Debug.Log($"[HasReachedHealthZeroCondition]: Agent's health has reached zero {Health.Value.GetCurrentHealth()}.");
+        //Debug.Log($"[HasReachedHealthZeroCondition]: Agent's health has reached zero {Health.Value.GetCurrentHealth()}.");
 
         return false;
     }

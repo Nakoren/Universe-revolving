@@ -4,15 +4,16 @@ using UnityEngine.UI;
 public class HealthSlider : MonoBehaviour
 {
     [Header("UI References")]
+    [SerializeField] private Health health;
     [SerializeField] private Slider hpStat; // Ссылка на слайдер здоровья
     [SerializeField] private GameObject canvas; // Ссылка на Canvas врага
 
 
-    private Health health; // Ссылка на компонент здоровья
+   // Ссылка на компонент здоровья
 
     private void Awake()
     {
-        health = GetComponent<Health>();
+        //health = GetComponent<Health>();
     }
 
     private void OnEnable()
