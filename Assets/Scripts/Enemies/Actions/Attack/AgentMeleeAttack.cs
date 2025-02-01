@@ -24,7 +24,6 @@ public class AgentMeleeAttack : MonoBehaviour, IAttack
         {
             AgentMeleeAttacking?.Invoke();
             lastAttackTime = Time.time;
-            
         }
     }
 }
