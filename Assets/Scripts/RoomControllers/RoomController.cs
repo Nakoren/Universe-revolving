@@ -41,7 +41,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    private void FinishRoomTask()
+    protected void FinishRoomTask()
     {
         for (int i = 0; i < connectionsCount; ++i)
         {
@@ -50,7 +50,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    public void OnRoomChange(int ind)
+    protected void OnRoomChange(int ind)
     {
         onRoomChange.Invoke(ind);
     }
