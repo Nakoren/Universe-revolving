@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
         m_switchMap.started += OnMapToogle;
     }
 
+
+
     void Update()
     {
         RotateToCursor();
@@ -85,7 +87,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
 
-       
+
         if (terrainCollider.Raycast(ray, out rayHit, 1000))
         {
             position = rayHit.point;
@@ -99,26 +101,37 @@ public class PlayerController : MonoBehaviour
         Vector3 cameraRotationV3 = cameraTransform.forward;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         //Debug.Log(move);
+
         player.Move(move, cameraRotationV3);
+        PlayerMove?.Invoke(move);
     }
 
     private void OnSkill1(InputAction.CallbackContext context)
     {
         player.Skill1();
+        ActoinOnSkill1Player?.Invoke();
     }
-    private void OnSkill2(InputAction.CallbackContext context)
+    private void OnSkill2(InputAction.CallbackContext context) //nextweapon
     {
         player.Skill2();
+        ActoinOnSkill2Player?.Invoke();
     }
 
-    private void OnExtraAction(InputAction.CallbackContext context)
+
+    private void OnExtraAction(InputAction.CallbackContext context) //reload
     {
         player.ExtraAction();
     }
 
     private void OnDash(InputAction.CallbackContext context)
     {
-        player.Dash();
+        Vector2 moveInput = m_moveAction.ReadValue<Vector2>();
+
+        if (moveInput != Vector2.zero)
+        {
+            player.Dash(); // Логика движения рывка
+            PlayerDash?.Invoke();
+        }
     }
 
     private void OnFireStarted(InputAction.CallbackContext context)

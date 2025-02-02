@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using System;
+
 
 public class Weapon : MonoBehaviour
 {
@@ -8,10 +10,24 @@ public class Weapon : MonoBehaviour
     public WeaponDataSO weaponDataSO;
     private Coroutine m_fireCoroutine;
     private State m_state = State.Idle;
+
     private int ammo;
+    private int maxAmmo;
+
+    public int Ammo => ammo;
+    public int MaxAmmo => maxAmmo;
+
+    public event System.Action onShoot;
+    public event System.Action onReload;
+
     public void Awake()
     {
-        ammo = weaponDataSO.magazineData.cage;
+        if (weaponDataSO == null)
+    {
+        return;
+    }
+        maxAmmo = weaponDataSO.magazineData.cage;
+        ammo = maxAmmo;
     }
 
     public void Reload()
@@ -32,6 +48,7 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitForSeconds(weaponDataSO.magazineData.recharge);
         ammo = weaponDataSO.magazineData.cage;
+        onReload?.Invoke();
         m_state = State.Idle;
     }
     public void StartFire()
@@ -41,7 +58,7 @@ public class Weapon : MonoBehaviour
             Reload();
             return;
         }
-        
+
         if (m_state == State.Idle)
         {
             m_state = State.Fire;
@@ -56,7 +73,7 @@ public class Weapon : MonoBehaviour
             Shoot();
             yield return new WaitForSeconds(weaponDataSO.receiverData.delay);
         }
-        while(true);
+        while (true);
     }
     private IEnumerator PostFireDelay()
     {
@@ -83,7 +100,7 @@ public class Weapon : MonoBehaviour
         BulletCounter();
         if (ammo > 0)
         {
-            ShootAction();;
+            ShootAction();
         }
     }
 
@@ -91,8 +108,9 @@ public class Weapon : MonoBehaviour
     {
         if (ammo > 0)
         {
-        ammo = ammo - 1;
-        Debug.Log($"ammo - {ammo}");
+            ammo = ammo - 1;
+            onShoot?.Invoke();
+            Debug.Log($"ammo - {ammo}");
         }
         else
         {
@@ -104,21 +122,21 @@ public class Weapon : MonoBehaviour
     {
         for (int i = 1; i <= weaponDataSO.receiverData.volume; i++)
         {
-        GameObject bullet = Instantiate(weaponDataSO.bulletPrefab, m_muzzle.position, m_muzzle.rotation);
+            GameObject bullet = Instantiate(weaponDataSO.bulletPrefab, m_muzzle.position, m_muzzle.rotation);
 
-        Projectile projectileScript = bullet.GetComponent<Projectile>();
-        if (projectileScript != null)
-        {
-            projectileScript.maxDistance = weaponDataSO.scopeData.range;
-        }
-        
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            float randomSpreadY = Random.Range(-weaponDataSO.scopeData.spread, weaponDataSO.scopeData.spread);
-            Vector3 spreadDirection = Quaternion.Euler(0, randomSpreadY, 0) * m_muzzle.forward;
-            rb.AddForce(spreadDirection.normalized * weaponDataSO.receiverData.force, ForceMode.Impulse);
-        }
+            Projectile projectileScript = bullet.GetComponent<Projectile>();
+            if (projectileScript != null)
+            {
+                projectileScript.maxDistance = weaponDataSO.scopeData.range;
+            }
+
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                float randomSpreadY = UnityEngine.Random.Range(-weaponDataSO.scopeData.spread, weaponDataSO.scopeData.spread);
+                Vector3 spreadDirection = Quaternion.Euler(0, randomSpreadY, 0) * m_muzzle.forward;
+                rb.AddForce(spreadDirection.normalized * weaponDataSO.receiverData.force, ForceMode.Impulse);
+            }
         }
     }
 }
