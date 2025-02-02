@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
     private InputAction m_switchMap;
     private InputAction m_switchInventory;
 
+    public event Action<Vector2> PlayerMove;
+    public event Action PlayerDash;
+    public event Action ActoinOnSkill1Player;
+    public event Action ActoinOnSkill2Player;
+
 
     private void Awake()
     {
