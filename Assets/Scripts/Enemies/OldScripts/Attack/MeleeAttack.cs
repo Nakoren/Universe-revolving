@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class MeleeAttack : MonoBehaviour, IAttack
+public class MeleeAttack : MonoBehaviour
 {
     private float lastAttackTime;
     private NavMeshAgent m_meshAgent;

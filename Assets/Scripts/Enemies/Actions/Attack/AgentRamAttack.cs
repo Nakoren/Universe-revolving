@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System;
 
 public class AgentRamAttack : MonoBehaviour, IAttack
 {
@@ -13,6 +14,7 @@ public class AgentRamAttack : MonoBehaviour, IAttack
     [SerializeField] private float ramDuration = 2f;
     [SerializeField] private float ramSpeed = 9f;
     [SerializeField] private float rotationSpeedMultiplier = 0.5f;
+    public event Action AgentAttack;
 
     private bool isRamming = false;
 
