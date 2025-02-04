@@ -4,19 +4,33 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     enum State { Idle, Fire, Reload }
-    public Transform m_muzzle;
-    public WeaponDataSO weaponDataSO;
-    private Coroutine m_fireCoroutine;
     private State m_state = State.Idle;
+    public Transform m_muzzle;  
+    public Projectile bulletPrefab;
+    private Coroutine m_fireCoroutine;
+
+    private ScopeElement m_scopeElement;
+    private MagazineElement m_magazineElement;
+    private ReciverElement m_reciverElement;
     private int ammo;
+
+
     public void Awake()
     {
-        ammo = weaponDataSO.magazineData.cage;
+        GetElements();
+        ammo = m_magazineElement.magazineData.cage;
+    }
+
+    public void GetElements()
+    {
+        m_scopeElement = GetComponentInChildren<ScopeElement>();
+        m_magazineElement = GetComponentInChildren<MagazineElement>();
+        m_reciverElement = GetComponentInChildren<ReciverElement>();
     }
 
     public void Reload()
     {
-        if (ammo != weaponDataSO.magazineData.cage && (m_state == State.Fire || m_state == State.Idle))
+        if (ammo != m_magazineElement.magazineData.cage && (m_state == State.Fire || m_state == State.Idle))
         {
             Debug.Log($"перезарядка");
             m_state = State.Reload;
@@ -30,8 +44,8 @@ public class Weapon : MonoBehaviour
     }
     private IEnumerator ReloadDelay()
     {
-        yield return new WaitForSeconds(weaponDataSO.magazineData.recharge);
-        ammo = weaponDataSO.magazineData.cage;
+        yield return new WaitForSeconds(m_magazineElement.magazineData.recharge);
+        ammo = m_magazineElement.magazineData.cage;
         m_state = State.Idle;
     }
     public void StartFire()
@@ -54,13 +68,13 @@ public class Weapon : MonoBehaviour
         do
         {
             Shoot();
-            yield return new WaitForSeconds(weaponDataSO.receiverData.delay);
+            yield return new WaitForSeconds(m_reciverElement.receiverData.delay);
         }
         while(true);
     }
     private IEnumerator PostFireDelay()
     {
-        yield return new WaitForSeconds(weaponDataSO.receiverData.delay);
+        yield return new WaitForSeconds(m_reciverElement.receiverData.delay);
         m_state = State.Idle;
     }
 
@@ -102,22 +116,22 @@ public class Weapon : MonoBehaviour
 
     public void ShootAction()
     {
-        for (int i = 1; i <= weaponDataSO.receiverData.volume; i++)
+        for (int i = 1; i <= m_reciverElement.receiverData.volume; i++)
         {
-        GameObject bullet = Instantiate(weaponDataSO.bulletPrefab, m_muzzle.position, m_muzzle.rotation);
+        Projectile bullet = Instantiate(bulletPrefab, m_muzzle.position, m_muzzle.rotation);
 
         Projectile projectileScript = bullet.GetComponent<Projectile>();
         if (projectileScript != null)
         {
-            projectileScript.maxDistance = weaponDataSO.scopeData.range;
+            projectileScript.maxDistance = m_scopeElement.scopeData.range;
         }
         
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            float randomSpreadY = Random.Range(-weaponDataSO.scopeData.spread, weaponDataSO.scopeData.spread);
+            float randomSpreadY = Random.Range(-m_scopeElement.scopeData.spread, m_scopeElement.scopeData.spread);
             Vector3 spreadDirection = Quaternion.Euler(0, randomSpreadY, 0) * m_muzzle.forward;
-            rb.AddForce(spreadDirection.normalized * weaponDataSO.receiverData.force, ForceMode.Impulse);
+            rb.AddForce(spreadDirection.normalized * m_reciverElement.receiverData.force, ForceMode.Impulse);
         }
         }
     }
