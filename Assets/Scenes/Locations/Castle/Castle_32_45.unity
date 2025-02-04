@@ -3157,9 +3157,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323017265}
     m_Modifications:
+    - target: {fileID: 1495340065695066738, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_Name
       value: WallTapestryFlagA (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257227504537304572, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6398,9 +6406,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323017265}
     m_Modifications:
+    - target: {fileID: 1495340065695066738, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_Name
       value: WallTapestryFlagA (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257227504537304572, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8541,9 +8557,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323017265}
     m_Modifications:
+    - target: {fileID: 1495340065695066738, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_Name
       value: WallTapestryFlagA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257227504537304572, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9123,9 +9147,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323017265}
     m_Modifications:
+    - target: {fileID: 1495340065695066738, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_Name
       value: WallTapestryFlagA (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257227504537304572, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9254,6 +9286,10 @@ PrefabInstance:
     - target: {fileID: 3392177451024100706, guid: e41d746696116cc41881f2c82c8aa7c4, type: 3}
       propertyPath: m_Name
       value: FirewoodStack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392177451024100706, guid: e41d746696116cc41881f2c82c8aa7c4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3392177451024396610, guid: e41d746696116cc41881f2c82c8aa7c4, type: 3}
       propertyPath: m_LocalScale.x
@@ -9897,9 +9933,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323017265}
     m_Modifications:
+    - target: {fileID: 1495340065695066738, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_Name
       value: WallTapestryFlagA (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257227504537304572, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14786,9 +14830,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 323017265}
     m_Modifications:
+    - target: {fileID: 1495340065695066738, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_Name
       value: WallTapestryFlagA (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957558782399942639, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257227504537304572, guid: 03d48708033854ce9ab770f50432adb1, type: 3}
       propertyPath: m_LocalPosition.x
