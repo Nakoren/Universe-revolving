@@ -18,7 +18,9 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
     [Header("Shoot Settings")]
     [SerializeField] private float shootForce = 1f;
     [SerializeField] private float shootAngle;
-     public event Action AgentRangedAttacking;
+    
+    public event Action AgentRangedAttacking;
+    public event Action AgentAttack;
 
      public  void Attack(Vector3 targetPosition)
     {
@@ -34,6 +36,7 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
             {
                 GameObject currentBullet = Instantiate(projectilePrefab, spawnBullet.position, Quaternion.identity);
                 AgentRangedAttacking?.Invoke();
+                AgentAttack?.Invoke();
 
                 currentBullet.transform.forward = directionToTarget;
 
@@ -46,11 +49,9 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
                 {
                     Debug.LogError("Projectile prefab is missing a Rigidbody component!");
                 }
-
                 //Debug.Log($"Враг стреляет в направлении {targetPosition}");
                 lastAttackTime = Time.time;
             }
-
         }
         else
         {

@@ -1,58 +1,51 @@
+using System;
 using Mono.Cecil;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    /*private AgentMovement m_movement;
-    private AgentRotation m_rotation;
+    private AgentMovement m_movement;
     private IAttack m_attack;
+    private AgentDeath m_death;
+
+    public Action<Enemy> onEnemyDeath;
+    public Action<Enemy> onEnemyAttack;
+    public Action<Enemy> onEnemyMove;
     
 
     public void Awake()
     {
         m_movement = GetComponent<AgentMovement>();
         m_attack = GetComponent<IAttack>();
-        m_rotation=GetComponent<AgentRotation>();
+        m_death=GetComponent<AgentDeath>();
+
+        m_death.AgentDie+=Die;
+        m_movement.AgentMove+=Move;
+        m_attack.AgentAttack+=Attack;
     }
 
-    public void SetDestination(Vector3 target)
+    public void Move(Vector3 vector)
     {
-        if (m_movement == null)
+        if(onEnemyMove!=null)
         {
-            Debug.LogWarning("AgentMovement component not found on Agent.");
-        }
-        m_movement.SetDestination(target);
+            onEnemyMove?.Invoke(this);
+        } 
     }
 
-    public bool HasReachedDestination()
+    public void Die()
     {
-        if (m_movement == null)
+        if(onEnemyDeath!=null)
         {
-            Debug.LogWarning("AgentMovement component not found on Agent.");
+            onEnemyDeath?.Invoke(this);
         }
-        return m_movement.HasReachedDestination();
     }
 
-    public void Attack(Vector3 target)
+    public void Attack()
     {
-        if (m_attack == null)
+        if (m_attack! == null)
         {
-            Debug.LogWarning("IAttack component not found on Agent.");
+            onEnemyAttack?.Invoke(this);
         }
-        m_attack.Attack(target);
     }
-
-    public void Rotate(Vector3 target)
-    {
-        if (m_rotation == null)
-        {
-            Debug.LogWarning("AgentRotation component not found on Agent.");
-        }
-        m_rotation.RotateTowardsTarget(target);
-    }*/
-
-    
-
-
 
 }
