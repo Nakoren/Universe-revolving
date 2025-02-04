@@ -1,5 +1,6 @@
-using System;
+
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class RoomController : MonoBehaviour
     [SerializeField] GameObject[] activeTransitions;
     [SerializeField] GameObject[] inActiveTransitions;
     [SerializeField] GameObject[] closeTransitions;
+
+    [SerializeField] List<RoomReward> possibleRewards;
 
     public Action<int> onRoomChange;
     private int connectionsCount;
@@ -47,6 +50,11 @@ public class RoomController : MonoBehaviour
         {
             activeTransitions[i].SetActive(false);
             inActiveTransitions[i].SetActive(true);
+        }
+
+        if(possibleRewards.Count > 0)
+        {
+            RoomReward reward = possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)];
         }
     }
 
