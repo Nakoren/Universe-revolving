@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System;
 
 public class MeleeAttack : MonoBehaviour, IAttack
 {
@@ -11,6 +12,8 @@ public class MeleeAttack : MonoBehaviour, IAttack
     [Header("Attack Settings")]
     [SerializeField] protected float damage;
     [SerializeField]protected float attackCooldown = 2f;
+
+    public event Action AgentAttack;
 
     private void Awake()
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System;
 
 public class AgentRamAttack : MonoBehaviour, IAttack
 {
@@ -16,13 +17,26 @@ public class AgentRamAttack : MonoBehaviour, IAttack
 
     private bool isRamming = false;
 
+    event Action IAttack.AgentAttack
+    {
+        add
+        {
+            throw new NotImplementedException();
+        }
+
+        remove
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     private void Awake()
     {
         m_meshAgent = GetComponent<NavMeshAgent>();
         hitBox.SetActive(false);
     }
 
-    public void Attack(Vector3 targetPosition)
+    public void AgentAttack(Vector3 targetPosition)
     {
         if (isRamming || Time.time - lastRamTime < ramCooldown) return;
 
@@ -75,5 +89,10 @@ public class AgentRamAttack : MonoBehaviour, IAttack
 
         isRamming = false;
         m_meshAgent.isStopped = false;
+    }
+
+    public void Attack(Vector3 target)
+    {
+        throw new NotImplementedException();
     }
 }
