@@ -48,6 +48,7 @@ public class RoomController : MonoBehaviour
     {
         for (int i = 0; i < connectionsCount; ++i)
         {
+            //Тут нужно сделать более сложную логику открытия и закрытию проходов
             activeTransitions[i].SetActive(false);
             inActiveTransitions[i].SetActive(true);
         }
@@ -55,6 +56,7 @@ public class RoomController : MonoBehaviour
         if(possibleRewards.Count > 0)
         {
             RoomReward reward = possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)];
+            //Реализовать тут механизм награды игрока
         }
     }
 
