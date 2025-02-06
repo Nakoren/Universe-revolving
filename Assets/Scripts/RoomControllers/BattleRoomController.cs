@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleRoomController : RoomController
 {
-    [SerializeField] List<List<GameObject>> enemyList;
+    [SerializeField] List<List<Enemy>> enemyList;
 
 
     private bool instantCompletion = false;
@@ -16,14 +16,25 @@ public class BattleRoomController : RoomController
         {
             for(int j = 0; j < enemyList[i].Count; j++)
             {
-                
+                enemyList[i][j].onEnemyDeath += OnEnemyDeath;
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            for (int j = 0; j < enemyList[i].Count; j++)
+            {
+                enemyList[i][j].onEnemyDeath -= OnEnemyDeath;
             }
         }
     }
 
     private void OnEnemyDeath(Enemy enemy)
     {
-        enemyList[currentWave].Remove(enemy.gameObject);
+        enemyList[currentWave].Remove(enemy);
         if (enemyList[currentWave].Count == 0 ) {
             currentWave++;
             LoadWave(currentWave);   
@@ -40,13 +51,13 @@ public class BattleRoomController : RoomController
         {
             for( int i = 0;i < enemyList[wave].Count; i++)
             {
-                enemyList[wave][i].SetActive(true);
+                enemyList[wave][i].Activate();
             }
         }
     }
 
     public void addEnemy(Enemy enemy)
     {
-        enemyList[currentWave].Add(enemy.gameObject);
+        enemyList[currentWave].Add(enemy);
     }
 }

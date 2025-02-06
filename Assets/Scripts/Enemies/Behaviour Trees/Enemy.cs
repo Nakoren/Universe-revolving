@@ -24,6 +24,11 @@ public class Enemy : MonoBehaviour
         m_attack.AgentAttack+=Attack;
     }
 
+    public void Activate()
+    {
+        this.gameObject.SetActive(true);
+    }
+
     public void Move(Vector3 vector)
     {
         if(onEnemyMove!=null)
