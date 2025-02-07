@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public Player player;
+    private InteractableObjectDetector interactableObjectDetector;
     public InputActionAsset inputActions;
     public TerrainCollider terrainCollider;
     public Transform cameraTransform;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private InputAction m_dashAction;
     private InputAction m_fireAction;
     private InputAction m_extraFireAction;
+    private InputAction m_useAction;
 
 
     private void Awake()
@@ -28,6 +30,10 @@ public class PlayerController : MonoBehaviour
 
         m_fireAction = inputActions.FindAction("Player/Fire");
         m_extraFireAction = inputActions.FindAction("Player/ExtraFire");
+
+        m_useAction = inputActions.FindAction("Player/Use");
+
+        interactableObjectDetector = player.gameObject.GetComponent<InteractableObjectDetector>();
     }
 
     void Start()
@@ -46,6 +52,7 @@ public class PlayerController : MonoBehaviour
         m_fireAction.started += OnFireStarted;
         m_fireAction.canceled += OnFireEnded;
 
+        m_useAction.started += OnUse;
     }
 
     void Update()
@@ -103,6 +110,11 @@ public class PlayerController : MonoBehaviour
     private void OnFireEnded(InputAction.CallbackContext context)
     {
         player.StopFire();
+    }
+
+    private void OnUse(InputAction.CallbackContext context)
+    {
+        interactableObjectDetector.UseObject();
     }
 
     // private static Vector3 RaycastToCursor()
