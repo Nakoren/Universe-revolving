@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public Player player;
+    private InteractableObjectDetector interactableObjectDetector;
     public InputActionAsset inputActions;
     public Collider terrainCollider;
     public Transform cameraTransform;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private InputAction m_dashAction;
     private InputAction m_fireAction;
     private InputAction m_extraFireAction;
+    private InputAction m_useAction;
 
     private InputAction m_switchPause;
     private InputAction m_switchMap;
@@ -48,6 +50,9 @@ public class PlayerController : MonoBehaviour
         m_fireAction = inputActions.FindAction("Player/Fire");
         m_extraFireAction = inputActions.FindAction("Player/ExtraFire");
 
+        m_useAction = inputActions.FindAction("Player/Use");
+
+        interactableObjectDetector = player.gameObject.GetComponent<InteractableObjectDetector>();
         m_switchPause = inputActions.FindAction("UI/Pause");
         m_switchMap = inputActions.FindAction("UI/Map");
         m_switchInventory = inputActions.FindAction("UI/Inventory");
@@ -69,6 +74,7 @@ public class PlayerController : MonoBehaviour
         m_fireAction.started += OnFireStarted;
         m_fireAction.canceled += OnFireEnded;
 
+        m_useAction.started += OnUse;
         m_switchInventory.Enable();
         m_switchInventory.started += OnInventoryToogle;
         m_switchPause.Enable();
@@ -149,6 +155,14 @@ public class PlayerController : MonoBehaviour
         player.StopFire();
     }
 
+    private void OnUse(InputAction.CallbackContext context)
+    {
+        interactableObjectDetector.UseObject();
+    }
+
+    // private static Vector3 RaycastToCursor()
+    // {
+    //     Debug.Log("FireStarted");
     private static Vector3 RaycastToCursor()
     { return new Vector3(); }
 

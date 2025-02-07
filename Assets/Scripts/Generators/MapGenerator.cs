@@ -15,7 +15,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] public int fixedShopLevel;
     [SerializeField] public bool shopSoloLayer = false;
     [Header("This paramaters will force specific rooms to spawn in specific count\nOtherwise their spawn will be totally random")]
-    [Header("Warning: if there is not enough space to spawn specified amount of rooms,\nthey will have priority in relative order")]
+    [Header("Warning: if there is not enough space to spawn specified amount of rooms,\nthey will have priority in relative order\nset to -1 to disable this option")]
     [SerializeField] public int rewardRoomsPerLevel = 1;
     [SerializeField] public int shopRoomsPerLevel = 1;
     [SerializeField] public int restRoomsPerLevel = 1;
