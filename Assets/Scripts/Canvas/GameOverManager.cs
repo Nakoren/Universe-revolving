@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GameInstance : MonoBehaviour
+public class GameOverManager : MonoBehaviour
 {
-        public Transform states;
+    public Transform states;
 
         private void Start()
         {
@@ -12,4 +12,5 @@ public class GameInstance : MonoBehaviour
             }
             states.GetChild(0).gameObject.SetActive(true);
         }
+
 }

@@ -42,8 +42,12 @@ public class MeleeAttackZone : MonoBehaviour
 
     private void OnAttack()
     {
-        playerHealth.ReduceHealth(damage); 
-        Debug.Log($"Player took {damage} damage. Current health: {playerHealth.GetCurrentHealth()}");
+        if (playerHealth)
+        {
+            playerHealth.ReduceHealth(damage);
+            Debug.Log($"Player took {damage} damage. Current health: {playerHealth.GetCurrentHealth()}");
+        }
+
     }
 
 }
