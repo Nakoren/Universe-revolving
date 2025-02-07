@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class RewardContainer : MonoBehaviour
+public abstract class RewardContainer : IInteractable
 {
-    [SerializeField] protected GameObject rewardItem;
+    [SerializeField] protected List<GameObject> rewardItem;
     public Action onOpen;
 
-    abstract public void Open();
+    
 }

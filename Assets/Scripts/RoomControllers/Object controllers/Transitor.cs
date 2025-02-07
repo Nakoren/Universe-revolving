@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Transitor : MonoBehaviour
+public class Transitor : IInteractable
 {
     public int targetInd;
     public Room roomSO;
@@ -12,13 +12,9 @@ public class Transitor : MonoBehaviour
         targetInd = roomInd;
     }
 
-    private void OnTriggerEnter(Collider other)
+    override public void Interact()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log($"Active transition to room {roomSO.name}");
-            Activate();
-        }
+        Activate();
     }
 
     private void Activate()
