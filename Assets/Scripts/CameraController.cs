@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject cam;
-    public GameObject target;
-    public Vector3 offset;
+    [SerializeField] GameObject cam;
+    [SerializeField] GameObject target;
+    [SerializeField] Vector3 offset;
+    [SerializeField] public bool followCursor;
+    [Header("For correct execution this need to be set not less then to 4")]
+    [SerializeField] int negativeFollowForce;
+
+    [SerializeField] Collider terrainCollider;
+
 
     Transform m_camTransform;
     Transform m_targetTransform;
@@ -23,8 +29,34 @@ public class CameraController : MonoBehaviour
         m_camTransform.LookAt(m_targetTransform);
     }
 
+    private Vector3 GetCameraOffsetToCursor()
+    {
+        Vector3 rayCastPoint;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit rayHit;
+
+        if (terrainCollider.Raycast(ray, out rayHit, 1000))
+        {
+            rayCastPoint = rayHit.point;
+            rayCastPoint.y = 0;
+            Vector3 tempTargetPosition = m_targetTransform.position;
+            tempTargetPosition.y = 0;
+            return (rayCastPoint - tempTargetPosition)/negativeFollowForce;
+        }
+        else 
+        { 
+            return new Vector3(); 
+        }
+        
+    }
+
     void Update()
     {
-        m_camTransform.position = m_targetTransform.position + offset;
+        Vector3 newPosition = m_targetTransform.position + offset;
+        if (followCursor)
+        {
+            newPosition += GetCameraOffsetToCursor();
+        }
+        m_camTransform.position = newPosition;
     }
 }
