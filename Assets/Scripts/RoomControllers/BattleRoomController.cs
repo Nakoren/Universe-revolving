@@ -56,7 +56,7 @@ public class BattleRoomController : RoomController
         }
     }
 
-    public void addEnemy(Enemy enemy)
+    public void AddEnemy(Enemy enemy)
     {
         enemyList[currentWave].Add(enemy);
     }
