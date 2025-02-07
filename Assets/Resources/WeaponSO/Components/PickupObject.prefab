@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5942145413568267312}
   - component: {fileID: 5724692395207832929}
   - component: {fileID: 9169675353061844346}
-  - component: {fileID: 5962770891941881484}
   - component: {fileID: 5607723459442197043}
+  - component: {fileID: 4486721860648399898}
+  - component: {fileID: 5681332026970693469}
   m_Layer: 0
   m_Name: PickupObject
   m_TagString: Untagged
@@ -32,7 +33,8 @@ Transform:
   m_LocalPosition: {x: -3.601, y: 0.56, z: 10.822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4990823745525701760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5724692395207832929
@@ -88,8 +90,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5962770891941881484
-BoxCollider:
+--- !u!114 &5607723459442197043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734866413611148926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09167437dab828469d13df3b5fa7784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scopePrefab: {fileID: 0}
+  weapon: {fileID: 0}
+  pickupObjectPrefab: {fileID: 5607723459442197043}
+  player: {fileID: 0}
+--- !u!114 &4486721860648399898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734866413611148926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aee270a29c0b0b4a8f77bcda0cc8a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+--- !u!135 &5681332026970693469
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,21 +138,50 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 2.7
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5607723459442197043
+--- !u!1 &2006329287991355052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4990823745525701760}
+  - component: {fileID: 6273146672018303557}
+  m_Layer: 0
+  m_Name: Element
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4990823745525701760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006329287991355052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5942145413568267312}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6273146672018303557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734866413611148926}
+  m_GameObject: {fileID: 2006329287991355052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d09167437dab828469d13df3b5fa7784, type: 3}
+  m_Script: {fileID: 11500000, guid: 97693fc5afae38642ada28822ed3fae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scopePrefab: {fileID: 0}
-  weapon: {fileID: 0}
-  pickupObjectPrefab: {fileID: 5607723459442197043}
-  player: {fileID: 0}
+  elementDB: {fileID: 0}
