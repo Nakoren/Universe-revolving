@@ -11,7 +11,10 @@ public abstract class IInteractable: MonoBehaviour
     abstract public void Interact();
 
     public void SetInteractableState(bool newState) {
-        displayUI.SetActive(newState);
+        if (displayUI != null)
+        {
+            displayUI.SetActive(newState);
+        }
         active = newState;
     }
 }
