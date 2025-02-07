@@ -1,18 +1,10 @@
 using System;
 using UnityEngine;
 
-public class RewardContainer : MonoBehaviour
+public abstract class RewardContainer : MonoBehaviour
 {
-    [SerializeField] GameObject rewardItem;
+    [SerializeField] protected GameObject rewardItem;
     public Action onOpen;
 
-    public void Open()
-    {
-        if(onOpen != null) onOpen.Invoke();
-
-        //Расширить механизм спавна дропа с сундука
-        Instantiate(rewardItem, this.transform);
-
-        Destroy(this.gameObject);
-    }
+    abstract public void Open();
 }
