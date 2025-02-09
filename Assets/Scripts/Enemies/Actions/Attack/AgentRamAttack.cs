@@ -14,7 +14,7 @@ public class AgentRamAttack : MonoBehaviour, IAttack
     [SerializeField] private float ramDuration = 2f;
     [SerializeField] private float ramSpeed = 9f;
     [SerializeField] private float rotationSpeedMultiplier = 0.5f;
-    public event Action AgentAttack;
+    public event Action OnAgentAttack;
 
     private bool isRamming = false;
 

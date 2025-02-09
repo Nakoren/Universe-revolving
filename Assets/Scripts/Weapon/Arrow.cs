@@ -12,10 +12,7 @@ public class Arrow : MonoBehaviour
 
     private void Start()
     {
-        int projectileLayer = LayerMask.NameToLayer("Projectile");
-        Physics.IgnoreLayerCollision(projectileLayer, projectileLayer);
-         transform.rotation = Quaternion.Euler(90, 0, 90);
-
+        transform.rotation = Quaternion.Euler(90, 0, 90);
     }
     public void Awake()
     {

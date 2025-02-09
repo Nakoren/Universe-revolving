@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,12 @@ public class Weapon : MonoBehaviour
     private Coroutine m_fireCoroutine;
     private int ammo;
     private WeaponLego lego;
+
+    public Action onShoot;
+    public Action onReload;
+
+    public int Ammo { get => ammo; }
+    public int MaxAmmo { get => lego.magazine.cage; }
 
     public void Awake()
     {
@@ -124,7 +131,7 @@ public class Weapon : MonoBehaviour
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            float randomSpreadY = Random.Range(-lego.scope.spread, lego.scope.spread);
+            float randomSpreadY = UnityEngine.Random.Range(-lego.scope.spread, lego.scope.spread);
             Vector3 spreadDirection = Quaternion.Euler(0, randomSpreadY, 0) * m_muzzle.forward;
             rb.AddForce(spreadDirection.normalized * lego.receiver.force, ForceMode.Impulse);
         }
