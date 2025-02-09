@@ -26,7 +26,11 @@ public class EnemyAnimationController : MonoBehaviour
             agentRangedAttack.AgentRangedAttacking+=OnAttackAnimation;
         }
         agentDeath.AgentDie += StartDieAnimation;
-        health.AgentDamage+=OnDamageAnimation;
+        if(health)
+        {
+            health.AgentDamage+=OnDamageAnimation;
+        }
+        
 
 
     }
@@ -44,7 +48,10 @@ public class EnemyAnimationController : MonoBehaviour
             agentRangedAttack.AgentRangedAttacking-=OnAttackAnimation;
         }
         agentDeath.AgentDie -= StartDieAnimation;
-         health.AgentDamage-=OnDamageAnimation;
+        if(health)
+        {
+            health.AgentDamage-=OnDamageAnimation;
+        }
     }
 
     private void Awake()
