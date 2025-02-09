@@ -7,54 +7,39 @@ using System.Collections.Generic;
 public class WeaponCageManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ammoText;
-    [SerializeField] private WeaponManager m_weaponManager;
 
-    private Weapon m_currentWeapon;
+    [SerializeField] private Weapon m_currentWeapon;
 
-    public void Init(WeaponManager weaponManager)
+    private void Awake()
     {
-        m_weaponManager = weaponManager;
+        RefreshBulletInfo(m_currentWeapon);
     }
 
     private void OnEnable()
     {
 
-        if (m_weaponManager)
+        if (m_currentWeapon)
         {
-            m_weaponManager.OnWeaponChanged += OnWeaponChanged;
-            m_weaponManager.onShoot += OnShoot;
-            m_weaponManager.onReload += OnShoot;
-            OnWeaponChanged();
+            m_currentWeapon.onShoot += OnChangeCage;
+            m_currentWeapon.onReloadEnd += OnChangeCage;
+
         }
 
     }
 
     private void OnDisable()
     {
-        if (m_weaponManager)
+        if (m_currentWeapon)
         {
-            m_weaponManager.OnWeaponChanged -= OnWeaponChanged;
-            m_weaponManager.onShoot -= OnShoot;
-            m_weaponManager.onReload -= OnShoot;
+            m_currentWeapon.onShoot -= OnChangeCage;
+            m_currentWeapon.onReloadEnd -= OnChangeCage;
         }
     }
 
 
-    private void OnShoot()
+    private void OnChangeCage()
     {
-        RefreshBulletInfo(m_weaponManager.CurrentWeapon);
-    }
-    private void OnWeaponChanged()
-    {
-        var curWeapon = m_weaponManager.CurrentWeapon;
-
-        if (curWeapon)
-        {
-
-            RefreshBulletInfo(curWeapon);
-        }
-
-        
+        RefreshBulletInfo(m_currentWeapon);
     }
 
     private void RefreshBulletInfo(Weapon weapon)
@@ -62,9 +47,7 @@ public class WeaponCageManager : MonoBehaviour
         if (weapon)
         {
             ammoText.text = $"{weapon.Ammo}/{weapon.MaxAmmo}";
-        }
-
-        
+        }  
     }
 
 }

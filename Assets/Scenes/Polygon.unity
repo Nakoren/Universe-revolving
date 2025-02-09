@@ -545,6 +545,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 93323759}
+    - target: {fileID: 6411816544873990730, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 3767291109678510647, guid: 7936762d21aa3eb479f8cad3588dfd60, type: 3}
     - target: {fileID: 8920161537429324502, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -552,12 +556,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3079919412035575793, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
     - {fileID: 5709985609416319543, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
-    m_RemovedGameObjects: []
+    - {fileID: 2348392514745236549, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 5110701135844706727, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1249340210}
+    - targetCorrespondingSourceObject: {fileID: 3564427335292839700, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1102694805}
   m_SourcePrefab: {fileID: 100100000, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
 --- !u!1 &449163523
 GameObject:
@@ -1642,6 +1651,26 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4153152704742594829, guid: 58ce24e533a6148c5ae4c2e35ebc9070, type: 3}
   m_PrefabInstance: {fileID: 8976366687190838697}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1102694801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3564427335292839700, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+  m_PrefabInstance: {fileID: 368401468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1102694805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102694801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0820a7b624f587349aacf83bcf058db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: {fileID: 0}
+  magazine: {fileID: 0}
+  receiver: {fileID: 0}
 --- !u!1 &1138075684
 GameObject:
   m_ObjectHideFlags: 0

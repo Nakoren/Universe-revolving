@@ -9,8 +9,8 @@ public class WeaponManager : MonoBehaviour
     public Weapon CurrentWeapon=> m_currentWeapon;
 
     public event System.Action OnWeaponChanged;
-    public event System.Action onShoot;
-	public event System.Action onReload;
+   // public event System.Action onShoot;
+	//public event System.Action onReload;
    
 
     private void Awake()
@@ -65,7 +65,7 @@ public class WeaponManager : MonoBehaviour
         if (m_currentWeapon)
         {
             m_currentWeapon.onShoot -= OnCurWeaponShoot;
-			m_currentWeapon.onReload -= OnCurWeaponReload;
+			//m_currentWeapon.onReload -= OnCurWeaponReload;
             m_currentWeapon.gameObject.SetActive(false);
             m_currentWeapon = null;
         }
@@ -75,7 +75,7 @@ public class WeaponManager : MonoBehaviour
             m_currentWeapon = m_weapons[index];
             m_currentWeapon.gameObject.SetActive(true);
             m_currentWeapon.onShoot += OnCurWeaponShoot;
-			m_currentWeapon.onReload += OnCurWeaponReload;
+			//m_currentWeapon.onReload += OnCurWeaponReload;
             Debug.Log($"[WeaponManager]: SetActiveWeapon({m_currentWeapon.name})");
             
         }
@@ -84,11 +84,11 @@ public class WeaponManager : MonoBehaviour
 
     private void OnCurWeaponReload()
 	{
-		onReload?.Invoke();
+		//onReload?.Invoke();
 	}
 
 	private void OnCurWeaponShoot()
 	{
-		onShoot?.Invoke();
+		//onShoot?.Invoke();
 	}
 }

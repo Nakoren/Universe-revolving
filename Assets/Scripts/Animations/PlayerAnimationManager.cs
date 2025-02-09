@@ -6,19 +6,22 @@ public class PlayerAnimationManager : MonoBehaviour
     private Animator animator;
     private Vector2 moveInput;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private Weapon weapon;
 
     private void OnEnable()
     {
         playerController.PlayerMove += UpdateMovementAnimation;
         playerController.PlayerDash += OnDashAnimation;
-        playerController.PlayerReload+=OnReloadAnimation;
+        //playerController.PlayerReload+=OnReloadAnimation;
+        weapon.onReloadStart+=OnReloadAnimation;
     }
 
     private void OnDisable()
     {
         playerController.PlayerMove -= UpdateMovementAnimation;
         playerController.PlayerDash -= OnDashAnimation;
-        playerController.PlayerReload-=OnReloadAnimation;
+        //playerController.PlayerReload-=OnReloadAnimation;
+         weapon.onReloadStart-=OnReloadAnimation;
     }
 
     private void OnReloadAnimation()

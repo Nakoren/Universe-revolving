@@ -14,7 +14,8 @@ public class Weapon : MonoBehaviour
     private WeaponLego lego;
 
     public Action onShoot;
-    public Action onReload;
+    public Action onReloadStart;
+    public Action onReloadEnd;
 
     public int Ammo { get => ammo; }
     public int MaxAmmo { get => lego.magazine.cage; }
@@ -37,6 +38,7 @@ public class Weapon : MonoBehaviour
             Debug.Log($"перезарядка");
             m_state = State.Reload;
             StartCoroutine(ReloadDelay());
+            onReloadStart?.Invoke();
             if (m_fireCoroutine != null)
             {
                 StopCoroutine(m_fireCoroutine);
@@ -48,6 +50,7 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitForSeconds(lego.magazine.recharge);
         ammo = lego.magazine.cage;
+        onReloadEnd?.Invoke();
         m_state = State.Idle;
     }
     public void StartFire()
@@ -108,6 +111,7 @@ public class Weapon : MonoBehaviour
         if (ammo > 0)
         {
         ammo = ammo - 1;
+        onShoot?.Invoke();
         Debug.Log($"ammo - {ammo}");
         }
         else
