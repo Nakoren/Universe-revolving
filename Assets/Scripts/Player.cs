@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     enum PlayerState { Frozen, Base, Dash }
 
     Movement m_movement;
-    Shoot m_shoot;
     Dash m_dash;
     Health m_health;
     MeleePunch m_meleePunch;
@@ -25,7 +24,6 @@ public class Player : MonoBehaviour
     public void Awake()
     {
         m_movement = GetComponent<Movement>();
-        m_shoot = GetComponent<Shoot>();
         m_dash = GetComponent<Dash>();
         m_health = GetComponent<Health>();
         m_meleePunch = GetComponent<MeleePunch>();

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class Shoots : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform spawnBullet;
