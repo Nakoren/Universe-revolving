@@ -1,5 +1,6 @@
 using System;
 using Mono.Cecil;
+using Unity.Behavior;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -12,12 +13,14 @@ public class Enemy : MonoBehaviour
     public Action<Enemy> onEnemyAttack;
     public Action<Enemy> onEnemyMove;
     
+    private BehaviorGraphAgent m_graphAgent;
 
     public void Awake()
     {
         m_movement = GetComponent<AgentMovement>();
         m_attack = GetComponent<IAttack>();
         m_death=GetComponent<AgentDeath>();
+        m_graphAgent = GetComponent<BehaviorGraphAgent>();
 
         m_death.AgentDie+=Die;
         m_movement.AgentMove+=Move;
@@ -46,6 +49,11 @@ public class Enemy : MonoBehaviour
         {
             onEnemyAttack?.Invoke(this);
         }
+    }
+
+    public void SetTarget(Transform target)
+    {
+        m_graphAgent.BlackboardReference.SetVariableValue<Transform>("Player", target);
     }
 
 }
