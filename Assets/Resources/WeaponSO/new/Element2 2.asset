@@ -21,6 +21,6 @@ MonoBehaviour:
   <range>k__BackingField: 0
   <cage>k__BackingField: 0
   <recharge>k__BackingField: 0
-  <delay>k__BackingField: 0.1
-  <force>k__BackingField: 10
+  <delay>k__BackingField: 1
+  <force>k__BackingField: 15
   <volume>k__BackingField: 6
