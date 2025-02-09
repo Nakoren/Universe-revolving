@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf965b0a938ddfe43b1cefbc475ea04d, type: 3}
   m_Name: RewardR1
   m_EditorClassIdentifier: 
-  room: {fileID: 0}
+  prefab: {fileID: 7250180918696309197, guid: 0389168408d377348af695e1746b4831, type: 3}
   roomName: Reward1
   weight: 1

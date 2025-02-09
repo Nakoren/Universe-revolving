@@ -11,8 +11,9 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        int projectileLayer = LayerMask.NameToLayer("Projectile");
-        Physics.IgnoreLayerCollision(projectileLayer, projectileLayer);
+        int projectileLayer = LayerMask.NameToLayer("ProjectileEnemy");
+        int projectileLayer2 = LayerMask.NameToLayer("ProjectilePlayer");
+        Physics.IgnoreLayerCollision(projectileLayer, projectileLayer2);
     }
     public void Awake()
     {

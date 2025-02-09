@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int damage = 20;
+    private void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            health.ReduceHealth(damage);
+        }
     }
 }

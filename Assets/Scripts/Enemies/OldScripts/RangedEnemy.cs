@@ -66,7 +66,7 @@ public class RangedEnemy : EnemyBase
         }
         else
         {
-            Debug.Log($"Цель вне допустимого угла: {angle}° (максимально допустимый: {shootAngle}°)");
+           // Debug.Log($"Цель вне допустимого угла: {angle}° (максимально допустимый: {shootAngle}°)");
         }
     }
 }

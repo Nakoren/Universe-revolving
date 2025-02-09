@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     enum PlayerState { Frozen, Base, Dash }
 
     Movement m_movement;
-    Shoot m_shoot;
     Dash m_dash;
     Health m_health;
     MeleePunch m_meleePunch;
@@ -25,7 +24,6 @@ public class Player : MonoBehaviour
     public void Awake()
     {
         m_movement = GetComponent<Movement>();
-        m_shoot = GetComponent<Shoot>();
         m_dash = GetComponent<Dash>();
         m_health = GetComponent<Health>();
         m_meleePunch = GetComponent<MeleePunch>();
@@ -34,7 +32,7 @@ public class Player : MonoBehaviour
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
 
-        m_health.onZeroHealth +=Die;
+        m_health.onZeroHealth += Die;
 
         m_prevFramePosition = transform.position;
     }
@@ -56,6 +54,11 @@ public class Player : MonoBehaviour
         {
             m_dash.DashMove();
         }
+    }
+
+    public void Warp(Vector3 position)
+    {
+        m_movement.WarpTo(position);
     }
 
     public void RotateTo(Vector3 target)

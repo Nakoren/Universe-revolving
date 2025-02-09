@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909f437e7546f2a4da035f32fc3e0ad0, type: 3}
   m_Name: BR1
   m_EditorClassIdentifier: 
-  room: {fileID: 0}
+  prefab: {fileID: 7250180918696309197, guid: 00b2bc4a3e6b30c498ff10c39be8b036, type: 3}
   roomName: Battle1
   weight: 2
