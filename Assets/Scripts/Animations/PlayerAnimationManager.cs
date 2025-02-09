@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour
@@ -10,12 +11,19 @@ public class PlayerAnimationManager : MonoBehaviour
     {
         playerController.PlayerMove += UpdateMovementAnimation;
         playerController.PlayerDash += OnDashAnimation;
+        playerController.PlayerReload+=OnReloadAnimation;
     }
 
     private void OnDisable()
     {
         playerController.PlayerMove -= UpdateMovementAnimation;
         playerController.PlayerDash -= OnDashAnimation;
+        playerController.PlayerReload-=OnReloadAnimation;
+    }
+
+    private void OnReloadAnimation()
+    {
+       animator.SetTrigger("Reload");
     }
 
     private void Awake()

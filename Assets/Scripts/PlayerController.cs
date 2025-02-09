@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public event Action<Vector2> PlayerMove;
     public event Action PlayerDash;
+    public event Action PlayerReload;
     public event Action ActoinOnSkill1Player;
     public event Action ActoinOnSkill2Player;
 
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
     private void OnExtraAction(InputAction.CallbackContext context) //reload
     {
         player.ExtraAction();
+        PlayerReload?.Invoke();
     }
 
     private void OnDash(InputAction.CallbackContext context)
@@ -108,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveInput != Vector2.zero)
         {
-            player.Dash(); // Логика движения рывка
+            player.Dash(); 
             PlayerDash?.Invoke();
         }
     }
