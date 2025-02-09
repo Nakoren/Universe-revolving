@@ -31,7 +31,7 @@ public class PickupObject : MonoBehaviour
         
             if (m_existingElement != null)
             {
-                for ( int i = 1; i < m_existingElement.Count; i++ )
+                for ( int i = 0; i < m_existingElement.Count; i++ )
                 {
                     if (m_existingElement[i].elementDB.type == m_element.elementDB.type)
                     {

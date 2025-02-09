@@ -6,13 +6,13 @@ public class WeaponLego : MonoBehaviour
 {
     private Weapon m_weapon;
     private List<ElementInfo> m_Elements = new List<ElementInfo>();
-    public ElementsDB scope { private set; get; }
-    public ElementsDB magazine { private set; get; }
-    public ElementsDB receiver { private set; get; }
+    public ElementsDB scope;
+    public ElementsDB magazine;
+    public ElementsDB receiver;
 
     public void Awake()
     {
-        m_weapon = GetComponent<Weapon>();
+        m_weapon = GetComponent<Weapon>(); 
     }
 
     public void GetElements()
