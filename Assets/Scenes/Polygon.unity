@@ -531,12 +531,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4031936571382020544, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: -7599856397798264514, guid: 060d47c2a2f3947479bd377c8213cf8e, type: 3}
     - target: {fileID: 4679596481054038145, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: playerController
       value: 
@@ -547,6 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3079919412035575793, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+    - {fileID: 5709985609416319543, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2480,6 +2485,9 @@ MonoBehaviour:
   cam: {fileID: 1568151808}
   target: {fileID: 1249340194}
   offset: {x: 8, y: 16, z: -8}
+  followCursor: 0
+  negativeFollowForce: 0
+  terrainCollider: {fileID: 0}
 --- !u!114 &1898185867 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1968166394359076693, guid: fe89679621bf24f33bdd2ac612f0c249, type: 3}
