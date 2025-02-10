@@ -37,8 +37,9 @@ public class Weapon : MonoBehaviour
         {
             Debug.Log($"перезарядка");
             m_state = State.Reload;
-            StartCoroutine(ReloadDelay());
             onReloadStart?.Invoke();
+
+            StartCoroutine(ReloadDelay());
             if (m_fireCoroutine != null)
             {
                 StopCoroutine(m_fireCoroutine);
