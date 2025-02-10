@@ -21,7 +21,7 @@ public class PlayerAnimationManager : MonoBehaviour
         playerController.PlayerMove -= UpdateMovementAnimation;
         playerController.PlayerDash -= OnDashAnimation;
         //playerController.PlayerReload-=OnReloadAnimation;
-         weapon.onReloadStart-=OnReloadAnimation;
+        weapon.onReloadStart-=OnReloadAnimation;
     }
 
     private void OnReloadAnimation()

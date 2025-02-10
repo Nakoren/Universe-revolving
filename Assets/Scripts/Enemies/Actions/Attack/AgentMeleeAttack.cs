@@ -8,10 +8,8 @@ public class AgentMeleeAttack : MonoBehaviour, IAttack
     private float lastAttackTime;
     private NavMeshAgent m_meshAgent;
 
-    [Header("Attack Settings")]
-    [SerializeField] private float attackCooldown = 2f;
-    public event Action AgentMeleeAttacking;
-    public event Action AgentAttack;
+
+    public event Action AgentAttack; //убрать из интерфейса
 
     private void Awake()
     {
@@ -19,11 +17,8 @@ public class AgentMeleeAttack : MonoBehaviour, IAttack
     }
     public void Attack(Vector3 targetPosition)
     {
-        if (Time.time - lastAttackTime >= attackCooldown)
-        {
-            AgentMeleeAttacking?.Invoke();
-            AgentAttack?.Invoke();
+       
             lastAttackTime = Time.time;
-        }
+        
     }
 }
