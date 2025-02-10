@@ -102,7 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09167437dab828469d13df3b5fa7784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scopePrefab: {fileID: 0}
+  displayUI: {fileID: 0}
+  active: 1
   weapon: {fileID: 0}
   pickupObjectPrefab: {fileID: 5607723459442197043}
   player: {fileID: 0}

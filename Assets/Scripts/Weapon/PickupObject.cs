@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PickupObject : MonoBehaviour
+public class PickupObject : IInteractable
 {
     ElementInfo m_element;
-    public GameObject scopePrefab; // Префаб для объекта Scope
     public GameObject weapon; // Ссылка на объект Weapon
     public PickupObject pickupObjectPrefab; // Префаб для объекта PickupObjectInfo
     public Transform player; // Ссылка на игрока для позиционирования
@@ -19,10 +18,6 @@ public class PickupObject : MonoBehaviour
     {
         m_element.GetInfo(info.elementDB);
         //m_element.elementDB
-    }
-    public void Interact()
-    {
-        
     }
     public void Pickup()
     {
@@ -53,23 +48,28 @@ public class PickupObject : MonoBehaviour
                     Destroy(gameObject);
     }
 
-    void Update()
+    public override void Interact()
     {
-        // Проверяем, была ли нажата левая кнопка мыши
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Создаем луч из камеры
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            // Проверяем, попал ли луч на объект PickupObject
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.gameObject == gameObject)
-                {
-                    Pickup();
-                }
-            }
-        }
+        Pickup();
     }
+
+    // void Update()
+    // {
+    //     // Проверяем, была ли нажата левая кнопка мыши
+    //     if (Input.GetMouseButtonDown(0))
+    //     {
+    //         // Создаем луч из камеры
+    //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //         RaycastHit hit;
+
+    //         // Проверяем, попал ли луч на объект PickupObject
+    //         if (Physics.Raycast(ray, out hit))
+    //         {
+    //             if (hit.collider.gameObject == gameObject)
+    //             {
+    //                 Pickup();
+    //             }
+    //         }
+    //     }
+    // }
 }
