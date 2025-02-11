@@ -7,20 +7,23 @@ using UnityEngine;
 
 public class InteractableObjectDetector : MonoBehaviour
 {
-    private List<IInteractable> m_interactableObjects;
+    private List<IInteractable> m_interactableObjects = new List<IInteractable>();
 
     private IInteractable m_closestInteractable;
 
     private Coroutine m_cycleCoroutine;
 
-    private void OnDisable()
+    private void Awake()
     {
         m_cycleCoroutine = StartCoroutine(DetectionCycle());
     }
 
-    private void OnEnable()
+    private void OnDisable()
     {
-        StopCoroutine(m_cycleCoroutine);
+        if (m_cycleCoroutine != null)
+        {
+            StopCoroutine(m_cycleCoroutine);
+        }
     }
 
     private IEnumerator DetectionCycle()
@@ -30,7 +33,7 @@ public class InteractableObjectDetector : MonoBehaviour
             if(m_interactableObjects.Count > 0)
             {
                 IInteractable newClosestInteractable = m_interactableObjects[0];
-                float minDistance = Vector3.Distance(transform.position, m_interactableObjects[0].gameObject.transform.position); ;
+                float minDistance = Vector3.Distance(transform.position, m_interactableObjects[0].gameObject.transform.position);
                 for (int i = 1; i < m_interactableObjects.Count; i++)
                 {
                     float curDistance = Vector3.Distance(transform.position, m_interactableObjects[i].gameObject.transform.position);
@@ -42,18 +45,45 @@ public class InteractableObjectDetector : MonoBehaviour
                 }
                 if (m_closestInteractable != newClosestInteractable)
                 {
-                    m_closestInteractable.SetInteractableState(false);
+                    if (m_closestInteractable != null)
+                    {
+                        m_closestInteractable.SetInteractableState(false);
+                    }
                     m_closestInteractable = newClosestInteractable;
                     m_closestInteractable.SetInteractableState(true);
+                }
+                if (m_closestInteractable != null)
+                {
+                    Debug.Log($"Closest object: {m_closestInteractable.name}");
                 }
             }
             yield return new WaitForSeconds(1);
         }
     }
 
+    private void onInteractableDestroy()
+    {
+
+    }
+
     public void UseObject()
     {
-        m_closestInteractable.Interact();
+        if (m_closestInteractable != null)
+        {
+            m_closestInteractable.Interact();
+        }
+        else
+        {
+            Debug.Log("No item to interact");
+        }
+    }
+    private void OnInteractableDestroy(IInteractable interactable)
+    {
+        if(m_closestInteractable == interactable)
+        {
+            m_closestInteractable = null;
+        }
+        m_interactableObjects.Remove(interactable);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,6 +92,8 @@ public class InteractableObjectDetector : MonoBehaviour
         if(other.gameObject.TryGetComponent<IInteractable>(out newObject))
         {
             m_interactableObjects.Add(newObject);
+            newObject.onDestroy += OnInteractableDestroy;
+            Debug.Log($"Added to interactable: {newObject.name}");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -71,6 +103,8 @@ public class InteractableObjectDetector : MonoBehaviour
         {
             m_interactableObjects.Remove(otherObject);
             otherObject.SetInteractableState(false);
+            otherObject.onDestroy -= OnInteractableDestroy;
+            Debug.Log($"Removed to interactable: {otherObject.name}");
         }
     }
 }

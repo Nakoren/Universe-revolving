@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
     {
         if (ammo != lego.magazine.cage && (m_state == State.Fire || m_state == State.Idle))
         {
-            Debug.Log($"перезарядка");
+            //Debug.Log($"перезарядка");
             m_state = State.Reload;
             StartCoroutine(ReloadDelay());
             onReloadStart?.Invoke();
@@ -118,11 +118,11 @@ public class Weapon : MonoBehaviour
         {
         ammo = ammo - 1;
         onShoot?.Invoke();
-        Debug.Log($"ammo - {ammo}");
+        //Debug.Log($"ammo - {ammo}");
         }
         else
         {
-            Debug.Log($"ammo - pusto {ammo}");
+            //Debug.Log($"ammo - pusto {ammo}");
         }
     }
 

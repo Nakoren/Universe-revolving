@@ -41,15 +41,15 @@ public class WeaponLego : MonoBehaviour
         // Проверяем, были ли найдены компоненты
         if (m_Elements.Count > 0)
         {
-            Debug.Log("Найдено " + m_Elements.Count + " компонентов ElementInfo.");
+            //Debug.Log("Найдено " + m_Elements.Count + " компонентов ElementInfo.");
             foreach (var element in m_Elements)
             {
-                Debug.Log("ElementInfo: " + element.name);
+                //Debug.Log("ElementInfo: " + element.name);
             }
         }
         else
         {
-            Debug.LogWarning("Компоненты ElementInfo не найдены в дочерних объектах.");
+            //Debug.LogWarning("Компоненты ElementInfo не найдены в дочерних объектах.");
         }
         LegoSort();
         totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;

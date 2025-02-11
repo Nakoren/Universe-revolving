@@ -8,15 +8,14 @@ public class RoomController : MonoBehaviour
 {
     [SerializeField] public Transform startPosition;
 
-    [SerializeField] GameObject[] activeTransitions;
-    [SerializeField] GameObject[] inActiveTransitions;
+    [SerializeField] Transitor[] activeTransitions;
     [SerializeField] GameObject[] closeTransitions;
 
     [SerializeField] List<RoomReward> possibleRewards;
 
     public Action<int> onRoomChange;
     private int connectionsCount;
-    private bool instantCompletion = true;
+    protected bool instantCompletion = true;
 
     private Room[] connectedRooms;
     private void Awake()
@@ -31,8 +30,7 @@ public class RoomController : MonoBehaviour
             Transitor curTransitor = activeTransitions[i].GetComponent<Transitor>();
             curTransitor.Initiate(connectedRoomsList[i], i);
             curTransitor.onActivate += OnRoomChange;
-
-            inActiveTransitions[i].SetActive(true);
+            curTransitor.gameObject.SetActive(true);
         }
         for (int i = connectionsCount; i < closeTransitions.Length; i++)
         {
@@ -49,8 +47,7 @@ public class RoomController : MonoBehaviour
         for (int i = 0; i < connectionsCount; ++i)
         {
             //Тут нужно сделать более сложную логику открытия и закрытию проходов
-            activeTransitions[i].SetActive(false);
-            inActiveTransitions[i].SetActive(true);
+            activeTransitions[i].Enable();
         }
 
         if(possibleRewards.Count > 0)

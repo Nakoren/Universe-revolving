@@ -5,13 +5,11 @@ using UnityEngine;
 public class BattleRoomController : RoomController
 {
     [SerializeField] List<List<Enemy>> enemyList;
-
-
-    private bool instantCompletion = false;
     private int currentWave;
 
     private void Awake()
     {
+        instantCompletion = false;
         for (int i = 0; i < enemyList.Count; i++)
         {
             for(int j = 0; j < enemyList[i].Count; j++)
