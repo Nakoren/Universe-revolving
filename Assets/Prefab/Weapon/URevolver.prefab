@@ -308,7 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_muzzle: {fileID: 4621229255113339359}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: -7599856397798264514, guid: 060d47c2a2f3947479bd377c8213cf8e, type: 3}
+  baseDamage: 20
 --- !u!114 &3958653708621995820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0820a7b624f587349aacf83bcf058db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basis: []
   scope: {fileID: 0}
   magazine: {fileID: 0}
   receiver: {fileID: 0}

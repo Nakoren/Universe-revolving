@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     private Coroutine m_fireCoroutine;
     private int ammo;
     private WeaponLego lego;
+    public int baseDamage = 20;
 
     public Action onShoot;
     public Action onReloadStart;
@@ -29,6 +30,10 @@ public class Weapon : MonoBehaviour
     public void GetElements()
     {
         lego.GetElements();
+    }
+    public void GoBase()
+    {
+        lego.GoBase();
     }
 
     public void Reload()
@@ -130,6 +135,7 @@ public class Weapon : MonoBehaviour
         if (projectileScript != null)
         {
             projectileScript.maxDistance = lego.scope.range;
+            projectileScript.damage = baseDamage; 
         }
         
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
