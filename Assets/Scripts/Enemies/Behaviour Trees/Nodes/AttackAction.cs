@@ -8,15 +8,15 @@ using Unity.Properties;
 [NodeDescription(name: "AttackAction", story: "[Agent] attacks [Target]", category: "Action", id: "cf055bbe845bc65ff969d3f7282f4040")]
 public partial class AttackAction : Action
 {
-    [SerializeReference] public BlackboardVariable<GameObject> Agent;
-    [SerializeReference] public BlackboardVariable<Transform> Target;
+    [SerializeReference] public BlackboardVariable<GameObject> agent;
+    [SerializeReference] public BlackboardVariable<Transform> target;
 
     private Enemy m_enemy;
     protected override Status OnStart()
     {
-        if (Agent?.Value != null)
+        if (agent?.Value != null)
         {
-            m_enemy = Agent.Value.GetComponent<Enemy>();
+            m_enemy = agent.Value.GetComponent<Enemy>();
         }
 
         if (m_enemy == null)
@@ -30,7 +30,11 @@ public partial class AttackAction : Action
 
     protected override Status OnUpdate()
     {
-        Vector3 targetPosition = Target.Value.transform.position;
+        if (target == null)
+        {
+            return Status.Success;
+        }
+        Vector3 targetPosition = target.Value.transform.position;
 
         if (m_enemy == null)
         {

@@ -14,12 +14,12 @@ public class HP_Recover_Effect : MonoBehaviour
 
     private void OnEnable()
     {
-        m_health.AgentRestoreHealth+=OnHP_ParticleSystem;
+        m_health.onAgentRestoreHealth+=OnHP_ParticleSystem;
     }
 
       private void OnDisable()
     {
-        m_health.AgentRestoreHealth -= OnHP_ParticleSystem;
+        m_health.onAgentRestoreHealth -= OnHP_ParticleSystem;
     }
 
     private void OnHP_ParticleSystem()

@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public Action<Enemy> onEnemyDeath;
     public Action<Enemy> onEnemyAttack;
     public Action<Enemy> onEnemyMove;
+
+    private bool m_dead;
     
     private BehaviorGraphAgent m_graphAgent;
     [SerializeField] private Transform target;
@@ -43,7 +45,8 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        if(onEnemyDeath!=null)
+        m_graphAgent.End();
+        if (onEnemyDeath!=null)
         {
             onEnemyDeath?.Invoke(this);
         }
