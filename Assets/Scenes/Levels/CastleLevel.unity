@@ -742,6 +742,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2885317082886184923, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -758,9 +762,14 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: -7599856397798264514, guid: 454d2a23f782445488117b485daeb9c2, type: 3}
+    - target: {fileID: 8920161537429324502, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4031936571382020544, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8920161537429324502, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 279938505945524200, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       insertIndex: -1

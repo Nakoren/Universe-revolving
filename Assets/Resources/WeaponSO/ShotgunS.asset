@@ -16,7 +16,7 @@ MonoBehaviour:
   <ename>k__BackingField: "\u041A\u043E\u0440\u043D\u0435\u043F\u043B\u043E\u0434"
   <type>k__BackingField: scope
   <rare>k__BackingField: 2
-  <model>k__BackingField: {fileID: 8734610147257120204, guid: 1cd66fa1ee052c242918d61db03c9b28, type: 3}
+  <model>k__BackingField: {fileID: 0}
   <damageRate>k__BackingField: 1
   <spread>k__BackingField: 3
   <range>k__BackingField: 10
