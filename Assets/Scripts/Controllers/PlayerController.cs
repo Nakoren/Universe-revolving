@@ -75,13 +75,16 @@ public class PlayerController : MonoBehaviour
         m_fireAction.started += OnFireStarted;
         m_fireAction.canceled += OnFireEnded;
 
+        m_useAction.Enable();
         m_useAction.started += OnUse;
+        
         m_switchInventory.Enable();
         m_switchInventory.started += OnInventoryToogle;
         m_switchPause.Enable();
         m_switchPause.started += OnPauseToogle;
         m_switchMap.Enable();
         m_switchMap.started += OnMapToogle;
+
     }
 
 
@@ -98,9 +101,8 @@ public class PlayerController : MonoBehaviour
         Vector3 position;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
-
-
-        if (terrainCollider.Raycast(ray, out rayHit, 1000))
+        LayerMask pointerRaycastMask = LayerMask.GetMask("Pointer Raycast");
+        if (Physics.Raycast(ray, out rayHit, 1000, pointerRaycastMask))
         {
             position = rayHit.point;
             player.RotateTo(position);
@@ -159,6 +161,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnUse(InputAction.CallbackContext context)
     {
+        Debug.Log("Using objecct");
         interactableObjectDetector.UseObject();
     }
 

@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  weapon: {fileID: 0}
 --- !u!1 &2368856702019717966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,6 +1049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6dfd04500dd48f68e4fb7830107b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   hpStat: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!1 &3246563921520081679
@@ -3177,7 +3179,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeHitBox
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8386314960612723209, guid: 66828f2100d3d7d4c949e20cc16d41c4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3270,7 +3273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_muzzle: {fileID: 6222069900468114102}
-  weaponDataSO: {fileID: 11400000, guid: 065c48e0dba8a5d4cbffd12f6b3474e2, type: 2}
+  bulletPrefab: {fileID: 0}
 --- !u!4 &4856042379535087275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6133054758288577986, guid: 281a22f7c5121114a8fb694c0fbb7143, type: 3}
@@ -3447,4 +3450,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_muzzle: {fileID: 2303400493287736476}
-  weaponDataSO: {fileID: 11400000, guid: 37bb33bf9e492d449b36a41b6d9c506f, type: 2}
+  bulletPrefab: {fileID: 0}

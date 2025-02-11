@@ -15,7 +15,7 @@ public class RoomController : MonoBehaviour
 
     public Action<int> onRoomChange;
     private int connectionsCount;
-    private bool instantCompletion = true;
+    protected bool instantCompletion = true;
 
     private Room[] connectedRooms;
     private void Awake()

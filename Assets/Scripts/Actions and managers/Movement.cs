@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
     public void WarpTo(Vector3 position)
     {
         transform.position = position;
-        Debug.Log($"{gameObject.name}'s new position {gameObject.transform.position}");
+        //Debug.Log($"{gameObject.name}'s new position {gameObject.transform.position}");
     }
 
 }
