@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
     private PlayerState m_state = PlayerState.Base;
+    public Action onDash;
     public Action onPlayerDeath;
 
     private Vector3 m_position = new Vector3();
@@ -102,6 +103,10 @@ public class Player : MonoBehaviour
                     return;
                 }
                 dashDir.y = 0;
+                if (onDash != null)
+                {
+                    onDash.Invoke();
+                }
                 m_dash.StartDash(dashDir.normalized);
             }
         }
