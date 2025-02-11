@@ -7,12 +7,17 @@ public class PickupObject : IInteractable
     ElementInfo m_element;
     private Weapon m_weapon; // Ссылка на объект Weapon
     public PickupObject pickupObjectPrefab; // Префаб для объекта PickupObjectInfo
-    private Player m_player; // Ссылка на игрока для позиционирования
+    private Player m_player;
+    public Player Player {set{m_player = value;}} // Ссылка на игрока для позиционирования
     private List<ElementInfo> m_existingElement = new List<ElementInfo>();
 
     public void Awake()
     {
         m_element = GetComponentInChildren<ElementInfo>();
+        // if (m_player != null)
+        // {
+        //     m_weapon = m_player.GetComponentInChildren<Weapon>();
+        // }
     }
     public void GetPlayer(Player player)
     {
@@ -27,7 +32,8 @@ public class PickupObject : IInteractable
     public void Pickup()
     {
         // Проверяем, есть ли уже дочерний объект с компонентом ScopeElement
-        m_existingElement.AddRange(m_weapon.GetComponentsInChildren<ElementInfo>());
+        ElementInfo[] elementList = m_weapon.GetComponentsInChildren<ElementInfo>();
+        m_existingElement.AddRange(elementList);
         
             if (m_existingElement != null)
             {
@@ -37,6 +43,7 @@ public class PickupObject : IInteractable
                     {
                         // Создаем новый объект PickupObjectInfo рядом с игроком
                         PickupObject pickupObject_new = Instantiate(pickupObjectPrefab, m_player.transform.position + Vector3.forward, Quaternion.identity);
+                        pickupObject_new.GetPlayer(m_player);
                         pickupObject_new.GetInfo(m_existingElement[i]);
 
                         // Удаляем старый объект
