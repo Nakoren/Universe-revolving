@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7b1393243604b259f2168964ff6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentMeleeAttack: {fileID: 1762249570}
+  enemy: {fileID: 1762249576}
   damage: 10
 --- !u!135 &86873194
 SphereCollider:
@@ -1994,11 +1994,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda334a135a9745248b743b6f688be6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  health: {fileID: 0}
+  animator: {fileID: 297016938}
+  health: {fileID: 1645671884}
   agentMovement: {fileID: 888485802}
-  agentMeleeAttack: {fileID: 888485801}
-  agentRangedAttack: {fileID: 0}
+  enemy: {fileID: 888485806}
   agentDeath: {fileID: 888485800}
 --- !u!95 &297016938
 Animator:
@@ -2037,6 +2036,7 @@ GameObject:
   - component: {fileID: 304264448}
   - component: {fileID: 304264445}
   - component: {fileID: 304264446}
+  - component: {fileID: 304264451}
   m_Layer: 0
   m_Name: Melee Enemy_Golem (2)
   m_TagString: Untagged
@@ -2087,7 +2087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcc215b1fcde4ad3a6c2bce6c41b6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2.5
 --- !u!114 &304264447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,6 +2129,7 @@ MonoBehaviour:
   - rid: 4520951652422779091
   - rid: 4520951652422779092
   - rid: 4520951652422779095
+  - rid: 8536445789583966580
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -2159,6 +2159,14 @@ MonoBehaviour:
           m_Value1: 1921367343828126426
         Name: Health
         m_Value: {fileID: 1900128312}
+    - rid: 8536445789583966580
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17739772196286405124
+          m_Value1: 12994075563931352088
+        Name: Cooldown
+        m_Value: 3
 --- !u!195 &304264450
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2181,6 +2189,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &304264451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304264443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4404551554b8e414a88b717fa0e845ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1433010379}
 --- !u!1001 &326534178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3651,11 +3672,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda334a135a9745248b743b6f688be6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  health: {fileID: 0}
+  animator: {fileID: 577485673}
+  health: {fileID: 886319914}
   agentMovement: {fileID: 1771417359}
-  agentMeleeAttack: {fileID: 1771417358}
-  agentRangedAttack: {fileID: 0}
+  enemy: {fileID: 1771417363}
   agentDeath: {fileID: 1771417357}
 --- !u!95 &577485673
 Animator:
@@ -4084,11 +4104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda334a135a9745248b743b6f688be6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  health: {fileID: 0}
+  animator: {fileID: 621555623}
+  health: {fileID: 1057019819}
   agentMovement: {fileID: 1762249571}
-  agentMeleeAttack: {fileID: 1762249570}
-  agentRangedAttack: {fileID: 0}
+  enemy: {fileID: 1762249576}
   agentDeath: {fileID: 1762249569}
 --- !u!95 &621555623
 Animator:
@@ -4759,7 +4778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7b1393243604b259f2168964ff6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentMeleeAttack: {fileID: 888485801}
+  enemy: {fileID: 888485806}
   damage: 10
 --- !u!135 &682795372
 SphereCollider:
@@ -5070,11 +5089,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda334a135a9745248b743b6f688be6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  health: {fileID: 0}
+  animator: {fileID: 707948653}
+  health: {fileID: 1900128312}
   agentMovement: {fileID: 304264447}
-  agentMeleeAttack: {fileID: 304264446}
-  agentRangedAttack: {fileID: 0}
+  enemy: {fileID: 304264451}
   agentDeath: {fileID: 304264445}
 --- !u!95 &707948653
 Animator:
@@ -5835,7 +5853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoText: {fileID: 1405341918}
-  m_weaponManager: {fileID: 1433010380}
+  m_currentWeapon: {fileID: 0}
 --- !u!1 &775276737
 GameObject:
   m_ObjectHideFlags: 0
@@ -6695,6 +6713,7 @@ GameObject:
   - component: {fileID: 888485803}
   - component: {fileID: 888485800}
   - component: {fileID: 888485801}
+  - component: {fileID: 888485806}
   m_Layer: 0
   m_Name: Melee Enemy_Golem
   m_TagString: Untagged
@@ -6745,7 +6764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcc215b1fcde4ad3a6c2bce6c41b6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2.5
 --- !u!114 &888485802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6788,6 +6806,7 @@ MonoBehaviour:
   - rid: 4520951652422779091
   - rid: 4520951652422779092
   - rid: 4520951652422779095
+  - rid: 8536445789583966579
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -6817,6 +6836,14 @@ MonoBehaviour:
           m_Value1: 1921367343828126426
         Name: Health
         m_Value: {fileID: 1645671884}
+    - rid: 8536445789583966579
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17739772196286405124
+          m_Value1: 12994075563931352088
+        Name: Cooldown
+        m_Value: 3
 --- !u!195 &888485805
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6839,6 +6866,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &888485806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888485798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4404551554b8e414a88b717fa0e845ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1433010379}
 --- !u!1 &892520986
 GameObject:
   m_ObjectHideFlags: 0
@@ -9597,7 +9637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7b1393243604b259f2168964ff6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentMeleeAttack: {fileID: 304264446}
+  enemy: {fileID: 304264451}
   damage: 10
 --- !u!135 &1169266864
 SphereCollider:
@@ -11685,6 +11725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4031936571382020544, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: -7599856397798264514, guid: 060d47c2a2f3947479bd377c8213cf8e, type: 3}
     - target: {fileID: 4679596481054038145, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: playerController
       value: 
@@ -11695,6 +11739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3079919412035575793, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+    - {fileID: 5709985609416319543, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -11707,17 +11752,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 279938505945524200, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
   m_PrefabInstance: {fileID: 1433010378}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1433010380 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 844666816938049484, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
-  m_PrefabInstance: {fileID: 1433010378}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7a51aafcbb86d47a5b1b9adcbd101d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1433010381 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1940350836516327196, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
@@ -13180,7 +13214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7b1393243604b259f2168964ff6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentMeleeAttack: {fileID: 1771417358}
+  enemy: {fileID: 1771417363}
   damage: 10
 --- !u!135 &1597897238
 SphereCollider:
@@ -14511,6 +14545,8 @@ GameObject:
   - component: {fileID: 1762249572}
   - component: {fileID: 1762249569}
   - component: {fileID: 1762249570}
+  - component: {fileID: 1762249576}
+  - component: {fileID: 1762249575}
   m_Layer: 0
   m_Name: Melee Enemy_Golem (3)
   m_TagString: Untagged
@@ -14561,7 +14597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcc215b1fcde4ad3a6c2bce6c41b6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2.5
 --- !u!114 &1762249571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14604,6 +14639,7 @@ MonoBehaviour:
   - rid: 4520951652422779091
   - rid: 4520951652422779092
   - rid: 4520951652422779095
+  - rid: 8536445789583966581
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -14633,6 +14669,14 @@ MonoBehaviour:
           m_Value1: 1921367343828126426
         Name: Health
         m_Value: {fileID: 1057019819}
+    - rid: 8536445789583966581
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17739772196286405124
+          m_Value1: 12994075563931352088
+        Name: Cooldown
+        m_Value: 3
 --- !u!195 &1762249574
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14655,6 +14699,32 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1762249575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762249567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4404551554b8e414a88b717fa0e845ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1433010379}
+--- !u!114 &1762249576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762249567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4404551554b8e414a88b717fa0e845ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1433010379}
 --- !u!1 &1771417355
 GameObject:
   m_ObjectHideFlags: 0
@@ -14670,6 +14740,7 @@ GameObject:
   - component: {fileID: 1771417360}
   - component: {fileID: 1771417357}
   - component: {fileID: 1771417358}
+  - component: {fileID: 1771417363}
   m_Layer: 0
   m_Name: Melee Enemy_Golem (1)
   m_TagString: Untagged
@@ -14720,7 +14791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcc215b1fcde4ad3a6c2bce6c41b6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2.5
 --- !u!114 &1771417359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14763,6 +14833,7 @@ MonoBehaviour:
   - rid: 4520951652422779091
   - rid: 4520951652422779092
   - rid: 4520951652422779095
+  - rid: 8536445789583966582
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -14792,6 +14863,14 @@ MonoBehaviour:
           m_Value1: 1921367343828126426
         Name: Health
         m_Value: {fileID: 886319914}
+    - rid: 8536445789583966582
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17739772196286405124
+          m_Value1: 12994075563931352088
+        Name: Cooldown
+        m_Value: 3
 --- !u!195 &1771417362
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14814,6 +14893,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1771417363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771417355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4404551554b8e414a88b717fa0e845ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1433010379}
 --- !u!1 &1775964870
 GameObject:
   m_ObjectHideFlags: 0
@@ -17489,6 +17581,9 @@ MonoBehaviour:
   cam: {fileID: 1921951620}
   target: {fileID: 1433010382}
   offset: {x: 8, y: 16, z: -8}
+  followCursor: 0
+  negativeFollowForce: 0
+  terrainCollider: {fileID: 0}
 --- !u!1 &2085631155
 GameObject:
   m_ObjectHideFlags: 0

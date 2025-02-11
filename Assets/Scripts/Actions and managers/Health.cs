@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [Header("Health settings")]
     [SerializeField] public float maxHealth = 100;
     public event Action AgentDamage;
+    public event Action AgentRestoreHealth;
 
     private float m_currentHealth;
     public Action onZeroHealth;
@@ -33,6 +34,7 @@ public class Health : MonoBehaviour
     public void RestoreHealth(float restore)
     {
         m_currentHealth += restore;
+        AgentRestoreHealth?.Invoke();
     }
     public void ReduceHealth(float damage)
     {

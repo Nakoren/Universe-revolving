@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
     public Action onPlayerDeath;
+    public event Action onPlayerFire;
 
     private Vector3 m_position = new Vector3();
     private Vector3 m_prevFramePosition = new Vector3();
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour
     public void StartFire() 
     {
         m_weaponManager.StartFire();
+        onPlayerFire?.Invoke();
     }
     public void StopFire()
     {

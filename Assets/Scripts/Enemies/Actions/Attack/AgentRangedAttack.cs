@@ -1,14 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using Unity.VisualScripting;
 
 public class AgentRangedAttack : MonoBehaviour, IAttack
 {
     protected float lastAttackTime;
     protected NavMeshAgent m_meshAgent;
-
-    [Header("Attack Settings")]
-    [SerializeField] private float attackCooldown = 2f;
 
 
     [Header("Projectile Settings")]
@@ -18,11 +16,10 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
     [Header("Shoot Settings")]
     [SerializeField] private float shootForce = 1f;
     [SerializeField] private float shootAngle;
-    
-    public event Action AgentRangedAttacking;
-    public event Action AgentAttack;
 
-     public  void Attack(Vector3 targetPosition)
+    public event Action AgentAttack; // надо убрать из интерфейса
+
+    public void Attack(Vector3 targetPosition)
     {
         targetPosition.y = spawnBullet.position.y;
 
@@ -32,30 +29,26 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
 
         if (angle <= shootAngle)
         {
-            if (Time.time - lastAttackTime >= attackCooldown)
+
+            GameObject currentBullet = Instantiate(projectilePrefab, spawnBullet.position, Quaternion.identity);
+            currentBullet.transform.forward = directionToTarget;
+
+            Rigidbody bulletRb = currentBullet.GetComponent<Rigidbody>();
+            if (bulletRb != null)
             {
-                GameObject currentBullet = Instantiate(projectilePrefab, spawnBullet.position, Quaternion.identity);
-                AgentRangedAttacking?.Invoke();
-                AgentAttack?.Invoke();
-
-                currentBullet.transform.forward = directionToTarget;
-
-                Rigidbody bulletRb = currentBullet.GetComponent<Rigidbody>();
-                if (bulletRb != null)
-                {
-                    bulletRb.AddForce(directionToTarget * shootForce, ForceMode.Impulse);
-                }
-                else
-                {
-                    Debug.LogError("Projectile prefab is missing a Rigidbody component!");
-                }
-                //Debug.Log($"Враг стреляет в направлении {targetPosition}");
-                lastAttackTime = Time.time;
+                bulletRb.AddForce(directionToTarget * shootForce, ForceMode.Impulse);
             }
+            else
+            {
+                Debug.LogError("Projectile prefab is missing a Rigidbody component!");
+            }
+            //Debug.Log($"Враг стреляет в направлении {targetPosition}");
+            lastAttackTime = Time.time;
+
         }
         else
         {
-           //Debug.Log($"Цель вне допустимого угла: {angle}° (максимально допустимый: {shootAngle}°)");
+            //Debug.Log($"Цель вне допустимого угла: {angle}° (максимально допустимый: {shootAngle}°)");
         }
     }
 }
