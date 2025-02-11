@@ -1,20 +1,47 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 public class BattleRoomController : RoomController
 {
-    [SerializeField] List<List<Enemy>> enemyList;
+    [System.Serializable]
+    public class SubList
+    {
+        public List<Enemy> waveEnemies = new List<Enemy>();
+    }
+
+    // использование
+    public List<SubList> enemies = new List<SubList>();
+
+    private List<List<Enemy>> enemyList;
     private int currentWave;
 
     private void Awake()
     {
-        instantCompletion = false;
-        for (int i = 0; i < enemyList.Count; i++)
+        enemyList = new List<List<Enemy>>();
+        for (int i = 0; i < enemies.Count; i++)
         {
-            for(int j = 0; j < enemyList[i].Count; j++)
+            enemyList.Add(new List<Enemy>());
+            for (int j = 0; j < enemies[i].waveEnemies.Count; j++)
             {
-                enemyList[i][j].onEnemyDeath += OnEnemyDeath;
+                enemyList[i].Add(enemies[i].waveEnemies[j]);
+            }
+        }
+        if (enemyList.Count == 0)
+        {
+            instantCompletion = true;
+        }
+        else
+        {
+            instantCompletion = false;
+
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                for (int j = 0; j < enemyList[i].Count; j++)
+                {
+                    enemyList[i][j].onEnemyDeath += OnEnemyDeath;
+                }
             }
         }
     }
