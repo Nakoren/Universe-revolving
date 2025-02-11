@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
         player.Move(move, cameraRotationV3);
         PlayerMove?.Invoke(move);
+        
     }
 
     private void OnSkill1(InputAction.CallbackContext context)
