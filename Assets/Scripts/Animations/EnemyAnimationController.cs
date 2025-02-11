@@ -21,7 +21,7 @@ public class EnemyAnimationController : MonoBehaviour
         agentDeath.AgentDie += StartDieAnimation;
         if (health)
         {
-            health.AgentDamage += OnDamageAnimation;
+            health.onAgentDamage += OnDamageAnimation;
         }
 
 
@@ -38,7 +38,7 @@ public class EnemyAnimationController : MonoBehaviour
         agentDeath.AgentDie -= StartDieAnimation;
         if (health)
         {
-            health.AgentDamage -= OnDamageAnimation;
+            health.onAgentDamage -= OnDamageAnimation;
         }
     }
 
