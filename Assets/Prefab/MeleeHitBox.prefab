@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452894302920014437}
-  - component: {fileID: 8386314960612723209}
   m_Layer: 0
   m_Name: MeleeHitBox
   m_TagString: Untagged
@@ -33,18 +32,6 @@ Transform:
   - {fileID: 1162517485777415245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8386314960612723209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5747170797704740772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012ef45d6750c5d41832c74bf9ab0ac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8367383892769171241
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +44,7 @@ GameObject:
   - component: {fileID: 8914387698774378897}
   - component: {fileID: 3429036991582761026}
   - component: {fileID: 1561116234773066324}
+  - component: {fileID: 5565435090357511830}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -153,3 +141,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5565435090357511830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367383892769171241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b07fa8f0141f4c378de038179c4b641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
