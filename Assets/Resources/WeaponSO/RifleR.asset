@@ -17,6 +17,7 @@ MonoBehaviour:
   <type>k__BackingField: receiver
   <rare>k__BackingField: 0
   <model>k__BackingField: {fileID: 0}
+  <damageRate>k__BackingField: 0.2
   <spread>k__BackingField: 0
   <range>k__BackingField: 0
   <cage>k__BackingField: 0

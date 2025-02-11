@@ -17,6 +17,7 @@ MonoBehaviour:
   <type>k__BackingField: magazine
   <rare>k__BackingField: 2
   <model>k__BackingField: {fileID: 8734610147257120204, guid: 1cd66fa1ee052c242918d61db03c9b28, type: 3}
+  <damageRate>k__BackingField: 1
   <spread>k__BackingField: 0
   <range>k__BackingField: 0
   <cage>k__BackingField: 8

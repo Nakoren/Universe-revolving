@@ -4,7 +4,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] public System.Action onDestroy;
-    [SerializeField] public int damage = 10;
+    [SerializeField] public float damage = 10;
     private Vector3 startPosition;
     private float traveledDistance;
     public float maxDistance = 1f;

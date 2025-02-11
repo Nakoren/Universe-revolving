@@ -14,6 +14,7 @@ public class WeaponLego : MonoBehaviour
     public ElementsDB scope;
     public ElementsDB magazine;
     public ElementsDB receiver;
+    public float totalDamage;
 
     public void Awake()
     {
@@ -30,7 +31,6 @@ public class WeaponLego : MonoBehaviour
             m_Elements[i].elementDB = basis[i];
         }
         GetElements();
-
     }
     public void GetElements()
     {
@@ -52,6 +52,8 @@ public class WeaponLego : MonoBehaviour
             Debug.LogWarning("Компоненты ElementInfo не найдены в дочерних объектах.");
         }
         LegoSort();
+        totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;
+
     }
 
     public void LegoSort()

@@ -1,21 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.Assertions.Comparers;
 
 public class Health : MonoBehaviour
 {
     [Header("Health settings")]
-    [SerializeField] public int maxHealth = 100;
+    [SerializeField] public float maxHealth = 100;
     public event Action AgentDamage;
 
-    private int m_currentHealth;
+    private float m_currentHealth;
     public Action onZeroHealth;
 
-    public int GetCurrentHealth()
+    public float GetCurrentHealth()
     {
         return m_currentHealth;
     }
 
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return maxHealth;
     }
@@ -29,11 +30,11 @@ public class Health : MonoBehaviour
     {
         m_currentHealth = maxHealth;
     }
-    public void RestoreHealth(int restore)
+    public void RestoreHealth(float restore)
     {
         m_currentHealth += restore;
     }
-    public void ReduceHealth(int damage)
+    public void ReduceHealth(float damage)
     {
         m_currentHealth -= damage;
         if (m_currentHealth>0)
