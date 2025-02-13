@@ -32,10 +32,11 @@ public class CameraController : MonoBehaviour
     private Vector3 GetCameraOffsetToCursor()
     {
         Vector3 rayCastPoint;
+        LayerMask pointerRaycastMask = LayerMask.GetMask("Pointer Raycast");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
 
-        if (terrainCollider.Raycast(ray, out rayHit, 1000))
+        if (Physics.Raycast(ray, out rayHit, 1000, pointerRaycastMask))
         {
             rayCastPoint = rayHit.point;
             rayCastPoint.y = 0;

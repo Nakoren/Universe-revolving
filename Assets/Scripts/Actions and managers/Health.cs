@@ -1,27 +1,29 @@
 using System;
 using UnityEngine;
+using UnityEngine.Assertions.Comparers;
 
 public class Health : MonoBehaviour
 {
     [Header("Health settings")]
-    [SerializeField] public int maxHealth = 100;
-    public event Action AgentDamage;
-    public event Action AgentRestoreHealth;
+    [SerializeField] public float maxHealth = 100;
+    public event Action onAgentDamage;
+    public event Action onAgentRestoreHealth;
 
-    private int m_currentHealth;
+    private float m_currentHealth;
     public Action onZeroHealth;
 
-    public int GetCurrentHealth()
+    public float GetCurrentHealth()
     {
-        return m_currentHealth;
+        float test = m_currentHealth;
+        return test;
     }
 
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return maxHealth;
     }
 
-    private void Start()
+    private void Awake()
     {
         m_currentHealth = maxHealth;
     }
@@ -29,18 +31,25 @@ public class Health : MonoBehaviour
     public void RestoreFullHealth()
     {
         m_currentHealth = maxHealth;
+        if (onAgentRestoreHealth != null)
+        {
+            onAgentRestoreHealth.Invoke();
+        }
     }
-    public void RestoreHealth(int restore)
+    public void RestoreHealth(float restore)
     {
         m_currentHealth += restore;
-        AgentRestoreHealth?.Invoke();
+        if (onAgentRestoreHealth != null)
+        {
+            onAgentRestoreHealth.Invoke();
+        }
     }
-    public void ReduceHealth(int damage)
+    public void ReduceHealth(float damage)
     {
         m_currentHealth -= damage;
         if (m_currentHealth>0)
         {
-            AgentDamage?.Invoke();
+            onAgentDamage?.Invoke();
         }
         Debug.Log($"Health reduced by {damage}. Current health: {m_currentHealth}");
         if(m_currentHealth <= 0)

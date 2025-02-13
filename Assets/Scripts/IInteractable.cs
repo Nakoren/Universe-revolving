@@ -5,10 +5,19 @@ public abstract class IInteractable: MonoBehaviour
 {
     [SerializeField] GameObject displayUI;
 
-    public Action OnInteract;
+    public Action onInteract;
+    public Action<IInteractable> onDestroy;
     public bool active;
     
     abstract public void Interact();
+
+    private void OnDestroy()
+    {
+        if (onDestroy != null)
+        {
+            onDestroy.Invoke(this);
+        }
+    }
 
     public void SetInteractableState(bool newState) {
         if (displayUI != null)

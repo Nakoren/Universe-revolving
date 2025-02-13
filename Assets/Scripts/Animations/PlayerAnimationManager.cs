@@ -10,16 +10,16 @@ public class PlayerAnimationManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerController.PlayerMove += UpdateMovementAnimation;
-        playerController.PlayerDash += OnDashAnimation;
+        playerController.onPlayerMove += UpdateMovementAnimation;
+        playerController.onPlayerDash += OnDashAnimation;
         //playerController.PlayerReload+=OnReloadAnimation;
         weapon.onReloadStart+=OnReloadAnimation;
     }
 
     private void OnDisable()
     {
-        playerController.PlayerMove -= UpdateMovementAnimation;
-        playerController.PlayerDash -= OnDashAnimation;
+        playerController.onPlayerMove -= UpdateMovementAnimation;
+        playerController.onPlayerDash -= OnDashAnimation;
         //playerController.PlayerReload-=OnReloadAnimation;
         weapon.onReloadStart-=OnReloadAnimation;
     }

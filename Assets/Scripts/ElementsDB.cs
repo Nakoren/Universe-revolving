@@ -9,6 +9,7 @@ public class ElementsDB : ScriptableObject
     [field: SerializeField] public string type { private set; get; }
     [field: SerializeField] public int rare { private set; get; }
     [field: SerializeField] public GameObject model { private set; get; }
+    [field: SerializeField] public float damageRate { private set; get; }
 
     [Header("if scope")]
     [field: SerializeField] public float spread { private set; get; }

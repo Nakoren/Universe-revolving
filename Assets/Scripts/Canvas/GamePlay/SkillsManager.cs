@@ -26,14 +26,14 @@ public class SkillsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerController.ActoinOnSkill1Player += StartSkill1Cooldown;
-        playerController.ActoinOnSkill2Player += StartSkill2Cooldown;
+        playerController.onSkill1Player += StartSkill1Cooldown;
+        playerController.onSkill2Player += StartSkill2Cooldown;
     }
 
     private void OnDisable()
     {
-        playerController.ActoinOnSkill1Player -= StartSkill1Cooldown;
-        playerController.ActoinOnSkill2Player -= StartSkill2Cooldown;
+        playerController.onSkill1Player -= StartSkill1Cooldown;
+        playerController.onSkill2Player -= StartSkill2Cooldown;
     }
 
 

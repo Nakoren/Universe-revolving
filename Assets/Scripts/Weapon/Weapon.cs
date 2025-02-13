@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour
     private Coroutine m_fireCoroutine;
     private int ammo;
     private WeaponLego lego;
+    public float Damage = 20;
+    
 
     public Action onShoot;
     public Action onReloadStart;
@@ -30,12 +32,16 @@ public class Weapon : MonoBehaviour
     {
         lego.GetElements();
     }
+    public void GoBase()
+    {
+        lego.GoBase();
+    }
 
     public void Reload()
     {
         if (ammo != lego.magazine.cage && (m_state == State.Fire || m_state == State.Idle))
         {
-            Debug.Log($"перезарядка");
+            //Debug.Log($"перезарядка");
             m_state = State.Reload;
             onReloadStart?.Invoke();
 
@@ -113,11 +119,11 @@ public class Weapon : MonoBehaviour
         {
         ammo = ammo - 1;
         onShoot?.Invoke();
-        Debug.Log($"ammo - {ammo}");
+        //Debug.Log($"ammo - {ammo}");
         }
         else
         {
-            Debug.Log($"ammo - pusto {ammo}");
+            //Debug.Log($"ammo - pusto {ammo}");
         }
     }
 
@@ -131,6 +137,7 @@ public class Weapon : MonoBehaviour
         if (projectileScript != null)
         {
             projectileScript.maxDistance = lego.scope.range;
+            projectileScript.damage = lego.totalDamage; 
         }
         
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
