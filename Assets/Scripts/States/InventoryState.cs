@@ -1,20 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class OpenMenuState : MonoBehaviour
+public class InventoryState : MonoBehaviour
 {
     [SerializeField] GamePlayState gameplayState;
-    [SerializeField] SettingsState settingsState;
+    [SerializeField] PlayerController playerController;
 
     [SerializeField] GameObject rootUI;
 
     private void OnEnable()
     {
         Time.timeScale=0f;
+
         if (rootUI != null)
         {
             rootUI.SetActive(true);
         }
+        playerController.onInventoryToogle += ToGamePlay;
     }
 
     private void OnDisable()
@@ -23,6 +24,7 @@ public class OpenMenuState : MonoBehaviour
         {
             rootUI.SetActive(false);
         }
+        playerController.onInventoryToogle -= ToGamePlay; 
     }
 
     public void ToGamePlay()
@@ -30,11 +32,8 @@ public class OpenMenuState : MonoBehaviour
         gameplayState.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
+   
 
-     public void ToSetings()
-    {
-        settingsState.previousState = this.gameObject;
-        settingsState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
+
+    
 }

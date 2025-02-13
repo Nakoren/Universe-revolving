@@ -10,21 +10,18 @@ public class WeaponCageManager : MonoBehaviour
 
     [SerializeField] private Weapon m_currentWeapon;
 
-    private void Awake()
+    private void Start()
     {
         RefreshBulletInfo(m_currentWeapon);
     }
-
     private void OnEnable()
     {
-
         if (m_currentWeapon)
         {
             m_currentWeapon.onShoot += OnChangeCage;
             m_currentWeapon.onReloadEnd += OnChangeCage;
 
         }
-
     }
 
     private void OnDisable()
@@ -47,7 +44,7 @@ public class WeaponCageManager : MonoBehaviour
         if (weapon)
         {
             ammoText.text = $"{weapon.Ammo}/{weapon.MaxAmmo}";
-        }  
+        }
     }
 
 }

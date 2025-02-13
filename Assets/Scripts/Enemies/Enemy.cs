@@ -53,8 +53,8 @@ public class Enemy : MonoBehaviour
     {
         if (m_attack != null)
         {
-            m_attack.Attack(target.position);
             onEnemyAttack?.Invoke(this);
+            m_attack.Attack(target.position);
         }
     }
 

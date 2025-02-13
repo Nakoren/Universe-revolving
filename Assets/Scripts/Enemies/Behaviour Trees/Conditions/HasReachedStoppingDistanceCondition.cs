@@ -8,6 +8,8 @@ using UnityEngine.AI;
 public partial class HasReachedStoppingDistanceCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
+    private bool initialize = true;
+
 
     public override bool IsTrue()
     {
@@ -25,10 +27,13 @@ public partial class HasReachedStoppingDistanceCondition : Condition
             return false;
         }
 
-        if (m_meshAgent.remainingDistance <= m_meshAgent.stoppingDistance /*&& !navMeshAgent.pathPending*/)
+        if (m_meshAgent.remainingDistance <= m_meshAgent.stoppingDistance/*&& !navMeshAgent.pathPending*/)
         {
-            Debug.Log("Agent has reached stopping distance.");
-            return true;
+            Debug.Log($"Agent has reached stopping distance. Velocity {m_meshAgent.velocity.magnitude}");
+        
+                return true;
+        
+
         }
         return false;
     }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class LevelEndState : MonoBehaviour
 {
-    [SerializeField] GameInstance gameInstance;
-
     [SerializeField] GameObject rootUI;
     private void OnEnable()
     {
@@ -21,6 +19,11 @@ public class LevelEndState : MonoBehaviour
         }
     }
     public void loadNextLevel()
+    {
+
+    }
+
+    public void toMenu()
     {
 
     }
