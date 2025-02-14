@@ -1120,6 +1120,10 @@ PrefabInstance:
       propertyPath: model
       value: 
       objectReference: {fileID: 2083171636190193102, guid: 8e31ad7ee0f32d243998499c6197069b, type: 3}
+    - target: {fileID: 4996361801687770811, guid: 534dadf7165a98a409ddd0cde804950f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5607723459442197043, guid: 534dadf7165a98a409ddd0cde804950f, type: 3}
       propertyPath: m_part
       value: 
@@ -1607,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 279938505945524200, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 279938505945524200, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: m_LocalPosition.z

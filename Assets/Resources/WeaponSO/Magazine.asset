@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e07d60c9d1f0fa4599c6e2fd6e5836a, type: 3}
   m_Name: Magazine
   m_EditorClassIdentifier: 
-  <type>k__BackingField: 222
-  <rare>k__BackingField: 0
+  type: 1
   <model>k__BackingField: {fileID: 0}
   <damageRate>k__BackingField: 1
   <cage>k__BackingField: 6

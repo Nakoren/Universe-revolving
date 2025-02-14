@@ -50,17 +50,18 @@ public class WeaponLego : MonoBehaviour
 
     public void Pickup(IPart part) 
     {  
-        if (part.type == 111)
+
+        if (part.type == IPart.Ptype.Scope)
         {
             Drop(scope);
             scope = (Scope)part;
         }
-        else if (part.type == 222)
+        else if (part.type == IPart.Ptype.Magazine)
         {
             Drop(magazine);
             magazine = (Magazine)part;
         }
-        else if (part.type == 333)
+        else if (part.type == IPart.Ptype.Receiver)
         {
             Drop(receiver);
             receiver = (Receiver)part;

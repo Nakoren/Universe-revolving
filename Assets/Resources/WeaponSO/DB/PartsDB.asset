@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PartsDB
   m_EditorClassIdentifier: 
   items:
-  - id: acf4faac-fb71-4ff8-81ca-7b4bb1116984
+  - id: 01
+    rare: 0
     name: 
     description: 
     icon: {fileID: 0}

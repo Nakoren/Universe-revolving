@@ -131,8 +131,16 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private IEnumerator MultyFier()
+    {
+        yield return new WaitForSeconds(0.1f);
+        m_state = State.Idle;
+    }
     public void ShootAction()
     {
+        for (int a = 1; a <= lego.receiver.times; a++)
+    {
+        MultyFier();
         for (int i = 1; i <= lego.receiver.volume; i++)
         {
         Projectile bullet = Instantiate(bulletPrefab, m_muzzle.position, m_muzzle.rotation);
@@ -152,5 +160,6 @@ public class Weapon : MonoBehaviour
             rb.AddForce(spreadDirection.normalized * lego.receiver.force, ForceMode.Impulse);
         }
         }
+    }
     }
 }
