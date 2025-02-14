@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [Serializable, Unity.Properties.GeneratePropertyBag]
-[Condition(name: "Has Reached Stopping Distance", story: "[Agent] has reached stopping distance", category: "Variable Conditions", id: "a465d96284c2cfb0cfcb41c37cfa892c")]
-public partial class HasReachedStoppingDistanceCondition : Condition
+[Condition(name: "Agent has reached Player", story: "[Agent] has reached [Player]", category: "Variable Conditions", id: "33037636835aff6251d22644ac3f992f")]
+public partial class AgentHasReachedPlayerCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<Transform> Player;
 
+    private float distance;
+    private Transform m_agentPosition;
+    private Transform m_playerPosition;
 
     public override bool IsTrue()
     {
@@ -20,21 +23,20 @@ public partial class HasReachedStoppingDistanceCondition : Condition
         }
 
         NavMeshAgent m_meshAgent = Agent.Value.GetComponent<NavMeshAgent>();
+        Transform m_agentPosition = Agent.Value.GetComponent<Transform>();
+        Transform m_playerPosition = Player.Value.GetComponent<Transform>();
+        distance = Vector3.Distance(m_agentPosition.position, m_playerPosition.position);
 
-        Transform m_agentPosition =Agent.Value.GetComponent<Transform>();
-        Transform m_playerPosition =Player.Value.GetComponent<Transform>();
-        float distance = Vector3.Distance(m_agentPosition.position, m_playerPosition.position);
 
         if (m_meshAgent == null)
         {
             Debug.LogWarning("NavMeshAgent component not found on the agent.");
             return false;
         }
-        
 
-        if (distance <= m_meshAgent.stoppingDistance/*&& !navMeshAgent.pathPending*/)
+
+        if (distance <= m_meshAgent.stoppingDistance)
         {
-            Debug.Log($"Agent has reached stopping distance. Velocity {m_meshAgent.velocity.magnitude}");
             return true;
         }
         return false;

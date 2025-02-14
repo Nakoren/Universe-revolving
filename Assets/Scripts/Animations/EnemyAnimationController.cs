@@ -23,9 +23,6 @@ public class EnemyAnimationController : MonoBehaviour
         {
             health.onAgentDamage += OnDamageAnimation;
         }
-
-
-
     }
 
 
