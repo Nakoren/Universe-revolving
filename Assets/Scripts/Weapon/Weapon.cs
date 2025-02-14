@@ -32,6 +32,10 @@ public class Weapon : MonoBehaviour
     {
         lego.GetElements();
     }
+    public void Pickup(ElementInfo elementInfo)
+    {
+        lego.Pickup(elementInfo);
+    }
     public void GoBase()
     {
         lego.GoBase();

@@ -1449,6 +1449,7 @@ GameObject:
   - component: {fileID: 2035493569581216982}
   - component: {fileID: 247993017207895113}
   - component: {fileID: 3539630933644789029}
+  - component: {fileID: -9156943106226197005}
   - component: {fileID: 1763547005522528658}
   m_Layer: 0
   m_Name: PlayerWithParticleSys
@@ -1579,6 +1580,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &-9156943106226197005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3730006450099853763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554d5ac3771e1fc4abc22ab58e8b1c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1763547005522528658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8143,9 +8156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0820a7b624f587349aacf83bcf058db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basis: []
   scope: {fileID: 0}
   magazine: {fileID: 0}
   receiver: {fileID: 0}
+  totalDamage: 0
 --- !u!114 &5026812157639575649 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2417462050323208873, guid: 281a22f7c5121114a8fb694c0fbb7143, type: 3}

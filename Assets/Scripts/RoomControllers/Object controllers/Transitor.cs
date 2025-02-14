@@ -23,7 +23,7 @@ public class Transitor : IInteractable
         doorController.OpenDoorsAnimation();
     }
 
-    override public void Interact()
+    override public void Interact(Player  player)
     {
         Activate();
     }

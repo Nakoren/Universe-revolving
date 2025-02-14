@@ -8,13 +8,13 @@ using UnityEngine;
 public class InteractableObjectDetector : MonoBehaviour
 {
     private List<IInteractable> m_interactableObjects = new List<IInteractable>();
-
     private IInteractable m_closestInteractable;
-
     private Coroutine m_cycleCoroutine;
+    private Player m_player;
 
     private void Awake()
     {
+        m_player = GetComponent<Player>();
         m_cycleCoroutine = StartCoroutine(DetectionCycle());
     }
 
@@ -70,7 +70,7 @@ public class InteractableObjectDetector : MonoBehaviour
     {
         if (m_closestInteractable != null)
         {
-            m_closestInteractable.Interact();
+            m_closestInteractable.Interact(m_player);
         }
         else
         {

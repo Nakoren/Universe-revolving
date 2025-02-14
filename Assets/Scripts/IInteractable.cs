@@ -9,7 +9,7 @@ public abstract class IInteractable: MonoBehaviour
     public Action<IInteractable> onDestroy;
     public bool active;
     
-    abstract public void Interact();
+    abstract public void Interact(Player player);
 
     private void OnDestroy()
     {

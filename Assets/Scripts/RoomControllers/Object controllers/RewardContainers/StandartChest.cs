@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class StandartChest : RewardContainer
 {
-    public override void Interact()
+    public override void Interact(Player player)
     {
         if (onOpen != null) onOpen.Invoke();
 
-        //Расширить механизм спавна дропа с сундука
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         int randItemIndex = Random.Range(0, rewardItem.Count);
         Instantiate(rewardItem[randItemIndex], this.transform);
 

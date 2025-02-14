@@ -23,9 +23,6 @@ public class WeaponLego : MonoBehaviour
 
     public void GoBase()
     {
-        // scope = base_scope;
-        // magazine = base_magazine;
-        // receiver = base_receiver;
         for (int i = 0; i < m_Elements.Count; i++)
         {
             m_Elements[i].elementDB = basis[i];
@@ -55,7 +52,36 @@ public class WeaponLego : MonoBehaviour
         totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;
 
     }
+    // public void Pickup(ElementInfo elementInfo)
+    // {  
+    //     // Проверяем, есть ли уже дочерний объект с компонентом ScopeElement
+    //     ElementInfo[] elementList = m_weapon.GetComponentsInChildren<ElementInfo>();
+    //     m_existingElement.AddRange(elementList);
+        
+    //         if (m_existingElement != null)
+    //         {
+    //             for ( int i = 0; i < m_existingElement.Count; i++ )
+    //             {
+    //                 if (m_existingElement[i].elementDB.type == m_element.elementDB.type)
+    //                 {
+    //                     // Создаем новый объект PickupObjectInfo рядом с игроком
+    //                     PickupObject pickupObject_new = Instantiate(pickupObjectPrefab, m_player.transform.position + Vector3.forward, Quaternion.identity);
+    //                     pickupObject_new.GetPlayer(m_player);
+    //                     pickupObject_new.GetInfo(m_existingElement[i]);
 
+    //                     // Удаляем старый объект
+    //                     Destroy(m_existingElement[i].gameObject);
+    //                 }
+    //             }
+    //         }
+    //                 // Создаем новый объект Scope как дочерний объект Weapon
+    //                 var new_element = Instantiate(m_element, m_weapon.transform);
+    //                 new_element.transform.localPosition = Vector3.zero; // Устанавливаем позицию объекта в (0, 0, 0) относительно Weapon
+    //                 Weapon weapo = m_weapon.GetComponentInChildren<Weapon>();
+    //                 weapo.GetElements();
+    //                 // Удаляем объект PickupObject
+    //                 Destroy(gameObject);
+    // }
     public void LegoSort()
     {
         for (int i = 0; i < m_Elements.Count; i++)
