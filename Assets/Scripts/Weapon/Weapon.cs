@@ -32,9 +32,9 @@ public class Weapon : MonoBehaviour
     {
         lego.GetElements();
     }
-    public void Pickup(ElementInfo elementInfo)
+    public void Pickup(IPart part)
     {
-        lego.Pickup(elementInfo);
+        lego.Pickup(part);
     }
     public void GoBase()
     {

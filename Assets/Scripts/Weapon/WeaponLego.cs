@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Android.Gradle.Manifest;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,9 +12,9 @@ public class WeaponLego : MonoBehaviour
     // public ElementsDB base_receiver;
     public List<ElementsDB> basis = new List<ElementsDB>();
     private List<ElementInfo> m_Elements = new List<ElementInfo>();
-    public ElementsDB scope;
-    public ElementsDB magazine;
-    public ElementsDB receiver;
+    public Scope scope;
+    public Magazine magazine;
+    public Receiver receiver;
     public float totalDamage;
 
     public void Awake()
@@ -52,36 +53,21 @@ public class WeaponLego : MonoBehaviour
         totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;
 
     }
-    // public void Pickup(ElementInfo elementInfo)
-    // {  
-    //     // Проверяем, есть ли уже дочерний объект с компонентом ScopeElement
-    //     ElementInfo[] elementList = m_weapon.GetComponentsInChildren<ElementInfo>();
-    //     m_existingElement.AddRange(elementList);
-        
-    //         if (m_existingElement != null)
-    //         {
-    //             for ( int i = 0; i < m_existingElement.Count; i++ )
-    //             {
-    //                 if (m_existingElement[i].elementDB.type == m_element.elementDB.type)
-    //                 {
-    //                     // Создаем новый объект PickupObjectInfo рядом с игроком
-    //                     PickupObject pickupObject_new = Instantiate(pickupObjectPrefab, m_player.transform.position + Vector3.forward, Quaternion.identity);
-    //                     pickupObject_new.GetPlayer(m_player);
-    //                     pickupObject_new.GetInfo(m_existingElement[i]);
-
-    //                     // Удаляем старый объект
-    //                     Destroy(m_existingElement[i].gameObject);
-    //                 }
-    //             }
-    //         }
-    //                 // Создаем новый объект Scope как дочерний объект Weapon
-    //                 var new_element = Instantiate(m_element, m_weapon.transform);
-    //                 new_element.transform.localPosition = Vector3.zero; // Устанавливаем позицию объекта в (0, 0, 0) относительно Weapon
-    //                 Weapon weapo = m_weapon.GetComponentInChildren<Weapon>();
-    //                 weapo.GetElements();
-    //                 // Удаляем объект PickupObject
-    //                 Destroy(gameObject);
-    // }
+    public void Pickup(IPart part)
+    {  
+        if (part.type == 1)
+            {
+                scope = m_Elements[i].elementDB;
+            }
+        else if (m_Elements[i].elementDB.type == "magazine")
+            {
+                magazine = m_Elements[i].elementDB;
+            }
+        else if (m_Elements[i].elementDB.type == "receiver")
+            {
+                receiver = m_Elements[i].elementDB;
+            }
+    }
     public void LegoSort()
     {
         for (int i = 0; i < m_Elements.Count; i++)
