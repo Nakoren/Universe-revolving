@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,13 +8,19 @@ public class GamePlayState : MonoBehaviour
     [SerializeField] OpenMenuState openMenuState;
     [SerializeField] LevelEndState levelEndState;
     [SerializeField] DeathState deathState;
-    [SerializeField] GameInstance gameInstance;
     [SerializeField] InputActionAsset inputActions;
+    [SerializeField] InventoryState inventoryState;
+
     [SerializeField] PlayerController playerController;
+    [SerializeField] Player player;
+
+    
 
     [SerializeField] GameObject rootUI;
     private void OnEnable()
     {
+        Time.timeScale=1f;
+
         if (inputActions != null)
         {
             inputActions.FindActionMap("Player").Enable();
@@ -22,8 +29,11 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(true);
         }
-        playerController.onMenuToogle += ToogleMenu;
+        playerController.onInventoryToogle += ToogleInventory;
+
         playerController.onPauseToogle += TooglePause;
+
+        player.onPlayerDeath += ToogleGameOver;
     }
 
     private void OnDisable()
@@ -36,8 +46,16 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(false);
         }
-        playerController.onMenuToogle -= ToogleMenu;
+        playerController.onInventoryToogle -= ToogleInventory;
         playerController.onPauseToogle -= TooglePause; 
+
+        player.onPlayerDeath -= ToogleGameOver;
+    }
+
+    private void ToogleGameOver()
+    {
+        deathState.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TooglePause()
@@ -48,6 +66,12 @@ public class GamePlayState : MonoBehaviour
     public void ToogleMenu()
     {
         openMenuState.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
+    }
+
+    public void ToogleInventory()
+    {
+        inventoryState.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
     public void EndLevel()

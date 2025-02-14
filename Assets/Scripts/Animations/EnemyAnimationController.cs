@@ -5,59 +5,43 @@ using UnityEngine;
 public class EnemyAnimationController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Animator animator; 
-    [SerializeField] private Health health; 
-    [SerializeField] private AgentMovement agentMovement; 
-    [SerializeField] private AgentMeleeAttack agentMeleeAttack; 
-    [SerializeField] private AgentRangedAttack agentRangedAttack; 
-    [SerializeField] private AgentDeath agentDeath; 
+    [SerializeField] private Animator animator;
+    [SerializeField] private Health health;
+    [SerializeField] private AgentMovement agentMovement;
+
+    [SerializeField] private Enemy enemy;
+    [SerializeField] private AgentDeath agentDeath;
 
 
     private void OnEnable()
     {
         agentMovement.AgentMove += UpdateMovementAnimation;
         agentMovement.AgentStop += StopMoveAnimation;
-        if(agentMeleeAttack)
-        {
-            agentMeleeAttack.AgentMeleeAttacking+=OnAttackAnimation;
-        }
-        if(agentRangedAttack)
-        {
-            agentRangedAttack.AgentRangedAttacking+=OnAttackAnimation;
-        }
+        enemy.onEnemyAttack += OnAttackAnimation;
         agentDeath.AgentDie += StartDieAnimation;
-        if(health)
+        if (health)
         {
-            health.AgentDamage+=OnDamageAnimation;
+            health.onAgentDamage += OnDamageAnimation;
         }
-        
-
-
     }
+
 
     private void OnDisable()
     {
         agentMovement.AgentMove -= UpdateMovementAnimation;
         agentMovement.AgentStop -= StopMoveAnimation;
-        if(agentMeleeAttack)
-        {
-            agentMeleeAttack.AgentMeleeAttacking-=OnAttackAnimation;
-        }
-        if(agentRangedAttack)
-        {
-            agentRangedAttack.AgentRangedAttacking-=OnAttackAnimation;
-        }
+
+        enemy.onEnemyAttack -= OnAttackAnimation;
         agentDeath.AgentDie -= StartDieAnimation;
-        if(health)
+        if (health)
         {
-            health.AgentDamage-=OnDamageAnimation;
+            health.onAgentDamage -= OnDamageAnimation;
         }
     }
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        //animator =GetComponent<Health>();
     }
 
     private void UpdateMovementAnimation(Vector3 moveInput)
@@ -76,14 +60,14 @@ public class EnemyAnimationController : MonoBehaviour
         animator.SetTrigger("Hit");
     }
 
-    public void OnAttackAnimation()
+    public void OnAttackAnimation(Enemy enemy)
     {
         animator.SetTrigger("Attack");
     }
 
     private void StartDieAnimation()
     {
-         animator.SetTrigger("Die");
+        animator.SetTrigger("Die");
     }
 
 }

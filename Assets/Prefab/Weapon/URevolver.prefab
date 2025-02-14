@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_muzzle: {fileID: 4621229255113339359}
-  bulletPrefab: {fileID: -7599856397798264514, guid: 060d47c2a2f3947479bd377c8213cf8e, type: 3}
+  bulletPrefab: {fileID: -7599856397798264514, guid: 454d2a23f782445488117b485daeb9c2, type: 3}
   Damage: 20
 --- !u!114 &3958653708621995820
 MonoBehaviour:

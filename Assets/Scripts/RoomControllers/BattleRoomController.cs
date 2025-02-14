@@ -1,61 +1,78 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.Properties;
 using UnityEngine;
 
 public class BattleRoomController : RoomController
 {
-    [SerializeField] List<List<Enemy>> enemyList;
-    private int currentWave;
-
-    private void Awake()
+    /*
+    [System.Serializable]
+    public class SubList
     {
-        instantCompletion = false;
-        for (int i = 0; i < enemyList.Count; i++)
-        {
-            for(int j = 0; j < enemyList[i].Count; j++)
-            {
-                enemyList[i][j].onEnemyDeath += OnEnemyDeath;
-            }
-        }
+        public List<Enemy> waveEnemies = new List<Enemy>();
     }
+
+    // использование
+    public List<SubList> enemies = new List<SubList>();
+    private List<List<Enemy>> enemyList;
+    */
+
+    [SerializeField] List<Wave> waves;
+
+    private int currentWave;
+    
+
+    override protected void SpecProcessing()
+    {
+        if (waves.Count == 0)
+        {
+            instantCompletion = true;
+        }
+        else
+        {
+            instantCompletion = false;
+            LoadWave(0);
+        }
+        
+    }
+    
 
     private void OnDestroy()
     {
-        for (int i = 0; i < enemyList.Count; i++)
+        for (int i = 0; i < waves.Count; i++)
         {
-            for (int j = 0; j < enemyList[i].Count; j++)
+            Wave curWave = waves[i];
+            for (int j = 0; j < curWave.enemiesList.Count; j++)
             {
-                enemyList[i][j].onEnemyDeath -= OnEnemyDeath;
+                curWave.enemiesList[j].onEnemyDeath -= OnEnemyDeath;
             }
         }
     }
 
     private void OnEnemyDeath(Enemy enemy)
     {
-        enemyList[currentWave].Remove(enemy);
-        if (enemyList[currentWave].Count == 0 ) {
+        waves[currentWave].enemiesList.Remove(enemy);   
+        if (waves[currentWave].enemiesList.Count == 0 ) {
             currentWave++;
-            LoadWave(currentWave);   
+            LoadWave(currentWave);
         }
     }
 
     public void LoadWave(int wave)
     {
-        if(currentWave >= enemyList.Count)
+        if(currentWave >= waves.Count)
         {
             FinishRoomTask();
         }
         else
         {
-            for( int i = 0;i < enemyList[wave].Count; i++)
-            {
-                enemyList[wave][i].Activate();
-            }
+            waves[wave].InitWave(player, OnEnemyDeath);
         }
     }
 
     public void AddEnemy(Enemy enemy)
     {
-        enemyList[currentWave].Add(enemy);
+        waves[currentWave].Add(enemy);
     }
 }

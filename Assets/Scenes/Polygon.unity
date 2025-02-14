@@ -243,6 +243,75 @@ MonoBehaviour:
   inputActions: {fileID: -944628639613478452, guid: 3f87c757bb72f2747999e6033be77070, type: 3}
   terrainCollider: {fileID: 797165004}
   cameraTransform: {fileID: 1568151811}
+--- !u!1001 &93574767
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1540086016381568046, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: managedReferences[4520951449221071130].m_Value
+      value: 
+      objectReference: {fileID: 1776151941}
+    - target: {fileID: 3149304193395495563, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_Name
+      value: Ranged Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615984781903715446, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615984781903715446, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7864518
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.114354
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999385
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.01109645
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -1.272
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821041830239977830, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 36b36cb397be844d0aeb348456f16e4c, type: 3}
 --- !u!1001 &102927372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2447,6 +2516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8a1b05fde7ea94798750af0a6ffdef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1776151941 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 279938505945524200, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+  m_PrefabInstance: {fileID: 1776151938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1776151946 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1940350836516327196, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
@@ -2542,7 +2616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7b1393243604b259f2168964ff6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentMeleeAttack: {fileID: 1898185867}
+  enemy: {fileID: 0}
   damage: 10
 --- !u!135 &1844822074
 SphereCollider:
@@ -2615,17 +2689,6 @@ MonoBehaviour:
   followCursor: 1
   negativeFollowForce: 10
   terrainCollider: {fileID: 797165004}
---- !u!114 &1898185867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1968166394359076693, guid: fe89679621bf24f33bdd2ac612f0c249, type: 3}
-  m_PrefabInstance: {fileID: 102927372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fcc215b1fcde4ad3a6c2bce6c41b6cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1918180126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,3 +3383,4 @@ SceneRoots:
   - {fileID: 1776151938}
   - {fileID: 1286924399}
   - {fileID: 1772321979}
+  - {fileID: 93574767}

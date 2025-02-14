@@ -6,7 +6,7 @@ public class AgentDeath : MonoBehaviour
 {
     public event Action AgentDie;
     private NavMeshAgent agent;
-    [SerializeField] private float destroyDelay = 2f;
+    [SerializeField] private float destroyDelay = 3f;
 
     private void Awake()
     {

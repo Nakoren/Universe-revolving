@@ -30,11 +30,11 @@ public class PlayerController : MonoBehaviour
     private InputAction m_switchMap;
     private InputAction m_switchInventory;
 
-    public event Action<Vector2> PlayerMove;
-    public event Action PlayerDash;
-    public event Action PlayerReload;
-    public event Action ActoinOnSkill1Player;
-    public event Action ActoinOnSkill2Player;
+    public event Action<Vector2> onPlayerMove;
+    public event Action onPlayerDash;
+    public event Action onPlayerReload;
+    public event Action onSkill1Player;
+    public event Action onSkill2Player;
 
 
     private void Awake()
@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
     void Update()
     {
         RotateToCursor();
@@ -117,25 +116,26 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(move);
 
         player.Move(move, cameraRotationV3);
-        PlayerMove?.Invoke(move);
+        onPlayerMove?.Invoke(move);
+        
     }
 
     private void OnSkill1(InputAction.CallbackContext context)
     {
         player.Skill1();
-        ActoinOnSkill1Player?.Invoke();
+        onSkill1Player?.Invoke();
     }
     private void OnSkill2(InputAction.CallbackContext context) //nextweapon
     {
         player.Skill2();
-        ActoinOnSkill2Player?.Invoke();
+        onSkill2Player?.Invoke();
     }
 
 
     private void OnExtraAction(InputAction.CallbackContext context) //reload
     {
         player.ExtraAction();
-        PlayerReload?.Invoke();
+        onPlayerReload?.Invoke();
     }
 
     private void OnDash(InputAction.CallbackContext context)
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
             player.Dash(); 
-            PlayerDash?.Invoke();
+            onPlayerDash?.Invoke();
         }
     }
 

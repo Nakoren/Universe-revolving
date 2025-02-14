@@ -48,7 +48,7 @@ public class LevelController : MonoBehaviour
         Debug.Log($"Warping player to {startLocation}");
         player.Warp(startLocation);
 
-        activeRoomController.Initialize(GetNextLayerRooms()); 
+        activeRoomController.Initialize(GetNextLayerRooms(), player);
         activeRoomController.onRoomChange += OnLoadRequest;
     }
 
