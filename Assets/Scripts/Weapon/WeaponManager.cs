@@ -35,9 +35,9 @@ public class WeaponManager : MonoBehaviour
             m_currentWeapon.StartFire();
         }
     }
-    public void Pickup(ElementInfo elementInfo)
+    public void Pickup(IPart part)
     {
-        m_currentWeapon.Pickup(elementInfo);
+        m_currentWeapon.Pickup(part);
     }
     public void StopFire()
     {

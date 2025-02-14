@@ -9,19 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e46296dc4accf40a24730f578d784b, type: 3}
-  m_Name: PistolM
+  m_Script: {fileID: 11500000, guid: 7e07d60c9d1f0fa4599c6e2fd6e5836a, type: 3}
+  m_Name: Magazine
   m_EditorClassIdentifier: 
-  <id>k__BackingField: 20
-  <ename>k__BackingField: "\u041A\u043E\u0440\u043D\u0435\u043F\u043B\u0443\u0434"
-  <type>k__BackingField: magazine
-  <rare>k__BackingField: 2
+  <type>k__BackingField: 222
+  <rare>k__BackingField: 0
   <model>k__BackingField: {fileID: 0}
   <damageRate>k__BackingField: 1
-  <spread>k__BackingField: 0
-  <range>k__BackingField: 0
   <cage>k__BackingField: 6
   <recharge>k__BackingField: 2
-  <delay>k__BackingField: 0
-  <force>k__BackingField: 0
-  <volume>k__BackingField: 0

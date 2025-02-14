@@ -57,9 +57,9 @@ public class Player : MonoBehaviour
             m_dash.DashMove();
         }
     }
-    public void Pickup(ElementInfo elementInfo)
+    public void Pickup(IPart part)
     {
-        m_weaponManager.Pickup(elementInfo);
+        m_weaponManager.Pickup(part);
     }
 
     public void Warp(Vector3 position)

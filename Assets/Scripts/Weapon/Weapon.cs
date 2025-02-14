@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     public float Damage = 20;
     
 
-    public Action onShoot;
+    public Action onShoot; 
     public Action onReloadStart;
     public Action onReloadEnd;
 

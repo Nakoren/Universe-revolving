@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Android.Gradle;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PartsDB", menuName = "Parts/PartsDB")]
@@ -10,6 +9,7 @@ public class PartsDB : ScriptableObject
     public class Item 
     {
         public string id;
+        public int rare;
         public string name;
         public string description;
         public Sprite icon;
