@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public Action onDash;
     public Action onPlayerDeath;
     public event Action onPlayerFire;
+     public event Action onPlayerSkill1;
+      public event Action onPlayerSkill2;
 
     private Vector3 m_position = new Vector3();
     private Vector3 m_prevFramePosition = new Vector3();
@@ -81,11 +83,13 @@ public class Player : MonoBehaviour
     public void Skill1()
     {
         m_meleePunch.Attack();
+        onPlayerSkill1?.Invoke();
     }
 
     public void Skill2()
     {
         m_weaponManager.NextWeapon();
+        onPlayerSkill2?.Invoke();
     }
 
     public void ExtraAction()

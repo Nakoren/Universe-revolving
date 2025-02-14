@@ -6,7 +6,7 @@ using System;
 
 public class SkillsManager : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private Player player;
     [SerializeField] private Color cooldownColor = new Color(0f, 0f, 0f);
 
     [SerializeField] private Image skill1Icon;
@@ -26,14 +26,14 @@ public class SkillsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerController.onSkill1Player += StartSkill1Cooldown;
-        playerController.onSkill2Player += StartSkill2Cooldown;
+        player.onPlayerSkill1 += StartSkill1Cooldown;
+        player.onPlayerSkill2 += StartSkill2Cooldown;
     }
 
     private void OnDisable()
     {
-        playerController.onSkill1Player -= StartSkill1Cooldown;
-        playerController.onSkill2Player -= StartSkill2Cooldown;
+        player.onPlayerSkill1 += StartSkill1Cooldown;
+        player.onPlayerSkill2 += StartSkill2Cooldown;
     }
 
 
