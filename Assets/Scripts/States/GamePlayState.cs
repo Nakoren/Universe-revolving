@@ -14,9 +14,9 @@ public class GamePlayState : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] Player player;
 
-    
-
     [SerializeField] GameObject rootUI;
+
+    public  Action onGamePlay;
     private void OnEnable()
     {
         Time.timeScale=1f;
@@ -29,6 +29,7 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(true);
         }
+        onGamePlay?.Invoke();
         playerController.onInventoryToogle += ToogleInventory;
 
         playerController.onPauseToogle += TooglePause;

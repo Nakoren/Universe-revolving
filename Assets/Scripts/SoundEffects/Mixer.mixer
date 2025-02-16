@@ -47,6 +47,24 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-1667272053935863556
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ca0a674a0ecd64f3abe784b4d77f2d16
+  m_EffectName: Lowpass
+  m_MixLevel: 5c22f19033b364988b20edd6750a8e0b
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 685e3ff6ff3ad407fad7213030def274
+  - m_ParameterName: Resonance
+    m_GUID: 800316767957d47539e39bbc4ff3a117
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -58,10 +76,11 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 5968117189473213929}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ExposedParameters:
   - guid: e86c9291435584919a67137f8c0b97a1
     name: MusicVolume
@@ -118,12 +137,20 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: Gameplay
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 7e0a107f0349946519541b641b791bef
   m_FloatValues:
+    70f8dd62c227b4b43a65b23239936b3d: 0
     eb37a2e4cc1404c2a9ffeabb6b7dc5f5: 1
+    685e3ff6ff3ad407fad7213030def274: 22000
+    daa72a974ad0645548b876dbdfc17495: -22.7
+    f45e363a1cc0b43518f4342bbc856fa3: 1000
+    96cb486cba2e6480d87acad00413b253: 2
+    76c0887cc6c7b4b6e828faf3e7cf2f63: 10
     f97275cd8249f4c29a9bb84b0cae666e: 0
+    27468b1ed8ff74ce9b2649ea641b935f: 11.5
+    368ff07f1cd0a4b35b1f56d3a8545d93: 10
   m_TransitionOverrides: {}
 --- !u!243 &1107287686104313625
 AudioMixerGroupController:
@@ -144,6 +171,24 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &4918724298366584599
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 06133356b564e4bad878132eb05b130c
+  m_EffectName: Highpass
+  m_MixLevel: 650a45c415a474cdea9b0140809f3a7e
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 76c0887cc6c7b4b6e828faf3e7cf2f63
+  - m_ParameterName: Resonance
+    m_GUID: f664537645c394102b5c1c740d913900
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &5915320831170544456
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -159,10 +204,40 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 6288635890502581396}
+  - {fileID: -1667272053935863556}
+  - {fileID: 4918724298366584599}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &5968117189473213929
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Menu
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 59831d65530c1445db8d2db3a21fb358
+  m_FloatValues:
+    5c22f19033b364988b20edd6750a8e0b: -37.9
+    70f8dd62c227b4b43a65b23239936b3d: 0.707
+    36b104444690e4bee82538305efacf6a: 1
+    89ae94d4430d74d2a93f8ea8eb10d11f: 4.6
+    eb37a2e4cc1404c2a9ffeabb6b7dc5f5: 1
+    4390fa657f9754cfbb3b76fbe7cbffc6: 0.56700003
+    4876e606922d14a9e818acec9f11940f: 5000
+    5e0fc216517f842f49cb726d859c972a: -2.2999978
+    800316767957d47539e39bbc4ff3a117: 1
+    685e3ff6ff3ad407fad7213030def274: 2137
+    daa72a974ad0645548b876dbdfc17495: -24.1
+    67aa14d9949ce42f3a07955434facd01: 20
+    96cb486cba2e6480d87acad00413b253: 1.771
+    76c0887cc6c7b4b6e828faf3e7cf2f63: 2216
+    f97275cd8249f4c29a9bb84b0cae666e: 0
+    bdb0ce5fb12c84175bb0f33847944d31: 0.573
+    368ff07f1cd0a4b35b1f56d3a8545d93: 155
+  m_TransitionOverrides: {}
 --- !u!244 &6288635890502581396
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

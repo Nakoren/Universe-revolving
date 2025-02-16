@@ -13,6 +13,8 @@ public class PauseState : MonoBehaviour
     
     [SerializeField] GameObject rootUI;
 
+    public Action onPause;
+
 
     private void OnEnable()
     {
@@ -23,6 +25,7 @@ public class PauseState : MonoBehaviour
             rootUI.SetActive(true);
         }
         playerController.onPauseToogle += ToGamePlay;
+        onPause?.Invoke();
     }
 
     private void OnDisable()

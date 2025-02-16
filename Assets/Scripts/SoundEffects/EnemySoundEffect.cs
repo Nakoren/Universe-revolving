@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemySoundEffect : MonoBehaviour
 {
-     private AudioSource audioSource;
+    private AudioSource audioSource;
     [SerializeField] Enemy enemy;
 
 
