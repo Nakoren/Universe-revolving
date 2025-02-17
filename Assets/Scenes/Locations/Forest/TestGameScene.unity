@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2223584345556623822, guid: a0cc4038d18e2456f8db395021bceb5d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3730006450099853763, guid: a0cc4038d18e2456f8db395021bceb5d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6616,6 +6620,7 @@ MonoBehaviour:
   inputActions: {fileID: -944628639613478452, guid: 3f87c757bb72f2747999e6033be77070, type: 3}
   inventoryState: {fileID: 3423490135545072518}
   playerController: {fileID: 1060417535}
+  cameraController: {fileID: 2085113026}
   player: {fileID: 1747928652}
   rootUI: {fileID: 7385381627501748837}
 --- !u!222 &340676772471688152
@@ -9940,6 +9945,7 @@ MonoBehaviour:
   openMenuState: {fileID: 3858032340039619776}
   settingsState: {fileID: 1563468395575357083}
   playerController: {fileID: 1060417535}
+  cameraController: {fileID: 2085113026}
   rootUI: {fileID: 47037128520464343}
 --- !u!4 &4700868846514482080
 Transform:

@@ -12,6 +12,7 @@ public class GamePlayState : MonoBehaviour
     [SerializeField] InventoryState inventoryState;
 
     [SerializeField] PlayerController playerController;
+    [SerializeField] GameObject cameraController;
     [SerializeField] Player player;
 
     [SerializeField] GameObject rootUI;
@@ -28,6 +29,7 @@ public class GamePlayState : MonoBehaviour
         if (rootUI != null)
         {
             rootUI.SetActive(true);
+            cameraController.SetActive(true);
         }
         onGamePlay?.Invoke();
         playerController.onInventoryToogle += ToogleInventory;

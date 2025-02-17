@@ -10,6 +10,8 @@ public class PauseState : MonoBehaviour
     [SerializeField] OpenMenuState openMenuState;
     [SerializeField] SettingsState settingsState;
     [SerializeField] PlayerController playerController;
+    [SerializeField] GameObject cameraController;
+
     
     [SerializeField] GameObject rootUI;
 
@@ -23,6 +25,7 @@ public class PauseState : MonoBehaviour
         if (rootUI != null)
         {
             rootUI.SetActive(true);
+            cameraController.SetActive(false);
         }
         playerController.onPauseToogle += ToGamePlay;
         onPause?.Invoke();
