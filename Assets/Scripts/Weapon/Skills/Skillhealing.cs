@@ -4,6 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "healing", menuName = "Skills/healing")]
 public class Skillhealing : ISkill
 {
+    public void Awake()
+    {
+        m_isColdown = false;
+    }
     public override void OnSkillStart()
     {
         if (m_isColdown == false)

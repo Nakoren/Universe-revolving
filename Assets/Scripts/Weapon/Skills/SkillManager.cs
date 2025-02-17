@@ -15,11 +15,11 @@ public class SkillManager : MonoBehaviour
 
     public void SkillQuse()
     {
-
+        skillQ.OnSkillStart();
     }
 
     public void SkillEuse()
     {
-
+        skillE.OnSkillStart();
     }
 }

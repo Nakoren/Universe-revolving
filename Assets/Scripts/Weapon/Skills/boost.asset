@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: boost
   m_EditorClassIdentifier: 
   m_isColdown: 0
-  cooldown: 0
+  cooldown: 10
   delay: 0
