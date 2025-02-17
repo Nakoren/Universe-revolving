@@ -4,6 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "boost", menuName = "Skills/boost")]
 public class Skillboost : ISkill
 {
+    public void Awake()
+    {
+        m_isColdown = false;
+    }
     public override void OnSkillStart()
     {
         if (m_isColdown == false)
