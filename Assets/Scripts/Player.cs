@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     Health m_health;
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
+    SkillManager m_skillManager;
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
     public Action onPlayerDeath;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
         m_health = GetComponent<Health>();
         m_meleePunch = GetComponent<MeleePunch>();
         m_weaponManager = GetComponent<WeaponManager>();
+        m_skillManager = GetComponent<SkillManager>();
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
@@ -84,12 +86,12 @@ public class Player : MonoBehaviour
         
     public void Skill1()
     {
-        m_meleePunch.Attack();
+        m_skillManager.SkillQuse();
     }
 
     public void Skill2()
     {
-        m_weaponManager.NextWeapon();
+        m_skillManager.SkillEuse();
     }
 
     public void ExtraAction()
