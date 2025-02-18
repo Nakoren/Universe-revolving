@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     SkillsManager m_skillsManager;
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
+    public Action<Vector3> onMove;
     public Action onPlayerDeath;
     public event Action onPlayerFire;
     public event Action onPlayerSkill1;
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
     {
         if(m_state == PlayerState.Base) 
         {
+            onMove?.Invoke(direction);
             m_movement.Move(direction, basicAngle);
         }
         if(m_state == PlayerState.Dash)
