@@ -4,17 +4,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "healing", menuName = "Skills/healing")]
 public class Skillhealing : ISkill
 {
+    public bool m_isCooldown = false;
+    public int cooldown = 2; // Для иконок перезарядки
     public void Awake()
     {
-        m_isColdown = false;
+        m_isCooldown = false;
     }
     public override void OnSkillStart()
     {
-        if (m_isColdown == false)
+        if (m_isCooldown == false)
         {
+            m_isCooldown = true;
             Debug.Log("Skillhealing used");
-            m_isColdown = true;
             CoolldownDelay();
+            
         }
         else 
         {
@@ -27,8 +30,9 @@ public class Skillhealing : ISkill
     }
     private IEnumerator CoolldownDelay()
     {
+        
         yield return new WaitForSeconds(cooldown);
-        m_isColdown = false;
+        m_isCooldown = false;
     }
     private IEnumerator Delay()
     {

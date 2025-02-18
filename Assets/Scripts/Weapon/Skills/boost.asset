@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaaf989d84fbad4fbdcc134a6ee236d, type: 3}
   m_Name: boost
   m_EditorClassIdentifier: 
-  m_isColdown: 0
-  cooldown: 10
+  m_isColdown: 1
+  cooldown: 1
   delay: 0
