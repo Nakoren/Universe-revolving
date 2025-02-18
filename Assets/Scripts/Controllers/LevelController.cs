@@ -7,6 +7,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] Icons levelIcons;
     MapGenerator mapGenerator;
 
     List<List<Room>> levelMap;
@@ -48,7 +49,7 @@ public class LevelController : MonoBehaviour
         Debug.Log($"Warping player to {startLocation}");
         player.Warp(startLocation);
 
-        activeRoomController.Initialize(GetNextLayerRooms(), player);
+        activeRoomController.Initialize(GetNextLayerRooms(), player, levelIcons);
         activeRoomController.onRoomChange += OnLoadRequest;
     }
 

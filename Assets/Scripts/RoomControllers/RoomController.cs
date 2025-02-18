@@ -13,30 +13,28 @@ public class RoomController : MonoBehaviour
 
     [SerializeField] List<RoomReward> possibleRewards;
 
-    
-
     public Action<int> onRoomChange;
     private int connectionsCount;
     protected Player player;
     protected bool instantCompletion = true;
 
+    private Icons icons;
+
     public Player Player { get { return player; } set { { player = value; } } }
 
     private Room[] connectedRooms;
-    private void Awake()
-    {
-        
-    }
 
-    public void Initialize(List<Room> connectedRoomsList, Player player)
+    public void Initialize(List<Room> connectedRoomsList, Player player, Icons levelIcons)
     {
+        this.icons = levelIcons;
         this.player = player;
         connectionsCount = connectedRoomsList.Count;
         for (int i = 0; i < connectionsCount; ++i) {
-            Transitor curTransitor = activeTransitions[i].GetComponent<Transitor>();
-            curTransitor.Initiate(connectedRoomsList[i], i);
-            curTransitor.onActivate += OnRoomChange;
-            curTransitor.gameObject.SetActive(true);
+            Transitor currentTransitor = activeTransitions[i].GetComponent<Transitor>();
+            activeTransitions[i] = currentTransitor;
+            activeTransitions[i].gameObject.SetActive(true);
+            activeTransitions[i].Initiate(connectedRoomsList[i], i, icons);
+            activeTransitions[i].onActivate += OnRoomChange;
         }
         for (int i = connectionsCount; i < closeTransitions.Length; i++)
         {
