@@ -8,6 +8,10 @@ public class LevelController : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] Icons levelIcons;
     [SerializeField] int nextSceneIndex;
+    [SerializeField] GameObject playerDefaultPrefab;
+    [SerializeField] CameraController cameraController;
+    [SerializeField] PlayerController playerController;
+
     MapGenerator mapGenerator;
 
     List<List<Room>> levelMap;
@@ -26,6 +30,13 @@ public class LevelController : MonoBehaviour
             {
                 player = playerGO.GetComponent<Player>();
             }
+            else
+            {
+                playerGO = Instantiate(playerDefaultPrefab);
+                player = playerGO.GetComponent<Player>();
+            }
+            cameraController.SetTarget(playerGO);
+            playerController.SetPlayer(player);
         }
         mapGenerator = GetComponent<MapGenerator>();
     }

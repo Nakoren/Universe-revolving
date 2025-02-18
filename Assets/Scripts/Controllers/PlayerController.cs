@@ -38,6 +38,19 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        if (player == null)
+        {
+            GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+            if (playerGO != null)
+            {
+                player = playerGO.GetComponent<Player>();
+                SetPlayer(player);
+            }
+        }
+        else
+        {
+            SetPlayer(player);
+        }
         playerActionMap = inputActions.FindActionMap("Player");
         UIActionMap = inputActions.FindActionMap("UI");
 
@@ -52,10 +65,15 @@ public class PlayerController : MonoBehaviour
 
         m_useAction = inputActions.FindAction("Player/Use");
 
-        interactableObjectDetector = player.gameObject.GetComponent<InteractableObjectDetector>();
         m_switchPause = inputActions.FindAction("UI/Pause");
         m_switchMap = inputActions.FindAction("UI/Map");
         m_switchInventory = inputActions.FindAction("UI/Inventory");
+    }
+
+    public void SetPlayer(Player pl)
+    {
+        this.player = pl;
+        interactableObjectDetector = player.gameObject.GetComponent<InteractableObjectDetector>();
     }
 
     void Start()
@@ -89,8 +107,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        RotateToCursor();
-        MovePlayer();
+        if (player != null)
+        {
+            RotateToCursor();
+            MovePlayer();
+        }
     }
 
     private void RotateToCursor()

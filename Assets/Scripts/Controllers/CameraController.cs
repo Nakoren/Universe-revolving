@@ -1,30 +1,40 @@
+using NUnit.Framework.Interfaces;
 using System.Drawing;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] GameObject cam;
-    [SerializeField] GameObject target;
+    [SerializeField] Transform cameraTransform;
+    [SerializeField] public GameObject target;
     [SerializeField] Vector3 offset;
     [SerializeField] public bool followCursor;
     [Header("For correct execution this need to be set not less then to 4")]
     [SerializeField] int negativeFollowForce;
 
 
-    Transform m_camTransform;
     Transform m_targetTransform;
 
     private void Awake()
     {
-        
+
     }
 
     private void Start()
     {
-        m_camTransform = cam.transform;
+        if (target != null)
+        {
+            m_targetTransform = target.transform;
+            cameraTransform.position = m_targetTransform.position + offset;
+            cameraTransform.LookAt(m_targetTransform);
+        }
+    }
+
+    public void SetTarget(GameObject newTarget)
+    {
+        this.target = newTarget;
         m_targetTransform = target.transform;
-        m_camTransform.position = m_targetTransform.position + offset;
-        m_camTransform.LookAt(m_targetTransform);
+        cameraTransform.position = m_targetTransform.position + offset;
+        cameraTransform.LookAt(m_targetTransform);
     }
 
     private Vector3 GetCameraOffsetToCursor()
@@ -56,6 +66,6 @@ public class CameraController : MonoBehaviour
         {
             newPosition += GetCameraOffsetToCursor();
         }
-        m_camTransform.position = newPosition;
+        cameraTransform.position = newPosition;
     }
 }
