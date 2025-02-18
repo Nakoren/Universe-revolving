@@ -1,25 +1,71 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Transitor : IInteractable
 {
     public int targetInd;
     public Room roomSO;
     public Action<int> onActivate;
+    public Action onFinalActivate;
+    private Canvas iconCanvas;
     private DoorsAnimationController doorController;
     private bool isActive = false;
-    private void Awake()
+    private Icons levelIcons;
+
+    public void Initiate(Room room, int roomInd, Icons levelIcons)
     {
-        doorController = GetComponent<DoorsAnimationController>();   
-    }
-    public void Initiate(Room room, int roomInd)
-    {
+        this.levelIcons = levelIcons;
+        doorController = GetComponent<DoorsAnimationController>();
+        iconCanvas = GetComponentInChildren<Canvas>();
         roomSO = room;
         targetInd = roomInd;
     }
+
+    public void FinalInitiate(Icons levelIcons)
+    {
+        this.levelIcons = levelIcons;
+        doorController = GetComponent<DoorsAnimationController>();
+        iconCanvas = GetComponentInChildren<Canvas>();
+    }
+
+    private void Update()
+    {
+        if (iconCanvas != null && Camera.main != null)
+        {
+            iconCanvas.transform.rotation = Camera.main.transform.rotation;
+        }
+    }
+
+    public void AddIcon(Texture icon)
+    {
+        RawImage iconImage = iconCanvas.GetComponentInChildren<RawImage>();
+        iconImage.texture = icon;
+        Color col = iconImage.color;
+        col.a = 1;
+        iconImage.color = col;
+        
+    }
+
     public void Enable()
     {
-        this.isActive = true;
+        if (roomSO != null)
+        {
+            switch (this.roomSO.GetType().Name)
+            {
+                case nameof(BattleRoom): AddIcon(levelIcons.battleRoom); break;
+                case nameof(RewardRoom): AddIcon(levelIcons.rewardRoom); break;
+                case nameof(RestRoom): AddIcon(levelIcons.restRoom); break;
+                case nameof(BossRoom): AddIcon(levelIcons.bossRoom); break;
+                case nameof(ShopRoom): AddIcon(levelIcons.shopRoom); break;
+                default: AddIcon(levelIcons.restRoom); break;
+            }
+        }
+        else
+        {
+            AddIcon(levelIcons.restRoom);
+        }
         doorController.OpenDoorsAnimation();
     }
 
@@ -30,6 +76,16 @@ public class Transitor : IInteractable
 
     private void Activate()
     {
-        onActivate.Invoke(targetInd);
+        if (onActivate != null)
+        {
+            onActivate.Invoke(targetInd);
+        }
+        else
+        {
+            if(onFinalActivate != null)
+            {
+                onFinalActivate.Invoke();
+            }
+        }
     }
 }

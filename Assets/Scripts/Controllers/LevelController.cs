@@ -1,12 +1,17 @@
 using System;
-using NUnit.Framework;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] Icons levelIcons;
+    [SerializeField] int nextSceneIndex;
+    [SerializeField] GameObject playerDefaultPrefab;
+    [SerializeField] CameraController cameraController;
+    [SerializeField] PlayerController playerController;
+
     MapGenerator mapGenerator;
 
     List<List<Room>> levelMap;
@@ -18,13 +23,28 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
+        if (player == null)
+        {
+            GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+            if (playerGO != null)
+            {
+                player = playerGO.GetComponent<Player>();
+            }
+            else
+            {
+                playerGO = Instantiate(playerDefaultPrefab);
+                player = playerGO.GetComponent<Player>();
+            }
+            cameraController.SetTarget(playerGO);
+            playerController.SetPlayer(player);
+        }
         mapGenerator = GetComponent<MapGenerator>();
     }
 
     private void Start()
     {
         UpdateMap();
-        LoadRoom(0, 0);
+        LoadNextStage(0);
     }
 
     public void UpdateMap()
@@ -32,13 +52,15 @@ public class LevelController : MonoBehaviour
         levelMap = mapGenerator.GenerateMapWithGlobalPool();
     }
 
-    private void LoadRoom(int layer, int ind)
+    private void LoadNextStage(int ind)
     {
-        if (activeRoom != null) {
+        if (activeRoom != null)
+        {
             activeRoomController.onRoomChange -= OnLoadRequest;
             Destroy(activeRoom);
         }
-        Room newRoom = levelMap[layer][ind];
+
+        Room newRoom = levelMap[currentLayer][ind];
         if (newRoom.prefab != null)
         {
             activeRoom = Instantiate(newRoom.prefab);
@@ -48,20 +70,27 @@ public class LevelController : MonoBehaviour
         Debug.Log($"Warping player to {startLocation}");
         player.Warp(startLocation);
 
-        activeRoomController.Initialize(GetNextLayerRooms(), player);
+        activeRoomController.Initialize(GetNextLayerRooms(), player, levelIcons);
+
         activeRoomController.onRoomChange += OnLoadRequest;
-    }
+        activeRoomController.onFinalRoomChange += LoadNextLevel;
+    } 
 
     private void OnLoadRequest(int ind)
     {
         currentLayer += 1;
-        LoadRoom(currentLayer, ind);
+        LoadNextStage(ind);
     }
 
     private List<Room> GetNextLayerRooms()
     {
         if (currentLayer == levelMap.Count - 1) { return new List<Room>(); }
-        
-        return levelMap[currentLayer+1];
+        return levelMap[currentLayer + 1];
+    }
+
+    private void LoadNextLevel()
+    {
+        DontDestroyOnLoad(player);
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f3dca7188120948877b42bf72fb90e, type: 3}
+  m_Name: FantasyIcons
+  m_EditorClassIdentifier: 
+  battleRoom: {fileID: 2800000, guid: f705fbb5923a24b89810634c75734723, type: 3}
+  shopRoom: {fileID: 2800000, guid: 4aba44f14aae74f59b0a9ab73364cbdb, type: 3}
+  rewardRoom: {fileID: 2800000, guid: 6f5876f18970e4c608e2556f294826ed, type: 3}
+  restRoom: {fileID: 2800000, guid: 23ae28dc5a64540508122bdcb1a9cf0b, type: 3}
+  bossRoom: {fileID: 2800000, guid: ed597adb971d94945b815a87b9323ccd, type: 3}
