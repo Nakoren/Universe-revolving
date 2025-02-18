@@ -14,13 +14,14 @@ public class Player : MonoBehaviour
     Health m_health;
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
-    SkillManager m_skillManager;
+   //SkillManager m_skillManager;
+    SkillsManager m_skillsManager;
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
     public Action onPlayerDeath;
     public event Action onPlayerFire;
-     public event Action onPlayerSkill1;
-      public event Action onPlayerSkill2;
+    public event Action onPlayerSkill1;
+    public event Action onPlayerSkill2;
 
     private Vector3 m_position = new Vector3();
     private Vector3 m_prevFramePosition = new Vector3();
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         m_health = GetComponent<Health>();
         m_meleePunch = GetComponent<MeleePunch>();
         m_weaponManager = GetComponent<WeaponManager>();
-        m_skillManager = GetComponent<SkillManager>();
+        m_skillsManager = GetComponent<SkillsManager>();
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
@@ -84,12 +85,12 @@ public class Player : MonoBehaviour
         
     public void Skill1()
     {
-        m_skillManager.SkillQuse();
+        m_skillsManager.ActivateHealingSkill();
     }
 
     public void Skill2()
     {
-        m_skillManager.SkillEuse();
+        //m_skillsManager.SkillEuse();
     }
 
     public void ExtraAction()

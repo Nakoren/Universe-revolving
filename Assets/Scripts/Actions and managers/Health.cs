@@ -38,7 +38,14 @@ public class Health : MonoBehaviour
     }
     public void RestoreHealth(float restore)
     {
-        m_currentHealth += restore;
+        if(m_currentHealth+restore >= maxHealth)
+        {
+            RestoreFullHealth();
+        }
+        else
+        {
+            m_currentHealth += restore;
+        }
         if (onAgentRestoreHealth != null)
         {
             onAgentRestoreHealth.Invoke();
