@@ -37,6 +37,7 @@ public class Transitor : IInteractable
         Color col = iconImage.color;
         col.a = 1;
         iconImage.color = col;
+        
     }
 
     public void Enable()
@@ -49,7 +50,6 @@ public class Transitor : IInteractable
             case nameof(BossRoom): addIcon(levelIcons.bossRoom); break;
             case nameof(ShopRoom): addIcon(levelIcons.shopRoom); break;
         }
-        
         doorController.OpenDoorsAnimation();
     }
 

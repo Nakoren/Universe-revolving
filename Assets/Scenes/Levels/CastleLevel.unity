@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1268981585}
+  levelIcons: {fileID: 11400000, guid: 7670afbb0d085c7419f8d73e101cc4ea, type: 2}
 --- !u!1 &829811745
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,18 +576,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 279938505945524200, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
   m_PrefabInstance: {fileID: 1761593793}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1268981595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268981578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 554d5ac3771e1fc4abc22ab58e8b1c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1363158506
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +735,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3114390413027399027, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+      propertyPath: hitBox
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -774,10 +767,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 279938505945524200, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1586626491}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1268981595}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

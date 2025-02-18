@@ -781,7 +781,7 @@ Transform:
   m_GameObject: {fileID: 4716707537603153271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51.149864, y: 11.703518, z: 27.347649}
+  m_LocalPosition: {x: -3.8501358, y: -0.2964821, z: -1.6523514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,7 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2680827615413230388}
   m_Layer: 0
-  m_Name: Forest_Chest
+  m_Name: Forest_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1509,7 +1509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6856891823408794365}
-  - component: {fileID: 212444330384219882}
+  - component: {fileID: 1975390079726355818}
   m_Layer: 0
   m_Name: RoomController
   m_TagString: Untagged
@@ -1532,7 +1532,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2680827615413230388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &212444330384219882
+--- !u!114 &1975390079726355818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1541,10 +1541,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8667170878859531892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4988755d9fa22dd47a2b7ef9adf2040a, type: 3}
+  m_Script: {fileID: 11500000, guid: 701f8f46b94eb2c4994001d20f2a5654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 2680827615413230388}
+  startPosition: {fileID: 4409047848931262046}
   activeTransitions:
   - {fileID: 2458731902104591754}
   - {fileID: 55942685258213034}
@@ -1556,7 +1556,6 @@ MonoBehaviour:
   - {fileID: 8626022846385724334}
   - {fileID: 1405408684788625406}
   possibleRewards: []
-  rewardContainer: {fileID: 0}
 --- !u!1 &8955783630914940798
 GameObject:
   m_ObjectHideFlags: 0

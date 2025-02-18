@@ -10,8 +10,6 @@ public class CameraController : MonoBehaviour
     [Header("For correct execution this need to be set not less then to 4")]
     [SerializeField] int negativeFollowForce;
 
-    [SerializeField] Collider terrainCollider;
-
 
     Transform m_camTransform;
     Transform m_targetTransform;
