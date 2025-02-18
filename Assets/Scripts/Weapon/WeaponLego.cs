@@ -40,7 +40,6 @@ public class WeaponLego : MonoBehaviour
     public void GetElements()
     {
         totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;
-
     }
     public void Drop(IPart part)
     {

@@ -13,9 +13,27 @@ MonoBehaviour:
   m_Name: PartsDB
   m_EditorClassIdentifier: 
   items:
-  - id: 01
+  - id: 1
     rare: 0
     name: 
     description: 
     icon: {fileID: 0}
-    part: {fileID: 0}
+    part: {fileID: 11400000, guid: 7c151361b46ae584499077ea5478d1ea, type: 2}
+  - id: 2
+    rare: 0
+    name: 
+    description: 
+    icon: {fileID: 0}
+    part: {fileID: 11400000, guid: 89afb21c148962647b067b0305780575, type: 2}
+  - id: 3
+    rare: 0
+    name: 
+    description: 
+    icon: {fileID: 0}
+    part: {fileID: 11400000, guid: 006debef0eedb784e9419a9cfc5cf37c, type: 2}
+  - id: 4
+    rare: 0
+    name: 
+    description: 
+    icon: {fileID: 0}
+    part: {fileID: 11400000, guid: 52ee0c0bf80321248af83dcc9dd366e7, type: 2}

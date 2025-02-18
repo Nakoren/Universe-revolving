@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magazine
   m_EditorClassIdentifier: 
   type: 1
-  <model>k__BackingField: {fileID: 0}
+  <model>k__BackingField: {fileID: 2083171636190193102, guid: 8e31ad7ee0f32d243998499c6197069b, type: 3}
   <damageRate>k__BackingField: 1
   <cage>k__BackingField: 6
   <recharge>k__BackingField: 2

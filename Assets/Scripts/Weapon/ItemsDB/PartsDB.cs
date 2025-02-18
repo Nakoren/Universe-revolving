@@ -8,7 +8,7 @@ public class PartsDB : ScriptableObject
     [System.Serializable]
     public class Item 
     {
-        public string id;
+        public int id;
         public int rare;
         public string name;
         public string description;
@@ -17,19 +17,19 @@ public class PartsDB : ScriptableObject
     }
     public List<Item> items;
 
-    public Item GetItem(string id)
+    public Item GetItem(int id)
     {
         return items.Find(x=>x.id == id);
     }
 
-    private void OnValidate()
-    {
-        items.ForEach(item =>
-        {
-            if (string.IsNullOrEmpty(item.id))
-            {
-                item.id = Guid.NewGuid().ToString();
-            }
-        });
-    }
+    // private void OnValidate()
+    // {
+    //     items.ForEach(item =>
+    //     {
+    //         if (string.IsNullOrEmpty(item.id))
+    //         {
+    //             item.id = Guid.NewGuid().ToString();
+    //         }
+    //     });
+    // }
 }

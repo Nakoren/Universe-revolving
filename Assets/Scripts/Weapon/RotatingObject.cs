@@ -5,17 +5,18 @@ public class RotetingObgect : MonoBehaviour
 {
     private PickupObject m_pickup;
     public float rotationSpeed = 50f;
+    public GameObject cube;
 
 
     public void Awake()
     {
-
+        m_pickup = GetComponent<PickupObject>();
+        ModelChange(m_pickup.m_part.model);
     }
 
-    public void GetPart()
+    public void GetPart(GameObject m_model)
     {
-        m_pickup = GetComponent<PickupObject>();
-        ModelChange();
+        ModelChange(m_model);
     }
     void Update()
     {
@@ -25,9 +26,10 @@ public class RotetingObgect : MonoBehaviour
     }
     
 
-    private void ModelChange()
+    private void ModelChange(GameObject m_model)
     {
-        var visual = Instantiate(m_pickup.m_part.model, this.transform.position, this.transform.rotation);
-        visual.transform.SetParent(this.transform);
+        var visual = Instantiate(m_model, this.transform);
+        //visual.transform.SetParent(this.transform);
+        cube.SetActive(false);
     }
 }
