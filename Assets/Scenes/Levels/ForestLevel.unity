@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce083d377e4aacb45b7bd9abcb669f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 866242679}
+  cameraTransform: {fileID: 866242682}
   target: {fileID: 0}
   offset: {x: 10, y: 17, z: 10}
   followCursor: 1
