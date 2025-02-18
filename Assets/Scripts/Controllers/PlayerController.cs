@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     public Player player;
     private InteractableObjectDetector interactableObjectDetector;
     public InputActionAsset inputActions;
-    public Collider terrainCollider;
     public Transform cameraTransform;
 
     private InputActionMap playerActionMap;

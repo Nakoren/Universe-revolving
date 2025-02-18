@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
         m_charController.enabled = false;
         transform.position = position;
         m_charController.enabled = true;
-        Debug.Log($"{gameObject.name}'s new position {gameObject.transform.position}");
+        //Debug.Log($"{gameObject.name}'s new position {gameObject.transform.position}");
     }
 
 }

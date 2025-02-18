@@ -8,12 +8,13 @@ public class RoomController : MonoBehaviour
 {
     [SerializeField] public Transform startPosition;
 
-    [SerializeField] Transitor[] activeTransitions;
-    [SerializeField] GameObject[] closeTransitions;
+    [SerializeField] protected Transitor[] activeTransitions;
+    [SerializeField] protected GameObject[] closeTransitions;
 
-    [SerializeField] List<RoomReward> possibleRewards;
+    [SerializeField] protected List<RoomReward> possibleRewards;
 
     public Action<int> onRoomChange;
+    public Action onFinalRoomChange;
     private int connectionsCount;
     protected Player player;
     protected bool instantCompletion = true;
@@ -29,20 +30,35 @@ public class RoomController : MonoBehaviour
         this.icons = levelIcons;
         this.player = player;
         connectionsCount = connectedRoomsList.Count;
-        for (int i = 0; i < connectionsCount; ++i) {
-            closeTransitions[i].SetActive(false);
-            Transitor currentTransitor = activeTransitions[i].GetComponent<Transitor>();
-            activeTransitions[i] = currentTransitor;
-            activeTransitions[i].gameObject.SetActive(true);
-            activeTransitions[i].Initiate(connectedRoomsList[i], i, icons);
-            activeTransitions[i].onActivate += OnRoomChange;
-        }
-        for (int i = connectionsCount; i < closeTransitions.Length; i++)
+        if (connectedRoomsList.Count > 0)
         {
-            activeTransitions[i].gameObject.SetActive(false);
-            closeTransitions[i].SetActive(true);
+            for (int i = 0; i < connectionsCount; ++i)
+            {
+                closeTransitions[i].SetActive(false);
+                Transitor currentTransitor = activeTransitions[i].GetComponent<Transitor>();
+                activeTransitions[i] = currentTransitor;
+                activeTransitions[i].gameObject.SetActive(true);
+                activeTransitions[i].Initiate(connectedRoomsList[i], i, icons);
+                activeTransitions[i].onActivate += OnRoomChange;
+            }
+            for (int i = connectionsCount; i < closeTransitions.Length; i++)
+            {
+                activeTransitions[i].gameObject.SetActive(false);
+                closeTransitions[i].SetActive(true);
+            }
         }
-        SpecProcessing();   
+        else
+        {
+            for (int i = 0; i < activeTransitions.Length; ++i)
+            {
+                Transitor currentTransitor = activeTransitions[i].GetComponent<Transitor>();
+                activeTransitions[i] = currentTransitor;
+                activeTransitions[i].gameObject.SetActive(true);
+                activeTransitions[i].FinalInitiate(icons);
+                activeTransitions[i].onFinalActivate += OnFinalRoomChange;
+            }
+        }
+        this.SpecProcessing();   
     }
 
     virtual protected void SpecProcessing()
@@ -53,7 +69,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    protected void FinishRoomTask()
+    protected virtual void FinishRoomTask()
     {
         for (int i = 0; i < connectionsCount; ++i)
         {
@@ -71,5 +87,9 @@ public class RoomController : MonoBehaviour
     protected void OnRoomChange(int ind)
     {
         onRoomChange.Invoke(ind);
+    }
+    protected void OnFinalRoomChange()
+    {
+        onFinalRoomChange.Invoke();
     }
 }

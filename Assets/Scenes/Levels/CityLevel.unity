@@ -165,7 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1268981585}
   inputActions: {fileID: -944628639613478452, guid: 3f87c757bb72f2747999e6033be77070, type: 3}
-  terrainCollider: {fileID: 1586626489}
   cameraTransform: {fileID: 866242682}
 --- !u!1 &572306213
 GameObject:
@@ -246,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1268981585}
+  levelIcons: {fileID: 11400000, guid: 7670afbb0d085c7419f8d73e101cc4ea, type: 2}
+  nextSceneIndex: 3
 --- !u!1 &829811745
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +554,6 @@ MonoBehaviour:
   offset: {x: 10, y: 17, z: 10}
   followCursor: 1
   negativeFollowForce: 10
-  terrainCollider: {fileID: 1586626489}
 --- !u!1 &1268981578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
