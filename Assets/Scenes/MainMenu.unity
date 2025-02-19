@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328685162}
+  - component: {fileID: 328685163}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -150,6 +151,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328685163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328685161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708ab2b0d3b2b740a0deb68cf1bf465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1375355366
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +391,26 @@ PrefabInstance:
     - target: {fileID: 2481547846048984192, guid: df3ef51d60e52d04d8ed02bd0c1dc12d, type: 3}
       propertyPath: m_Name
       value: MenuUi
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442558964041708281, guid: df3ef51d60e52d04d8ed02bd0c1dc12d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 328685163}
+    - target: {fileID: 4442558964041708281, guid: df3ef51d60e52d04d8ed02bd0c1dc12d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442558964041708281, guid: df3ef51d60e52d04d8ed02bd0c1dc12d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579609869749556894, guid: df3ef51d60e52d04d8ed02bd0c1dc12d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -41.394146
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095217120691135454, guid: df3ef51d60e52d04d8ed02bd0c1dc12d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -125.19402
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
