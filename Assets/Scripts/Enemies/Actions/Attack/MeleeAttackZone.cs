@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MeleeAttackZone : MonoBehaviour
 {
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private AgentAttack agentAttack;
+    
     [SerializeField] private int damage = 10;
 
     private Health playerHealth;
@@ -10,12 +11,12 @@ public class MeleeAttackZone : MonoBehaviour
 
     private void OnEnable()
     {
-        enemy.onEnemyAttack += OnAttack;
+        agentAttack.OnAgentAttack+=OnAttack;
     }
 
     private void OnDisable()
     {
-        enemy.onEnemyAttack -= OnAttack;
+        agentAttack.OnAgentAttack+=OnAttack;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,7 +35,7 @@ public class MeleeAttackZone : MonoBehaviour
         }
     }
 
-    private void OnAttack(Enemy enemy)
+    private void OnAttack(Vector3 target)
     {
         if (playerHealth)
         {

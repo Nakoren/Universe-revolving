@@ -1,14 +1,9 @@
 using UnityEngine;
-using UnityEngine.AI;
-using System;
-using Unity.VisualScripting;
 
-public class AgentRangedAttack : MonoBehaviour, IAttack
+public class RangedAttackInstantiate : MonoBehaviour
 {
-    protected float lastAttackTime;
-    protected NavMeshAgent m_meshAgent;
-
-
+    [SerializeField] private AgentAttack agentAttack;
+    
     [Header("Projectile Settings")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform spawnBullet;
@@ -17,13 +12,23 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
     [SerializeField] private float shootForce = 1f;
     [SerializeField] private float shootAngle;
 
-    public event Action AgentAttack; // надо убрать из интерфейса
 
-    public void Attack(Vector3 targetPosition)
+    private void OnEnable()
     {
-        targetPosition.y = spawnBullet.position.y;
+        agentAttack.OnAgentAttack+=OnAttack;
+    }
 
-        Vector3 directionToTarget = (targetPosition - spawnBullet.position).normalized;
+    private void OnDisable()
+    {
+        agentAttack.OnAgentAttack+=OnAttack;
+    }
+
+   
+    private void OnAttack(Vector3 target)
+    {
+        target.y = spawnBullet.position.y;
+
+        Vector3 directionToTarget = (target - spawnBullet.position).normalized;
 
         float angle = Vector3.Angle(transform.forward, directionToTarget);
 
@@ -38,11 +43,7 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
             {
                 bulletRb.AddForce(directionToTarget * shootForce, ForceMode.Impulse);
             }
-            AgentAttack?.Invoke();
-            lastAttackTime = Time.time;
         }
-        else
-        {
-        }
+
     }
 }

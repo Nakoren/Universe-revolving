@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using System;
 
-public class AgentRamAttack : MonoBehaviour, IAttack
+/*public class AgentRamAttack : MonoBehaviour, IAttack
 {
     private float lastRamTime;
     private NavMeshAgent m_meshAgent;
@@ -96,4 +96,4 @@ public class AgentRamAttack : MonoBehaviour, IAttack
     {
         throw new NotImplementedException();
     }
-}
+}*/
