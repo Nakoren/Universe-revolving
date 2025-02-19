@@ -16,27 +16,15 @@ public partial class AgentHasReachedPlayerCondition : Condition
 
     public override bool IsTrue()
     {
-        if (Agent?.Value == null)
-        {
-            Debug.LogWarning("Agent is not set or not found.");
-            return false;
-        }
-
         NavMeshAgent m_meshAgent = Agent.Value.GetComponent<NavMeshAgent>();
         Transform m_agentPosition = Agent.Value.GetComponent<Transform>();
         Transform m_playerPosition = Player.Value.GetComponent<Transform>();
         distance = Vector3.Distance(m_agentPosition.position, m_playerPosition.position);
 
 
-        if (m_meshAgent == null)
+        if (distance <= m_meshAgent.stoppingDistance+0.5f)
         {
-            Debug.LogWarning("NavMeshAgent component not found on the agent.");
-            return false;
-        }
-
-
-        if (distance <= m_meshAgent.stoppingDistance)
-        {
+            Debug.LogWarning($"{Agent.Value.name}  {distance}");
             return true;
         }
         return false;

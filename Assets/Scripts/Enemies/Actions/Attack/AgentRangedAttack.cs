@@ -38,17 +38,11 @@ public class AgentRangedAttack : MonoBehaviour, IAttack
             {
                 bulletRb.AddForce(directionToTarget * shootForce, ForceMode.Impulse);
             }
-            else
-            {
-                Debug.LogError("Projectile prefab is missing a Rigidbody component!");
-            }
-            //Debug.Log($"Враг стреляет в направлении {targetPosition}");
+            AgentAttack?.Invoke();
             lastAttackTime = Time.time;
-
         }
         else
         {
-            //Debug.Log($"Цель вне допустимого угла: {angle}° (максимально допустимый: {shootAngle}°)");
         }
     }
 }

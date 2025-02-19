@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IAttack
 {
-    public event Action AgentAttack;
+   public event Action AgentAttack;
     void Attack(Vector3 target);
 }
 

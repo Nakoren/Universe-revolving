@@ -9,7 +9,7 @@ public class AgentMeleeAttack : MonoBehaviour, IAttack
     private NavMeshAgent m_meshAgent;
 
 
-    public event Action AgentAttack; //убрать из интерфейса
+   public event Action AgentAttack; //убрать из интерфейса
 
     private void Awake()
     {
@@ -17,8 +17,8 @@ public class AgentMeleeAttack : MonoBehaviour, IAttack
     }
     public void Attack(Vector3 targetPosition)
     {
-       
-            lastAttackTime = Time.time;
+       AgentAttack?.Invoke();
+        lastAttackTime = Time.time;
         
     }
 }

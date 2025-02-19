@@ -32,7 +32,7 @@ public partial class AttackAction : Action
     {
         if (target == null)
         {
-            return Status.Success;
+            return Status.Failure;
         }
         Vector3 targetPosition = target.Value.transform.position;
 
