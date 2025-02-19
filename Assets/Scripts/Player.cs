@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     Health m_health;
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
+    PlayerAnimationManager m_animator;
    //SkillManager m_skillManager;
     SkillsManager m_skillsManager;
     private PlayerState m_state = PlayerState.Base;
@@ -36,9 +37,14 @@ public class Player : MonoBehaviour
         m_meleePunch = GetComponent<MeleePunch>();
         m_weaponManager = GetComponent<WeaponManager>();
         m_skillsManager = GetComponent<SkillsManager>();
+        m_animator = GetComponentInChildren<PlayerAnimationManager>();
+        m_animator.player = this;
+        m_animator.weapon = GetComponentInChildren<Weapon>();
 
-        m_dash.onDashStart += setStateToDash;
-        m_dash.onDashEnd += setStateToBase;
+
+        m_dash.onDashStart += SetStateToDash;
+        m_dash.onDashStart += OnDashStart;
+        m_dash.onDashEnd += SetStateToBase;
 
         m_health.onZeroHealth += Die;
 
@@ -112,10 +118,6 @@ public class Player : MonoBehaviour
                     return;
                 }
                 dashDir.y = 0;
-                if (onDash != null)
-                {
-                    onDash.Invoke();
-                }
                 m_dash.StartDash(dashDir.normalized);
             }
         }
@@ -129,15 +131,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void setStateToFrozen()
+    private void OnDashStart()
+    {
+        if (onDash != null)
+        {
+            onDash.Invoke();
+        }
+    }
+
+    private void SetStateToFrozen()
     {
         m_state = PlayerState.Frozen;
     }
-    private void setStateToDash()
+    private void SetStateToDash()
     {
         m_state = PlayerState.Dash;
+        var test = m_state;
     }
-    private void setStateToBase()
+    private void SetStateToBase()
     {
         m_state = PlayerState.Base;
     }
