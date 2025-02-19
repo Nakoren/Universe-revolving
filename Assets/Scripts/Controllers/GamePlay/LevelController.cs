@@ -90,7 +90,10 @@ public class LevelController : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        DontDestroyOnLoad(player);
+        if(nextSceneIndex == 0)
+        {
+            Destroy(player);
+        }
         SceneManager.LoadScene(nextSceneIndex);
     }
 }
