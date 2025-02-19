@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
 
     public void Move(Vector2 moveDir, Vector3 baseDirection)
     {
-        if (!(moveDir.magnitude > 0))
+        /*if (!(moveDir.magnitude > 0))
         {
             m_charController.SimpleMove(new Vector3());
             return;
@@ -29,7 +29,17 @@ public class Movement : MonoBehaviour
 
         Vector3 moveDirV3 = new Vector3(x, 0f, y);
 
-        m_charController.SimpleMove(moveDirV3 * speed);
+        m_charController.SimpleMove(moveDirV3 * speed);*/
+        if (moveDir.magnitude <= 0.1f)
+        {
+            m_charController.SimpleMove(Vector3.zero);
+            return;
+        }
+
+        Vector3 localMove = transform.forward * moveDir.y + transform.right * moveDir.x;
+        localMove = localMove.normalized;
+
+        m_charController.SimpleMove(localMove * speed);
     }
 
     public void RotateToPosition(Vector3 position)
