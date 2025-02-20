@@ -14,13 +14,9 @@ public class Player : MonoBehaviour
     Health m_health;
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
-<<<<<<< HEAD
-    SkillManager m_skillManager;
     InteractableObjectDetector m_interactableObjectDetector;
-=======
-   //SkillManager m_skillManager;
+
     SkillsManager m_skillsManager;
->>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
     public Action<Vector3> onMove;
@@ -40,12 +36,8 @@ public class Player : MonoBehaviour
         m_health = GetComponent<Health>();
         m_meleePunch = GetComponent<MeleePunch>();
         m_weaponManager = GetComponent<WeaponManager>();
-<<<<<<< HEAD
-        m_skillManager = GetComponent<SkillManager>();
-        m_interactableObjectDetector = GetComponent<InteractableObjectDetector>();
-=======
+
         m_skillsManager = GetComponent<SkillsManager>();
->>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
@@ -102,20 +94,14 @@ public class Player : MonoBehaviour
         
     public void Skill1()
     {
-<<<<<<< HEAD
-        m_skillManager.SkillQuse();
-=======
         m_skillsManager.ActivateHealingSkill();
->>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
+
     }
 
     public void Skill2()
     {
-<<<<<<< HEAD
-        m_skillManager.SkillEuse();
-=======
         //m_skillsManager.SkillEuse();
->>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
+
     }
 
     public void ExtraAction()
