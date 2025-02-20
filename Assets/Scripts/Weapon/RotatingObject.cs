@@ -14,9 +14,9 @@ public class RotetingObgect : MonoBehaviour
         ModelChange(m_pickup.m_part.model);
     }
 
-    public void GetPart(GameObject m_model)
+    public void GetPart(IPart part)
     {
-        ModelChange(m_model);
+        ModelChange(part.model);
     }
     void Update()
     {
@@ -28,7 +28,10 @@ public class RotetingObgect : MonoBehaviour
 
     private void ModelChange(GameObject m_model)
     {
-        var visual = Instantiate(m_model, this.transform);
+        //var visual = Instantiate(m_model, this.transform);
+        GameObject visual = Instantiate(m_model, transform.position, Quaternion.identity);
+        visual.transform.SetParent(transform);
+        visual.transform.localScale = new Vector3(3f, 3f, 3f);
         //visual.transform.SetParent(this.transform);
         cube.SetActive(false);
     }

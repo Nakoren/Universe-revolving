@@ -16,7 +16,7 @@ public class PickupObject : IInteractable
     {
         m_roteting = GetComponent<RotetingObgect>();
         m_part = part;
-        m_roteting.GetPart(part.model);
+        m_roteting.GetPart(part);
     }
 
     public override void Interact(Player player)

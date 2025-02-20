@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponLego : MonoBehaviour
 {
     private Weapon m_weapon;
+    private WeaponVisual m_visual;
     public PickupObject pickupPrefab;
     public float totalDamage;
 
@@ -23,13 +24,26 @@ public class WeaponLego : MonoBehaviour
     public void Awake()
     {
         m_weapon = GetComponent<Weapon>(); 
+        m_visual = GetComponent<WeaponVisual>(); 
         EmptyFix();
     }
     public void EmptyFix()
     {
-        if (scope == null) scope = base_scope;
-        if (magazine == null) magazine = base_magazine;
-        if (receiver == null) receiver = base_receiver;
+        if (scope == null) 
+        {
+            scope = base_scope;
+            m_visual?.SetElementScope(base_scope);
+        }
+        if (magazine == null) 
+        {
+            magazine = base_magazine;
+            m_visual?.SetElementMagazine(base_magazine);
+        }
+        if (receiver == null) 
+        {
+            receiver = base_receiver;
+            m_visual?.SetElementReceiver(base_receiver);
+        }
     }
     public void GoBase()
     {
@@ -54,16 +68,19 @@ public class WeaponLego : MonoBehaviour
         {
             Drop(scope);
             scope = (Scope)part;
+            m_visual?.SetElementScope(part);
         }
         else if (part.type == IPart.Ptype.Magazine)
         {
             Drop(magazine);
             magazine = (Magazine)part;
+            m_visual?.SetElementMagazine(part);
         }
         else if (part.type == IPart.Ptype.Receiver)
         {
             Drop(receiver);
             receiver = (Receiver)part;
+            m_visual?.SetElementReceiver(part);
         }
         else
         {

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3a8f94ca1425374ea040972791ae83a, type: 3}
-  m_Name: Scope
+  m_Script: {fileID: 11500000, guid: 7e07d60c9d1f0fa4599c6e2fd6e5836a, type: 3}
+  m_Name: RMagazine
   m_EditorClassIdentifier: 
-  type: 0
-  <model>k__BackingField: {fileID: 2083171636190193102, guid: 8e31ad7ee0f32d243998499c6197069b, type: 3}
+  type: 1
+  <model>k__BackingField: {fileID: 515544726183751729, guid: 0dceae3d7e4192b49ba7bbeb3ef4d2c6, type: 3}
   <damageRate>k__BackingField: 1
-  <spread>k__BackingField: 2
-  <range>k__BackingField: 15
+  <cage>k__BackingField: 6
+  <recharge>k__BackingField: 2

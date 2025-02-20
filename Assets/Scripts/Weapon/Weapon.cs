@@ -133,8 +133,8 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator MultyFier()
     {
-        yield return new WaitForSeconds(0.1f);
-        m_state = State.Idle;
+        yield return new WaitForSeconds(0.2f);
+        //m_state = State.Idle;
     }
     public void ShootAction()
     {

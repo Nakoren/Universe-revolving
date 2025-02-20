@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e07d60c9d1f0fa4599c6e2fd6e5836a, type: 3}
-  m_Name: Magazine
+  m_Script: {fileID: 11500000, guid: f3a8f94ca1425374ea040972791ae83a, type: 3}
+  m_Name: PPScope
   m_EditorClassIdentifier: 
-  type: 1
-  <model>k__BackingField: {fileID: 2083171636190193102, guid: 8e31ad7ee0f32d243998499c6197069b, type: 3}
+  type: 0
+  <model>k__BackingField: {fileID: 1473628354139540475, guid: 5ca678bb29f4b364c961dd24b0a114aa, type: 3}
   <damageRate>k__BackingField: 1
-  <cage>k__BackingField: 6
-  <recharge>k__BackingField: 2
+  <spread>k__BackingField: 3
+  <range>k__BackingField: 20
