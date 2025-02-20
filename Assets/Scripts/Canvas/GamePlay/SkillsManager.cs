@@ -4,9 +4,9 @@ using System.Collections;
 using TMPro;
 using System;
 
-public class SkillsManager : MonoBehaviour
+/*public class SkillsManager : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private Player player;
     [SerializeField] private Color cooldownColor = new Color(0f, 0f, 0f);
 
     [SerializeField] private Image skill1Icon;
@@ -26,14 +26,14 @@ public class SkillsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerController.onSkill1Player += StartSkill1Cooldown;
-        playerController.onSkill2Player += StartSkill2Cooldown;
+        player.onPlayerSkill1 += StartSkill1Cooldown;
+        player.onPlayerSkill2 += StartSkill2Cooldown;
     }
 
     private void OnDisable()
     {
-        playerController.onSkill1Player -= StartSkill1Cooldown;
-        playerController.onSkill2Player -= StartSkill2Cooldown;
+        player.onPlayerSkill1 += StartSkill1Cooldown;
+        player.onPlayerSkill2 += StartSkill2Cooldown;
     }
 
 
@@ -74,4 +74,47 @@ public class SkillsManager : MonoBehaviour
         timerText.enabled = false;
         onFinish?.Invoke();
     }
+}*/
+
+
+public class SkillCooldownDisplay : MonoBehaviour
+{
+    [SerializeField] private Color cooldownColor = new Color(0f, 0f, 0f);
+     private Color originalColor;
+
+    [SerializeField] private HealingSkill healingSkill; 
+    [SerializeField] private TextMeshProUGUI healingTimerText; 
+    [SerializeField] private Image healingSkillIcon;
+
+     private void Awake()
+    {
+        originalColor = healingSkillIcon.color;
+    }
+
+    private void OnEnable()
+    {
+        healingSkill.onCooldownTick += UpdateCooldownText;
+        healingSkill.onCooldownComplete += ClearCooldownText;
+    }
+
+    private void OnDisable()
+    {
+        healingSkill.onCooldownTick -= UpdateCooldownText;
+        healingSkill.onCooldownComplete -= ClearCooldownText;
+    }
+
+    
+    private void UpdateCooldownText(float remainingTime)
+    {
+        healingSkillIcon.color=cooldownColor;
+        healingTimerText.text = Mathf.CeilToInt(remainingTime).ToString();
+    }
+
+   
+    private void ClearCooldownText()
+    {
+        healingSkillIcon.color=originalColor;
+        healingTimerText.text = "";
+    }
 }
+

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BossRoom", menuName = "BossRoom")]
+[CreateAssetMenu(fileName = "BossRoom", menuName = "RoomTypes/BossRoom")]
 public class BossRoom : Room
 {
 

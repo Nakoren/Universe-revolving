@@ -110,11 +110,12 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        BulletCounter();
         if (ammo > 0)
         {
-            ShootAction();;
+            Debug.Log($"SHOOTammo - {ammo}");
+            ShootAction();
         }
+         BulletCounter();
     }
 
     public void BulletCounter()
@@ -123,11 +124,11 @@ public class Weapon : MonoBehaviour
         {
         ammo = ammo - 1;
         onShoot?.Invoke();
-        //Debug.Log($"ammo - {ammo}");
+        Debug.Log($"ammo - {ammo}");
         }
         else
         {
-            //Debug.Log($"ammo - pusto {ammo}");
+            Debug.Log($"ammo - pusto {ammo}");
         }
     }
 

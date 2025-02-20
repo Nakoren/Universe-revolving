@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d6417f926328b47a574efca7f39505, type: 3}
   m_Name: healing
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_isColdown: 1
   cooldown: 2
+=======
+  m_isColdown: 0
+  cooldown: 20
+>>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
   delay: 1

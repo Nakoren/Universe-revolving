@@ -55,7 +55,7 @@ public class InteractableObjectDetector : MonoBehaviour
                 }
                 if (m_closestInteractable != null)
                 {
-                    Debug.Log($"Closest object: {m_closestInteractable.name}");
+                    //Debug.Log($"Closest object: {m_closestInteractable.name}");
                 }
             }
             yield return new WaitForSeconds(1);
@@ -77,7 +77,7 @@ public class InteractableObjectDetector : MonoBehaviour
         }
         else
         {
-            Debug.Log("No item to interact");
+            //Debug.Log("No item to interact");
         }
     }
 
@@ -102,7 +102,7 @@ public class InteractableObjectDetector : MonoBehaviour
         {
             m_interactableObjects.Add(newObject);
             newObject.onDestroy += OnInteractableDestroy;
-            Debug.Log($"Added to interactable: {newObject.name}");
+           // Debug.Log($"Added to interactable: {newObject.name}");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -113,7 +113,7 @@ public class InteractableObjectDetector : MonoBehaviour
             m_interactableObjects.Remove(otherObject);
             otherObject.SetInteractableState(false);
             otherObject.onDestroy -= OnInteractableDestroy;
-            Debug.Log($"Removed to interactable: {otherObject.name}");
+            //Debug.Log($"Removed to interactable: {otherObject.name}");
         }
     }
 }

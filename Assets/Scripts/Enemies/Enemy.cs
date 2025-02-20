@@ -8,10 +8,12 @@ public class Enemy : MonoBehaviour
     private AgentMovement m_movement;
     private IAttack m_attack;
     private AgentDeath m_death;
+    private Health m_health;
 
     public Action<Enemy> onEnemyDeath;
     public Action<Enemy> onEnemyAttack;
     public Action<Enemy> onEnemyMove;
+    public Action<Enemy> onEnemyGetDamage;
 
     private bool m_dead;
     
@@ -24,10 +26,13 @@ public class Enemy : MonoBehaviour
         m_attack = GetComponent<IAttack>();
         m_death=GetComponent<AgentDeath>();
         m_graphAgent = GetComponent<BehaviorGraphAgent>();
+        m_health=GetComponent<Health>();
+
 
         m_death.AgentDie+=Die;
         m_movement.AgentMove+=Move;
         m_attack.AgentAttack+=Attack;
+        m_health.onAgentDamage+=GetDamage;
     }
 
     public void Activate()
@@ -59,6 +64,14 @@ public class Enemy : MonoBehaviour
             onEnemyAttack?.Invoke(this);
             m_attack.Attack(target.position);
         }
+    }
+
+    public void GetDamage()
+    {
+        if(m_health!=null)
+        {
+            onEnemyGetDamage?.Invoke(this);
+        } 
     }
 
     public void SetTarget(Transform target)

@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public partial class HasReachedStoppingDistanceCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
-    private bool initialize = true;
+    [SerializeReference] public BlackboardVariable<Transform> Player;
 
 
     public override bool IsTrue()
@@ -21,19 +21,21 @@ public partial class HasReachedStoppingDistanceCondition : Condition
 
         NavMeshAgent m_meshAgent = Agent.Value.GetComponent<NavMeshAgent>();
 
+        Transform m_agentPosition =Agent.Value.GetComponent<Transform>();
+        Transform m_playerPosition =Player.Value.GetComponent<Transform>();
+        float distance = Vector3.Distance(m_agentPosition.position, m_playerPosition.position);
+
         if (m_meshAgent == null)
         {
             Debug.LogWarning("NavMeshAgent component not found on the agent.");
             return false;
         }
+        
 
-        if (m_meshAgent.remainingDistance <= m_meshAgent.stoppingDistance/*&& !navMeshAgent.pathPending*/)
+        if (distance <= m_meshAgent.stoppingDistance/*&& !navMeshAgent.pathPending*/)
         {
             Debug.Log($"Agent has reached stopping distance. Velocity {m_meshAgent.velocity.magnitude}");
-        
-                return true;
-        
-
+            return true;
         }
         return false;
     }

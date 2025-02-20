@@ -4,23 +4,21 @@ using UnityEngine;
 public class PlayerAnimationManager : MonoBehaviour
 {
     private Animator animator;
-    private Vector2 moveInput;
-    [SerializeField] private PlayerController playerController;
+    private Vector3 moveInput;
+    [SerializeField] private Player player;
     [SerializeField] private Weapon weapon;
 
     private void OnEnable()
     {
-        playerController.onPlayerMove += UpdateMovementAnimation;
-        playerController.onPlayerDash += OnDashAnimation;
-        //playerController.PlayerReload+=OnReloadAnimation;
+        player.onMove+=UpdateMovementAnimation;
+        player.onDash+=OnDashAnimation;
         weapon.onReloadStart+=OnReloadAnimation;
     }
 
     private void OnDisable()
     {
-        playerController.onPlayerMove -= UpdateMovementAnimation;
-        playerController.onPlayerDash -= OnDashAnimation;
-        //playerController.PlayerReload-=OnReloadAnimation;
+        player.onMove-=UpdateMovementAnimation;
+        player.onDash-=OnDashAnimation;
         weapon.onReloadStart-=OnReloadAnimation;
     }
 
@@ -35,7 +33,7 @@ public class PlayerAnimationManager : MonoBehaviour
     }
 
 
-    public void UpdateMovementAnimation(Vector2 input)
+    public void UpdateMovementAnimation(Vector3 input)
     {
         moveInput = input;
         animator.SetBool("isMoving", true);

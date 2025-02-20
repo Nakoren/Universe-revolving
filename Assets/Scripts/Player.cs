@@ -14,12 +14,20 @@ public class Player : MonoBehaviour
     Health m_health;
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
+<<<<<<< HEAD
     SkillManager m_skillManager;
     InteractableObjectDetector m_interactableObjectDetector;
+=======
+   //SkillManager m_skillManager;
+    SkillsManager m_skillsManager;
+>>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
+    public Action<Vector3> onMove;
     public Action onPlayerDeath;
     public event Action onPlayerFire;
+    public event Action onPlayerSkill1;
+    public event Action onPlayerSkill2;
 
     private Vector3 m_position = new Vector3();
     private Vector3 m_prevFramePosition = new Vector3();
@@ -32,8 +40,12 @@ public class Player : MonoBehaviour
         m_health = GetComponent<Health>();
         m_meleePunch = GetComponent<MeleePunch>();
         m_weaponManager = GetComponent<WeaponManager>();
+<<<<<<< HEAD
         m_skillManager = GetComponent<SkillManager>();
         m_interactableObjectDetector = GetComponent<InteractableObjectDetector>();
+=======
+        m_skillsManager = GetComponent<SkillsManager>();
+>>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
@@ -55,6 +67,7 @@ public class Player : MonoBehaviour
     {
         if(m_state == PlayerState.Base) 
         {
+            onMove?.Invoke(direction);
             m_movement.Move(direction, basicAngle);
         }
         if(m_state == PlayerState.Dash)
@@ -89,12 +102,20 @@ public class Player : MonoBehaviour
         
     public void Skill1()
     {
+<<<<<<< HEAD
         m_skillManager.SkillQuse();
+=======
+        m_skillsManager.ActivateHealingSkill();
+>>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
     }
 
     public void Skill2()
     {
+<<<<<<< HEAD
         m_skillManager.SkillEuse();
+=======
+        //m_skillsManager.SkillEuse();
+>>>>>>> 8e4c492236835aa814af70bff0ed799e2e86f7fc
     }
 
     public void ExtraAction()

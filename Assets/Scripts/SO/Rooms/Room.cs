@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "Room", menuName = "Room")]
+[CreateAssetMenu(fileName = "Room", menuName = "RoomTypes/Room")]
 public class Room: ScriptableObject
 {
     public GameObject prefab;

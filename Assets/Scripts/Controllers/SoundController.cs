@@ -4,7 +4,7 @@ public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSourceSounds;
 
-        [SerializeField] private AudioClip playerBlaster;
+    [SerializeField] private AudioClip playerBlaster;
         
 
         private bool isMuted = false; 

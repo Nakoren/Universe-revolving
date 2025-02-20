@@ -12,6 +12,7 @@ public class DeathState : MonoBehaviour
     {
         if (rootUI != null)
         {
+            Time.timeScale=0f;
             rootUI.SetActive(true);
         }
     }

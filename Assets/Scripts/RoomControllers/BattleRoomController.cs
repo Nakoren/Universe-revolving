@@ -18,7 +18,7 @@ public class BattleRoomController : RoomController
     private List<List<Enemy>> enemyList;
     */
 
-    [SerializeField] List<Wave> waves;
+    [SerializeField] private List<Wave> waves;
 
     private int currentWave;
     
@@ -28,6 +28,7 @@ public class BattleRoomController : RoomController
         if (waves.Count == 0)
         {
             instantCompletion = true;
+            FinishRoomTask();
         }
         else
         {
@@ -36,7 +37,6 @@ public class BattleRoomController : RoomController
         }
         
     }
-    
 
     private void OnDestroy()
     {
@@ -59,7 +59,7 @@ public class BattleRoomController : RoomController
         }
     }
 
-    public void LoadWave(int wave)
+    protected void LoadWave(int wave)
     {
         if(currentWave >= waves.Count)
         {
@@ -71,7 +71,7 @@ public class BattleRoomController : RoomController
         }
     }
 
-    public void AddEnemy(Enemy enemy)
+    public virtual void AddEnemy(Enemy enemy)
     {
         waves[currentWave].Add(enemy);
     }
