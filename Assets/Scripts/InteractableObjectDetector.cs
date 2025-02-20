@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,13 +71,21 @@ public class InteractableObjectDetector : MonoBehaviour
     {
         if (m_closestInteractable != null)
         {
-            m_closestInteractable.Interact(m_player);
+            m_closestInteractable.onPickup += Pickup;
+            m_closestInteractable.Interact();
+            m_closestInteractable.onPickup -= Pickup;
         }
         else
         {
             Debug.Log("No item to interact");
         }
     }
+
+    private void Pickup(IPart part)
+    {
+        m_player.Pickup(part);
+    }
+
     private void OnInteractableDestroy(IInteractable interactable)
     {
         if(m_closestInteractable == interactable)

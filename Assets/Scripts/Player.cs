@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
     SkillManager m_skillManager;
+    InteractableObjectDetector m_interactableObjectDetector;
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
     public Action onPlayerDeath;
@@ -32,9 +33,11 @@ public class Player : MonoBehaviour
         m_meleePunch = GetComponent<MeleePunch>();
         m_weaponManager = GetComponent<WeaponManager>();
         m_skillManager = GetComponent<SkillManager>();
+        m_interactableObjectDetector = GetComponent<InteractableObjectDetector>();
 
         m_dash.onDashStart += setStateToDash;
         m_dash.onDashEnd += setStateToBase;
+        //m_interactableObjectDetector.m_closestInteractable.onPickup += Pickup;
 
         m_health.onZeroHealth += Die;
 

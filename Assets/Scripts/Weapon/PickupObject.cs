@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,9 +20,10 @@ public class PickupObject : IInteractable
         m_roteting.GetPart(part);
     }
 
-    public override void Interact(Player player)
+    public override void Interact()
     {
-        player.Pickup(m_part);
+        onPickup?.Invoke(m_part);
+        //player.Pickup(m_part);
         Destroy(gameObject);
     }
 }

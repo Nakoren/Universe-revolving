@@ -11,7 +11,7 @@ public class RotetingObgect : MonoBehaviour
     public void Awake()
     {
         m_pickup = GetComponent<PickupObject>();
-        ModelChange(m_pickup.m_part.model);
+        if (m_pickup.m_part != null) GetPart(m_pickup.m_part);
     }
 
     public void GetPart(IPart part)

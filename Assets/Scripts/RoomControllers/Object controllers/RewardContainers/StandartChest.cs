@@ -4,7 +4,7 @@ using UnityEngine;
 public class StandartChest : RewardContainer
 {
     public PickupObject pickupObject;
-    public override void Interact(Player player)
+    public override void Interact()
     {
         if (onOpen != null) onOpen.Invoke();
         int randItemIndex = Random.Range(0, rewardItemDB.items.Count);
