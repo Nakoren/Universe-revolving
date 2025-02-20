@@ -22,7 +22,7 @@ public partial class AgentHasReachedPlayerCondition : Condition
         distance = Vector3.Distance(m_agentPosition.position, m_playerPosition.position);
 
 
-        if (distance <= m_meshAgent.stoppingDistance+0.5f)
+        if (distance <= m_meshAgent.stoppingDistance+1f)
         {
             Debug.LogWarning($"{Agent.Value.name}  {distance}");
             return true;
