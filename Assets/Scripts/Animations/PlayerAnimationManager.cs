@@ -5,8 +5,8 @@ public class PlayerAnimationManager : MonoBehaviour
 {
     private Animator animator;
     private Vector3 moveInput;
-    [SerializeField] private Player player;
-    [SerializeField] private Weapon weapon;
+    public Player player;
+    public Weapon weapon;
 
     private void OnEnable()
     {

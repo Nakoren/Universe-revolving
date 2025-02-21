@@ -32,7 +32,7 @@ public class Dash : MonoBehaviour
 
     public void StartDash(Vector3 direction)
     {
-        if(m_dashDelay != null)
+         if(m_dashDelay != null)
         {
             Debug.Log("Dash on cooldown");
             return;

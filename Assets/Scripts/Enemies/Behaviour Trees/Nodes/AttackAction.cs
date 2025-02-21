@@ -11,17 +11,16 @@ public partial class AttackAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> agent;
     [SerializeReference] public BlackboardVariable<Transform> target;
 
-    private Enemy m_enemy;
+    private AgentAttack m_attack;
     protected override Status OnStart()
     {
         if (agent?.Value != null)
         {
-            m_enemy = agent.Value.GetComponent<Enemy>();
+            m_attack = agent.Value.GetComponent<AgentAttack>();
         }
 
-        if (m_enemy == null)
+        if (m_attack == null)
         {
-            Debug.LogWarning("No Enemy component found on Agent.");
             return Status.Failure;
         }
 
@@ -32,16 +31,16 @@ public partial class AttackAction : Action
     {
         if (target == null)
         {
-            return Status.Success;
+            return Status.Failure;
         }
         Vector3 targetPosition = target.Value.transform.position;
 
-        if (m_enemy == null)
+        if (m_attack == null)
         {
             return Status.Failure;
         }
 
-        m_enemy.Attack();
+        m_attack.Attack(targetPosition);
         return Status.Success; 
     }
 }

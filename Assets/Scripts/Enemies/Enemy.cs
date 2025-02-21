@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private AgentMovement m_movement;
-    private IAttack m_attack;
+    private AgentAttack m_attack;
     private AgentDeath m_death;
     private Health m_health;
 
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public void Awake()
     {
         m_movement = GetComponent<AgentMovement>();
-        m_attack = GetComponent<IAttack>();
+        m_attack = GetComponent<AgentAttack>();
         m_death=GetComponent<AgentDeath>();
         m_graphAgent = GetComponent<BehaviorGraphAgent>();
         m_health=GetComponent<Health>();
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
         m_death.AgentDie+=Die;
         m_movement.AgentMove+=Move;
-        m_attack.AgentAttack+=Attack;
+        m_attack.OnAgentAttack+=Attack;
         m_health.onAgentDamage+=GetDamage;
     }
 
@@ -57,12 +57,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void Attack(Vector3 vector)
     {
         if (m_attack != null)
         {
             onEnemyAttack?.Invoke(this);
-            m_attack.Attack(target.position);
         }
     }
 
