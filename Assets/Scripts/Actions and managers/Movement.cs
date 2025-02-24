@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
         /*if (moveDir.magnitude <= 0.1f)
         {
             m_charController.SimpleMove(Vector3.zero);
-            return;
+            return;x
         }
 
         Vector3 localMove = transform.forward * moveDir.y + transform.right * moveDir.x;

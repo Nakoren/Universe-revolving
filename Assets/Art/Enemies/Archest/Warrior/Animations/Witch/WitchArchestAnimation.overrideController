@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WitchArchestAnimation
+  m_Controller: {fileID: 9100000, guid: 3e53a3ca1e49d4ef0be68287d79c1d4e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 9752e86a7d9eb4adf9fa0eed784d71b8, type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: c9d4cf027bfdc4a7ca7a468e5130b4bb, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 8278b1c4b4799455aae52b7f9d511dab, type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 16077ae40329142dea079d4b10e5976d, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 6a370936995b54007affb0ded60a2333, type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 0c959d94381d240ebaceba299a8db540, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 62fd302e128624156a1640e1a65b81c8, type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 0f25d69f367574669b3659203e7127cc, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: fc28c681edf8f4ed7acb43a6ca14e9b9, type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 16077ae40329142dea079d4b10e5976d, type: 3}
