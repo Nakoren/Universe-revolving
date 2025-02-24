@@ -20,6 +20,11 @@ public class WeaponManager : MonoBehaviour
 
         SetActiveWeapon(0);
     }
+
+    public void ToDefault()
+    {
+        m_currentWeapon.ToDefault();
+    }
     
    private void Start()
     {

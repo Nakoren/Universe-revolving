@@ -48,9 +48,17 @@ public class WeaponLego : MonoBehaviour
     public void GoBase()
     {
         scope = base_scope;
+        m_visual?.SetElementScope(base_scope);
         magazine = base_magazine;
+        m_visual?.SetElementMagazine(base_magazine);
         receiver = base_receiver;
+        m_visual?.SetElementReceiver(base_receiver);
     }
+    public void ToDefault()
+    {
+        GoBase();
+    }
+    
     public void GetElements()
     {
         totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;

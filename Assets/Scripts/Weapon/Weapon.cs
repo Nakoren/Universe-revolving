@@ -32,6 +32,11 @@ public class Weapon : MonoBehaviour
     {
         lego.GetElements();
     }
+    public void ToDefault()
+    {
+        lego.ToDefault();
+    }
+    
     public void Pickup(IPart part)
     {
         lego.Pickup(part);

@@ -80,6 +80,10 @@ public class Player : MonoBehaviour
         m_movement.WarpTo(position);
     }
 
+    public void ToDefault()
+    {
+        m_weaponManager.ToDefault();
+    }
     public void RotateTo(Vector3 target)
     {
         m_movement.RotateToPosition(target);
