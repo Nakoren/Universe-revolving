@@ -6,7 +6,6 @@ public class PlayerSoundEffect : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] Player player;
     [SerializeField] Weapon weapon;
-    [SerializeField] ISkill healingSkill;
 
     [SerializeField] AudioClip playerAttack;
     [SerializeField] AudioClip playerReload;
