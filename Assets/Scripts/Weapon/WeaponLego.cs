@@ -6,72 +6,85 @@ using UnityEngine;
 public class WeaponLego : MonoBehaviour
 {
     private Weapon m_weapon;
-    // public ElementsDB base_scope;
-    // public ElementsDB base_magazine;
-    // public ElementsDB base_receiver;
-    public List<ElementsDB> basis = new List<ElementsDB>();
-    private List<ElementInfo> m_Elements = new List<ElementInfo>();
-    public ElementsDB scope;
-    public ElementsDB magazine;
-    public ElementsDB receiver;
+    private WeaponVisual m_visual;
+    public PickupObject pickupPrefab;
     public float totalDamage;
+
+    [Header("Base Parts")]
+    public Scope base_scope;
+    public Magazine base_magazine;
+    public Receiver base_receiver;
+
+    [Header("Current Parts")]
+    public Scope scope;
+    public Magazine magazine;
+    public Receiver receiver;
+    
 
     public void Awake()
     {
         m_weapon = GetComponent<Weapon>(); 
+        m_visual = GetComponent<WeaponVisual>(); 
+        EmptyFix();
     }
-
+    public void EmptyFix()
+    {
+        if (scope == null) 
+        {
+            scope = base_scope;
+            m_visual?.SetElementScope(base_scope);
+        }
+        if (magazine == null) 
+        {
+            magazine = base_magazine;
+            m_visual?.SetElementMagazine(base_magazine);
+        }
+        if (receiver == null) 
+        {
+            receiver = base_receiver;
+            m_visual?.SetElementReceiver(base_receiver);
+        }
+    }
     public void GoBase()
     {
-        // scope = base_scope;
-        // magazine = base_magazine;
-        // receiver = base_receiver;
-        for (int i = 0; i < m_Elements.Count; i++)
-        {
-            m_Elements[i].elementDB = basis[i];
-        }
-        GetElements();
+        scope = base_scope;
+        magazine = base_magazine;
+        receiver = base_receiver;
     }
     public void GetElements()
     {
-        // Очищаем список и собираем компоненты
-        m_Elements.Clear();
-        m_Elements.AddRange(GetComponentsInChildren<ElementInfo>());
+        totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;
+    }
+    public void Drop(IPart part)
+    {
+        PickupObject pickup = Instantiate(pickupPrefab, this.transform.position, this.transform.rotation);
+        pickup.GetPart(part);
+    }
 
-        // Проверяем, были ли найдены компоненты
-        if (m_Elements.Count > 0)
+    public void Pickup(IPart part) 
+    {  
+
+        if (part.type == IPart.Ptype.Scope)
         {
-            //Debug.Log("Найдено " + m_Elements.Count + " компонентов ElementInfo.");
-            foreach (var element in m_Elements)
-            {
-                //Debug.Log("ElementInfo: " + element.name);
-            }
+            Drop(scope);
+            scope = (Scope)part;
+            m_visual?.SetElementScope(part);
+        }
+        else if (part.type == IPart.Ptype.Magazine)
+        {
+            Drop(magazine);
+            magazine = (Magazine)part;
+            m_visual?.SetElementMagazine(part);
+        }
+        else if (part.type == IPart.Ptype.Receiver)
+        {
+            Drop(receiver);
+            receiver = (Receiver)part;
+            m_visual?.SetElementReceiver(part);
         }
         else
         {
-            //Debug.LogWarning("Компоненты ElementInfo не найдены в дочерних объектах.");
-        }
-        LegoSort();
-        totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;
-
-    }
-
-    public void LegoSort()
-    {
-        for (int i = 0; i < m_Elements.Count; i++)
-        {
-            if (m_Elements[i].elementDB.type == "scope")
-            {
-                scope = m_Elements[i].elementDB;
-            }
-            else if (m_Elements[i].elementDB.type == "magazine")
-            {
-                magazine = m_Elements[i].elementDB;
-            }
-            else if (m_Elements[i].elementDB.type == "receiver")
-            {
-                receiver = m_Elements[i].elementDB;
-            }
+            Drop(part);
         }
     }
 }

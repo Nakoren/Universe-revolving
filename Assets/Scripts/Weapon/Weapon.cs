@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     public float Damage = 20;
     
 
-    public Action onShoot;
+    public Action onShoot; 
     public Action onReloadStart;
     public Action onReloadEnd;
 
@@ -31,6 +31,10 @@ public class Weapon : MonoBehaviour
     public void GetElements()
     {
         lego.GetElements();
+    }
+    public void Pickup(IPart part)
+    {
+        lego.Pickup(part);
     }
     public void GoBase()
     {
@@ -128,8 +132,16 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private IEnumerator MultyFier()
+    {
+        yield return new WaitForSeconds(0.2f);
+        //m_state = State.Idle;
+    }
     public void ShootAction()
     {
+        for (int a = 1; a <= lego.receiver.times; a++)
+    {
+        MultyFier();
         for (int i = 1; i <= lego.receiver.volume; i++)
         {
         Projectile bullet = Instantiate(bulletPrefab, m_muzzle.position, m_muzzle.rotation);
@@ -149,5 +161,6 @@ public class Weapon : MonoBehaviour
             rb.AddForce(spreadDirection.normalized * lego.receiver.force, ForceMode.Impulse);
         }
         }
+    }
     }
 }
