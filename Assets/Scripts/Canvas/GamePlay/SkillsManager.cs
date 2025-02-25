@@ -80,7 +80,7 @@ using System;
 public class SkillCooldownDisplay : MonoBehaviour
 {
     [SerializeField] private Color cooldownColor = new Color(0f, 0f, 0f);
-    [SerializeField] private Color durationColor = new Color(0f, 0f, 0f);
+    [SerializeField] private Slider durationSlider;
     private Color originalColor;
 
     [SerializeField] private HealingSkill healingSkill;
@@ -106,6 +106,8 @@ public class SkillCooldownDisplay : MonoBehaviour
         boostSkill.onCooldownTick += UpdateBoostCooldownText;
         boostSkill.onCooldownComplete += ClearBoostCooldownText;
         boostSkill.onDurationSkill += UpdateBoostDurationText;
+
+
     }
 
     private void OnDisable()
@@ -133,8 +135,7 @@ public class SkillCooldownDisplay : MonoBehaviour
     }
     private void UpdateBoostDurationText(float remainingTime)
     {
-        boostSkillIcon.color = durationColor;
-        boostTimerText.text = Mathf.CeilToInt(remainingTime).ToString();
+        durationSlider.value = remainingTime/boostSkill.SkillDuration;
     }
 
 

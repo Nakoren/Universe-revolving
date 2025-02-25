@@ -10,6 +10,7 @@ public class BoostSkill : MonoBehaviour
     private float lastUsedTime = -Mathf.Infinity;
 
     public bool IsSkillOnCooldown => isSkillOnCooldown;
+    public float SkillDuration => skillDuration;
 
     public event Action<float> onCooldownTick;
     public event Action<float> onDurationSkill;
@@ -26,7 +27,7 @@ public class BoostSkill : MonoBehaviour
         float originalSpeed = movement.GetCurrentSpeed();
         BoostSkillLogic(movement);
 
-       
+
         
         isSkillOnCooldown = true;
         lastUsedTime = Time.time;
@@ -37,7 +38,7 @@ public class BoostSkill : MonoBehaviour
     private IEnumerator BoostThenCooldown(Movement movement, float originalSpeed, float duration, float cooldownTime)
     {
         yield return StartCoroutine(BoostDurationCoroutine(movement, originalSpeed, duration));
-        
+
         yield return StartCoroutine(CooldownRoutine(cooldownTime, () =>
         {
             isSkillOnCooldown = false;
