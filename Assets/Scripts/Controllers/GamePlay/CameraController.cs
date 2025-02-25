@@ -11,12 +11,12 @@ public class CameraController : MonoBehaviour
     [Header("For correct execution this need to be set not less then to 4")]
     [SerializeField] int negativeFollowForce;
 
-
+    bool cameraState = true;
     Transform m_targetTransform;
 
     private void Awake()
     {
-
+        cameraState = followCursor;
     }
 
     private void Start()
@@ -56,11 +56,16 @@ public class CameraController : MonoBehaviour
         { 
             return new Vector3(); 
         }
-        
+    }
+
+    public void ToogleCameraState(bool newState)
+    {
+        cameraState = newState;
     }
 
     void Update()
     {
+        if (!cameraState) { return; }
         Vector3 newPosition = m_targetTransform.position + offset;
         if (followCursor)
         {

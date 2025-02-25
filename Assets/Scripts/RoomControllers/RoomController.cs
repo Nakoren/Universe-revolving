@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
@@ -16,7 +18,7 @@ public class RoomController : MonoBehaviour
 
     public Action<int> onRoomChange;
     public Action onFinalRoomChange;
-    private int connectionsCount;
+    protected int connectionsCount;
     protected Player player;
     protected bool instantCompletion = true;
 
@@ -31,6 +33,7 @@ public class RoomController : MonoBehaviour
         this.icons = levelIcons;
         this.player = player;
         connectionsCount = connectedRoomsList.Count;
+        connectionsCount = math.min(connectionsCount, activeTransitions.Count());
         if (connectedRoomsList.Count > 0)
         {
             for (int i = 0; i < connectionsCount; ++i)

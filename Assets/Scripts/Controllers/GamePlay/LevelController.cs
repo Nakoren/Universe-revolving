@@ -20,7 +20,7 @@ public class LevelController : MonoBehaviour
     int currentLayer = 0;
 
     public Action<int> onRoomChange;
-
+    public Action onLevelFinish;
     private void Awake()
     {
         if (player == null)
@@ -73,7 +73,7 @@ public class LevelController : MonoBehaviour
         activeRoomController.Initialize(GetNextLayerRooms(), player, levelIcons);
 
         activeRoomController.onRoomChange += OnLoadRequest;
-        activeRoomController.onFinalRoomChange += LoadNextLevel;
+        activeRoomController.onFinalRoomChange += OnLevelEnd;
     } 
 
     private void OnLoadRequest(int ind)
@@ -88,9 +88,18 @@ public class LevelController : MonoBehaviour
         return levelMap[currentLayer + 1];
     }
 
-    private void LoadNextLevel()
+    private void OnLevelEnd()
     {
-        if(nextSceneIndex == 0)
+        
+        onLevelFinish.Invoke();
+    }
+    public void LoadNextLevel()
+    {
+        if (nextSceneIndex != 0)
+        {
+            DontDestroyOnLoad(player);
+        }
+        else
         {
             Destroy(player);
         }
