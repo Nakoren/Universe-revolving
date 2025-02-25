@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static PartsDB;
 
 public class RotetingObgect : MonoBehaviour
 {
@@ -11,12 +12,12 @@ public class RotetingObgect : MonoBehaviour
     public void Awake()
     {
         m_pickup = GetComponent<PickupObject>();
-        if (m_pickup.m_part != null) GetPart(m_pickup.m_part);
+        if (m_pickup.m_item != null) GetPart(m_pickup.m_item);
     }
 
-    public void GetPart(IPart part)
+    public void GetPart(Item item)
     {
-        ModelChange(part.model);
+        ModelChange(item.part.model);
     }
     void Update()
     {

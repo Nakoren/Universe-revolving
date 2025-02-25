@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
+using static PartsDB;
 
 public class InteractableObjectDetector : MonoBehaviour
 {
@@ -81,9 +82,9 @@ public class InteractableObjectDetector : MonoBehaviour
         }
     }
 
-    private void Pickup(IPart part)
+    private void Pickup(Item item)
     {
-        m_player.Pickup(part);
+        m_player.Pickup(item);
     }
 
     private void OnInteractableDestroy(IInteractable interactable)

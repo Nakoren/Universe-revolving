@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static PartsDB;
 
 public abstract class IInteractable: MonoBehaviour
 {
@@ -8,7 +9,7 @@ public abstract class IInteractable: MonoBehaviour
     public Action onInteract;
     public Action<IInteractable> onDestroy;
     public bool active;
-    internal Action<IPart> onPickup;
+    internal Action<Item> onPickup;
 
     abstract public void Interact();
 

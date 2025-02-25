@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static PartsDB;
 
 public class WeaponLego : MonoBehaviour
 {
@@ -11,14 +12,14 @@ public class WeaponLego : MonoBehaviour
     public float totalDamage;
 
     [Header("Base Parts")]
-    public Scope base_scope;
-    public Magazine base_magazine;
-    public Receiver base_receiver;
+    public Item base_scope;
+    public Item base_magazine;
+    public Item base_receiver;
 
     [Header("Current Parts")]
-    public Scope scope;
-    public Magazine magazine;
-    public Receiver receiver;
+    public Item scope;
+    public Item magazine;
+    public Item receiver;
     
 
     public void Awake()
@@ -26,73 +27,77 @@ public class WeaponLego : MonoBehaviour
         m_weapon = GetComponent<Weapon>(); 
         m_visual = GetComponent<WeaponVisual>(); 
         EmptyFix();
+        GetDamage();
     }
     public void EmptyFix()
     {
         if (scope == null) 
         {
             scope = base_scope;
-            m_visual?.SetElementScope(base_scope);
+            m_visual?.SetElementScope(base_scope.part);
         }
         if (magazine == null) 
         {
             magazine = base_magazine;
-            m_visual?.SetElementMagazine(base_magazine);
+            m_visual?.SetElementMagazine(base_magazine.part);
         }
         if (receiver == null) 
         {
             receiver = base_receiver;
-            m_visual?.SetElementReceiver(base_receiver);
+            m_visual?.SetElementReceiver(base_receiver.part);
         }
+        GetDamage();
     }
     public void GoBase()
     {
         scope = base_scope;
-        m_visual?.SetElementScope(base_scope);
+        m_visual?.SetElementScope(base_scope.part);
         magazine = base_magazine;
-        m_visual?.SetElementMagazine(base_magazine);
+        m_visual?.SetElementMagazine(base_magazine.part);
         receiver = base_receiver;
-        m_visual?.SetElementReceiver(base_receiver);
+        m_visual?.SetElementReceiver(base_receiver.part);
+        GetDamage();
     }
     public void ToDefault()
     {
         GoBase();
     }
     
-    public void GetElements()
+    public void GetDamage()
     {
-        totalDamage = 20 * scope.damageRate * magazine.damageRate * receiver.damageRate;
+        totalDamage = 20 * scope.part.damageRate * magazine.part.damageRate * receiver.part.damageRate;
     }
-    public void Drop(IPart part)
+    public void Drop(Item item)
     {
         PickupObject pickup = Instantiate(pickupPrefab, this.transform.position, this.transform.rotation);
-        pickup.GetPart(part);
+        pickup.GetPart(item);
     }
 
-    public void Pickup(IPart part) 
+    public void Pickup(Item item) 
     {  
 
-        if (part.type == IPart.Ptype.Scope)
+        if (item.part.type == IPart.Ptype.Scope)
         {
             Drop(scope);
-            scope = (Scope)part;
-            m_visual?.SetElementScope(part);
+            scope = item;
+            m_visual?.SetElementScope(item.part);
         }
-        else if (part.type == IPart.Ptype.Magazine)
+        else if (item.part.type == IPart.Ptype.Magazine)
         {
             Drop(magazine);
-            magazine = (Magazine)part;
-            m_visual?.SetElementMagazine(part);
+            magazine = item;
+            m_visual?.SetElementMagazine(item.part);
         }
-        else if (part.type == IPart.Ptype.Receiver)
+        else if (item.part.type == IPart.Ptype.Receiver)
         {
             Drop(receiver);
-            receiver = (Receiver)part;
-            m_visual?.SetElementReceiver(part);
+            receiver = item;
+            m_visual?.SetElementReceiver(item.part);
         }
         else
         {
-            Drop(part);
+            Drop(item);
         }
+        GetDamage();
     }
 }
