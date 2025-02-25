@@ -99,6 +99,10 @@ public class LevelController : MonoBehaviour
         {
             DontDestroyOnLoad(player);
         }
+        else
+        {
+            Destroy(player);
+        }
         SceneManager.LoadScene(nextSceneIndex);
     }
 }
