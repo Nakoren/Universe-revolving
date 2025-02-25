@@ -254,10 +254,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {fileID: 8978616592350777253}
+  rewardSpawnPosition: {fileID: 0}
   activeTransitions:
   - {fileID: 1925745878531996457}
   closeTransitions: []
-  possibleRewards: []
+  rewardContainer: {fileID: 0}
   boss: {fileID: 0}
 --- !u!1 &1973923578825356303
 GameObject:
@@ -359,7 +360,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 31e35163487edfe4f887650cef103cca, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 238b901edd6a05e4981a562574f92cb2, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &2555002149259732232
 GameObject:
