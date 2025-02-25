@@ -5,8 +5,8 @@ using System;
 public class WeaponManager : MonoBehaviour
 {
     private readonly List<Weapon> m_weapons = new List<Weapon>();
-    private Weapon m_currentWeapon;
-    public Weapon CurrentWeapon=> m_currentWeapon;
+    private Weapon m_currentWeapon; 
+    public Weapon CurrentWeapon => m_currentWeapon;
 
     public event System.Action OnWeaponChanged;
    // public event System.Action onShoot;
@@ -15,6 +15,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
+        m_currentWeapon = GetComponentInChildren<Weapon>();
         GetComponentsInChildren(true, m_weapons);
         m_weapons.ForEach(x => x.gameObject.SetActive(false));
 
@@ -23,13 +24,14 @@ public class WeaponManager : MonoBehaviour
 
     public void ToDefault()
     {
+        m_currentWeapon = GetComponentInChildren<Weapon>();
         m_currentWeapon.ToDefault();
     }
     
    private void Start()
     {
        
-        SetActiveWeapon(0);
+        
     }
 
     public void StartFire()
