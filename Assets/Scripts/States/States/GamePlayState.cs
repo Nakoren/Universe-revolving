@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,37 +8,44 @@ public class GamePlayState : IState
     [SerializeField] InputActionAsset inputActions;
 
     [SerializeField] PlayerController playerController;
-    [SerializeField] GameObject cameraController;
+    [SerializeField] CameraController cameraController;
     [SerializeField] Player player;
 
-    [SerializeField] GameObject rootUI;
-
     public Action onGamePlay;
+
+    private void Awake()
+    {
+        player = playerController.player;
+    }
     override protected void OnEnter()
     {
-        Time.timeScale=1f;
+        cameraController.ToogleCameraState(true);
 
         if (inputActions != null)
         {
             inputActions.FindActionMap("Player").Enable();
-        }
-        if (rootUI != null)
-        {
-            rootUI.SetActive(true);
-            cameraController.SetActive(true);
         }
         onGamePlay?.Invoke();
     }
 
     override protected void OnExit()
     {
+        cameraController.ToogleCameraState(false);
         if (inputActions != null)
         {
             inputActions.FindActionMap("Player").Disable();
         }
-        if (rootUI != null)
-        {
-            rootUI.SetActive(false);
-        }
+    }
+    public override void Activate()
+    {
+        base.Activate();
+        Time.timeScale = 1f;
+        cameraController.ToogleCameraState(true);
+    }
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        Time.timeScale = 0f;
+        cameraController.ToogleCameraState(false);
     }
 }

@@ -7,12 +7,12 @@ public abstract class IState: MonoBehaviour
         OnEnter();
     }
 
-    public void Activate()
+    virtual public void Activate()
     {
         gameObject.SetActive(true);
     }
 
-    public void Deactivate()
+    virtual public void Deactivate()
     {
         gameObject.SetActive(false);
     }

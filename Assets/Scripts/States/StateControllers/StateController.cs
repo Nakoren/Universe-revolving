@@ -11,8 +11,9 @@ public class StateController : MonoBehaviour
         m_stateActivator = new StateActivator();
     }
 
-    protected virtual private void Start()
+    private void Start()
     {
+        m_stateActivator = new StateActivator();
         var states = GetComponentsInChildren<IState>(true);
         foreach (var state in states)
         {

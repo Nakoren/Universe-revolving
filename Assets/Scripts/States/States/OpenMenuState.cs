@@ -6,8 +6,6 @@ public class OpenMenuState : IState
 {
     [SerializeField] InputActionAsset inputActions;
 
-    [SerializeField] GameObject rootUI;
-
     override protected void OnEnter()
     {
         Time.timeScale=0f;
@@ -16,18 +14,10 @@ public class OpenMenuState : IState
         {
             inputActions.FindActionMap("Player").Disable();
         }
-
-        if (rootUI != null)
-        {
-            rootUI.SetActive(true);
-        }
     }
 
     override protected void OnExit()
     {
-        if (rootUI != null)
-        {
-            rootUI.SetActive(false);
-        }
+
     }
 }

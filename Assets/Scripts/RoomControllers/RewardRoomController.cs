@@ -6,7 +6,14 @@ public class RewardRoomController : RoomController
 
     override protected void SpecProcessing()
     {
-        reward.onOpen += OnContainerOpen;
+        if (reward != null)
+        {
+            reward.onOpen += OnContainerOpen;
+        }
+        else
+        {
+            FinishRoomTask();
+        }
     }
 
     public void OnContainerOpen()

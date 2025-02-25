@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class SettingsState : IState
 {
-    [Header("UI object")]
-    [SerializeField] GameObject rootUI;
 
     [Header("Sound and music settings")]
     [SerializeField] private AudioMixerGroup musicMixer;
@@ -25,18 +23,10 @@ public class SettingsState : IState
     {
         Time.timeScale = 0f;
 
-        if (rootUI != null)
-        {
-            rootUI.SetActive(true);
-        }
     }
 
     private void OnDisable()
     {
-        if (rootUI != null)
-        {
-            rootUI.SetActive(false);
-        }
     }
 
     public void ChangeSoundVolume(float volume)

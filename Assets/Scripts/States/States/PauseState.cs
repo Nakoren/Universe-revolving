@@ -2,36 +2,35 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PauseState : IState
 {
     [SerializeField] PlayerController playerController;
-    [SerializeField] GameObject cameraController;
-
-    
-    [SerializeField] GameObject rootUI;
-
+    [SerializeField] CameraController cameraController;
+    [SerializeField] InputActionAsset inputActions;
     public Action onPause;
 
 
     override protected void OnEnter()
     {
-        Time.timeScale=0f;
-
-        if (rootUI != null)
+        if (inputActions != null)
         {
-            rootUI.SetActive(true);
-            cameraController.SetActive(false);
+            inputActions.FindActionMap("Player").Disable();
         }
         onPause?.Invoke();
     }
 
     override protected void OnExit()
     {
-        if (rootUI != null)
+        if (inputActions != null)
         {
-            rootUI.SetActive(false);
+            inputActions.FindActionMap("Player").Enable();
         }
+    }
+    public void toMenu()
+    {
+
     }
 }
