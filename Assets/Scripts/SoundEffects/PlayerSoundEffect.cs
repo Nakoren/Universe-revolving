@@ -10,7 +10,7 @@ public class PlayerSoundEffect : MonoBehaviour
     [SerializeField] AudioClip playerAttack;
     [SerializeField] AudioClip playerReload;
     [SerializeField] AudioClip playerDash;
-     [SerializeField] AudioClip playerSkill;
+    [SerializeField] AudioClip playerSkill;
 
     private void Awake()
     {

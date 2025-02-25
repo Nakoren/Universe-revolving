@@ -8,6 +8,16 @@ public class Movement : MonoBehaviour
     public int speed;
 
     private CharacterController m_charController;
+
+    public float GetCurrentSpeed()
+    {
+        return speed;
+    }
+    public float SetCurrentSpeed(int newSpeed)
+    {
+        speed=newSpeed;
+        return speed;
+    }
     private void Awake()
     {
         m_charController = GetComponent<CharacterController>();
@@ -30,16 +40,6 @@ public class Movement : MonoBehaviour
         Vector3 moveDirV3 = new Vector3(x, 0f, y);
 
         m_charController.SimpleMove(moveDirV3 * speed);
-        /*if (moveDir.magnitude <= 0.1f)
-        {
-            m_charController.SimpleMove(Vector3.zero);
-            return;x
-        }
-
-        Vector3 localMove = transform.forward * moveDir.y + transform.right * moveDir.x;
-        localMove = localMove.normalized;
-
-        m_charController.SimpleMove(localMove * speed);*/
     }
 
     public void RotateToPosition(Vector3 position)

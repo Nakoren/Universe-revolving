@@ -8,6 +8,8 @@ public class HealingSkill : MonoBehaviour
     private bool isSkillOnCooldown = false;
     private float lastUsedTime = -Mathf.Infinity;
 
+    public bool IsSkillOnCooldown => isSkillOnCooldown;
+
     public event Action<float> onCooldownTick;
     public event Action onCooldownComplete;
 
