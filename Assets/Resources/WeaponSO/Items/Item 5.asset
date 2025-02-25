@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d159b0d4a7ba040a3e501fa3eb32be, type: 3}
   m_Name: Item 5
   m_EditorClassIdentifier: 
-  id: 0
+  id: 5
   rare: 0
   itemName: 
   description: 
   icon: {fileID: 0}
-  part: {fileID: 0}
+  part: {fileID: 11400000, guid: 006debef0eedb784e9419a9cfc5cf37c, type: 2}

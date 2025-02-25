@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: 
   description: 
   icon: {fileID: 0}
-  part: {fileID: 0}
+  part: {fileID: 11400000, guid: 26cba1d381a1bba4491ff2fc628d3e61, type: 2}

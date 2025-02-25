@@ -81,9 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupPrefab: {fileID: 5607723459442197043, guid: 534dadf7165a98a409ddd0cde804950f, type: 3}
   totalDamage: 0
-  base_scope: {fileID: 11400000, guid: 26cba1d381a1bba4491ff2fc628d3e61, type: 2}
-  base_magazine: {fileID: 11400000, guid: 6641d132cee0ee24cb6a040525d0e9ca, type: 2}
-  base_receiver: {fileID: 11400000, guid: 303bec23232345840bd0a93f98335812, type: 2}
+  base_scope: {fileID: 11400000, guid: 06f0f52ca36de1043838e74aad316d31, type: 2}
+  base_magazine: {fileID: 11400000, guid: 2985132ec30a52246b1307049d08b35d, type: 2}
+  base_receiver: {fileID: 11400000, guid: 4dc309a3e210d2441b14fb29e1a6f55a, type: 2}
   scope: {fileID: 0}
   magazine: {fileID: 0}
   receiver: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_muzzle: {fileID: 5027590204734377548}
   bulletPrefab: {fileID: -7599856397798264514, guid: 454d2a23f782445488117b485daeb9c2, type: 3}
   Damage: 20
+  MaxAmmo: 228
 --- !u!114 &4136733969839182043
 MonoBehaviour:
   m_ObjectHideFlags: 0
