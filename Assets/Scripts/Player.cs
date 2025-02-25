@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         m_health.onZeroHealth += Die;
 
         m_prevFramePosition = transform.position;
+        this.ToDefault();
     }
 
     private void LateUpdate()
