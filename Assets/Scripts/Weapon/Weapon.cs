@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
     }
     public void ToDefault()
     {
+        lego = GetComponent<WeaponLego>();
         lego.ToDefault();
     }
     
