@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3a8f94ca1425374ea040972791ae83a, type: 3}
+  m_Name: RScope
+  m_EditorClassIdentifier: 
+  type: 0
+  <model>k__BackingField: {fileID: 5960066946434238935, guid: 150538f01364d08419799aedcc040d35, type: 3}
+  <damageRate>k__BackingField: 1
+  <spread>k__BackingField: 2
+  <range>k__BackingField: 15

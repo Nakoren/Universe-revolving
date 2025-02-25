@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class RewardContainer : IInteractable
 {
-    [SerializeField] protected List<GameObject> rewardItem;
+    [SerializeField] protected PartsDB rewardItemDB;
+    //[SerializeField] protected List<GameObject> rewardItem;
     public Action onOpen;
 
     

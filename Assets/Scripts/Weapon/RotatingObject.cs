@@ -3,57 +3,36 @@ using UnityEngine;
 
 public class RotetingObgect : MonoBehaviour
 {
-    ElementInfo m_element;
+    private PickupObject m_pickup;
     public float rotationSpeed = 50f;
-    // private MeshFilter meshFilter;
-    // private MeshRenderer meshRenderer;
+    public GameObject cube;
 
+
+    public void Awake()
+    {
+        m_pickup = GetComponent<PickupObject>();
+        if (m_pickup.m_part != null) GetPart(m_pickup.m_part);
+    }
+
+    public void GetPart(IPart part)
+    {
+        ModelChange(part.model);
+    }
     void Update()
     {
         //вращение
         float rotationAmount = rotationSpeed * Time.deltaTime;
         transform.Rotate(Vector3.up, rotationAmount);
     }
-    public void Awake()
+    
+
+    private void ModelChange(GameObject m_model)
     {
-        //m_element = GetComponent<ElementInfo>();
-        //ModelChange();
-    }
-
-    private void ModelChange()
-    {
-        var element = Instantiate(m_element.elementDB.model, this.transform);
-        element.transform.localPosition = Vector3.zero;
-        // if (m_element.elementDB.model != null)
-        // {
-        //     // Получаем MeshFilter и MeshRenderer целевого объекта
-        //     MeshFilter targetMeshFilter = m_element.elementDB.model.GetComponent<MeshFilter>();
-        //     MeshRenderer targetMeshRenderer = m_element.elementDB.model.GetComponent<MeshRenderer>();
-
-        //     if (targetMeshFilter != null && targetMeshRenderer != null)
-        //     {
-        //         // Копируем Mesh и применяем его к текущему объекту
-        //         meshFilter = GetComponent<MeshFilter>();
-        //         meshRenderer = GetComponent<MeshRenderer>();
-
-        //         if (meshFilter != null)
-        //         {
-        //             meshFilter.mesh = Instantiate(targetMeshFilter.mesh);
-        //         }
-
-        //         if (meshRenderer != null)
-        //         {
-        //             meshRenderer.materials = targetMeshRenderer.materials; // Копируем материалы
-        //         }
-        //     }
-        //     else
-        //     {
-        //         Debug.LogWarning("Target object does not have a MeshFilter or MeshRenderer component.");
-        //     }
-        // }
-        // else
-        // {
-        //     Debug.LogWarning("Target object is not assigned.");
-        // }
+        //var visual = Instantiate(m_model, this.transform);
+        GameObject visual = Instantiate(m_model, transform.position, Quaternion.identity);
+        visual.transform.SetParent(transform);
+        visual.transform.localScale = new Vector3(3f, 3f, 3f);
+        //visual.transform.SetParent(this.transform);
+        cube.SetActive(false);
     }
 }

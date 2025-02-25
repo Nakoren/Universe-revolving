@@ -8,7 +8,8 @@ public abstract class IInteractable: MonoBehaviour
     public Action onInteract;
     public Action<IInteractable> onDestroy;
     public bool active;
-    
+    internal Action<IPart> onPickup;
+
     abstract public void Interact();
 
     private void OnDestroy()

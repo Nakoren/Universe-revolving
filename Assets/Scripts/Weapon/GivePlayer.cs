@@ -10,14 +10,14 @@ public class GivePlayer : MonoBehaviour
     public void Awake()
     {
         m_pickup.AddRange(GetComponentsInChildren<PickupObject>());
-        GetPlayer();
+        //GetPlayer();
     }
 
-    private void GetPlayer()
-    {
-        for ( int i = 0; i < m_pickup.Count; i++ )
-        {
-            m_pickup[i].GetPlayer(player);
-        }
-    }
+    // private void GetPlayer()
+    // {
+    //     for ( int i = 0; i < m_pickup.Count; i++ )
+    //     {
+    //         m_pickup[i].GetPlayer(player);
+    //     }
+    // }
 }

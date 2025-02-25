@@ -72,12 +72,20 @@ public class Player : MonoBehaviour
             m_dash.DashMove();
         }
     }
+    public void Pickup(IPart part)
+    {
+        m_weaponManager.Pickup(part);
+    }
 
     public void Warp(Vector3 position)
     {
         m_movement.WarpTo(position);
     }
 
+    public void ToDefault()
+    {
+        m_weaponManager.ToDefault();
+    }
     public void RotateTo(Vector3 target)
     {
         m_movement.RotateToPosition(target);

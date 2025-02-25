@@ -21,6 +21,11 @@ public class WeaponManager : MonoBehaviour
         SetActiveWeapon(0);
     }
 
+    public void ToDefault()
+    {
+        m_currentWeapon.ToDefault();
+    }
+    
    private void Start()
     {
        
@@ -35,7 +40,10 @@ public class WeaponManager : MonoBehaviour
             m_currentWeapon.StartFire();
         }
     }
-
+    public void Pickup(IPart part)
+    {
+        m_currentWeapon.Pickup(part);
+    }
     public void StopFire()
     {
         //Debug.Log($"[WeaponManager]: StopFire");
