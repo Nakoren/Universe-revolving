@@ -7,11 +7,12 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     [SerializeField] public Transform startPosition;
+    [SerializeField] public Transform rewardSpawnPosition;
 
     [SerializeField] protected Transitor[] activeTransitions;
     [SerializeField] protected GameObject[] closeTransitions;
 
-    [SerializeField] protected List<RoomReward> possibleRewards;
+    [SerializeField] protected RewardContainer rewardContainer;
 
     public Action<int> onRoomChange;
     public Action onFinalRoomChange;
@@ -58,6 +59,13 @@ public class RoomController : MonoBehaviour
                 activeTransitions[i].onFinalActivate += OnFinalRoomChange;
             }
         }
+
+        //can be removed when all room prefabs will be configured
+        if(rewardSpawnPosition == null)
+        {
+            rewardSpawnPosition = startPosition;
+        }
+
         this.SpecProcessing();   
     }
 
@@ -77,11 +85,6 @@ public class RoomController : MonoBehaviour
             activeTransitions[i].Enable();
         }
 
-        if(possibleRewards.Count > 0)
-        {
-            RoomReward reward = possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)];
-            //Реализовать тут механизм награды игрока
-        }
     }
 
     protected void OnRoomChange(int ind)

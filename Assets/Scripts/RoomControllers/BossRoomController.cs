@@ -67,10 +67,9 @@ public class BossRoomController : RoomController
             activeTransitions[i].Enable();
         }
 
-        if (possibleRewards.Count > 0)
+        if (rewardContainer != null)
         {
-            RoomReward reward = possibleRewards[UnityEngine.Random.Range(0, possibleRewards.Count)];
-            //Реализовать тут механизм награды игрока
+            Instantiate(rewardContainer, rewardSpawnPosition);
         }
     }
 

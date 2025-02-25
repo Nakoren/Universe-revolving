@@ -35,7 +35,6 @@ public class BattleRoomController : RoomController
             instantCompletion = false;
             LoadWave(0);
         }
-        
     }
 
     private void OnDestroy()
@@ -68,6 +67,19 @@ public class BattleRoomController : RoomController
         else
         {
             waves[wave].InitWave(player, OnEnemyDeath);
+        }
+    }
+
+    override protected void FinishRoomTask()
+    {
+        for (int i = 0; i < activeTransitions.Length; ++i)
+        {
+            //Тут нужно сделать более сложную логику открытия и закрытию проходов
+            activeTransitions[i].Enable();
+        }
+        if (rewardContainer != null)
+        {
+            Instantiate(rewardContainer, rewardSpawnPosition);
         }
     }
 
