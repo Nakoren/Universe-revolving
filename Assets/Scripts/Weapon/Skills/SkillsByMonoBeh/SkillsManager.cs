@@ -1,15 +1,16 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SkillsManager : MonoBehaviour
 {
     [Header("Healing Skill Settings")]
-    [SerializeField] private HealingSkill healingSkill;
-    [SerializeField] private float healingSkillCooldown = 10f;
+     private HealingSkill healingSkill;
+    private float healingSkillCooldown = 20f;
 
     [Header("Boost Skill Settings")]
-    [SerializeField] private BoostSkill boostSkill;
-    [SerializeField] private float boostSkillCooldown = 10f;
+    private BoostSkill boostSkill;
+    private float boostSkillCooldown = 15f;
     
     private Health playerHealth;
     private Movement playerMovement;
@@ -28,6 +29,11 @@ public class SkillsManager : MonoBehaviour
 
     private void Awake()
     {
+        healingSkill = GetComponentInChildren<HealingSkill>();
+        boostSkill = GetComponentInChildren<BoostSkill>();
+
+    
+
         playerHealth = GetComponent<Health>();
         playerMovement = GetComponent<Movement>();
     }
