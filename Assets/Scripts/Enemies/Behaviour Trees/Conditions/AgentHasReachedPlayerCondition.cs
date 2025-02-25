@@ -24,7 +24,7 @@ public partial class AgentHasReachedPlayerCondition : Condition
 
         if (distance <= m_meshAgent.stoppingDistance+1f)
         {
-            Debug.LogWarning($"{Agent.Value.name}  {distance}");
+            //Debug.LogWarning($"{Agent.Value.name}  {distance}");
             return true;
         }
         return false;
