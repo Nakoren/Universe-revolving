@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static PartsDB;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -42,9 +43,9 @@ public class WeaponManager : MonoBehaviour
             m_currentWeapon.StartFire();
         }
     }
-    public void Pickup(IPart part)
+    public void Pickup(Item item)
     {
-        m_currentWeapon.Pickup(part);
+        m_currentWeapon.Pickup(item);
     }
     public void StopFire()
     {

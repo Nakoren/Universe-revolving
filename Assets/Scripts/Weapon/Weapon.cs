@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PartsDB;
 
 public class Weapon : MonoBehaviour
 {
@@ -20,27 +21,25 @@ public class Weapon : MonoBehaviour
     public Action onReloadEnd;
 
     public int Ammo { get => ammo; }
-    public int MaxAmmo { get => lego.magazine.cage; }
+    public int MaxAmmo = 228;
 
     public void Awake()
     {
         lego = GetComponent<WeaponLego>();
-        lego.GetElements();
-        ammo = lego.magazine.cage;
+        var partM = lego.magazine.part as Magazine; 
+        ammo = partM.cage;
+        MaxAmmo = partM.cage;
     }
-    public void GetElements()
-    {
-        lego.GetElements();
-    }
+    
     public void ToDefault()
     {
         lego = GetComponent<WeaponLego>();
         lego.ToDefault();
     }
     
-    public void Pickup(IPart part)
+    public void Pickup(Item item)
     {
-        lego.Pickup(part);
+        lego.Pickup(item);
     }
     public void GoBase()
     {
@@ -49,7 +48,8 @@ public class Weapon : MonoBehaviour
 
     public void Reload()
     {
-        if (ammo != lego.magazine.cage && (m_state == State.Fire || m_state == State.Idle))
+        var partM = lego.magazine.part as Magazine; 
+        if (ammo != partM.cage && (m_state == State.Fire || m_state == State.Idle))
         {
             //Debug.Log($"перезарядка");
             m_state = State.Reload;
@@ -65,8 +65,9 @@ public class Weapon : MonoBehaviour
     }
     private IEnumerator ReloadDelay()
     {
-        yield return new WaitForSeconds(lego.magazine.recharge);
-        ammo = lego.magazine.cage;
+        var partM = lego.magazine.part as Magazine; 
+        yield return new WaitForSeconds(partM.recharge);
+        ammo = partM.cage;
         onReloadEnd?.Invoke();
         m_state = State.Idle;
     }
@@ -87,16 +88,18 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator FireDelay()
     {
+        var partR = lego.receiver.part as Receiver; 
         do
         {
             Shoot();
-            yield return new WaitForSeconds(lego.receiver.delay);
+            yield return new WaitForSeconds(partR.delay);
         }
         while(true);
     }
     private IEnumerator PostFireDelay()
     {
-        yield return new WaitForSeconds(lego.receiver.delay);
+        var partR = lego.receiver.part as Receiver; 
+        yield return new WaitForSeconds(partR.delay);
         m_state = State.Idle;
     }
 
@@ -145,26 +148,29 @@ public class Weapon : MonoBehaviour
     }
     public void ShootAction()
     {
-        for (int a = 1; a <= lego.receiver.times; a++)
+        var partM = lego.magazine.part as Magazine; 
+        var partR = lego.receiver.part as Receiver; 
+        var partS = lego.scope.part as Scope; 
+        for (int a = 1; a <= partR.times; a++)
     {
         MultyFier();
-        for (int i = 1; i <= lego.receiver.volume; i++)
+        for (int i = 1; i <= partR.volume; i++)
         {
         Projectile bullet = Instantiate(bulletPrefab, m_muzzle.position, m_muzzle.rotation);
 
         Projectile projectileScript = bullet.GetComponent<Projectile>();
         if (projectileScript != null)
         {
-            projectileScript.maxDistance = lego.scope.range;
+            projectileScript.maxDistance = partS.range;
             projectileScript.damage = lego.totalDamage; 
         }
         
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            float randomSpreadY = UnityEngine.Random.Range(-lego.scope.spread, lego.scope.spread);
+            float randomSpreadY = UnityEngine.Random.Range(-partS.spread, partS.spread);
             Vector3 spreadDirection = Quaternion.Euler(0, randomSpreadY, 0) * m_muzzle.forward;
-            rb.AddForce(spreadDirection.normalized * lego.receiver.force, ForceMode.Impulse);
+            rb.AddForce(spreadDirection.normalized * partR.force, ForceMode.Impulse);
         }
         }
     }

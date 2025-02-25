@@ -1,6 +1,8 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static PartsDB;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Movement))]
@@ -73,9 +75,9 @@ public class Player : MonoBehaviour
             m_dash.DashMove();
         }
     }
-    public void Pickup(IPart part)
+    public void Pickup(Item item)
     {
-        m_weaponManager.Pickup(part);
+        m_weaponManager.Pickup(item);
     }
 
     public void Warp(Vector3 position)
