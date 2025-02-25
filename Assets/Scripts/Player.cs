@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
     PlayerAnimationManager m_animator;
-   //SkillManager m_skillManager;
+    //SkillManager m_skillManager;
     SkillsManager m_skillsManager;
     private PlayerState m_state = PlayerState.Base;
     public Action onDash;
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     private Vector3 m_position = new Vector3();
     private Vector3 m_prevFramePosition = new Vector3();
-    
+
 
     public void Awake()
     {
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
         m_dash.onDashStart += SetStateToDash;
         m_dash.onDashStart += OnDashStart;
         m_dash.onDashEnd += SetStateToBase;
+        m_skillsManager.OnHealingCooldown += Skill1;
+        m_skillsManager.OnBoostCooldown += Skill2;
 
         m_health.onZeroHealth += Die;
 
@@ -60,12 +62,12 @@ public class Player : MonoBehaviour
 
     public void Move(Vector3 direction, Vector3 basicAngle)
     {
-        if(m_state == PlayerState.Base) 
+        if (m_state == PlayerState.Base)
         {
             onMove?.Invoke(direction);
             m_movement.Move(direction, basicAngle);
         }
-        if(m_state == PlayerState.Dash)
+        if (m_state == PlayerState.Dash)
         {
             m_dash.DashMove();
         }
@@ -89,7 +91,7 @@ public class Player : MonoBehaviour
         m_movement.RotateToPosition(target);
     }
 
-    public void StartFire() 
+    public void StartFire()
     {
         m_weaponManager.StartFire();
         onPlayerFire?.Invoke();
@@ -98,15 +100,23 @@ public class Player : MonoBehaviour
     {
         m_weaponManager.StopFire();
     }
-        
+
     public void Skill1()
     {
-        m_skillsManager.ActivateHealingSkill();
+        if (!m_skillsManager.IsHealingOnCooldown)
+        {
+            m_skillsManager.ActivateHealingSkill();
+            onPlayerSkill1?.Invoke();
+        }
     }
 
     public void Skill2()
     {
-        //m_skillsManager.SkillEuse();
+         if (!m_skillsManager.IsBoostOnCooldown)
+        {
+            m_skillsManager.ActivateBoostSkill();
+            onPlayerSkill2?.Invoke();
+        }
     }
 
     public void ExtraAction()
@@ -121,7 +131,7 @@ public class Player : MonoBehaviour
             if (m_dash != null)
             {
                 Vector3 dashDir = m_position - m_prevFramePosition;
-                if(dashDir == Vector3.zero)
+                if (dashDir == Vector3.zero)
                 {
                     return;
                 }
@@ -133,7 +143,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        if(onPlayerDeath != null)
+        if (onPlayerDeath != null)
         {
             onPlayerDeath.Invoke();
         }

@@ -80,41 +80,76 @@ using System;
 public class SkillCooldownDisplay : MonoBehaviour
 {
     [SerializeField] private Color cooldownColor = new Color(0f, 0f, 0f);
-     private Color originalColor;
+    [SerializeField] private Slider durationSlider;
+    private Color originalColor;
 
-    [SerializeField] private HealingSkill healingSkill; 
-    [SerializeField] private TextMeshProUGUI healingTimerText; 
+    [SerializeField] private HealingSkill healingSkill;
+    [SerializeField] private TextMeshProUGUI healingTimerText;
     [SerializeField] private Image healingSkillIcon;
 
-     private void Awake()
+    [SerializeField] private BoostSkill boostSkill;
+    [SerializeField] private TextMeshProUGUI boostTimerText;
+    [SerializeField] private Image boostSkillIcon;
+
+
+    private void Awake()
     {
         originalColor = healingSkillIcon.color;
+        originalColor = boostSkillIcon.color;
     }
 
     private void OnEnable()
     {
-        healingSkill.onCooldownTick += UpdateCooldownText;
-        healingSkill.onCooldownComplete += ClearCooldownText;
+        healingSkill.onCooldownTick += UpdateHealingCooldownText;
+        healingSkill.onCooldownComplete += ClearHealingCooldownText;
+
+        boostSkill.onCooldownTick += UpdateBoostCooldownText;
+        boostSkill.onCooldownComplete += ClearBoostCooldownText;
+        boostSkill.onDurationSkill += UpdateBoostDurationText;
+
+
     }
 
     private void OnDisable()
     {
-        healingSkill.onCooldownTick -= UpdateCooldownText;
-        healingSkill.onCooldownComplete -= ClearCooldownText;
+        healingSkill.onCooldownTick -= UpdateHealingCooldownText;
+        healingSkill.onCooldownComplete -= ClearHealingCooldownText;
+
+        boostSkill.onCooldownTick -= UpdateBoostCooldownText;
+        boostSkill.onCooldownComplete -= ClearBoostCooldownText;
     }
 
-    
-    private void UpdateCooldownText(float remainingTime)
+
+    private void UpdateHealingCooldownText(float remainingTime)
     {
-        healingSkillIcon.color=cooldownColor;
+        healingSkillIcon.color = cooldownColor;
         healingTimerText.text = Mathf.CeilToInt(remainingTime).ToString();
+
     }
 
-   
-    private void ClearCooldownText()
+    private void ClearHealingCooldownText()
     {
-        healingSkillIcon.color=originalColor;
+        healingSkillIcon.color = originalColor;
         healingTimerText.text = "";
+
+    }
+    private void UpdateBoostDurationText(float remainingTime)
+    {
+        durationSlider.value = remainingTime/boostSkill.SkillDuration;
+    }
+
+
+    private void UpdateBoostCooldownText(float remainingTime)
+    {
+        boostSkillIcon.color = cooldownColor;
+        boostTimerText.text = Mathf.CeilToInt(remainingTime).ToString();
+    }
+
+
+    private void ClearBoostCooldownText()
+    {
+        boostSkillIcon.color = originalColor;
+        boostTimerText.text = "";
     }
 }
 
