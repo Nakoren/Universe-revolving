@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class LevelEndState : MonoBehaviour
+public class LevelEndState : IState
 {
     [SerializeField] GameObject rootUI;
-    private void OnEnable()
+    override protected void OnEnter()
     {
         if (rootUI != null)
         {
@@ -11,7 +11,7 @@ public class LevelEndState : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    override protected void OnExit()
     {
         if (rootUI != null)
         {

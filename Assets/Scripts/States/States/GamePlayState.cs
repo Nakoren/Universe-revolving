@@ -2,14 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GamePlayState : MonoBehaviour
+public class GamePlayState : IState
 {
-    [SerializeField] PauseState pauseState;
-    [SerializeField] OpenMenuState openMenuState;
-    [SerializeField] LevelEndState levelEndState;
-    [SerializeField] DeathState deathState;
     [SerializeField] InputActionAsset inputActions;
-    [SerializeField] InventoryState inventoryState;
 
     [SerializeField] PlayerController playerController;
     [SerializeField] GameObject cameraController;
@@ -17,8 +12,8 @@ public class GamePlayState : MonoBehaviour
 
     [SerializeField] GameObject rootUI;
 
-    public  Action onGamePlay;
-    private void OnEnable()
+    public Action onGamePlay;
+    override protected void OnEnter()
     {
         Time.timeScale=1f;
 
@@ -32,14 +27,9 @@ public class GamePlayState : MonoBehaviour
             cameraController.SetActive(true);
         }
         onGamePlay?.Invoke();
-        playerController.onInventoryToogle += ToogleInventory;
-
-        playerController.onPauseToogle += TooglePause;
-
-        player.onPlayerDeath += ToogleGameOver;
     }
 
-    private void OnDisable()
+    override protected void OnExit()
     {
         if (inputActions != null)
         {
@@ -49,42 +39,5 @@ public class GamePlayState : MonoBehaviour
         {
             rootUI.SetActive(false);
         }
-        playerController.onInventoryToogle -= ToogleInventory;
-        playerController.onPauseToogle -= TooglePause; 
-
-        player.onPlayerDeath -= ToogleGameOver;
-    }
-
-    private void ToogleGameOver()
-    {
-        deathState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-
-    public void TooglePause()
-    {
-        pauseState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-    public void ToogleMenu()
-    {
-        openMenuState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-
-    public void ToogleInventory()
-    {
-        inventoryState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-    public void EndLevel()
-    {
-        levelEndState.gameObject.SetActive(true); 
-        this.gameObject.SetActive(false);
-    }
-    public void OnDeath()
-    {
-        deathState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
     }
 }

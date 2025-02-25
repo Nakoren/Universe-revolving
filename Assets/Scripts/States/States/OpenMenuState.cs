@@ -2,15 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class OpenMenuState : MonoBehaviour
+public class OpenMenuState : IState
 {
-    [SerializeField] GamePlayState gameplayState;
-    [SerializeField] SettingsState settingsState;
     [SerializeField] InputActionAsset inputActions;
 
     [SerializeField] GameObject rootUI;
 
-    private void OnEnable()
+    override protected void OnEnter()
     {
         Time.timeScale=0f;
 
@@ -25,24 +23,11 @@ public class OpenMenuState : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    override protected void OnExit()
     {
         if (rootUI != null)
         {
             rootUI.SetActive(false);
         }
-    }
-
-    public void ToGamePlay()
-    {
-        gameplayState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-
-     public void ToSetings()
-    {
-        settingsState.previousState = this.gameObject;
-        settingsState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
     }
 }

@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class InventoryState : MonoBehaviour
+public class InventoryState : IState
 {
-    [SerializeField] GamePlayState gameplayState;
     [SerializeField] PlayerController playerController;
 
     [SerializeField] GameObject rootUI;
 
-    private void OnEnable()
+    override protected void OnEnter()
     {
         Time.timeScale=0f;
 
@@ -15,25 +14,13 @@ public class InventoryState : MonoBehaviour
         {
             rootUI.SetActive(true);
         }
-        playerController.onInventoryToogle += ToGamePlay;
     }
 
-    private void OnDisable()
+    override protected void OnExit()
     {
         if (rootUI != null)
         {
             rootUI.SetActive(false);
         }
-        playerController.onInventoryToogle -= ToGamePlay; 
     }
-
-    public void ToGamePlay()
-    {
-        gameplayState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-   
-
-
-    
 }

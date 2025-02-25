@@ -4,11 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseState : MonoBehaviour
+public class PauseState : IState
 {
-    [SerializeField] GamePlayState gamePlayState;
-    [SerializeField] OpenMenuState openMenuState;
-    [SerializeField] SettingsState settingsState;
     [SerializeField] PlayerController playerController;
     [SerializeField] GameObject cameraController;
 
@@ -18,7 +15,7 @@ public class PauseState : MonoBehaviour
     public Action onPause;
 
 
-    private void OnEnable()
+    override protected void OnEnter()
     {
         Time.timeScale=0f;
 
@@ -27,37 +24,14 @@ public class PauseState : MonoBehaviour
             rootUI.SetActive(true);
             cameraController.SetActive(false);
         }
-        playerController.onPauseToogle += ToGamePlay;
         onPause?.Invoke();
     }
 
-    private void OnDisable()
+    override protected void OnExit()
     {
         if (rootUI != null)
         {
             rootUI.SetActive(false);
         }
-        playerController.onPauseToogle -= ToGamePlay;
     }
-
-    public void ToGamePlay()
-    {
-        Debug.Log("Pause disabled");
-        gamePlayState.gameObject.SetActive(true);
-        this.gameObject.SetActive(false);
-    }
-
-    public void ToMenu()
-    {
-        this.gameObject.SetActive(false);
-        openMenuState.gameObject.SetActive(true);
-    }
-
-    public void ToSettings()
-    {
-        settingsState.previousState = this.gameObject;
-        this.gameObject.SetActive(false);
-        settingsState.gameObject.SetActive(true);
-    }
-
 }

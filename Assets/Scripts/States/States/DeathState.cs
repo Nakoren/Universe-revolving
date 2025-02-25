@@ -1,14 +1,14 @@
 using Unity.AppUI.UI;
 using UnityEngine;
 
-public class DeathState : MonoBehaviour
+public class DeathState : IState
 {
     [SerializeField] GameObject rootUI;
     [SerializeField] GamePlayState gamePlayState;
      [SerializeField] OpenMenuState openMenuState;
 
 
-    private void OnEnable()
+    override protected void OnEnter()
     {
         if (rootUI != null)
         {
@@ -17,7 +17,7 @@ public class DeathState : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    override protected void OnExit()
     {
         if (rootUI != null)
         {
@@ -25,11 +25,6 @@ public class DeathState : MonoBehaviour
         }
     }
 
-    public void Restart()
-    {
-        this.gameObject.SetActive(false);
-        gamePlayState.gameObject.SetActive(true);
-    }
     public void ToMenu()
     {
         this.gameObject.SetActive(false);

@@ -3,12 +3,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingsState : MonoBehaviour
+public class SettingsState : IState
 {
-    [Header("States")]
-    [SerializeField] PauseState pauseState;
-    [SerializeField] private OpenMenuState openMenuState;
-
     [Header("UI object")]
     [SerializeField] GameObject rootUI;
 
@@ -19,15 +15,13 @@ public class SettingsState : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider soundVolumeSlider;
 
-    public GameObject previousState;
-
-    private void Start()
+    override protected void OnEnter()
     {
         musicVolumeSlider.onValueChanged.AddListener(ChangeMusicVolume);
         soundVolumeSlider.onValueChanged.AddListener(ChangeSoundVolume);
     }
 
-    private void OnEnable()
+    override protected void OnExit()
     {
         Time.timeScale = 0f;
 
@@ -44,20 +38,6 @@ public class SettingsState : MonoBehaviour
             rootUI.SetActive(false);
         }
     }
-
-    public void ExitSettings()
-    {
-        if (previousState == pauseState.gameObject)
-        {
-            pauseState.gameObject.SetActive(true);
-        }
-        else if (previousState == openMenuState.gameObject)
-        {
-            openMenuState.gameObject.SetActive(true);
-        }
-        this.gameObject.SetActive(false);
-    }
-
 
     public void ChangeSoundVolume(float volume)
     {
