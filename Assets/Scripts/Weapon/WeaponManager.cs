@@ -7,7 +7,8 @@ public class WeaponManager : MonoBehaviour
 {
     private readonly List<Weapon> m_weapons = new List<Weapon>();
     private Weapon m_currentWeapon; 
-    public Weapon CurrentWeapon => m_currentWeapon;
+    
+    public Weapon weaponValue => m_currentWeapon;
 
     public event System.Action OnWeaponChanged;
    // public event System.Action onShoot;

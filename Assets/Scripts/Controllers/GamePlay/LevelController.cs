@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] Player player;
+    public Player playerValue => player;
     [SerializeField] Icons levelIcons;
     [SerializeField] int nextSceneIndex;
     [SerializeField] GameObject playerDefaultPrefab;

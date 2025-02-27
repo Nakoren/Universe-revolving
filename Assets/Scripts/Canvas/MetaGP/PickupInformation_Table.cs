@@ -11,9 +11,9 @@ public class PickupInformation_Table : MonoBehaviour
     private Image[] icon;
 
     public Color32 grey = new Color32(135, 135, 135, 255);
-    private Color32 blue = new Color32(38, 82, 255, 255);
-    private Color32 violet = new Color32(155, 40, 255, 255);
-    private Color32 orange = new Color32(255, 131, 40, 255);
+    public Color32 blue = new Color32(38, 82, 255, 255);
+    public Color32 violet = new Color32(155, 40, 255, 255);
+    public Color32 orange = new Color32(255, 131, 40, 255);
 
 
     private void Awake()

@@ -22,6 +22,7 @@ public class Weapon : MonoBehaviour
 
     public int Ammo { get => ammo; }
     public int MaxAmmo = 228;
+    public WeaponLego weaponLegoValue =>lego;
 
     public void Awake()
     {

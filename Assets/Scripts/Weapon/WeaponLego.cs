@@ -20,6 +20,10 @@ public class WeaponLego : MonoBehaviour
     public Item scope;
     public Item magazine;
     public Item receiver;
+
+    public Item scopeValue =>scope;
+    public Item magazineValue =>magazine;
+    public Item receiverValue =>receiver;
     
 
     public void Awake()
