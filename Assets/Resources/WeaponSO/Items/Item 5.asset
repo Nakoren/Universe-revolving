@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   rare: 0
-  itemName: 
+  itemName: "\u043E\u0440\u0430\u043D\u0436 \u0440\u0435\u0441\u0438\u0432\u0435\u0440"
   description: 
   icon: {fileID: 0}
   part: {fileID: 11400000, guid: 006debef0eedb784e9419a9cfc5cf37c, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   rare: 0
-  itemName: scope 2
+  itemName: "\u043E\u0440\u0430\u043D\u0436 \u043F\u0440\u0438\u0446\u0435\u043B"
   description: descr scope2
   icon: {fileID: 21300000, guid: 841e171fa2cc44dd1877773208ac2ee5, type: 3}
   part: {fileID: 11400000, guid: 89afb21c148962647b067b0305780575, type: 2}

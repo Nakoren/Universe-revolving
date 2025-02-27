@@ -35,16 +35,9 @@ public class UI_Inventory : MonoBehaviour
 
     private void Start()
     {
-        scope = levelController.playerValue.weaponManagerValue.weaponValue.weaponLegoValue.scopeValue;
-        magazine = levelController.playerValue.weaponManagerValue.weaponValue.weaponLegoValue.magazineValue;
-        reciever = levelController.playerValue.weaponManagerValue.weaponValue.weaponLegoValue.receiverValue;
-
-
         InitInformation();
+        RefreshInventory();
 
-        scope_slot.SetItem(scope);
-        magazine_slot.SetItem(magazine);
-        reciever_slot.SetItem(reciever);
 
         scope_slot.onMouseHover += DisplayItemInfo;
         magazine_slot.onMouseHover += DisplayItemInfo;
@@ -56,6 +49,11 @@ public class UI_Inventory : MonoBehaviour
 
         ClearItemInfo();
     }
+    private void OnEnable()
+    {
+        RefreshInventory();
+    }
+
 
     private void InitInformation()
     {
@@ -67,6 +65,17 @@ public class UI_Inventory : MonoBehaviour
         type_text = texts[1];
         description_text = texts[2];
         сharacteristics_text = texts[3];
+    }
+    private void RefreshInventory()
+    {
+        scope = levelController.playerValue.weaponManagerValue.weaponValue.weaponLegoValue.scopeValue;
+        magazine = levelController.playerValue.weaponManagerValue.weaponValue.weaponLegoValue.magazineValue;
+        reciever = levelController.playerValue.weaponManagerValue.weaponValue.weaponLegoValue.receiverValue;
+
+        scope_slot.SetItem(scope);
+        magazine_slot.SetItem(magazine);
+        reciever_slot.SetItem(reciever);
+
     }
 
 
@@ -132,7 +141,5 @@ public class UI_Inventory : MonoBehaviour
         type_text.text = "";
         сharacteristics_text.text = "";
     }
-
-
 
 }
