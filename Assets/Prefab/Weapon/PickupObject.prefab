@@ -4979,8 +4979,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4950885318086890351}
   - component: {fileID: 6921781938562213567}
-  - component: {fileID: 1220959790743297647}
   - component: {fileID: 7782840255585280539}
+  - component: {fileID: 3688224315660813759}
   - component: {fileID: 3812936203904720082}
   m_Layer: 0
   m_Name: PickupObject
@@ -5003,8 +5003,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 677275100782470895}
-  - {fileID: 6119027877347538691}
   - {fileID: 7967788441345239466}
+  - {fileID: 1593086306550478104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6921781938562213567
@@ -5022,20 +5022,6 @@ MonoBehaviour:
   displayUI: {fileID: 0}
   active: 0
   m_item: {fileID: 0}
---- !u!114 &1220959790743297647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2760803291180475844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aee270a29c0b0b4a8f77bcda0cc8a95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 120
-  cube: {fileID: 5210207389239518278}
 --- !u!135 &7782840255585280539
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5057,6 +5043,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3688224315660813759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760803291180475844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aee270a29c0b0b4a8f77bcda0cc8a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roteting: {fileID: 8341694286630997346}
+  cube: {fileID: 5210207389239518278}
 --- !u!114 &3812936203904720082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5072,6 +5072,15 @@ MonoBehaviour:
   grey:
     serializedVersion: 2
     rgba: 4287072135
+  blue:
+    serializedVersion: 2
+    rgba: 4294922790
+  violet:
+    serializedVersion: 2
+    rgba: 4294912155
+  orange:
+    serializedVersion: 2
+    rgba: 4280845311
 --- !u!1 &2861654568629879076
 GameObject:
   m_ObjectHideFlags: 0
@@ -5179,12 +5188,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5210207389239518278}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4950885318086890351}
+  m_Father: {fileID: 1593086306550478104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &249455307905578235
 MeshFilter:
@@ -5498,6 +5507,52 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &8341694286630997346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593086306550478104}
+  - component: {fileID: 6256609503322075925}
+  m_Layer: 0
+  m_Name: Roteting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1593086306550478104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8341694286630997346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6119027877347538691}
+  m_Father: {fileID: 4950885318086890351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6256609503322075925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8341694286630997346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943cc2986f4d2cc47b1e57d4d60bdf8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 150
 --- !u!1 &8589191013443989114
 GameObject:
   m_ObjectHideFlags: 0

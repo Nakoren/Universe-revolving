@@ -7,16 +7,16 @@ using static PartsDB;
 public class PickupObject : IInteractable
 {
     public Item m_item;
-    private RotetingObgect m_roteting;
+    private ItemInst m_roteting;
 
     public void Awake()
     {
-        m_roteting = GetComponent<RotetingObgect>();
+        m_roteting = GetComponent<ItemInst>();
     }
 
     public void GetPart(Item item)
     {
-        m_roteting = GetComponent<RotetingObgect>();
+        m_roteting = GetComponent<ItemInst>();
         m_item = item;
         m_roteting.GetPart(item);
     }

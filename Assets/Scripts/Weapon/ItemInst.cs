@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 using static PartsDB;
 
-public class RotetingObgect : MonoBehaviour
+public class ItemInst : MonoBehaviour
 {
     private PickupObject m_pickup;
-    public float rotationSpeed = 50f;
+    public GameObject roteting;
     public GameObject cube;
 
 
@@ -19,12 +19,6 @@ public class RotetingObgect : MonoBehaviour
     {
         ModelChange(item.part.model);
     }
-    void Update()
-    {
-        //вращение
-        float rotationAmount = rotationSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.up, rotationAmount);
-    }
     
 
     private void ModelChange(GameObject m_model)
@@ -33,7 +27,7 @@ public class RotetingObgect : MonoBehaviour
         GameObject visual = Instantiate(m_model, transform.position, Quaternion.identity);
         visual.transform.SetParent(transform);
         visual.transform.localScale = new Vector3(3f, 3f, 3f);
-        //visual.transform.SetParent(this.transform);
+        visual.transform.SetParent(roteting.transform);
         cube.SetActive(false);
     }
 }
