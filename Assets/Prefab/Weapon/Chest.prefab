@@ -70,7 +70,7 @@ MonoBehaviour:
   displayUI: {fileID: 0}
   active: 0
   rewardItemDB: {fileID: 11400000, guid: f10da979b778e3642a2da344e24373c1, type: 2}
-  pickupObject: {fileID: 5607723459442197043, guid: 534dadf7165a98a409ddd0cde804950f, type: 3}
+  pickupObject: {fileID: 6921781938562213567, guid: fa21d7a4a4b934e96bfd07c03b2f6535, type: 3}
 --- !u!1 &8511616593424748293
 GameObject:
   m_ObjectHideFlags: 0

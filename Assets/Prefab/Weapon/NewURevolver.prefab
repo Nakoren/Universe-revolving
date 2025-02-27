@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0820a7b624f587349aacf83bcf058db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupPrefab: {fileID: 5607723459442197043, guid: 534dadf7165a98a409ddd0cde804950f, type: 3}
+  pickupPrefab: {fileID: 6921781938562213567, guid: fa21d7a4a4b934e96bfd07c03b2f6535, type: 3}
   totalDamage: 0
   base_scope: {fileID: 11400000, guid: 06f0f52ca36de1043838e74aad316d31, type: 2}
   base_magazine: {fileID: 11400000, guid: 2985132ec30a52246b1307049d08b35d, type: 2}
