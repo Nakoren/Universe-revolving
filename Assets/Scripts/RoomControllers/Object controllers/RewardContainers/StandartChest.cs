@@ -113,7 +113,7 @@ public class StandartChest : RewardContainer
 
         float targetY = targetPosition.y;
 
-        while (Vector3.Distance(objectToMove.transform.position, targetPosition) > 0.01f)
+        while (Vector3.Distance(objectToMove.transform.position, targetPosition) > 0.5f)
         {
             // Вычисляем, сколько времени прошло
             float distCovered = (Time.time - startTime) * m_moveSpeed;

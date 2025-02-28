@@ -1,6 +1,3 @@
-using UnityEngine;
-using static UnityEditor.Progress;
-
 public class PickUpObject : IInteractable
 {
     public override void Interact()
