@@ -5,7 +5,7 @@ using UnityEngine.Assertions.Comparers;
 public class Health : MonoBehaviour
 {
     [Header("Health settings")]
-    [SerializeField] public float maxHealth = 100;
+    public float maxHealth = 100;
     public event Action onAgentDamage;
     public event Action onAgentRestoreHealth;
 
@@ -16,6 +16,10 @@ public class Health : MonoBehaviour
     {
         float test = m_currentHealth;
         return test;
+    }
+    public void ToDefault(float HP)
+    {
+        maxHealth = HP;
     }
 
     public float GetMaxHealth()

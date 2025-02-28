@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     Health m_health;
     MeleePunch m_meleePunch;
     WeaponManager m_weaponManager;
+    PlayerStats m_stats;
     public WeaponManager weaponManagerValue => m_weaponManager;
     PlayerAnimationManager m_animator;
     //SkillManager m_skillManager;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
         m_animator = GetComponentInChildren<PlayerAnimationManager>();
         m_animator.player = this;
         m_animator.weapon = GetComponentInChildren<Weapon>();
+        m_stats = GetComponent<PlayerStats>();
 
 
         m_dash.onDashStart += SetStateToDash;
@@ -89,6 +91,9 @@ public class Player : MonoBehaviour
     public void ToDefault()
     {
         m_weaponManager.ToDefault();
+        m_health.ToDefault(m_stats.baseHP);
+        m_movement.ToDefault(m_stats.baseMoveSpeed);
+        m_stats.ToDefault(m_stats.startMoney);
     }
     public void RotateTo(Vector3 target)
     {
