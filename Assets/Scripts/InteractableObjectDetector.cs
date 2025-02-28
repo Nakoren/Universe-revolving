@@ -59,7 +59,7 @@ public class InteractableObjectDetector : MonoBehaviour
                     //Debug.Log($"Closest object: {m_closestInteractable.name}");
                 }
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds((float)0.1);
         }
     }
 
