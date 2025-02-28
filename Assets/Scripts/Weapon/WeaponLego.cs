@@ -8,7 +8,7 @@ public class WeaponLego : MonoBehaviour
 {
     private Weapon m_weapon;
     private WeaponVisual m_visual;
-    public PickupObject pickupPrefab;
+    public PartPickUpObject pickupPrefab;
     public float totalDamage;
 
     [Header("Base Parts")]
@@ -73,7 +73,7 @@ public class WeaponLego : MonoBehaviour
     }
     public void Drop(Item item)
     {
-        PickupObject pickup = Instantiate(pickupPrefab, this.transform.position, this.transform.rotation);
+        PartPickUpObject pickup = Instantiate(pickupPrefab, this.transform.position, this.transform.rotation);
         pickup.GetPart(item);
     }
 
@@ -82,19 +82,19 @@ public class WeaponLego : MonoBehaviour
 
         if (item.part.type == IPart.Ptype.Scope)
         {
-            Drop(scope);
+            if(scope!=null) Drop(scope);
             scope = item;
             m_visual?.SetElementScope(item.part);
         }
         else if (item.part.type == IPart.Ptype.Magazine)
         {
-            Drop(magazine);
+            if(magazine!=null) Drop(magazine);
             magazine = item;
             m_visual?.SetElementMagazine(item.part);
         }
         else if (item.part.type == IPart.Ptype.Receiver)
         {
-            Drop(receiver);
+            if(receiver!=null) Drop(receiver);
             receiver = item;
             m_visual?.SetElementReceiver(item.part);
         }

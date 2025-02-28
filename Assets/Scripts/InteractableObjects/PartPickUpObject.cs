@@ -4,9 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static PartsDB;
 
-public class PickupObject : IInteractable
+public class PartPickUpObject : PickUpObject
 {
-    public Item m_item;
+    public Item item;
     private ItemInst m_roteting;
 
     public void Awake()
@@ -17,14 +17,7 @@ public class PickupObject : IInteractable
     public void GetPart(Item item)
     {
         m_roteting = GetComponent<ItemInst>();
-        m_item = item;
+        this.item = item;
         m_roteting.GetPart(item);
-    }
-
-    public override void Interact()
-    {
-        onPickup?.Invoke(m_item);
-        //player.Pickup(m_part);
-        Destroy(gameObject);
     }
 }

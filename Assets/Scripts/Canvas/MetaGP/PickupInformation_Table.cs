@@ -10,7 +10,7 @@ public class PickupInformation_Table : MonoBehaviour
     [SerializeField] private Color32 orange = new Color32(255, 131, 40, 255);
 
     private Canvas canvas;
-    private PickupObject pickupObject;
+    private PartPickUpObject pickupObject;
     
     private Image[] icons;
     private TextMeshProUGUI[] texts;
@@ -22,7 +22,7 @@ public class PickupInformation_Table : MonoBehaviour
 
     private void Awake()
     {
-        pickupObject = GetComponent<PickupObject>();
+        pickupObject = GetComponent<PartPickUpObject>();
         canvas = GetComponentInChildren<Canvas>(true);
         icons = GetComponentsInChildren<Image>(true);
         texts = GetComponentsInChildren<TextMeshProUGUI>(true);
@@ -30,7 +30,6 @@ public class PickupInformation_Table : MonoBehaviour
 
     private void Start()
     {
-        canvas.gameObject.SetActive(false);
         InitInformation();
         RefreshInformation();
     }
@@ -48,22 +47,6 @@ public class PickupInformation_Table : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canvas.gameObject.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canvas.gameObject.SetActive(false);
-        }
-    }
-
        private void InitInformation()
     {
         name_text = texts[0];
@@ -74,7 +57,7 @@ public class PickupInformation_Table : MonoBehaviour
 
     private void RefreshInformation()
     {
-        var item = pickupObject.m_item;
+        var item = pickupObject.item;
         if (item == null)
             return;
 
