@@ -71,6 +71,7 @@ MonoBehaviour:
   active: 0
   rewardItemDB: {fileID: 11400000, guid: f10da979b778e3642a2da344e24373c1, type: 2}
   pickupObject: {fileID: 6921781938562213567, guid: fa21d7a4a4b934e96bfd07c03b2f6535, type: 3}
+  cube: {fileID: 8511616593424748293}
 --- !u!1 &8511616593424748293
 GameObject:
   m_ObjectHideFlags: 0
