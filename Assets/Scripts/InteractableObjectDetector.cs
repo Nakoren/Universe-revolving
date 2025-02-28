@@ -82,9 +82,9 @@ public class InteractableObjectDetector : MonoBehaviour
         }
     }
 
-    private void Pickup(Item item)
+    private void Pickup(IInteractable obj)
     {
-        m_player.Pickup(item);
+        m_player.Pickup(obj);
     }
 
     private void OnInteractableDestroy(IInteractable interactable)

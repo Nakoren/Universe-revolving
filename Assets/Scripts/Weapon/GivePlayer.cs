@@ -5,11 +5,11 @@ using UnityEngine;
 public class GivePlayer : MonoBehaviour
 {
     public Player player;
-    private List<PickupObject> m_pickup = new List<PickupObject>();
+    private List<PartPickUpObject> m_pickup = new List<PartPickUpObject>();
 
     public void Awake()
     {
-        m_pickup.AddRange(GetComponentsInChildren<PickupObject>());
+        m_pickup.AddRange(GetComponentsInChildren<PartPickUpObject>());
         //GetPlayer();
     }
 

@@ -4,15 +4,15 @@ using static PartsDB;
 
 public class ItemInst : MonoBehaviour
 {
-    private PickupObject m_pickup;
+    private PartPickUpObject m_pickup;
     public GameObject roteting;
     public GameObject cube;
 
 
     public void Awake()
     {
-        m_pickup = GetComponent<PickupObject>();
-        if (m_pickup.m_item != null) GetPart(m_pickup.m_item);
+        m_pickup = GetComponent<PartPickUpObject>();
+        if (m_pickup.item != null) GetPart(m_pickup.item);
     }
 
     public void GetPart(Item item)
