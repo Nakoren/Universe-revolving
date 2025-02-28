@@ -5,7 +5,7 @@ public class ShopRoomController : RoomController
 {
     [SerializeField] Transform[] shopItemsPositions;
     [SerializeField] PartsDB partsDB;
-    [SerializeField] HealPickUp healPickUp;
+    [SerializeField] HealPickUpWithPrice healPickUp;
     [SerializeField] PartPickUpWithPrice pickUpObject;
 
     [Header("Default price of itens")]
