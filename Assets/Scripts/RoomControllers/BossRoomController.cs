@@ -75,6 +75,7 @@ public class BossRoomController : RoomController
 
     public void StartBossFight()
     {
+        boss.onEnemyDeath += OnEnemyDeath;
         boss.SetTarget(player.transform);
         boss.Activate();
     }

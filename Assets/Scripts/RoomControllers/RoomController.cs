@@ -92,7 +92,10 @@ public class RoomController : MonoBehaviour
 
     protected void OnRoomChange(int ind)
     {
-        onRoomChange.Invoke(ind);
+        if (onRoomChange != null)
+        {
+            onRoomChange.Invoke(ind);
+        }
     }
     protected void OnFinalRoomChange()
     {
