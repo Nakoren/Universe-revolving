@@ -6,7 +6,7 @@ using static PartsDB;
 
 public class StandartChest : RewardContainer
 {
-    public PickupObject pickupObject;
+    public PartPickUpObject pickupObject;
     private float m_moveDistance = 3f;
     private float m_moveSpeed = 5f;
     private bool m_allreadiOpen = false;
@@ -36,7 +36,7 @@ public class StandartChest : RewardContainer
         m_pickup.GetPart(item);
         MoveRandomly(m_pickup);
     }
-    public void MoveRandomly(PickupObject objectToMove)
+    public void MoveRandomly(PartPickUpObject objectToMove)
     {
         if (objectToMove != null)
         {
@@ -60,7 +60,7 @@ public class StandartChest : RewardContainer
             Debug.LogWarning("Объект для перемещения не назначен!");
         }
     }
-    private IEnumerator MoveToTarget(PickupObject objectToMove, Vector3 targetPosition)
+    private IEnumerator MoveToTarget(PartPickUpObject objectToMove, Vector3 targetPosition)
     {
         Vector3 startPosition = objectToMove.transform.position; // Начальная позиция
         float journeyLength = Vector3.Distance(startPosition, targetPosition); // Длина пути
