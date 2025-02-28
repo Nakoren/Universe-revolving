@@ -5,10 +5,10 @@ public class ShopRoomController : RoomController
 {
     [SerializeField] Transform[] shopItemsPositions;
     [SerializeField] PartsDB partsDB;
-    [SerializeField] HealPickUpWithPrice healPickUp;
-    [SerializeField] PartPickUpWithPrice pickUpObject;
+    [SerializeField] GameObject healPickUp;
+    [SerializeField] GameObject pickUpObject;
 
-    [Header("Default price of itens")]
+    [Header("Default price of items")]
     [SerializeField] public int commonBaseCost = 50;
     [SerializeField] public int rareBaseCost = 250;
     [SerializeField] public int epicBaseCost = 500;
@@ -16,6 +16,8 @@ public class ShopRoomController : RoomController
 
     [SerializeField] public int randomPriceRange = 10;
     [SerializeField] public int randomPriceStep = 0;
+
+    [SerializeField] public int healPrice = 150;
 
     [Header("Chances for spawning items if different rarity (0 - 100)")]
     [SerializeField] int commonChance;
@@ -44,12 +46,23 @@ public class ShopRoomController : RoomController
             if (rarityIndex >= 0)
             {
                 Item itemToSpawn = partsDB.GetRandomItemOfRarity(rarityIndex);
-                PartPickUpObject spawn = Instantiate(pickUpObject, spawnPosition);
-                spawn.GetPart(itemToSpawn);
+                //Instantiate(pickUpObject.gameObject, spawnPosition);
+                GameObject spawn = Instantiate(pickUpObject, spawnPosition.position, spawnPosition.rotation);
+                spawn.name = "PartPickUp";
+                PartPickUpWithPrice compPickUpObject = spawn.GetComponent<PartPickUpWithPrice>();
+                int cost = GetCost(rarityIndex);
+                compPickUpObject.Price = cost;
+                compPickUpObject.GetPart(itemToSpawn);
+                compPickUpObject.UpdateData();
             }
             else
             {
-               Instantiate(healPickUp.gameObject, spawnPosition);
+                //Instantiate(pickUpObject.gameObject, spawnPosition);
+                GameObject spawn = Instantiate(healPickUp, spawnPosition.position, spawnPosition.rotation);
+                spawn.name = "HealPickUp";
+                HealPickUpWithPrice compHealPickUp = spawn.GetComponent<HealPickUpWithPrice>();
+                compHealPickUp.Price = healPrice;
+                compHealPickUp.UpdateData();
             }
         }
     }
@@ -71,5 +84,18 @@ public class ShopRoomController : RoomController
             }
         }
         return rarityIndex;
+    }
+
+    private int GetCost(int rarity)
+    {
+        int cost = 0;
+        switch (rarity)
+        {
+            case 0: cost = commonBaseCost; break;
+            case 1: cost = rareBaseCost; break;
+            case 2: cost = epicBaseCost; break;
+            case 3: cost = legendaryBaseCost; break;
+        }
+        return cost;
     }
 }

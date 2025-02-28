@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59827d34491d08e40a8c94b902c28491, type: 3}
   m_Name: ShopRoom
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  roomName: 
+  prefab: {fileID: 7812379479966753627, guid: fe6ee4831f9eaf049a90ef20ca08f9cc, type: 3}
+  roomName: ForestShop
   weight: 0
