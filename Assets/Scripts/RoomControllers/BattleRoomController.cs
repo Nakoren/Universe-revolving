@@ -72,10 +72,21 @@ public class BattleRoomController : RoomController
 
     override protected void FinishRoomTask()
     {
-        for (int i = 0; i < connectionsCount; ++i)
+        if (connectionsCount == 0)
         {
-            //Тут нужно сделать более сложную логику открытия и закрытию проходов
-            activeTransitions[i].Enable();
+            for (int i = 0; i < activeTransitions.Length; ++i)
+            {
+                //Тут нужно сделать более сложную логику открытия и закрытию проходов
+                activeTransitions[i].Enable();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < connectionsCount; ++i)
+            {
+                //Тут нужно сделать более сложную логику открытия и закрытию проходов
+                activeTransitions[i].Enable();
+            }
         }
         if (rewardContainer != null)
         {
