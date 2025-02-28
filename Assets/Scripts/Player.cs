@@ -76,9 +76,18 @@ public class Player : MonoBehaviour
             m_dash.DashMove();
         }
     }
-    public void Pickup(Item item)
+    public void Pickup(IInteractable obj)
     {
-        m_weaponManager.Pickup(item);
+        if(obj is PartPickUpObject)
+        {
+            var partPickUp = obj as PartPickUpObject;
+            m_weaponManager.Pickup(partPickUp.item);
+        }
+        if(obj is HealPickUp)
+        {
+            var healPickUp = obj as HealPickUp;
+            this.m_health.RestoreHealth(healPickUp.healValue);
+        }
     }
 
     public void Warp(Vector3 position)
