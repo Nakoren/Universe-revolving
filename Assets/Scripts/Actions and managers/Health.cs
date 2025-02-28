@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public event Action onAgentDamage;
     public event Action onAgentRestoreHealth;
 
-    [SerializeField] private float m_currentHealth;
+    private float m_currentHealth;
     public Action onZeroHealth;
 
     public float GetCurrentHealth()

@@ -54,7 +54,7 @@ public class PickupInformation_Table : MonoBehaviour
         type_text = texts[1];
         description_text = texts[2];
         сharacteristics_text = texts[3];
-        price_text = texts[4];
+       // price_text = texts[4];
     }
 
     private void RefreshInformation()

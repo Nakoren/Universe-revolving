@@ -12,4 +12,17 @@ public class PlayerStats : MonoBehaviour
     {
         currentMoney = money;
     }
+    public void PlusMoney(int money)
+    {
+        currentMoney += money;
+    }
+    public bool MinusMoney(int money)
+    {
+        if (currentMoney >= money)
+        {
+            currentMoney -= money;
+            return true;
+        }
+        else return false;
+    }
 }

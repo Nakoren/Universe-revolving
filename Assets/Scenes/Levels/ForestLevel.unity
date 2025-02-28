@@ -247,7 +247,7 @@ MonoBehaviour:
   player: {fileID: 0}
   levelIcons: {fileID: 11400000, guid: 7670afbb0d085c7419f8d73e101cc4ea, type: 2}
   nextSceneIndex: 2
-  playerDefaultPrefab: {fileID: 3215634154063379854, guid: 467bc54cef3104f21a77271702518c9c, type: 3}
+  playerDefaultPrefab: {fileID: 4339911120683228980, guid: 76f89fce69fd9494e8a6877c54951a26, type: 3}
   cameraController: {fileID: 896467054}
   playerController: {fileID: 332749922}
 --- !u!1 &829811745

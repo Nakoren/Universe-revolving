@@ -96,6 +96,14 @@ public class Player : MonoBehaviour
     {
         m_movement.WarpTo(position);
     }
+    public void PlusMoney(int money)
+    {
+        m_stats.PlusMoney(money);
+    }
+    public void MinusMoney(int money)
+    {
+        m_stats.MinusMoney(money);
+    }
 
     public void ToDefault()
     {
