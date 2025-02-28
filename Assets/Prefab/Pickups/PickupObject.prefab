@@ -5066,6 +5066,13 @@ MonoBehaviour:
   orange:
     serializedVersion: 2
     rgba: 4280845311
+  canvas: {fileID: 8617914728161018334}
+  pickupObject: {fileID: -5159645602699814423}
+  icon: {fileID: 165218249832920831}
+  name_text: {fileID: 4807570429566536402}
+  type_text: {fileID: 552632613942451189}
+  description_text: {fileID: 6993168406383944479}
+  "\u0441haracteristics_text": {fileID: 752287171826804830}
 --- !u!114 &-5159645602699814423
 MonoBehaviour:
   m_ObjectHideFlags: 0

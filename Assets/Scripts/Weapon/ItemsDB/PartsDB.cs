@@ -21,14 +21,21 @@ public class PartsDB : ScriptableObject
     public Item GetRandomItemOfRarity(int rarity)
     {
         List<Item> rarityItemList = new List<Item>();
-        foreach (Item item in items)
+        bool ok = false;
+        while (!ok)
         {
-            if(item.rare == rarity)
+            foreach (Item item in items)
             {
-                rarityItemList.Add(item);
+                if (item.rare == rarity)
+                {
+                    rarityItemList.Add(item);
+                }
             }
+            if(rarityItemList.Count > 0) { ok = true; }
+            else { rarity -= 1; }
         }
         int randomIndex = UnityEngine.Random.Range(0, rarityItemList.Count);
+        Debug.Log($"list size: {rarityItemList.Count}\nselect index: {randomIndex}\nRequired rarity {rarity}");
         return rarityItemList[randomIndex];
     }
 }
