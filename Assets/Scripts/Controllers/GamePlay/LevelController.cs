@@ -55,6 +55,7 @@ public class LevelController : MonoBehaviour
 
     private void LoadNextStage(int ind)
     {
+        ClearPickUps();
         if (activeRoom != null)
         {
             activeRoomController.onRoomChange -= OnLoadRequest;
@@ -81,6 +82,16 @@ public class LevelController : MonoBehaviour
     {
         currentLayer += 1;
         LoadNextStage(ind);
+    }
+
+    private void ClearPickUps()
+    {
+        List<GameObject> pickUps = new List<GameObject>();
+        GameObject.FindGameObjectsWithTag("PickUp", pickUps);
+        foreach(GameObject item in pickUps)
+        {
+            Destroy(item);
+        }
     }
 
     private List<Room> GetNextLayerRooms()

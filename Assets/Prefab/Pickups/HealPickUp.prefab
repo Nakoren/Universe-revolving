@@ -5141,7 +5141,7 @@ GameObject:
   - component: {fileID: 7233780198330244743}
   m_Layer: 0
   m_Name: HealPickUp
-  m_TagString: Untagged
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
