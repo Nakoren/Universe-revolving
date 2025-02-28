@@ -18,7 +18,8 @@ public class PickupInformation_Table : MonoBehaviour
     private TextMeshProUGUI name_text;
     private TextMeshProUGUI type_text;
     private TextMeshProUGUI description_text;
-    private TextMeshProUGUI сharacteristics_text;  
+    private TextMeshProUGUI сharacteristics_text;
+    private TextMeshProUGUI price_text;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class PickupInformation_Table : MonoBehaviour
         type_text = texts[1];
         description_text = texts[2];
         сharacteristics_text = texts[3];
+        price_text = texts[4];
     }
 
     private void RefreshInformation()
@@ -126,5 +128,10 @@ public class PickupInformation_Table : MonoBehaviour
         type_text.text = type;
         description_text.text = description;
         сharacteristics_text.text = characteristics;
+    }
+
+    public void SetPrice(int price)
+    {
+        string priceString = $"Price: \n{price.ToString()}"; 
     }
 }

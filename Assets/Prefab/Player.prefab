@@ -6808,6 +6808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  m_currentHealth: 0
 --- !u!114 &6429466006536719843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8386,7 +8387,7 @@ PrefabInstance:
     - target: {fileID: 7176872529373467565, guid: aa4cac4cbc4323e4d80be66ed8c813b4, type: 3}
       propertyPath: pickupPrefab
       value: 
-      objectReference: {fileID: 6921781938562213567, guid: fa21d7a4a4b934e96bfd07c03b2f6535, type: 3}
+      objectReference: {fileID: -5159645602699814423, guid: fa21d7a4a4b934e96bfd07c03b2f6535, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
