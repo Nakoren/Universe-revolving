@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
     public int speed;
 
     private CharacterController m_charController;
-
+    public void ToDefault(int Basespeed)
+    {
+        speed = Basespeed;
+    }
     public float GetCurrentSpeed()
     {
         return speed;

@@ -6673,6 +6673,7 @@ GameObject:
   - component: {fileID: 7667527577213714195}
   - component: {fileID: 6429466006536719843}
   - component: {fileID: 678182737028380802}
+  - component: {fileID: 9050613201851163478}
   - component: {fileID: 2646287300970150950}
   m_Layer: 8
   m_Name: Player
@@ -6835,6 +6836,22 @@ MonoBehaviour:
   health: {fileID: 7667527577213714195}
   hpStat: {fileID: 0}
   canvas: {fileID: 0}
+--- !u!114 &9050613201851163478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339911120683228980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36635163fface344a78d9f651654186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMoveSpeed: 8
+  baseHP: 100
+  startMoney: 100
+  currentMoney: 0
 --- !u!114 &2646287300970150950
 MonoBehaviour:
   m_ObjectHideFlags: 0
