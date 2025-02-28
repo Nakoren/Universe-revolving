@@ -67,11 +67,12 @@ public class Transitor : IInteractable
             AddIcon(levelIcons.restRoom);
         }
         doorController.OpenDoorsAnimation();
+        isActive = true;
     }
 
     override public void Interact()
     {
-        Activate();
+        if(isActive) Activate();
     }
 
     private void Activate()

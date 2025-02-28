@@ -47,7 +47,7 @@ public class ShopRoomController : RoomController
             {
                 Item itemToSpawn = partsDB.GetRandomItemOfRarity(rarityIndex);
                 //Instantiate(pickUpObject.gameObject, spawnPosition);
-                GameObject spawn = Instantiate(pickUpObject, spawnPosition.position, spawnPosition.rotation);
+                GameObject spawn = Instantiate(pickUpObject, spawnPosition);
                 spawn.name = "PartPickUp";
                 PartPickUpWithPrice compPickUpObject = spawn.GetComponent<PartPickUpWithPrice>();
                 int cost = GetCost(rarityIndex);
@@ -58,7 +58,7 @@ public class ShopRoomController : RoomController
             else
             {
                 //Instantiate(pickUpObject.gameObject, spawnPosition);
-                GameObject spawn = Instantiate(healPickUp, spawnPosition.position, spawnPosition.rotation);
+                GameObject spawn = Instantiate(healPickUp, spawnPosition);
                 spawn.name = "HealPickUp";
                 HealPickUpWithPrice compHealPickUp = spawn.GetComponent<HealPickUpWithPrice>();
                 compHealPickUp.Price = healPrice;
